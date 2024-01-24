@@ -1,0 +1,60 @@
+//- https://parceljs.org/languages/html/#json-ld
+//- script(type="application/ld+json").
+  {
+    "@context": [
+      "https://schema.org",
+      { "@language": "ru" }
+    ],
+    "@type": "LocalBusiness",
+    "name": "Наименование",
+    "description": "Описание",
+    "telephone": "+7 999-999-9999",
+    "email": "mailto:info@studio.ru",
+    "openingHours": "Mo,Tu,We,Th,Fr 10:00-22:00",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "../static/android-chrome-512x512.png",
+      "width": 512,
+      "height": 512
+    }
+  }
+//- https://hallanalysis.com/json-ld-generator/
+//- Refs:
+  - https://schema.org/mainEntity
+  - https://schema.org/EducationalOrganization
+  - https://schema.org/LocalBusiness
+  - https://schema.org/LearningResource
+  - https://schema.org/Course
+  - https://schema.org/Ticket
+  - https://schema.org/Schedule
+  - https://schema.org/eventAttendanceMode
+  - https://schema.org/Event
+  - https://schema.org/EducationEvent
+
+//- HTML markup example
+//- append vars
+  -
+    const week = [
+      {
+        'name': ['Понедельник', 'Monday'],
+        'hours': [10, 21]
+      }, {
+        'name': ['Вторник', 'Tuesday'],
+        'hours': [10, 21]
+      }, {
+        'name': ['Среда', 'Wednesday'],
+        'hours': [10, 21]
+      }, {
+        'name': ['Четверг', 'Thursday'],
+        'hours': [10, 21]
+      }, {
+        'name': ['Пятница', 'Friday'],
+        'hours': [10, 21]
+      }, {
+        'name': ['Суббота', 'Saturday'],
+        'hours': [10, 22]
+      }, {
+        'name': ['Воскресенье', 'Sunday'],
+        'hours': [10, 22]
+      }
+    ]

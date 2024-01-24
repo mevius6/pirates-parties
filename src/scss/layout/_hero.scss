@@ -1,0 +1,55 @@
+@use '../config';
+
+:where(#hero) {
+  align-items: center;
+  min-block-size: 100dvh;
+  position: relative;
+  place-items: center;
+
+  & > * { grid-row: 1; }
+
+  video,
+  video-player {
+    z-index: -1;
+    max-block-size: 100svh;
+  }
+
+  video {
+    object-fit: cover;
+    object-position: 50% 50%;
+    max-inline-size: 100%;
+  }
+
+  hgroup {
+    --flow-space: var(--spacer-3x);
+
+    z-index: 1;
+    padding-inline: 3ex;
+    padding-block: 2ch;
+    margin-inline: var(--spacer-2x);
+    text-align: left;
+
+    @include config.respond('tablet') {
+      margin-inline: unset;
+      grid-column: center;
+      place-self: center;
+    }
+  }
+
+  .logo {
+    z-index: 1;
+    min-inline-size: 100%;
+
+    > svg {
+      max-inline-size: 100%;
+      padding-inline: var(--spacer-2x);
+    }
+
+    // @media (prefers-color-scheme: dark) { svg { --hsl: 70deg 100% 73%; } }
+    @media (inverted-colors) { svg { filter: invert(100%); } }
+
+    @include config.respond('tablet') {
+      padding-inline: calc(2.5rem + 2vw);
+    }
+  }
+}

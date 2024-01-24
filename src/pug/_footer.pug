@@ -1,0 +1,37 @@
+mixin contactWidget(props)
+  - let { contactsList=[], socialsList=[] } = props
+  aside.widget.flow.mask-border-gradient(data-backdrop="glassy")
+    if !isArrEmpty(socialsList)
+      +list({ class: 'social',
+              items: social,
+              ordered: false })
+    if !isArrEmpty(contactsList)
+      +list({ class: 'contacts',
+              items: contactsList,
+              ordered: false })
+
++contactWidget({ contactsList: contacts, socialsList: social })
+
+footer.page__footer.sideways(itemscope itemtype="https://schema.org/WPFooter")
+  p.overline.copr
+    //- © ООО «Имя Бренда», 2023
+    | #[small(itemprop="name")= data.meta.brand]
+    | &COPY;
+    | #[time(datetime= y itemprop="copyrightYear")= y]
+  //- p
+    | Более подробную информацию можете получить у нашего менеджера
+    | #[br]
+    | #[span(itemprop="telephone")= data.meta.phone]
+    address.eml
+      +link({
+        email: {
+          to: data.meta.email,
+          subject: '',
+          body: '',
+        },
+        text: 'Имя Фамилия',
+      })
+      | #{D}
+  //-
+    u.logo.flex-centered: +textLoop()
+  //- span.byline= data.meta.author

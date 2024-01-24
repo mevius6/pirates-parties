@@ -1,0 +1,415 @@
+@use '../config';
+
+/* Refs:
+    → https://web.dev/building-a-stories-component/
+    → https://gui-challenges.web.app/carousel/dist/
+    → https://github.com/argyleink/gui-challenges/tree/main/carousel
+    → http://youmightnotneedjs.com/#image_slider
+    → https://github.com/benschwarz/gallery-css/blob/master/sass/_gallery.scss
+    → https://codepen.io/bramus/pen/GRdGoKy
+    → https://codepen.io/hexagoncircle/pen/QWMZBve
+    → https://codepen.io/hexagoncircle/pen/NWpBgdW
+    → https://inclusive-components.design/a-content-slider/ */
+
+$slide-width: 100%;
+
+// @layer carousel {…}
+.carousel {
+  $init: &;
+  $instance1: #{&}--1; // <-- 1st reel
+  $instance2: #{&}--2; // <-- 2nd reel
+  $instance3: #{&}--3; // <-- employees
+  $instance4: #{&}--4; // <-- reviews/testimonials
+
+  --tap-size: 2.75rem;
+  --dot-size: 1.25rem;
+  --carousel-item-size: 80%; // 100%
+  --carousel-gutters:
+    max(var(--tap-size), calc((100% - var(--carousel-item-size)) / 2));
+    //= max(2.75rem, 10%)
+  --carousel-gutters: var(--tap-size);
+  // sign(var(--carousel-gutters))
+  --negative-gutters: calc(-1 * var(--carousel-gutters));
+  --carousel-scrollbar-gutter: var(--spacer-3x);
+  --carousel-pagination-size: var(--dot-size);
+
+  // container: carousel / inline-size;
+  position: relative;
+  block-size: 100%;
+  max-inline-size: 100%;
+  // overflow: hidden;
+
+  display: grid;
+  grid-template-columns:
+    [carousel-gutter] var(--carousel-gutters)
+    [carousel-inview] 1fr
+    [carousel-gutter] var(--carousel-gutters);
+  grid-template-rows:
+    [carousel-scroller] 1fr
+    [carousel-progress] minmax(0, var(--carousel-pagination-size));
+  grid-row-gap: var(--carousel-scrollbar-gutter);
+
+  &[data-pagination='none'] {
+    grid-template-rows: [carousel-scroller] 1fr;
+
+    & > .carousel__pagination { display: none; }
+  }
+
+  &[data-controls='none'] {
+    --carousel-gutters: var(--gutter);
+
+    grid-template-columns: 0 1fr 0;
+
+    & > .carousel__controls { display: none; }
+  }
+
+  // Scroller
+  // https://blog.mayank.co/better-scrolling-through-modern-css
+  &__container {
+    --list-gap: 0;
+    // --carousel-gutters: 0; // <-- full-width on mobile
+
+    position: relative;
+    grid-row: 1; // <-- carousel-scroller;
+    grid-column: 1/-1;
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: var(--carousel-gutters);
+    // padding-block: var(--spacer-3x) var(--carousel-scrollbar-gutter);
+    padding-inline: var(--carousel-gutters);
+
+    // Scroll-Snap <-- &:where([class*='--snap']) {…}
+    // overflow-x: auto;
+    // overflow-y: hidden;
+    overflow: auto hidden;
+    // scroll-snap-type: inline mandatory;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding-inline: var(--carousel-gutters);
+    // scroll-snap-points-x: repeat(100%);
+    scroll-snap-stop: always;
+
+    // will-change: transform;
+    // animation: autoRotation 10s infinite;
+
+    & > * { scroll-snap-align: center; } // start
+  }
+
+  // Slide
+  & [class*='slide'],
+  &__slide {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    margin-block: auto;
+    grid-row-gap: var(--gutter);
+    column-gap: var(--gutter);
+    margin-block-start: 0; // <-- top-alignment
+
+    content-visibility: auto;
+    min-block-size: 200px;
+
+    user-select: none;
+    touch-action: manipulation;
+  }
+
+  &__image {
+    overflow: hidden;
+    margin-inline: auto;
+    position: relative;
+
+    // li:nth-of-type(even) > & { --clip: var(--clip-2); }
+    // picture { clip-path: inherit; }
+
+    img {
+      #{$instance3} & { aspect-ratio: 2 / 3; }
+      #{$instance2} & { aspect-ratio: 2 / 3; }
+      #{$instance1} & { aspect-ratio: 2 / 3; }
+    }
+  }
+
+  &__text {
+    z-index: 1;
+    place-self: center;
+    margin-inline: auto;
+    color: var(--foreground);
+    background-color: var(--trn);
+  }
+
+  // Scrollbar as progress bar
+  // https://ishadeed.com/article/custom-scrollbars-css/
+  // https://developer.mozilla.org/en-US/blog/scroll-progress-animations-in-css/
+  &:where([data-progress=scrollbar]) {
+    scrollbar-gutter: stable;
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+      box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+      border-radius: 100px;
+    }
+  }
+
+  // Next/Previous Slide Control
+  // view -> https://codepen.io/aaroniker/pen/BbPpOj
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: var(--carousel-scrollbar-gutters);
+    display: contents;
+  }
+
+  &__control {
+    grid-row: 1;
+    place-self: center;
+
+    &--next,
+    &--prev {
+      --size: var(--tap-size);
+      --shadow-size: 0;
+      // --shadow-highlight-light: hsl(0 0% 50% / 10%);
+      // --shadow-highlight-dark: hsl(0 0% 100% / 20%);
+      --shadow-highlight-light: hsl(var(--sw-redend-point) / 50%);
+      --shadow-highlight-dark: hsl(var(--sw-quaint-peche) / 50%);
+      --shadow-highlight: var(--shadow-highlight-light);
+
+      --on-hover-shift: .125;
+      --on-hover-color: var(--accent-extra);
+
+      padding: 0; // <-- override theme defaults
+      grid-column: var(--grid-col, 1);
+      grid-row: 1;
+      place-self: center;
+      box-shadow:
+        0 0 0 var(--shadow-size) var(--shadow-highlight);
+        // inset 0 0 0 var(--shadow-size) var(--shadow-highlight);
+
+      position: relative;
+      inline-size: var(--size);
+      block-size: var(--size);
+      aspect-ratio: var(--ratio-square);
+      // clip-path: var(--geometry);
+      z-index: 10;
+      overflow: hidden;
+      background-color: var(--background-a60);
+      background-image: var(--lin-grad-convex);
+      color: var(--color, var(--foreground));
+      border-radius: 50%;
+      border: none;
+      backdrop-filter: blur(7px) brightness(1.2);
+
+      &:where(:not([disabled])) {
+        transition:
+          color .2s var(--ease-out-quart),
+          filter .2s var(--ease-out-quart),
+          opacity .5s var(--ease-out-quart) .5s,
+          transform .25s var(--ease-spring),
+          box-shadow .2s var(--ease-in-out-quart),
+          outline-offset 145ms var(--ease-out-quart);
+
+        &:is(:hover) { --color: var(--accent); }
+      }
+
+      & :where(svg, polyline) { transition: inherit; }
+
+      // &:is(:hover) { --color: var(--on-hover-color); }
+
+      &:where(:not([disabled])):is(:focus, :active) { --shadow-size: .25rem; }
+
+      & > svg { inline-size: 100%; }
+      & > svg circle { color: var(--accent-shade); } // <-- stroke 2px
+
+      @media (hover: hover) {
+        &:hover:not([disabled]) svg > polyline {
+          transform:
+            translateX(var(--tx, 0))
+            translateY(12.5%)
+            scaleY(75%);
+        }
+      }
+    }
+
+    &--next {
+      --grid-col: 3;
+      --tx: calc(var(--on-hover-shift) * 1rem);
+      // --arrow: '\2192';
+      --geometry: var(--shape-chevron-right);
+    }
+
+    &--prev {
+      --grid-col: 1;
+      --tx: calc(-1 * var(--on-hover-shift) * 1rem);
+      // --arrow: '\2190';
+      --geometry: var(--shape-chevron-left);
+    }
+  }
+
+  &__pagination {
+    // grid-row: 2;
+    grid-column: 1/-1;
+    place-self: center;
+
+    display: grid;
+    grid-auto-flow: column;
+    gap: var(--spacer);
+
+    max-inline-size: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    overflow: visible;
+
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__paging-control {
+    // override button defaults
+    min-inline-size: var(--dot-size);
+    min-block-size: var(--dot-size);
+    aspect-ratio: 1;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-color: var(--foreground-a80);
+
+    transition:
+      transform 150ms ease-out,
+      background-color 150ms ease-out;
+    will-change: transform;
+
+    // transform: ranslateZ(0);
+    // transition: transform .2s;
+
+    // &:hover {
+    //   transform: scaleX(1.03) scaleY(1.06) translateZ(0);
+    // }
+
+    // &:active {
+    //   transform: scaleX(.98) scaleY(.96) translateZ(0);
+    // }
+
+    &:where([aria-selected='true']) {
+      background-color: var(--accent-shade);
+    }
+
+    &:where([aria-selected=false]:is(:hover, :focus-visible)) {
+      transform: scale(1);
+      background-color: var(--foreground-a50);
+    }
+
+    &:where([aria-selected=false]:not(:hover, :focus)) {
+      transform: scale(.75);
+    }
+
+    &:where([aria-selected=false]:is(:focus)) {
+      transform: scale(.8);
+    }
+  }
+
+  &__counter {
+    --px-size: 40;
+
+    // position: absolute;
+    // inset-block-start: 0;
+    // inset-inline-start: 0;
+    grid-row: 1;
+    place-self: start center;
+    z-index: 2;
+    margin-block: var(--spacer-4x); // <-- the same as the sideway text
+
+    font-weight: 700;
+    line-height: 1.1;
+    line-height: calc(36 / 16 * 1rem); //= 2.25rem
+    color: var(--accent);
+    font-variant-numeric:
+      oldstyle-nums
+      tabular-nums
+      diagonal-fractions; // stacked-fractions
+    font-feature-settings:
+      'onum' 1,
+      'tnum' 1,
+      'frac' 1; // 'afrc' 1
+
+    filter: drop-shadow(0 3px 6px var(--accent-a50));
+
+    grid-column: 3;
+    padding-inline-end: var(--spacer-2x);
+  }
+
+  @include config.respond('tablet') {
+    & [class*='slide'],
+    &__slide {
+      grid-template-columns: repeat(var(--columns), 1fr);
+      margin-block-start: auto; // <-- centering
+    }
+
+    &__text { inline-size: 100%; } // override
+
+    &__controls > * {
+      --size: 2.25rem; // override --tap-size
+
+      :where(:not(#{$instance4})) > & {
+        --grid-col: 3;
+        align-self: end;
+
+        // --prev
+        &:where(button:first-of-type),
+        &:nth-child(1) {
+          inset-inline-end: calc(var(--carousel-gutters) + (2.25rem * 1.5));
+        }
+        // --next
+        &:where(button:last-of-type),
+        &:nth-child(2) {
+          margin-inline-end: calc(var(--carousel-gutters) * 2);
+        }
+      }
+    }
+  }
+
+  // @container (max-width: 480px) { <-- not Saf 17
+  @media (max-width: 480px) {
+    // --carousel-gutters: var(--spacer-2x);
+
+    &__control {
+      position: absolute;
+      z-index: 1;
+      grid-row: 2;
+      grid-column: 1;
+      left: 0;
+    }
+  }
+
+  // rm arrows and gutters for full-width view
+  // @container (max-width: 320px) { <-- not Saf 17
+  @media (max-width: 320px) {
+    --carousel-gutters: 0;
+
+    &__controls { display: none; }
+  }
+}
+
+@keyframes carousel__control-keypress {
+  0%  { outline-offset: 5px }
+  50% { outline-offset: 0; }
+}
+
+@keyframes carousel-scrollstart {
+  from { scroll-snap-align: center }
+  to   { scroll-snap-align: unset }
+}
+
+// TODO: implement ↓
+// https://codepen.io/una/pen/BLxNeq?editors=0100
+// @keyframes autoRotation {
+//   0% { transform: translateX(0); }
+//   33% { transform: translateX(-$slide-width); }
+//   66% { transform: translateX(-$slide-width*2); }
+//   100% { transform: translateX(0); }
+// }

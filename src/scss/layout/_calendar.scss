@@ -1,0 +1,287 @@
+@use '../config';
+@use 'sass:map';
+
+.calendar {
+  --num-days: 6;
+  --num-hours: 24; // 12 — w/o half-hour interval
+  --track-size: 64px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacer);
+  margin-inline: var(--spacer-2x);
+
+  [data-theme-style=dark] & {
+    --cal-bg-color: hsl(21deg 21% 72%);
+    --evt-border-color: var(--foreground-a15);
+
+    --eventColor1: hsl(14deg 21% 57%); // #A8857A // 3–5
+    --eventColor2: hsl(20deg 23% 59%); // #AE8E7E // 5–8
+    --eventColor3: hsl(34deg 18% 64%); // #B3A491 // 6–8
+    --eventColor4: hsl(152deg 13% 45%); // #658375 // 6–9
+    --eventColor5: hsl(209deg 33% 39%); // #436585 // 7–10
+    --eventColor6: hsl(263deg 9% 37%); // #5C5666 // 8–10
+    --eventColor7: hsl(2deg 41% 53%); // #B85B57 // 9–14
+    --eventColor8: hsl(6deg 54% 61%); // #D16F65 // 14+
+    --eventColor9: hsl(61deg 22% 55%); // #A4A571 // актёр.
+    --eventColor10: hsl(192deg 12% 43%); // #60757A // a11y
+  }
+
+  [data-theme-style=light] & {
+    --cal-bg-color: var(--accent-extra);
+    --evt-border-color: var(--background-a15);
+
+    --eventColor1: #DBC7BD;
+    --eventColor2: #DECABD;
+    --eventColor3: #C8BCAB;
+    --eventColor4: #BDCBBB;
+    --eventColor5: #ADB8C0;
+    --eventColor6: #A8AAB3;
+    --eventColor7: #EECACD;
+    --eventColor8: #F0DFCD;
+    --eventColor9: #E3DEB3;
+    --eventColor10: #B6C3C4;
+  }
+
+  @include config.respond('tablet') {
+    gap: var(--spacer-2x);
+  }
+}
+
+.timeline {
+  display: grid;
+  grid-template-rows: repeat(var(--num-hours), var(--track-size));
+}
+
+.time-marker {
+  color: var(--foreground-a25);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-feature-settings: 'tnum' 1;
+}
+
+.days {
+  --col-minw: calc(50% - var(--spacer));
+
+  @include config.scroll-snap('x', 'mandatory', '.day');
+
+  display: grid;
+  grid-column: 2;
+  gap: var(--spacer);
+  // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns:
+    repeat(
+      var(--num-days), minmax(var(--col-minw, 0), 1fr)
+    );
+
+  @include config.respond('tablet') {
+    --col-minw: calc(33.333% - var(--spacer));
+  }
+}
+
+.events {
+  display: grid;
+  grid-template-rows: repeat(var(--num-hours), var(--track-size));
+  border-radius: var(--denser);
+  background: var(--cal-bg-color);
+
+  column-gap: var(--spacer);
+  padding-inline: var(--spacer);
+}
+
+.cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--spacer);
+
+  > * { flex: 1; }
+  // > * + * { margin-inline-start: var(--spacer); }
+}
+
+// Place on Timeline
+
+$timeline: (
+  1000: 1,
+  1030: 2,
+  1100: 3,
+  1130: 4,
+  1200: 5,
+  1230: 6,
+  1300: 7,
+  1330: 8,
+  1400: 9,
+  1430: 10,
+  1500: 11,
+  1530: 12,
+  1600: 13,
+  1630: 14,
+  1700: 15,
+  1730: 16,
+  1800: 17,
+  1830: 18,
+  1900: 19,
+  1930: 20,
+  2000: 21,
+  2030: 22,
+  2100: 23,
+  2130: 24,
+);
+
+@each $time, $line in $timeline {
+  :where(
+    .start-#{$time}
+  ) {
+    grid-row-start: $line;
+  }
+  :where(
+    .end-#{$time}
+  ) {
+    grid-row-end: $line;
+  }
+}
+
+// Event
+
+.calendar .title {
+  font-weight: 500;
+  margin-bottom: calc(var(--denser) * .5);
+  min-inline-size: 100%;
+}
+
+.event {
+  font-weight: 400;
+  font-size: .75rem;
+  border: 1px solid var(--evt-border-color);
+  border-radius: var(--radius-1);
+  padding: var(--spacer);
+  background-color: var(--background-a75);
+  margin-block: var(--denser);
+
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.space,
+.date { block-size: 64px; }
+
+// Global / Etc
+
+@for $i from 1 through 11 {
+  .--type#{$i} {
+    background: var(--eventColor#{$i});
+  }
+}
+
+.date {
+  display: flex;
+  gap: 1em;
+  color: var(--foreground-a25);
+
+  &-num,
+  &-day {
+    display: inline;
+    font-size: 2rem;
+    font-family: var(--font-primary);
+  }
+
+  &-num {
+    font-weight: 600;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  &-day {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}
+
+// Container Queries!
+
+.day { container-type: inline-size; }
+
+// Less horizontal space == more compact
+@container (max-width: 250px) {
+  .event {
+    font-size: 1rem;
+  }
+}
+
+@container (max-width: 200px) {
+  .event {
+    font-size: .75rem;
+  }
+
+  .date {
+    display: block;
+  }
+
+  .date-num {
+    font-size: 1.25rem; // 2.5rem;
+    display: block;
+  }
+
+  .date-day {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .time {
+    font-size: 90%
+  }
+}
+
+// Even smaller space
+@container (max-width: 150px) {
+  .event {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+// Now MQ for Macro Layout
+@media (max-width: 660px) {
+  .calendar {
+    margin: var(--spacer);
+    gap: unset;
+  }
+
+  .timeline {
+    display: none;
+  }
+
+  .events {
+    --col-minw: 50%;
+
+    display: flex;
+    flex-direction: column; // “row” — more compact
+    min-block-size: calc(100% - var(--track-size) - var(--spacer));
+    gap: var(--spacer);
+    padding-inline: var(--spacer);
+    padding-block: var(--spacer);
+  }
+
+  .date {
+    block-size: unset;
+    justify-content: space-between;
+  }
+
+  .days {
+    --track-size: 48px;
+    grid-template-columns: 1fr;
+    // grid-template-rows: repeat(5, 580px);
+    grid-template-rows: repeat(5, minmax(auto, 1fr));
+  }
+}
+
+.warning {
+  max-width: 460px;
+  margin: 2rem auto;
+  background: #ffcebf;
+  border: 1px solid tomato;
+  padding: 1rem;
+  color: hsl(var(--black));
+
+  @supports (container-type: inline-size) {
+    display: none;
+  }
+}

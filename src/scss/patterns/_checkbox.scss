@@ -1,0 +1,103 @@
+@use '../config';
+
+// @layer defaults, components, states;
+
+[type='checkbox'] {
+  --cb-size: 20px;
+  --cb-shadow-color: var(--foreground);
+  --cb-shadow-spread: 1px;
+  --cb-background-color: var(--background);
+  --cb-mark-color: var(--accent-extra);
+  --cb-mark-font: var(--font-icons, var(--font-stack-mono));
+  // Data URL
+  // https://api.iconify.design/line-md:confirm.svg
+  --cb-confirm-icon: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtZGFzaGFycmF5PSIyNCIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTUgMTFMMTEgMTdMMjEgNyI+PGFuaW1hdGUgZmlsbD0iZnJlZXplIiBhdHRyaWJ1dGVOYW1lPSJzdHJva2UtZGFzaG9mZnNldCIgZHVyPSIwLjRzIiB2YWx1ZXM9IjI0OzAiLz48L3BhdGg+PC9zdmc+');
+  // Animations
+  --cb-onhover-dur: 300ms;
+  --cb-onhover-ease: var(--easing);
+  --cb-checked-dur: 150ms;
+  // --cb-checked-ease: ;
+
+  --half-shift: translate(-50%, -50%);
+
+  appearance: none;
+  position: relative;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: var(--cb-size);
+  block-size: var(--cb-size);
+  aspect-ratio: var(--ratio-square);
+  // TODO: @layer defaults { [1, etc.] }
+  margin: 0; // [1]
+  cursor: pointer; // [2]
+  font-family: var(--cb-mark-font);
+  background-color: var(--cb-background-color);
+  border-radius: .35ch; // base: 4px
+  outline: 0; // [3]
+  box-shadow: var(--cb-shadow-color) 0 0 0 var(--cb-shadow-spread) inset;
+  transition:
+    background-color 150ms var(--easing) 0s,
+    box-shadow var(--duration) var(--easing);
+
+  // Hover out
+  &::after {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    display: inline-block;
+    /*
+    font-family: inherit;
+    font-size: .75em;
+    font-weight: 500; // or use SFMono "wght" variable
+    line-height: 1.1;
+    color: var(--cb-mark-color); */
+    background-image: var(--cb-confirm-icon);
+
+    // '✓'
+    // content: '\2713';
+    opacity: var(--cb-mark-alpha, 0);
+    transition-delay: 0ms;
+    transition-timing-function: var(--cb-onhover-ease);
+    transition-duration: var(--cb-onhover-dur);
+    transition-property: opacity, transform;
+    transform: var(--half-shift) scale(.70) rotatey(45deg);
+    will-change: transform;
+  }
+
+  // On-hover
+  &:where(:hover, :focus) {
+    --cb-shadow-color: var(--accent);
+    --cb-shadow-spread: 2px;
+  }
+
+  // Confirmed
+  &:checked {
+    --cb-shadow-color: var(--accent-shade);
+    --cb-shadow-spread: calc(var(--cb-size) / 2);
+
+    &::after {
+      --cb-mark-alpha: 1;
+
+      filter: drop-shadow(0 0 4px var(--background-a25));
+
+      transition-delay: 150ms;
+      transition-timing-function: var(--easing);
+      transition-duration: 150ms;
+      transition-property: opacity, transform;
+      transform: var(--half-shift) scale(.90);
+    }
+  }
+
+  /* @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type="checkbox"]::after {
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--accent);
+      border-top: 0;
+      border-left: 0;
+      left: 7px;
+      top: 4px;
+      transform: rotate(var(--r, 20deg));
+    }
+  } */
+}

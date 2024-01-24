@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "brand": "Pirates of Caspian sea",
+    "domain": "https://pirates.ru",
+    "email": "admin@pirates.ru",
+    "phone": "+7 (999) 999-00-00",
+    "keywords": "",
+    "name": "PoCS",
+    "desc": ""
+  },
+  "pages": {
+    "index": {
+      "description": "",
+      "id": "index",
+      "keywords": "",
+      "path": "/",
+      "title": ["", ""]
+    },
+    "feed": {
+      "description": "",
+      "id": "blog",
+      "keywords": "",
+      "path": ["./feed.pug", "/feed"],
+      "title": ["Лента новостей", ""]
+    },
+    "gallery": {
+      "description": "",
+      "id": "gallery",
+      "keywords": "",
+      "path": ["./gallery.pug", "/gallery"],
+      "title": ["Галерея", ""]
+    },
+    "privacy": {
+      "id": "privacy",
+      "path": ["./privacy.pug", "/privacy"],
+      "title": ["Конфиденциальность", ""],
+      "description": "Политика обработки персональных данных",
+      "keywords": ""
+    },
+    "offer": {
+      "id": "offer",
+      "path": ["./offer.pug", "/offer"],
+      "title": ["Оферта", ""],
+      "description": "Договор оферты",
+      "keywords": ""
+    }
+  },
+  "tech": [
+    "HTML","CSS",
+    "Pug","SCSS",
+    "JavaScript",
+    "NodeJS",
+    "Parcel",
+    "Vercel",
+    "VSCode"
+  ]
+}

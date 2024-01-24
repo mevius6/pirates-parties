@@ -1,0 +1,65 @@
+{
+  "name": "pirates-parties",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": "> 0.5%, last 2 versions, not dead, not op_mini all",
+  "config": {
+    "repo": "https://github.com/mevius6/${npm_package_name}",
+    "port": {
+      "http": 8080,
+      "https": 8443
+    }
+  },
+  "scripts": {
+    "parcel:start": "parcel src/pug/index.pug --dist-dir ./public --no-cache --cert $(grep '^CERT_PATH' .env | cut -d '=' -f2) --key $(grep '^KEY_PATH' .env | cut -d '=' -f2) -p $npm_package_config_port_https --open",
+    "parcel:build": "npm run clear && parcel build src/pug/index.pug --dist-dir ./public --no-source-maps --no-cache && npm run copy",
+    "clear": "rm -rf public && rm -rf .parcel-cache",
+    "copy": "cp -r src/static/* ./public",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "npx eslint \"./src/js/*.js\" --fix",
+    "lint:css": "npx stylelint \"./src/scss/**/*.{css,scss}\" --fix",
+    "report": "PARCEL_BUNDLE_ANALYZER=1 parcel build src/index.pug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mevius6/pirates-parties.git"
+  },
+  "author": "Nicolai Ivanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mevius6/pirates-parties/issues"
+  },
+  "homepage": "https://github.com/mevius6/pirates-parties#readme",
+  "devDependencies": {
+    "@parcel/optimizer-data-url": "^2.9.3",
+    "@parcel/optimizer-esbuild": "^2.9.3",
+    "@parcel/packager-raw-url": "^2.9.3",
+    "@parcel/transformer-css-experimental": "^2.3.2",
+    "@parcel/transformer-inline-string": "^2.9.3",
+    "@parcel/transformer-jsonld": "^2.9.3",
+    "@parcel/transformer-pug": "^2.9.3",
+    "@parcel/transformer-sass": "^2.9.3",
+    "@parcel/transformer-webmanifest": "^2.9.3",
+    "eslint": "^8.48.0",
+    "parcel": "^2.9.3",
+    "pug": "^3.0.2",
+    "sass": "^1.66.1",
+    "scrollyfills": "^1.0.0",
+    "sharp": "^0.33.2",
+    "stylelint": "^15.10.3",
+    "stylelint-order": "^6.0.3"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2"
+  },
+  "@parcel/transformer-css-experimental": {
+    "cssModules": {
+      "global": true,
+      "dashedIdents": true
+    },
+    "drafts": {
+      "nested": true,
+      "customMedia": true
+    }
+  }
+}

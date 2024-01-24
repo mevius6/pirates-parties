@@ -1,0 +1,39 @@
+@use '../config';
+
+:where(.terms) {
+  max-inline-size: var(--width-md);
+  margin: auto;
+  padding-inline: var(--spacer-2x);
+  padding-block: var(--spacer-6x);
+
+  h1 { line-height: 1.15; }
+
+  // customm list item marker
+  [role='list'] {
+    max-width: 60rem;
+    // margin-block-start: 1rem;
+    // margin-block-end: 1.75rem;
+    padding-inline-start: 1.875rem;
+
+    // li::marker { content: counters(list-item,".",decimal) "."; }
+
+    li::before {
+      // min-inline-size: 2rem;
+      // min-block-size: 2rem;
+      inline-size: fit-content;
+      padding: 1ch;
+      aspect-ratio: var(--ratio-square);
+      // content: counter(orderedlist);
+      // counter-increment: orderedlist;
+      background-image: var(--lin-grad-convex);
+      background-blend-mode: overlay;
+      border: none;
+      border-radius: 50%;
+      font-size: 1rem;
+      font-weight: 700;
+      align-self: baseline;
+      // align-self: start;
+      word-break: keep-all;
+    }
+  }
+}

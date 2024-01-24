@@ -1,0 +1,208 @@
+extends page
+
+block vars
+  - let page = data.pages.index
+  -
+    // https://github.com/cfjedimaster/Serverless-Examples/tree/master/recaptcha
+    const HOST = 'https://www.google.com/recaptcha/api.js',
+          KEY = '6LchYK0UAAAAAMRflt6o0V_1imaH5KDnH5XVjWjB'
+
+append head-start
+  if !isArrEmpty(hosts)
+    each host in hosts
+      link(rel="preconnect" href=`https://${host}` crossorigin)
+      link(rel="dns-prefetch" href=`https://${host}` crossorigin)
+
+//- append head-end
+  script(src=`${HOST}?render=${KEY}&onload=initRecaptcha&render=explicit`)
+  script(type="text/javascript").
+    var initRecaptcha = function() {
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LchYK0UAAAAAMRflt6o0V_1imaH5KDnH5XVjWjB', { action: "homepage" }).then(function(token) {
+          document.getElementById('recaptcha_token').value = token;
+        });
+      });
+    }
+
+mixin sec(props)
+  - let { id, classes={}, attrs={}, ...rest } = props
+  section(id= id class= classes)&attributes(attrs)
+    block
+
+block content
+  -
+    const sections = [{
+    //-   id: 'hero',
+    //-   attList: {
+    //-     'aria-label': 'hero banner',
+    //-     'data-sec': 'hero' }
+    //- },{
+      id: 'about',
+      attList: {
+        'aria-label': 'all blog posts',
+        'data-sec': 'news' }
+    //- },{
+    //-   id: 'feed',
+    //-   attList: {
+    //-     'aria-label': 'all blog posts',
+    //-     'data-sec': 'news' }
+    }]
+
+  section.grid
+
+    //- Waves Container
+    section.container.hero.popout
+      .grid__content
+        h1.title
+          | Пираты Каспийского Моря
+      svg.waves(
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shape-rendering="auto")
+        defs: path#gentle-wave(d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z")
+        g.parallax
+          use(xlink:href="#gentle-wave" x="48" y="0" fill="rgb(47,97,101, 25)")
+          use(xlink:href="#gentle-wave" x="48" y="3" fill="rgba(98, 194, 177, 0.5)")
+          //- use(xlink:href="#gentle-wave" x="48" y="3" fill="rgba(238, 255, 0.25)")
+          use(xlink:href="#gentle-wave" x="48" y="5" fill="rgba(130, 216, 213, 0.75)")
+          use(xlink:href="#gentle-wave" x="48" y="7" fill="rgba(40, 56, 73)")
+    //- Waves end
+
+    //- each item in sections
+      +sec({
+        id: item.id,
+        classes: ['container', 'spaced', '--ada-md'],
+        attList: {...attList},
+      })
+
+    section.container.spaced.--ada-lg#intent(data-sec="intent")
+      .grid__start-half.d-grid.content-center
+        +head({
+          level: 2,
+          text: ['Анонс', 'феста', '17.02'],
+          split: 'chars' })
+      article.flow.grid__end-half.--ada-lg
+        p= intent
+        p= lead
+        +cta({
+          type: 'anchor',
+          link: '#contact',
+          text: 'Подробнее'
+        })(data-js-anim='bg-gradient')
+
+    section.container.spaced.--ada-md#about
+      article.flow.grid__center
+        +head({ level: 2, text: '', split: 'chars' })
+        p= about.body
+        //- [stages / timeline w/ counter markers]
+        +cta({
+          type: 'anchor',
+          link: '',
+          text: 'Узнать больше'
+        })(data-js-anim='bg-gradient', target='_blank')
+
+    //- section.container.spaced.--ada-md#products
+      .grid__center
+        +head({ level: 2, text: 'Магазин', split: 'chars' })
+      .grid__content
+        p
+          | Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.
+        +list({
+          items: ['text']
+        })
+        +cta({
+          type: 'anchor',
+          link: '',
+          text: 'Каталог товаров'
+        })(data-js-anim='bg-gradient', target='_blank')
+
+    //- section.container.spaced.--ada-md#offers
+      .grid__third-lhs.sideways
+        //- .grid__center
+        +head({ level: 1, text: '17.02', split: 'chars' })
+      .grid__full.d-grid.grid-items-center
+        | …
+
+    section.container.spaced.--ada-md#locate
+      .grid__center: +head({ level: 2, text: 'Дислокация', split: 'chars' })
+      +map({
+        classes: 'grid__full',
+        addSidebar: false })
+
+    section.container.spaced.--ada-md#contact
+      .grid__center.d-flex.flex-centered
+        +head({ level: 2, text: 'Пишите нам', split: 'chars' })
+      .grid__content: +form({
+        class: '',
+        endpoint: '000bar99',
+        phone: data.meta.phone,
+        message: 'Сообщение…',
+        recaptcha: true })
+      //- offer: data.pages.offer.path[0]
+
+  //- section.grid
+    section.container.bg-overlay#hero(data-sec="hero")
+      //- video-player.grid__full(basename="footage-10s-prod")
+      //- noscript.grid__full
+        +video({
+          sourcePath: 'static',
+          sourceName: 'teaser',
+          poster: '',
+          dims: [1920, 1080] })
+
+      hgroup(data-hidden)
+        h1(itemprop="name")= brand.name
+        p(itemprop="description" role="subtitle")= brand.desc
+
+      //- .grid__center.logo: include ../images/logo.svg
+
+
+
+
+    section.container.spaced.--ada-md#partners
+      .grid__center
+        +head({ level: 2, text: 'Наши партнёры', split: 'chars' })
+      .grid__full.d-grid.grid-items-center
+        //- +marquee()
+
+    //- section.container.spaced.--ada-md#employees
+      .grid__third-lhs.sideways
+        +head({ level: 2, text: 'Команда', split: 'chars' })
+      //- TODO: add markup https://schema.org/Person
+      .grid__third-rhs
+        +carousel({
+          class: [],
+          data: employees,
+          imageDims: 1350 / 1080,
+          imagePath: 'portraits',
+          instance: 3,
+          slideCols: 2,
+          textWrap: 'article' })
+
+    //- section.container.spaced.--ada-md#reviews
+      .grid__center.d-grid.grid-items-center
+        +head({ level: 2, text: 'Отзывы', split: 'chars' })
+      .grid__content
+        p.overline(
+          itemprop="aggregateRating"
+          itemscope itemtype="https://schema.org/AggregateRating"
+          data-hidden)
+          | #[span(itemprop="ratingValue")= 5] из 5 звёзд —
+          | #[span(itemprop="reviewCount")= count(reviews)] отзывов на
+          | #[+link({href: 'https://', text: ''})]
+        +carousel({
+          class: [],
+          data: reviews,
+          type: 'review',
+          instance: 4 })
+
+    //- section#feed(aria-label="all blog posts") // News Feed (NF)
+    //- +sec({
+      id: 'feed',
+      attList: {
+        'aria-label': 'all blog posts',
+        'data-sec': 'news' } })
+
+block scripts

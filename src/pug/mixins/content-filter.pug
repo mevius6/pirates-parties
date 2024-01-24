@@ -1,0 +1,81 @@
+//-
+  “Sectioning content, heading content, phrasing content, embedded content,
+   and interactive content are all types of flow content.”
+
+  Intent:
+    Filters flow content by the content models
+    defined as ‘props’ for each component in the
+    '../mixins/' directory.
+
+  Spec parts:
+    → https://html.spec.whatwg.org/multipage/dom.html#content-models
+    → https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content
+    → https://html.spec.whatwg.org/multipage/text-level-semantics.html
+
+  OOP TL;DR
+    Data contextualization for common field descriptions (or properties)
+    contained within classes (i.e. mixins).
+    Data that belongs to individual objects defined in the
+    file '../static-data.pug'.
+
+  Wiki pages:
+    → https://en.wikipedia.org/wiki/Type_system
+    → https://en.wikipedia.org/wiki/Data_type
+    → https://en.wikipedia.org/wiki/Data_structure
+    → https://en.wikipedia.org/wiki/Persistent_data_structure
+    → https://en.wikipedia.org/wiki/Object-oriented_programming
+      → https://en.wikipedia.org/wiki/Record_(computer_science)
+        A record is a collection of fields, possibly of different data types
+      → https://en.wikipedia.org/wiki/Field_(computer_science)
+        (often known as attributes or properties)
+      → https://en.wikipedia.org/wiki/Variable_(computer_science)
+      → https://en.wikipedia.org/wiki/Class_(computer_science)
+      → https://en.wikipedia.org/wiki/Object_(computer_science)
+      → https://en.wikipedia.org/wiki/Property_(programming)
+      → https://en.wikipedia.org/wiki/Instance_variable
+
+//- Naming:
+  - data(flow)
+  - conEntity(data)
+  - conData(entity)
+  - flowFilter(elem)
+  - contentProxy(type)
+
+mixin dataFilter(entry)
+  -
+    // TODO: make more useful as currently only used
+    //       for articles in carousel slides.
+    let {
+      title='',
+      field='',
+      link='',
+      text='',
+      date='',
+      desc='',
+      ...rest
+    } = entry
+
+  if title
+    +head({ text: title, level: 3, overline: desc })
+  if field
+    +list({ items: field, icon: MARKER })
+  if text
+    if Array.isArray(text)
+      each line in text
+        p= line
+    else
+      p= text
+  if link
+    +link({ href: link, icon: 'ig' })
+
+mixin textContent(props)
+  -
+    let {
+      parentDOM: wrap='',
+      classList: classes=['flow', 'carousel__text'],
+    } = props
+
+  if wrap === 'article'
+    article(class= classes): block
+  else if wrap === 'caption'
+    figcaption(class= classes): block

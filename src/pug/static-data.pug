@@ -1,0 +1,126 @@
+-
+  // Navigation anchors
+  const hashLinks = [
+    {
+      'title': 'Главная',
+      'path': '/'
+    }, {
+      'title': 'История',
+      'path': '/#about'
+    }, {
+      'title': 'Вещи',
+      'path': '/#products'
+    }, {
+      'title': 'Блог',
+      'path': '/#feed'
+    }, {
+    //-   'title': 'Отзывы',
+    //-   'path': '/#reviews'
+    //- }, {
+      'title': 'Контакты',
+      'path': '/#contact'
+    }
+  ]
+-
+  const brand = {
+    'name': 'ПКМ',
+    'desc': '',
+  }
+-
+  // SMP(s)
+  const social = [
+    {
+      'icon': 'vk',
+      'href': 'https://vk.com/',
+      'prop': 'sameAs'
+    }, {
+      'icon': 'tg',
+      'href': 'https://t.me/',
+      'prop': 'sameAs'
+    }
+  ]
+-
+  const contacts = [{
+    'icon': 'at', // &commat;
+    'email': {
+      'to': data.meta.email,
+      'subject': '',
+      'body': ''
+    }
+  }]
+-
+  const invoiceDetails = {
+    'saller': 'ИП [название]',
+    'number': 'ИНН NNNNNNNNNNNN / ОГРНИП NNNNNNNNNNNNNNN',
+    'adr': [
+      'NNNNNN, МО, г. Москва, ул. [название], NN, кв. NN'
+    ],
+    'email': data.meta.email,
+    'phone': data.meta.phone,
+  }
+-
+  // https://schema.org/founder
+  // https://schema.org/director
+  const founder = {
+    'name': 'ФИО',
+    // Head's CV
+    'cv': [`${spacedEmDash}руководитель`]
+  }
+-
+  // Intent • (Намерение | Цель | Замысел)
+  const intent = `Пираты Каспийского—подполье московских акваторий. Нас объединяет любовь к водной технике, аутдору и хорошему саунду.`
+  const lead = `РЕЛИЗ ЗИНА ПКМ, DJ-СЕТЫ, АНОНС ФЕСТИВАЛЯ. Заполните форму, чтобы узнать локацию и время проведения.`
+-
+  // https://schema.org/about
+  // About (desc)
+  const about = {
+    'head': 'О нас',
+    'body': `Расколовшиеся мачты, течи, порванные паруса, мёртвые моторы, угар, молодость и радость — вот будни настоящего пирата. Ещё не закаленные суровыми ветрами, мы начинали салагами со сплавов до морей нашей необъятной. Тысячи километров без денег, плана и забот. Куча приключений, знакомств и историй.`
+  }
+-
+  // https://schema.org/audience
+  // Target (audience | area | market | sphere)
+  // Преимущества для специалистов из различных сфер деятельности (ЦА)
+  // Кому… (будет полезен | пойдёт на пользу | поможет) • Who will benefit?
+  const benefits = [{ 'text': '…' }]
+-
+  // https://schema.org/employees
+  const employees = [
+    {
+      'desc': 'desc',
+      'title': 'title',
+      'text': ['text', 'text']
+    }, {
+      'desc': 'desc',
+      'title': 'title',
+      'text': ['text', 'text']
+    }
+  ]
+-
+  // Format:
+  // • https://www.rfc-editor.org/rfc/rfc3339#section-5.6
+  // • https://www.w3.org/TR/2014/REC-html5-20141028/text-level-semantics.html#the-time-element
+  const reviews = [
+    {
+      'date': '8-14-2022T11:55:09',
+      'rating': 5,
+      'title': 'title',
+      'text': [
+        `text`,
+        `text`
+      ],
+      'user': { 'name': 'name' }
+    }, {
+      'date': '8-14-2022T11:55:09',
+      'rating': 5,
+      'title': 'title',
+      'text': [
+        `text`,
+        `text`
+      ],
+      'user': {
+        'name': 'name',
+        //- 'link': 'https://'
+      }
+    }
+  ]
