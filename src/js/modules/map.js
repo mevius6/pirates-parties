@@ -42,7 +42,8 @@ const DARK_STYLE_ID = 'cllsgvh80009g01r4781i6b1h';
 const LIGHT_STYLE_ID = 'clo78rac000wy01pfg9tshzjf';
 
 // https://studio.mapbox.com/styles/mevius6/cllnq93hk001k01r71y6w9u8j/edit/#13/55.753960/37.620393
-const CITY_COORDS = L.latLng(55.753960, 37.620393);
+// const CITY_COORDS = L.latLng(55.753960, 37.620393);
+const BOUND_COORDS = L.latLng(55.9912, 37.5667);
 
 // https://schema.org/OpeningHoursSpecification
 const addOpens = (days='Mo-Su', time) => `
@@ -87,19 +88,33 @@ const addData = (name, desc, adds, metro=[], opens, telephone, direction) => `
   <a itemprop="hasMap" class="direction" href="${direction}" target="_blank" rel="noopener noreferrer"><span>Проложить маршрут</span></a>
 `;
 
+// const loc1 = {
+//   data: () => addData(
+//     NAMES[0],
+//     '',
+//     'Болотная набережная, 15, к1',
+//     ['Кропоткинская', 'Третьяковская'],
+//     '10&colon;00–22&colon;00',
+//     '',
+//     // `https://yandex.ru/maps/213/moscow/?ll=${loc1.lng}%2C${loc1.lat}&mode=routes&rtext=~${loc1.lat}%2C${loc1.lng}&rtt=auto&ruri=~&z=10`
+//     'https://yandex.ru/maps/-/'
+//   ),
+//   lat: 55.742651,
+//   lng: 37.612731,
+// };
 const loc1 = {
   data: () => addData(
     NAMES[0],
     '',
-    'Болотная набережная, 15, к1',
-    ['Кропоткинская', 'Третьяковская'],
-    '10&colon;00–22&colon;00',
+    'Клязьминское водохранилище',
+    [],
+    '',
     '',
     // `https://yandex.ru/maps/213/moscow/?ll=${loc1.lng}%2C${loc1.lat}&mode=routes&rtext=~${loc1.lat}%2C${loc1.lng}&rtt=auto&ruri=~&z=10`
     'https://yandex.ru/maps/-/'
   ),
-  lat: 55.742651,
-  lng: 37.612731,
+  lat: 55.9912,
+  lng: 37.5667,
 };
 
 const locations = [
@@ -154,12 +169,12 @@ toggle.addEventListener('colorschemechange', () => {
 const mapOptions = {
   attributionControl: false,
   zoomControl: false,
-  // zoomSnap: 0.5,
+  zoomSnap: 0.5,
   layers: [], // [night, light]
   scrollWheelZoom: false,
 }
 
-const map = L.map('map', mapOptions).setView([loc1.lat, loc1.lng], 17);
+const map = L.map('map', mapOptions).setView([loc1.lat, loc1.lng], 14);
   // OR
   // .fitBounds(bounds, {padding: [100, 100]});
 
@@ -185,7 +200,7 @@ const markerIcon = L.divIcon({
 const popupOptions = {
   // maxWidth: 300,
   maxWidth: 'unset',
-  // keepInView: true,
+  keepInView: true,
   closeButton: true,
   className: 'map-popup',
 };
