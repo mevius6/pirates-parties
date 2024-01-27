@@ -8,7 +8,9 @@ module.exports = {
     extend: {
       darkMode: 'media', // 'class'
       colors: {
-        // neutral: "",
+        'gray-dark': '#273444',
+        'gray': '#8492a6',
+        'gray-light': '#d3dce6',
         "accent-1": "#FAFAFA",
         "accent-2": "#0089B8",
         "accent-7": "#323132",
@@ -42,10 +44,10 @@ module.exports = {
       },
       fontFamily: {
         heavy: ['BlocHeavy', 'sans-serif'],
-        display: ['Bloc', 'sans-serif'],
-        dispext: ['BlocExtCond', 'sans-serif'],
+        block: ['Bloc', 'sans-serif'],
+        cond: ['BlocExtCond', 'sans-serif'],
         sans: ['Univers', 'sans-serif'],
-        // serif: ['Merriweather', 'serif'],
+        serif: ['Albertus Nova', 'serif'],
       },
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",
