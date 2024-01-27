@@ -8,13 +8,16 @@ module.exports = {
     extend: {
       darkMode: 'media', // 'class'
       colors: {
-        // "accent-1": "#FAFAFA",
-        "accent-1": "#003153",
+        // neutral: "",
+        "accent-1": "#FAFAFA",
         "accent-2": "#EAEAEA",
         "accent-7": "#323132",
-        "navy": "#003153",
-        "white": "EDECE6", // "#EDEAE5",
-        "lime-500": "#EDFF01",
+        "navy": "#003153", // Prussian Blue
+        "black": "#21201F", // RISO Black
+        // "white": "#FEFEFE", // French Standard White Kraft
+        "white": "#EAE2D3", // French Newsprint White
+        // SW's Snowbound #EDEAE5 & Pure White #EDECE6
+        "lime": "#EDFF01", // Pantone TN Safety Yellow
         success: "#0070f3",
         cyan: "#79FFE1",
       },
@@ -34,7 +37,10 @@ module.exports = {
         "8xl": "6.25rem",
       },
       fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
+        heavy: ['BlocHeavy', 'sans-serif'],
+        display: ['Bloc', 'sans-serif'],
+        dispext: ['BlocExtCond', 'sans-serif'],
+        // sans: ['Univers', 'sans-serif'],
         // serif: ['Merriweather', 'serif'],
       },
       boxShadow: {
