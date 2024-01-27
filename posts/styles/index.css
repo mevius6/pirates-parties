@@ -35,18 +35,66 @@
 }
 
 @font-face {
-  font-family: 'Univers';
-  src: url('../fonts/Univers\ Next\ W06\ Medium.woff2') format('woff2');
-  font-weight: 500;
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-55Oblique.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-55Roman.woff2') format('woff2');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Univers';
-  src: url('../fonts/Univers\ Next\ W00\ Bold.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-65BoldOblique.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-65Bold.woff2') format('woff2');
+  font-weight: bold;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-67BoldCondObl.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-67BoldCond.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-75Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers LT CYR';
+  src: url('../fonts/UniversLTCYR-75BlackOblique.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
   font-display: swap;
 }
 

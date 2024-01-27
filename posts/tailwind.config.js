@@ -11,9 +11,7 @@ module.exports = {
         'gray-dark': '#273444',
         'gray': '#8492a6',
         'gray-light': '#d3dce6',
-        "accent-1": "#FAFAFA",
-        "accent-2": "#0089B8",
-        "accent-7": "#323132",
+
         "navy": "#003153", // Prussian Blue
         "black": "#21201F", // RISO Black
         // "white": "#FEFEFE", // French Standard White Kraft
@@ -23,7 +21,8 @@ module.exports = {
         "pink": "#FF1659", // Pantone TN Diva Pink
         "blue": "#0089B8", // Pantone TN Atomic Blue
         // "cyan": "#FF1659",
-        "orange":"#F48288",
+        // "orange":"#F48288",
+
         success: "#0070f3",
         cyan: "#79FFE1",
       },
@@ -34,7 +33,9 @@ module.exports = {
         tighter: "-.04em",
       },
       lineHeight: {
-        tight: 1.2,
+        none: 1,
+        tight: 1.15,
+        normal: 1.25
       },
       fontSize: {
         "5xl": "2.5rem",
@@ -45,8 +46,7 @@ module.exports = {
       fontFamily: {
         heavy: ['BlocHeavy', 'sans-serif'],
         block: ['BlockPro', 'sans-serif'],
-        cond: ['BlocExtCond', 'sans-serif'],
-        sans: ['Univers', 'sans-serif'],
+        sans: ['Univers LT CYR', 'sans-serif'],
         serif: ['Albertus Nova', 'serif'],
       },
       boxShadow: {
