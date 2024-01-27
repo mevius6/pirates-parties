@@ -25,3 +25,19 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Univers';
+  src: url('../fonts/Univers\ Next\ W06\ Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Univers';
+  src: url('../fonts/Univers\ Next\ W00\ Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

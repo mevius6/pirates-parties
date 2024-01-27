@@ -11,13 +11,13 @@ export default function Alert({ preview }) {
       })}
     >
       <Container>
-        <div className="py-2 text-center text-sm text-lime font-dispext uppercase tracking-widest">
+        <div className="py-2 text-center text-sm text-lime font-display uppercase tracking-wide">
           {preview ? (
             <>
               Эта страница в режиме предварительного просмотра.{" "}
               <a
                 href="/api/exit-preview"
-                className="underline hover:text-cyan duration-200 transition-colors"
+                className="underline hover:text-blue duration-150 transition-colors"
               >
                 Нажмите сюда,
               </a>{" "}

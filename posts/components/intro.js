@@ -7,7 +7,7 @@ export default function Intro() {
       <h1 className="text-6xl md:text-8xl font-heavy md:pr-8">
         {BRAND_NAME_ABBR}
       </h1>
-      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8 font-copy">
+      <h4 className="text-center md:text-left text-lg mt-5 md:pl-8 font-bold">
         Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.
       </h4>
     </section>
