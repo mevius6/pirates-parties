@@ -6,8 +6,12 @@
       "path": "."
     }, {
       // Source code (i.e. source directory)
-      "name": "Product",
-      "path": "./src"
+      "name": "Product — Website",
+      "path": "./website/src"
+    }, {
+      // Source code (i.e. source directory)
+      "name": "Product — Blog",
+      "path": "./posts/"
     }
   ],
   "settings": {
