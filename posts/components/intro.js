@@ -1,8 +1,9 @@
-import { BRAND_NAME_ABBR, CMS_NAME, CMS_URL } from "@/lib/constants";
+import { BRAND_NAME_ABBR } from "@/lib/constants";
 
 export default function Intro() {
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
+    // <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
+    <section className="flex-col md:flex-row flex items-center md:justify-between">
       <h1 className="text-6xl md:text-8xl font-heavy md:pr-8 leading-tight">
         {BRAND_NAME_ABBR}
       </h1>

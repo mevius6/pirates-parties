@@ -1,13 +1,13 @@
 import Container from "./container";
 import cn from "classnames";
-import { BRAND_NAME, EXAMPLE_PATH } from "@/lib/constants";
+import { BRAND_NAME } from "@/lib/constants";
 
 export default function Alert({ preview }) {
   return (
     <div
       className={cn("border-b", {
-        "bg-accent-7 border-blue text-white": preview,
-        "bg-lime border-pink text-blue": !preview,
+        "bg-navy border-blue text-white": preview,
+        "bg-lime border-pink text-navy": !preview,
       })}
     >
       <Container>
@@ -17,7 +17,7 @@ export default function Alert({ preview }) {
               Эта страница в режиме предварительного просмотра.{" "}
               <a
                 href="/api/exit-preview"
-                className="underline text- hover:text-blue transition-color duration-150 ease-out hover:ease-in"
+                className="underline hover:text-blue transition-color duration-150 ease-out hover:ease-in"
               >
                 Нажмите сюда,
               </a>{" "}

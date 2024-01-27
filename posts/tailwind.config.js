@@ -23,7 +23,7 @@ module.exports = {
         "pink": "#FF1659", // Pantone TN Diva Pink
         "blue": "#0089B8", // Pantone TN Atomic Blue
         // "cyan": "#FF1659",
-        // "orange":"#F48288",
+        "orange":"#F48288",
         success: "#0070f3",
         cyan: "#79FFE1",
       },
@@ -44,7 +44,7 @@ module.exports = {
       },
       fontFamily: {
         heavy: ['BlocHeavy', 'sans-serif'],
-        block: ['Bloc', 'sans-serif'],
+        block: ['BlockPro', 'sans-serif'],
         cond: ['BlocExtCond', 'sans-serif'],
         sans: ['Univers', 'sans-serif'],
         serif: ['Albertus Nova', 'serif'],

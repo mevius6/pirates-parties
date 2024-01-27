@@ -20,8 +20,8 @@ export default function PostPreview({
           responsiveImage={coverImage.responsiveImage}
         />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
+      <h3 className="text-3xl mb-3 leading-snug font-block text-pink">
+        <Link href={`/posts/${slug}`} className="hover:text-black transition-color duration-150 ease-out hover:ease-in">
           {title}
         </Link>
       </h3>
