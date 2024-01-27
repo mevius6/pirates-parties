@@ -1,8 +1,0 @@
-.post-feed {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(calc(20rem - var(--gutter) * 2), 1fr)
-  );
-  gap: 10vmax;
-}

@@ -1,26 +1,28 @@
-import { Image } from 'react-datocms'
-// import cn from 'classnames'
-import Link from 'next/link'
+import { Image } from "react-datocms";
+import cn from "classnames";
+import Link from "next/link";
 
 export default function CoverImage({ title, responsiveImage, slug }) {
   const image = (
     <Image
       data={{
         ...responsiveImage,
-        alt: `Обложка для ${title}`,
+        alt: `Обложка публикации: ${title}`,
       }}
-      className="image"
+      className={cn("shadow-small", {
+        "hover:shadow-medium transition-shadow duration-200": slug,
+      })}
     />
-  )
+  );
   return (
-    <div className="image-wrapper">
+    <div className="sm:mx-0">
       {slug ? (
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a aria-label={title}>{image}</a>
+        <Link href={`/posts/${slug}`} aria-label={title}>
+          {image}
         </Link>
       ) : (
         image
       )}
     </div>
-  )
+  );
 }
