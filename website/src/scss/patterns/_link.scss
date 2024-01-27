@@ -127,11 +127,11 @@ $hashLinks: '/#';
     // &[href^="tel:"]
     // &[href$=".pdf"]
 
-    &:where([href*='://'])::after {
-      font-family: inherit;
-      font-size: 0.75em;
-      content: var(--arrow, ' ↗');
-    }
+    // &:where([href*='://'])::after {
+    //   font-family: inherit;
+    //   font-size: 0.75em;
+    //   content: var(--arrow, ' ↗');
+    // }
 
     &:where([download])::after { --arrow: ' ↓'; }
 
