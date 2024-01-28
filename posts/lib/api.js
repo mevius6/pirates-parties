@@ -85,7 +85,7 @@ export async function getAllPostsForHome(preview) {
         author {
           name
           picture {
-            url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
+            url(imgixParams: {fm: jpg, fit: crop, w: 256, h: 256, sat: -100})
           }
         }
       }
@@ -118,7 +118,7 @@ export async function getPostAndMorePosts(slug, preview) {
       author {
         name
         picture {
-          url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
+          url(imgixParams: {fm: jpg, fit: crop, w: 256, h: 256, sat: -100})
         }
       }
     }
@@ -136,7 +136,7 @@ export async function getPostAndMorePosts(slug, preview) {
       author {
         name
         picture {
-          url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
+          url(imgixParams: {fm: jpg, fit: crop, w: 256, h: 256, sat: -100})
         }
       }
     }

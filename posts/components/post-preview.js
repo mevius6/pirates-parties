@@ -20,16 +20,18 @@ export default function PostPreview({
           responsiveImage={coverImage.responsiveImage}
         />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug font-block text-pink">
-        <Link href={`/posts/${slug}`} className="hover:text-black transition-color duration-150 ease-out hover:ease-in">
+      <h3 className="text-3xl mb-4 leading-tight font-displaycaps text-pink">
+        <Link href={`/posts/${slug}`} className="hover:text-brown transition-color duration-150 ease-out hover:ease-in">
           {title}
         </Link>
       </h3>
-      <div className="text-lg mb-4">
+      <div className="inline-flex text-lg mb-4">
         <Date dateString={date} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      <Avatar name={author.name} picture={author.picture} />
+      <p className="text-lg leading-normal mb-5">{excerpt}</p>
+      <div className="flex items-center">
+        <Avatar name={author.name} picture={author.picture} />
+      </div>
     </div>
   );
 }

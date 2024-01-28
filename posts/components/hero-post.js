@@ -13,7 +13,7 @@ export default function HeroPost({
 }) {
   return (
     <section>
-      <div className="mb-8 md:mb-16">
+      <div className="mt-7 mb-8 md:mb-16">
         <CoverImage
           title={title}
           responsiveImage={coverImage.responsiveImage}
@@ -22,8 +22,8 @@ export default function HeroPost({
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight font-block text-pink">
-            <Link href={`/posts/${slug}`} className="hover:text-black transition-color duration-150 ease-out hover:ease-in">
+          <h3 className="mb-4 text-4xl lg:text-6xl leading-none font-display text-pink">
+            <Link href={`/posts/${slug}`} className="hover:text-brown transition-color duration-150 ease-out hover:ease-in">
               {title}
             </Link>
           </h3>
@@ -32,7 +32,7 @@ export default function HeroPost({
           </div>
         </div>
         <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+          <p className="text-xl leading-normal mb-4">{excerpt}</p>
           <Avatar name={author.name} picture={author.picture} />
         </div>
       </div>

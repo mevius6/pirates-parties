@@ -3,5 +3,6 @@ import { ru } from "date-fns/locale";
 
 export default function Date({ dateString }) {
   const date = parseISO(dateString);
-  return <time dateTime={dateString} className="font-bold tracking-normal">{format(date, "d LLL yyyy", {locale: ru})}</time>;
+  return <time dateTime={dateString} className="font-bold tracking-normal
+  leading-none">{format(date, "| d LLL yyyy", {locale: ru})}</time>;
 }

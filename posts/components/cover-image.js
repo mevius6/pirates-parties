@@ -10,7 +10,7 @@ export default function CoverImage({ title, responsiveImage, slug }) {
         alt: `Обложка публикации: ${title}`,
       }}
       className={cn("shadow-small", {
-        "hover:shadow-medium transition-shadow duration-200": slug,
+        "hover:shadow-medium transition-shadow duration-200 ease-in": slug,
       })}
     />
   );
