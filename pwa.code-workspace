@@ -2,12 +2,13 @@
   "folders": [
     {
       // CWD, e.g. root directory of (mono)repo
-      "name": "[root]",
+      "name": "Monorepo",
       "path": "."
     }, {
       // Source code (i.e. source directory)
-      "name": "Product — Website",
-      "path": "./website/src"
+      "name": "Product — Site",
+      "path": "./website/"
+      // "path": "./website/src"
     }, {
       // Source code (i.e. source directory)
       "name": "Product — Blog",
