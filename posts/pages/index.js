@@ -5,7 +5,7 @@ import Intro from "@/components/intro";
 import Layout from "@/components/layout";
 import { getAllPostsForHome } from "@/lib/api";
 import Head from "next/head";
-import { BRAND_NAME } from "@/lib/constants";
+import { BRAND_NAME, BRAND_NAME_ABBR } from "@/lib/constants";
 
 export default function Index({ allPosts }) {
   const heroPost = allPosts[0];
@@ -14,7 +14,8 @@ export default function Index({ allPosts }) {
     <>
       <Layout>
         <Head>
-          <title>{`Блог | ${BRAND_NAME}`}</title>
+          {/* <title>{`Блог | ${BRAND_NAME}`}</title> */}
+          <title>{`Бортовой журнал | ${BRAND_NAME_ABBR}`}</title>
         </Head>
         <Container>
           <Intro />
