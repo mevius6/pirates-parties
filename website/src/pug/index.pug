@@ -37,11 +37,6 @@ block content
     //-     'aria-label': 'hero banner',
     //-     'data-sec': 'hero' }
     //- },{
-      id: 'about',
-      attList: {
-        'aria-label': 'all blog posts',
-        'data-sec': 'news' }
-    //- },{
     //-   id: 'feed',
     //-   attList: {
     //-     'aria-label': 'all blog posts',
@@ -49,12 +44,26 @@ block content
     }]
 
   section.grid
+    //- section.container.bg-overlay#hero(data-sec="hero")
+      //- video-player.grid__full(basename="footage-10s-prod")
+      //- noscript.grid__full
+        +video({
+          sourcePath: 'static',
+          sourceName: 'teaser',
+          poster: '',
+          dims: [1920, 1080] })
+
+      hgroup(data-hidden)
+        h1(itemprop="name")= brand.name
+        p(itemprop="description" role="subtitle")= brand.desc
+
+      //- .grid__center.logo: include ../images/logo.svg
 
     //- Waves Container
     section.container.hero.popout
       .grid__content
         h1.title
-          | Пираты Каспийского Моря
+          | Пираты Каспийского моря
       svg.waves(
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -136,33 +145,19 @@ block content
         +head({ level: 2, text: 'Пишите нам', split: 'chars' })
       .grid__content: +form({
         class: '',
-        endpoint: '000bar99',
+        endpoint: '49d78645',
         phone: data.meta.phone,
         message: 'Сообщение…',
         recaptcha: true })
       //- offer: data.pages.offer.path[0]
 
-  //- section.grid
-    section.container.bg-overlay#hero(data-sec="hero")
-      //- video-player.grid__full(basename="footage-10s-prod")
-      //- noscript.grid__full
-        +video({
-          sourcePath: 'static',
-          sourceName: 'teaser',
-          poster: '',
-          dims: [1920, 1080] })
-
-      hgroup(data-hidden)
-        h1(itemprop="name")= brand.name
-        p(itemprop="description" role="subtitle")= brand.desc
-
-      //- .grid__center.logo: include ../images/logo.svg
-
-    section.container.spaced.--ada-md#partners
-      .grid__center
-        +head({ level: 2, text: 'Наши партнёры', split: 'chars' })
-      .grid__full.d-grid.grid-items-center
-        //- +marquee()
+    //- News Feed (NF)
+    //- section#feed(aria-label="all blog posts")
+    //- +sec({
+      id: 'feed',
+      attList: {
+        'aria-label': 'all blog posts',
+        'data-sec': 'news' } })
 
     //- section.container.spaced.--ada-md#employees
       .grid__third-lhs.sideways
@@ -194,12 +189,5 @@ block content
           data: reviews,
           type: 'review',
           instance: 4 })
-
-    //- section#feed(aria-label="all blog posts") // News Feed (NF)
-    //- +sec({
-      id: 'feed',
-      attList: {
-        'aria-label': 'all blog posts',
-        'data-sec': 'news' } })
 
 block scripts
