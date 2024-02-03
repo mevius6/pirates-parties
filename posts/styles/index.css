@@ -2,229 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url(./NeueHaasUnicaW1G.css);
+@import url(./GaramondITC.css);
+/* @import url(./UniversLT.css); */
+
 @layer base {
-  /* html {
-    font-family: "Proxima Nova", system-ui, sans-serif;
-  } */
+  /* html { font-family: system-ui, sans-serif; } */
 
   h1 {
     /* @apply text-2xl; */
-    @apply font-extrabold leading-none tracking-tightest uppercase;
+    @apply font-extrabold font-caps leading-none tracking-tighter uppercase;
   }
   h2 {
     /* @apply text-xl; */
-    @apply font-bold leading-tight tracking-tighter uppercase italic;
+    @apply font-sans font-bold leading-tight tracking-tighter;
   }
   h3 {
-    /* @apply font-serif leading-none tracking-tighter; */
-    @apply font-serif font-bold leading-tight tracking-tighter text-center;
+    @apply font-extrabold font-caps leading-tight tracking-tight uppercase;
+    /* text-center */
   }
-  /* ... */
+  h4 {
+    @apply text-lg font-extrabold italic lowercase leading-tight;
+    /* text-center */
+  }
 
-  abbr {
+  /* abbr {
     @apply not-italic uppercase;
-  }
-  a {
-    /* @apply hover:text-red hover:ease-in; */
-  }
+  } */
 }
 
-@font-face {
+/* @font-face {
   font-family: 'BlockPro';
   src: url('../fonts/BlockProBQ/BlockPro-Heavy.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-55Oblique.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-55Roman.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* @font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-65BoldOblique.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-65Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
 } */
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-67BoldCondObl.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-67BoldCond.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-75Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Univers LT CYR';
-  src: url('../fonts/UniversLT/UniversLTCYR-75BlackOblique.woff2') format('woff2');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Serif */
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondBookITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondBookITC-Ital.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondLightITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondLightITC-Reg.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondLightITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondLightITC-Ital.woff') format('woff');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondUltraITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondUltraITC-Reg.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondBookITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondBookITC-Reg.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond Narrow ITC';
-  src: url('../fonts/GaramondITC/GaramondNarrowBookITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondNarrowBookITC-Reg.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondUltraITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondUltraITC-Ital.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondBoldITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondBoldITC-Reg.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond ITC';
-  src: url('../fonts/GaramondITC/GaramondBoldITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondBoldITC-Ital.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond Narrow ITC';
-  src: url('../fonts/GaramondITC/GaramondNarrowBoldITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondNarrowBoldITC-Ital.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond Narrow ITC';
-  src: url('../fonts/GaramondITC/GaramondNarrowLightITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondNarrowLightITC-Ital.woff') format('woff');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond Narrow ITC';
-  src: url('../fonts/GaramondITC/GaramondNarrowBookITC-Ital.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondNarrowBookITC-Ital.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond Narrow ITC';
-  src: url('../fonts/GaramondITC/GaramondNarrowBoldITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondNarrowBoldITC-Reg.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Garamond Narrow ITC';
-  src: url('../fonts/GaramondITC/GaramondNarrowLightITC-Reg.woff2') format('woff2'),
-      url('../fonts/GaramondITC/GaramondNarrowLightITC-Reg.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}

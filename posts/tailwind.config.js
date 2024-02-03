@@ -37,8 +37,9 @@ module.exports = {
       },
       letterSpacing: {
         tightest: '-.075em',
+        tighter: '-.06em', // ~ .96px
         // tighter: '-.05em',
-        tighter: "-.04em",
+        // tighter: '-.04em',
         tight: '-.025em',
         normal: '0',
         wide: '.025em',
@@ -62,16 +63,18 @@ module.exports = {
         "8xl": "6.25rem",
       },
       fontFamily: {
-        display: ['BlockPro', 'sans-serif'],
-        displaycaps: [
-          '"BlockPro", "sans-serif"',
+        // display: ['BlockPro', 'sans-serif'],
+        caps: [
+          // '"BlockPro", "sans-serif"',
+          // '"Garamond Narrow ITC", "serif"',
+          '"Neue Haas Unica W1G", "sans"',
           {
             fontFeatureSettings: '"case" 1, "cpsp" 1',
             // fontVariationSettings: '"opsz" 32'
           },
         ],
-        sans: ['Univers LT CYR', 'sans-serif'],
-        // serif: ['Garamond ITC', 'serif'],
+        sans: ['Neue Haas Unica W1G', 'sans-serif'],
+        // sans: ['Univers LT CYR', 'sans-serif'],
         serif: ['Garamond Narrow ITC', 'serif'],
       },
       boxShadow: {
