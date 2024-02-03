@@ -9,7 +9,7 @@ export default function Meta() {
         sizes="180x180"
         href="/favicon/apple-touch-icon.png"
       />
-      <link
+      {/* <link
         rel="icon"
         type="image/png"
         sizes="32x32"
@@ -20,7 +20,7 @@ export default function Meta() {
         type="image/png"
         sizes="16x16"
         href="/favicon/favicon-16x16.png"
-      />
+      /> */}
       <link rel="manifest" href="/favicon/site.webmanifest" />
       <link
         rel="mask-icon"

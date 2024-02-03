@@ -18,6 +18,7 @@ module.exports = {
         "black": "#21201F", // RISO Black
         "navy": "#003153", // Prussian Blue
         "lime": "#EDFF01", // Pantone TN Safety Yellow
+        "red": "#F65058", // RISO Scarlet
         "pink": "#FF1659", // Pantone TN Diva Pink
         // "blue": "#0089B8", // Pantone TN Atomic Blue
         "orange": "#FF6F1E", // Pantone TN Clown Fish
@@ -35,7 +36,15 @@ module.exports = {
         28: "7rem",
       },
       letterSpacing: {
+        tightest: '-.075em',
+        // tighter: '-.05em',
         tighter: "-.04em",
+        tight: '-.025em',
+        normal: '0',
+        wide: '.025em',
+        wider: '.05em',
+        widest: '.1em',
+        widest: '.25em',
       },
       lineHeight: {
         none: 1,
@@ -62,7 +71,8 @@ module.exports = {
           },
         ],
         sans: ['Univers LT CYR', 'sans-serif'],
-        serif: ['Albertus Nova', 'serif'],
+        // serif: ['Garamond ITC', 'serif'],
+        serif: ['Garamond Narrow ITC', 'serif'],
       },
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",

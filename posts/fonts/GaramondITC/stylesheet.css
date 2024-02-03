@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'GaramondBookITC';
+    src: url('GaramondBookITC-Ital.woff2') format('woff2'),
+        url('GaramondBookITC-Ital.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondLightITC';
+    src: url('GaramondLightITC-Reg.woff2') format('woff2'),
+        url('GaramondLightITC-Reg.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondLightITC';
+    src: url('GaramondLightITC-Ital.woff2') format('woff2'),
+        url('GaramondLightITC-Ital.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondUltraITC';
+    src: url('GaramondUltraITC-Reg.woff2') format('woff2'),
+        url('GaramondUltraITC-Reg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondBookITC';
+    src: url('GaramondBookITC-Reg.woff2') format('woff2'),
+        url('GaramondBookITC-Reg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondNarrowBookITC';
+    src: url('GaramondNarrowBookITC-Reg.woff2') format('woff2'),
+        url('GaramondNarrowBookITC-Reg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondUltraITC';
+    src: url('GaramondUltraITC-Ital.woff2') format('woff2'),
+        url('GaramondUltraITC-Ital.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondBoldITC';
+    src: url('GaramondBoldITC-Reg.woff2') format('woff2'),
+        url('GaramondBoldITC-Reg.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondBoldITC';
+    src: url('GaramondBoldITC-Ital.woff2') format('woff2'),
+        url('GaramondBoldITC-Ital.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondNarrowBoldITC';
+    src: url('GaramondNarrowBoldITC-Ital.woff2') format('woff2'),
+        url('GaramondNarrowBoldITC-Ital.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondNarrowLightITC';
+    src: url('GaramondNarrowLightITC-Ital.woff2') format('woff2'),
+        url('GaramondNarrowLightITC-Ital.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondNarrowBookITC';
+    src: url('GaramondNarrowBookITC-Ital.woff2') format('woff2'),
+        url('GaramondNarrowBookITC-Ital.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondNarrowBoldITC';
+    src: url('GaramondNarrowBoldITC-Reg.woff2') format('woff2'),
+        url('GaramondNarrowBoldITC-Reg.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GaramondNarrowLightITC';
+    src: url('GaramondNarrowLightITC-Reg.woff2') format('woff2'),
+        url('GaramondNarrowLightITC-Reg.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
