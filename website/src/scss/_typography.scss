@@ -470,6 +470,25 @@
 
   // Spec ☞ https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element
   // u { text-decoration: var(--underline-color, var(--accent)) wavy underline; }
+  .u {
+    color: var(--foreground);
+    text-shadow: 0 0 10px var(--neon-glow);
+    text-decoration: underline overline wavy var(--neon);
+    font-size: 8vmin;
+    text-underline-offset: .5ex;
+  }
+
+  .u,
+  .neon-green {
+    --neon: #00fe9b;
+    --neon-glow: #02c435;
+  }
+
+  @media (dynamic-range: high) {
+    .neon-green {
+      --neon-glow: color(display-p3 0 1 0);
+    }
+  }
 
   .has-dropcap {
     @include config.drop-cap(6rem, 0.65);

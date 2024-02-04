@@ -149,38 +149,21 @@
         hsl(var(--sw-veri-berri))
       );
 
-    // EBE0CE SW9661 Radiant Dawn
-    // F1BFB1 SW0058 Jazz Age Coral
-    // https://www.joshwcomeau.com/gradient-generator?colors=f4bf77|f1bfb1|ebe0ce&angle=45&colorMode=hcl&precision=8&easingCurve=0.333|1|0.666|0
-    --lush-radiant-jazz: linear-gradient(
-      135deg,
-      hsl(37deg 42% 86%) 0%,
-      hsl(34deg 46% 86%) 21%,
-      hsl(31deg 50% 85%) 30%,
-      hsl(29deg 54% 84%) 39%,
-      hsl(26deg 57% 84%) 46%,
-      hsl(24deg 60% 83%) 54%,
-      hsl(21deg 63% 83%) 61%,
-      hsl(19deg 66% 82%) 69%,
-      hsl(16deg 68% 82%) 79%,
-      hsl(13deg 70% 82%) 100%
+    // https://www.joshwcomeau.com/gradient-generator?colors=edff01|ff6f1e|0089b8&angle=45&colorMode=hcl&precision=8&easingCurve=0.25|0.75|0.75|0.25
+    --lush-sunset: inear-gradient(
+      45deg,
+      hsl(64deg 100% 50%) 0%,
+      hsl(54deg 100% 49%) 10%,
+      hsl(47deg 100% 50%) 20%,
+      hsl(40deg 100% 50%) 30%,
+      hsl(33deg 100% 50%) 40%,
+      hsl(22deg 100% 56%) 50%,
+      hsl(350deg 100% 66%) 60%,
+      hsl(326deg 76% 64%) 70%,
+      hsl(274deg 50% 64%) 80%,
+      hsl(218deg 58% 59%) 90%,
+      hsl(195deg 100% 36%) 100%
     );
-    // https://www.joshwcomeau.com/gradient-generator/?angle=135&easingCurve=0.333%7C1%7C0.666%7C0&colorMode=hcl&precision=8&colors=f1bfb1%7Cebe0ce%7Ce2b6a7%7Cb57466
-    --lush-radiant-salmon-dust:
-      linear-gradient(
-        135deg,
-        hsl(37deg 42% 86%) 0%,
-        hsl(32deg 45% 84%) 20%,
-        hsl(28deg 47% 82%) 29%,
-        hsl(24deg 49% 80%) 36%,
-        hsl(20deg 50% 79%) 43%,
-        hsl(15deg 50% 77%) 50%,
-        hsl(14deg 46% 73%) 57%,
-        hsl(14deg 42% 68%) 64%,
-        hsl(13deg 39% 64%) 71%,
-        hsl(12deg 37% 60%) 80%,
-        hsl(11deg 35% 55%) 100%
-      );
 
     // TODO: define gradient guides
     --grad-1: linear-gradient(
@@ -199,29 +182,13 @@
       hsl(var(--sw-rojo-dust)) 100%
     );
     --grad-4: var(--lin-coral-purple);
-    --grad-5: linear-gradient(
-      to bottom right,
-      hsl(25deg 56% 73%) 0%,
-      hsl(var(--sw-redend-point)) 100%
-    );
 
     // TODO: Coordinated color palettes
     // Refs:
     // → https://images.sherwin-williams.com/content_images/sw-pdf-sherwin-williams-colorc.pdf
     // → https://www.sherwin-williams.com/en-us/color/color-collections/
     // → https://blog.sherwin-williams.com/color/color-guidance/your-go-to-guide-on-color-theory/
-    // $palettes: (
-    //   0: (9081, 7514, 9086, 7580, 9080, 6057, 7005, 7048, 0006),
-    //   1: (6275, 7005, 7042, 9154, 9166),
-    //   2: (6057, 7005, 9081, 9154),
-    //   3: (2849, 6330, 9005, 7008, 7566, 7580, 9006),
-    //   4: (6276, 7507, 7514, 6050, 9080),
-    //   5: (7042, 7048, …),
-    //   6: (9086, 7551, 9154, 7042, 7005, 6275),
-    //   7: (7506, 7514, 0006),
-    //   8: (6057, 9086, 9081, 7514),
-    //   9: (7005, 6743, 6479, 7666)
-    // );
+    // $palettes: (…);
 
     // TODO: Distributing primary, neutral and accent roles among hues.
 
@@ -257,17 +224,24 @@
     // --beige-1: ;
 
     // Defining the darkest and lightest hues
-    --black: var(--black-1);
+    // --black: var(--black-1);
+    --black: 30deg 3% 13%; // #21201F
     --white: var(--warm-white-1);
+
+    // Brand
+    --brand-blue: 205deg 100% 16%;  // #003153 Prussian Blue
+    --brand-yellow: 64deg 100% 50%; // #EDFF01 13-0630 TN Safety Yellow
+
+    // PANTONE® TN Nylon Lights
 
     // Contrasting highlight
 
     --accent-a25: hsl(var(--sw-vintage-gold) / .25);
     --accent-a50: hsl(var(--sw-vintage-gold) / .50);
     --accent-a80: hsl(var(--sw-vintage-gold) / .80);
-    --accent: #FF6F1E;
+    --accent: #FF6F1E; // 15-1460 TN Orange Clown Fish
 
-    --accent-shade: #FD6E2A;
+    --accent-shade: #FD6E2A; // 15-1360 TN Shocking Orange
     --accent-major: #FF1658; // primary
     --accent-extra: #FA008A; // secondary
 
@@ -318,22 +292,6 @@
         hsl(176deg 91% 63%) 85%,
         hsl(186deg 96% 68%) 92%,
         hsl(194deg 100% 75%) 100%
-      );
-    --lin-grad-4-hues:
-      linear-gradient(
-        45deg,
-        hsl(14deg 21% 57%) 0%,
-        hsl(19deg 21% 61%) 19%,
-        hsl(21deg 21% 65%) 27%,
-        hsl(25deg 22% 69%) 34%,
-        hsl(27deg 22% 72%) 41%,
-        hsl(27deg 26% 75%) 47%,
-        hsl(25deg 29% 77%) 53%,
-        hsl(24deg 32% 80%) 59%,
-        hsl(29deg 30% 83%) 66%,
-        hsl(35deg 26% 86%) 73%,
-        hsl(45deg 21% 89%) 81%,
-        hsl(51deg 16% 92%) 100%
       );
     // The sequence of 2 hues w/ hinting
     --lin-grad-halfs-hint:
@@ -1010,6 +968,50 @@ dialog:where(#alert) { // <-- basic noscript alert
         display: block;
       }
     }
+  }
+
+  .svg-filter {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+  }
+
+  .wrap {
+    position: relative;
+    overflow: hidden;
+
+    width: 300px;
+    height: 300px;
+
+    // border-radius: 50%;
+    background: var(--ac, #EDFF01); // Add an accent colour in the mix
+
+    filter: blur(0.33px);
+    clip-path: polygon(0 0, 50% 0, 100% 50%, 100% 100%, 50% 100%, 0 50%); // Diamond-ish shape
+  }
+
+  .shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    // border-radius: 50%;
+
+    background: var(--fg, var(--background));
+  }
+
+  .gradient {
+    // Reinforce the "real" gradient ramp
+    background: radial-gradient(circle at 100% 100%, var(--background) 10%, 33%, var(--trn) 66.7%);
+    // opacity: 0.2;
+  }
+
+  .noisy {
+    // border-radius: 50%;
+    filter: url("#riso-noise");
   }
 
   :where(.bg-shadow) {
