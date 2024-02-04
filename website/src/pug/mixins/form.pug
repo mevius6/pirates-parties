@@ -29,7 +29,6 @@ mixin form(props)
       span.form__label-text
         | Имя #[span &ast;]
       //- autofocus
-      //- ↓ .mask-border-gradient
       input.form__control#name(
         name="Name"
         role="text-box"
@@ -101,6 +100,26 @@ mixin form(props)
         wrap="hard"
         aria-required="false"
       )
+
+    //- add the ability to select multiple products from different categories
+    //- i.e., two select box w/ bunch of options.
+    label.form__field(for="multi")
+      span.form__label-text
+        | Предмет интереса
+        //- | Укажите, (что из / какой вариант) нашей продукции выхотели бы приобрести
+      //- select#category(name="category")
+      select#multi(name="multi" multiple size="4")
+        //- tickets
+        optgroup(label="Билеты")
+          //- Krähennest • «Воронье гнездо»
+          option(selected="true") Krähennest
+          option Анклав
+        //- physical assets — prints
+        optgroup(label="Публикации")
+          option(selected="true") Зин «МИР-2» — 100₽
+        optgroup(label="Плакаты")
+          option Плакат «Трагедия»
+          option Плакат «Гейрот»
 
     .form__group
       input.form__checkbox.has-tooltip#terms(

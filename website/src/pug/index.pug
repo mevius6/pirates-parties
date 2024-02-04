@@ -59,25 +59,12 @@ block content
 
       //- .grid__center.logo: include ../images/logo.svg
 
-    //- Waves Container
     section.container.hero.popout
       .grid__content
         h1.title
           | Пираты Каспийского моря
-      svg.waves(
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28"
-        preserveAspectRatio="none"
-        shape-rendering="auto")
-        defs: path#gentle-wave(d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z")
-        g.parallax
-          use(xlink:href="#gentle-wave" x="48" y="0" fill="rgb(47,97,101, 25)")
-          use(xlink:href="#gentle-wave" x="48" y="3" fill="rgba(98, 194, 177, 0.5)")
-          //- use(xlink:href="#gentle-wave" x="48" y="3" fill="rgba(238, 255, 0.25)")
-          use(xlink:href="#gentle-wave" x="48" y="5" fill="rgba(130, 216, 213, 0.75)")
-          use(xlink:href="#gentle-wave" x="48" y="7" fill="rgba(40, 56, 73)")
-    //- Waves end
+      //- +textLoop()
+      +waves()
 
     //- each item in sections
       +sec({
@@ -101,6 +88,10 @@ block content
           text: 'Подробнее'
         })(data-js-anim='bg-gradient')
 
+      //- .wrap.grid__end-half
+        .shape.noisy
+        .shape.gradient
+
     section.container.spaced.--ada-md#about
       article.flow.grid__center
         +head({ level: 2, text: 'О нас', split: 'chars' })
@@ -112,9 +103,9 @@ block content
           text: 'Узнать больше'
         })(data-js-anim='bg-gradient', target='_blank')
 
-    //- section.container.spaced.--ada-md#products
+    section.container.spaced.--ada-md#goods
       .grid__center
-        +head({ level: 2, text: 'Магазин', split: 'chars' })
+        +head({ level: 2, text: 'Пиратский мерч', split: 'chars' })
       .grid__content
         p
           | Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.
@@ -145,9 +136,9 @@ block content
         +head({ level: 2, text: 'Пишите нам', split: 'chars' })
       .grid__content: +form({
         class: '',
-        endpoint: '49d78645',
+        endpoint: '4c269348',
         phone: data.meta.phone,
-        message: 'Сообщение…',
+        message: 'Вы можете оставить несколько комментариев к заявке',
         recaptcha: true })
       //- offer: data.pages.offer.path[0]
 
