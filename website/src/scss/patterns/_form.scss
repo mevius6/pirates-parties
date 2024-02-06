@@ -203,16 +203,6 @@
   }
 
   // https://codepen.io/leaverou/pen/eYvqdYG?editors=0100
-  @property --em {
-    syntax: "<length>";
-    initial-value: 0;
-    inherits: true;
-  }
-
-  @property --test {
-    syntax: "*";
-    inherits: false;
-  }
 
   select {
     --test: 1em;
