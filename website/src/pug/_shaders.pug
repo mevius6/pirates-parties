@@ -1,0 +1,62 @@
+// vertex shader
+//- script#vs(type="x-shader/x-vertex").
+script(type="vert")#vert.
+  precision mediump float;
+
+  attribute vec3 aVertexPosition;
+  attribute vec2 aTextureCoord;
+
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  uniform mat4 uTextureMatrix0;
+
+  uniform float uTime;
+
+  uniform vec2 uMousePosition;
+
+  uniform float uMouseStrength;
+
+  varying vec3 vVertexPosition;
+  varying vec2 vTextureCoord;
+
+  void main() {
+    vec3 vertexPosition = aVertexPosition;
+
+    float distanceFromMouse = distance(uMousePosition, vec2(vertexPosition.x, vertexPosition.y));
+
+    float rippleFactor = 6.0;
+
+    float rippleEffect = cos(rippleFactor * (distanceFromMouse - (uTime / 120.0)));
+
+    float distortionEffect = rippleEffect * uMouseStrength;
+
+    vertexPosition += distortionEffect / 30.0;
+
+    gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+
+    vTextureCoord = (uTextureMatrix0 * vec4(aTextureCoord, 0.0, 1.0)).xy;
+    vVertexPosition = vertexPosition;
+  }
+
+// fragment shader
+//- script#fs(type="x-shader/x-fragment").
+script(type="frag")#frag.
+  precision mediump float;
+
+  varying vec3 vVertexPosition;
+  varying vec2 vTextureCoord;
+
+  uniform sampler2D uSampler0;
+
+  void main() {
+    vec2 textureCoords = vTextureCoord;
+
+    vec4 finalColor = texture2D(uSampler0, textureCoords);
+
+    finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
+    finalColor.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
+
+    finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
+
+    gl_FragColor = finalColor;
+  }

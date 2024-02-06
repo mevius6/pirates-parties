@@ -30,18 +30,24 @@ mixin sec(props)
     block
 
 block content
-  -
+  //- TODO
     const sections = [{
-    //-   id: 'hero',
-    //-   attList: {
-    //-     'aria-label': 'hero banner',
-    //-     'data-sec': 'hero' }
-    //- },{
-    //-   id: 'feed',
-    //-   attList: {
-    //-     'aria-label': 'all blog posts',
-    //-     'data-sec': 'news' }
+      id: 'hero',
+      attList: {
+        'aria-label': 'hero banner',
+        'data-sec': 'hero' }
+    },{
+      id: 'feed',
+      attList: {
+        'aria-label': 'all blog posts',
+        'data-sec': 'news' }
     }]
+  //- each item in sections
+    +sec({
+      id: item.id,
+      classes: ['container', 'spaced', '--ada-md'],
+      attList: {...attList},
+    })
 
   section.grid
     //- section.container.bg-overlay#hero(data-sec="hero")
@@ -59,73 +65,80 @@ block content
 
       //- .grid__center.logo: include ../images/logo.svg
 
-    section.container.hero.popout
-      .grid__content
-        h1.title
-          | Пираты Каспийского моря
-      //- +textLoop()
-      +waves()
+    section.container.hero.popout#hero
+      .grid__content.self.--start
+        h1.title= brand.name
 
-    //- each item in sections
-      +sec({
-        id: item.id,
-        classes: ['container', 'spaced', '--ada-md'],
-        attList: {...attList},
-      })
+      .overlay#canvas
+      .plane.grid__full
+        img(
+          src="../images/duotone.png"
+          crossorigin="anonymous"
+          data-sampler="basicPlaneTexture")
+      +waves()
+      //-
+        include ../images/warp.svg
+        include ../images/fish.svg
+        include ../images/anomalous-motion-illusion.svg
 
     section.container.spaced.--ada-lg#intent(data-sec="intent")
-      .grid__start-half.d-grid.content-center
+      .grid__start-half.d-grid.items-start
+        //- .halftone
         +head({
+          class: ['font-display'],
           level: 2,
-          text: ['Анонс', 'феста', '17.02'],
+          text: ['Krähennest', '17.02'],
           split: 'chars' })
       article.flow.grid__end-half.--ada-lg
-        p= intent
-        p= lead
+        //- each line in teaser
+          p= line
+        p.ad-copy.text-white
+          | Вечеринка в честь выпуска зина #[b: +link({href: 'https://journal.piratykaspiyskogo.online/posts/zine-release'}) «МИР2»]!{spacedEmDash}фотоархив, графика, путевые заметки!{spacedEmDash}полное собрание лучших материалов за 2019–2022 гг.
+        p.ad-copy.text-white
+          | #[b В программе:#[br]]
+          | Презентация зина, подведение итогов и анонс грядущих событий.
+          //- (вы сможете приобрести 1-е печатные копии)
+          | #[br]
+        p.ad-copy.text-white
+          | Танцуем, пьём ром, сбрасываем все якоря#[br]
+          | и продолжаем двигаться вперёд!#[br]
+          //- | #[i Заполните форму, чтобы узнать локацию и время проведения.]
         +cta({
           type: 'anchor',
           link: '#contact',
           text: 'Подробнее'
         })(data-js-anim='bg-gradient')
 
-      //- .wrap.grid__end-half
-        .shape.noisy
-        .shape.gradient
+    //- section.container.spaced.--ada-lg#about
+      .grid__third-rhs
+        +head({ class: 'font-display', level: 2, text: 'О нас', split: 'chars' })
 
-    section.container.spaced.--ada-md#about
-      article.flow.grid__center
-        +head({ level: 2, text: 'О нас', split: 'chars' })
-        p= about.body
-        //- [stages / timeline w/ counter markers]
-        +cta({
-          type: 'anchor',
-          link: '',
-          text: 'Узнать больше'
-        })(data-js-anim='bg-gradient', target='_blank')
-
-    section.container.spaced.--ada-md#goods
-      .grid__center
-        +head({ level: 2, text: 'Пиратский мерч', split: 'chars' })
       .grid__content
-        p
+        include ../images/arrows.svg
+        include ../images/tripTent.svg
+        include ../images/vinylRecord.svg
+        include ../images/boatPropeller.svg
+
+      article.flow.grid__content
+        +head({ level: 2, text: about.head, split: 'chars' })
+        //- +cta({
+        //-   type: 'anchor',
+        //-   link: '',
+        //-   text: 'Узнать больше'
+        //- })(data-js-anim='bg-gradient' target='_blank')
+
+    //- section.container.spaced.--ada-md#goods
+      article.flow.grid__content
+        +head({ level: 2, text: 'Наш мерч', split: 'chars' })
+        p.copy
           | Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.
-        +list({
-          items: ['text']
-        })
         +cta({
           type: 'anchor',
           link: '',
           text: 'Каталог товаров'
-        })(data-js-anim='bg-gradient', target='_blank')
+        })(data-js-anim='bg-gradient' target='_blank')
 
-    //- section.container.spaced.--ada-md#offers
-      .grid__third-lhs.sideways
-        //- .grid__center
-        +head({ level: 1, text: '17.02', split: 'chars' })
-      .grid__full.d-grid.grid-items-center
-        | …
-
-    section.container.spaced.--ada-md#locate
+    //- section.container.spaced.--ada-md#locate
       .grid__center: +head({ level: 2, text: 'Дислокация', split: 'chars' })
       +map({
         classes: 'grid__full',
@@ -138,9 +151,32 @@ block content
         class: '',
         endpoint: '4c269348',
         phone: data.meta.phone,
-        message: 'Вы можете оставить несколько комментариев к заявке',
+        message: 'Вы можете оставить тут несколько комментариев к заявке…',
         recaptcha: true })
       //- offer: data.pages.offer.path[0]
+
+    // Лента блога || Blog feed
+    //- section.flow(data-id="posts")
+      +head({ level: 2, text: 'Бортовой журнал', split: 'chars' })
+      //- #FeedLabel
+      ul.card-feed(
+        style={ '--columns': 3 }
+        aria-labelledby="#FeedLabel"
+      )
+        - let postCount = 3
+        each i in postCount
+          li.item(id=`post${i+1}`)
+            +card({
+              style: 'elevated',
+              view: 'compact',
+              media: true,
+              action: true
+            })
+      +cta({
+        type: 'anchor',
+        link: '',
+        text: 'Больше новостей!'
+      })(data-js-anim='bg-gradient' target='_blank')
 
     //- News Feed (NF)
     //- section#feed(aria-label="all blog posts")

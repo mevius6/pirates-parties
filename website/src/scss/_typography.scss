@@ -59,7 +59,11 @@
 
     // Fonts
     --font-primary: MaisonNeue; // body copy
-    --font-extra: 'Helvetica Inserat LT Std'; // heads
+    --font-sans: MaisonNeue, Helvetica, sans-serif;
+    --font-serif: Roslindale, Times, serif;
+    // Headliners
+    --font-display: 'Helvetica Inserat LT Std';
+    // --font-display: NickelGothic;
     // System defaults
     --font-stack-sans:
       system-ui,
@@ -111,8 +115,12 @@
   }
 
   :is(ul, ol) > li,
-  :where(p, a, span, form, label, strong, time) {
+  :where(p, a, form, label, strong, time) {
     font-family: var(--font-primary);
+  }
+
+  span {
+    font-family: inherit;
   }
 
   p,
@@ -125,6 +133,40 @@
   p { hyphens: auto; }
 
   small { --px-size: 12; }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  line-height: var(--lh-precise);
+  font-weight: 500;
+  letter-spacing: var(--text-neg-tracking-1);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+  line-height: var(--lh-precise);
+  font-weight: 400;
+  letter-spacing: var(--text-neg-tracking-1);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+  line-height: var(--lh-equals); // var(--lh-precise)
+  letter-spacing: var(--text-neg-tracking-1);
+  // 'ital' 0–1, 'opsz' 9–16–48, 'wght' 200–900
+  font-variation-settings: 'opsz' 48, 'wght' 200;
+  font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
+}
+
+@keyframes hover-anim {
+  from {
+    font-variation-settings: "wght" 300, "ital" 0;
+  }
+  to {
+    font-variation-settings: "wght" 400, "ital" 1;
+  }
 }
 
 @layer type.heads {
@@ -275,18 +317,20 @@
     [class$='subhead']
   ) {
     // https://www.w3.org/TR/css-text-4/#text-wrap
-    // text-wrap: balance;
+    text-wrap: balance;
   }
 
   //= h1
   [class$='title'] {
-    line-height: 1.15;
+    font-family: var(--font-display);
+    line-height: var(--lh-precise);
     text-transform: uppercase;
-    font-family: var(--font-extra);
+
+    margin-block-start: 4rem; // ~ 64px; 6rem ~ 96px
 
     max-inline-size: 12ch;
     inline-size: fit-content;
-    letter-spacing: -0.63px; // var(--letter-spacing-3);
+    letter-spacing: var(--text-neg-tracking-1); // -0.04em;
   }
 
   // https://adrianroselli.com/2020/08/be-wary-of-doc-subtitle.html
@@ -294,13 +338,14 @@
 
   //= h2–h3
   [class*='headline'] {
-    line-height: 1.15;
-    text-transform: uppercase;
-
-    font-family: var(--font-extra);
-    font-weight: 500;
-    // text-transform: none;
+    font-family: var(--font-serif);
+    // font-weight: 500;
+    line-height: var(--lh-equals);
     letter-spacing: var(--text-neg-tracking-1);
+    font-variation-settings: 'opsz' 48, 'wght' 200;
+    font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
+
+    text-align: center;
   }
 
   //= h4–h5
@@ -466,6 +511,11 @@
     leading-trim: both;
   }
 
+  .caps,
+  .uppercase {
+    text-transform: uppercase;
+  }
+
   // ----------------------------- Text decoration ----------------------------
 
   // Spec ☞ https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element
@@ -498,6 +548,11 @@
     @include config.respond('tablet') {
       @include config.sideways();
     }
+  }
+
+  .dynamic-text-shadow {
+    // larger font size, more shadow distance
+    text-shadow: .1em .1em 0 hsl(200 50% 30%);
   }
 
   // Stars and asterisks ☞ https://www.unicode.org/charts/PDF/U2700.pdf

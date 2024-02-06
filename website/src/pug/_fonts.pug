@@ -9,10 +9,29 @@
 append vars
   -
     let familyName1 = 'MaisonNeue'
+    let familyName2 = 'Roslindale'
     // TODO: add loop for each font name in arr and push result in new arr
     // i.e. mapping
     // arr.map((name)=>{…})
     let fontFullNames = []
+    let NickelGothic = [
+      {
+        'familyName': `NickelGothic`,
+        'fullName': `NickelGothicV3Variable`,
+        'varAxes': ['slnt','wdth'],
+        'style': 'normal',
+        'weight': 'normal',
+      }
+    ]
+    let Roslindale = [
+      {
+        'familyName': `Roslindale`,
+        'fullName': `RoslindaleCyrillicVariable`,
+        'varAxes': ['ital','opsz','wght'],
+        'style': 'normal',
+        'weight': `200 900`,
+      }
+    ]
     let MaisonNeue = [
       {
         'familyName': `${familyName1}`,
@@ -65,6 +84,8 @@ append vars
     let typeName = 'font'
     let fontFaces = [
       ...MaisonNeue,
+      ...Roslindale,
+      ...NickelGothic,
       ...HelveticaInserat,
     ]
 

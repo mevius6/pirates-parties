@@ -30,7 +30,7 @@ const doc = document, { documentElement: root } = doc;
       root.dataset.themeStyle = themeSwitch.mode;
     });
   });
-  // const reveal = await import('./modules/reveal-effect');
+  const reveal = await import('./modules/reveal-effect');
   const lazyimg = await import('./modules/reveal-image');
   const cursor = await import('./modules/cursor');
 
@@ -41,11 +41,15 @@ const doc = document, { documentElement: root } = doc;
     const player = await import('./modules/cloudinary-vp');
     const carousel = await import('./modules/carousel');
     const disclosure = await import('./modules/disclosure');
-    const map = await import('./modules/map');
+    // const map = await import('./modules/map');
+
+    const plane = await import('./modules/plane');
   }
 
   const nav = await loadNav('.nav-button');
   // await loadNav('.nav-button');
+
+  loadCardFeed();
 })();
 
 async function loadNav(control) {
@@ -86,6 +90,19 @@ async function createObserver(el, ops={}) {
   observer.observe(el, ops);
 
   return isIntersecting;
+}
+
+async function loadCardFeed() {
+  const { default: CardFeed } = await import('./modules/card-feed');
+
+  // eslint-disable-next-line no-undef
+  const firstPost = post1;
+  const loadTrigger = createObserver(firstPost);
+
+  loadTrigger.then(() => {
+    // eslint-disable-next-line no-unused-vars
+    const feed = new CardFeed(firstPost.parentNode);
+  });
 }
 
 /* eslint-enable no-unused-vars */

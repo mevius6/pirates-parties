@@ -65,8 +65,6 @@ module.exports = {
       fontFamily: {
         // display: ['BlockPro', 'sans-serif'],
         caps: [
-          // '"BlockPro", "sans-serif"',
-          // '"Garamond Narrow ITC", "serif"',
           '"Neue Haas Unica W1G", "sans"',
           {
             fontFeatureSettings: '"case" 1, "cpsp" 1',

@@ -171,7 +171,8 @@ svg(
 
     //- Grainy
     filter#noise
-      feTurbulence(type="fractalNoise" baseFrequency="0.5" numOctaves="1")
+      feTurbulence(result="waves" type="turbulence" baseFrequency="0.735 0.771" numOctaves="1" seed="256")
+      //- feTurbulence(type="fractalNoise" baseFrequency="0.5" numOctaves="1")
       feColorMatrix(type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.5 0")
       feBlend(in="SourceGraphic" mode="overlay")
       feComposite(in2="SourceAlpha" operator="in")
@@ -183,3 +184,9 @@ svg(
       feTurbulence(result="waves" type="turbulence" baseFrequency="0.735 0.771" numOctaves="1" seed="256")
       feDisplacementMap(in="blur" in2="waves" scale="320" xChannelSelector="R" yChannelSelector="B" result="ripples")
       feComposite(in="waves" in2="ripples" operator="arithmetic" k1="1" k2="0" k3="1" k4="0")
+
+    //- https://codepen.io/shunyadezain/pen/wvzYjZK?editors=100
+    filter#distortionFilter
+      feTurbulence#turbolence(type="fractalNoise" baseFrequency="5" numOctaves="10" seed="10" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise")
+      feDisplacementMap(in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse")
+      animate(xlink:href="#turbolence" attributeName="baseFrequency" dur="20s" keyTimes="0;0.5;1" values="5;5.1;5;" repeatCount="indefinite")

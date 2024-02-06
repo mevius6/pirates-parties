@@ -1,8 +1,8 @@
 {
   "dir": "ltr",
   "lang": "ru",
-  "name": "Pirates of Caspian sea",
-  "short_name": "PoCS",
+  "name": "Пираты Каспийского моря",
+  "short_name": "ПКМ",
   "description": "",
   "icons": [{
     "src": "./static/android-chrome-192x192.png",

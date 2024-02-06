@@ -138,8 +138,6 @@
     // No. 2 Reds & Purples 2024
     --sw-ravishing-coral: 12deg 68% 70%; // E79580 SW6612 Ravishing Coral
     --sw-veri-berri: 295deg 14% 52%; // 937496 SW9069 Veri Berri
-    // AE8E7E SW9081 Redend Point
-    // E0B392 SW6352 Soft Apricot
 
     // https://gradient.style
     --lush-coral-purple:
@@ -150,8 +148,8 @@
       );
 
     // https://www.joshwcomeau.com/gradient-generator?colors=edff01|ff6f1e|0089b8&angle=45&colorMode=hcl&precision=8&easingCurve=0.25|0.75|0.75|0.25
-    --lush-sunset: inear-gradient(
-      45deg,
+    --lush-sunset: linear-gradient(
+      180deg,
       hsl(64deg 100% 50%) 0%,
       hsl(54deg 100% 49%) 10%,
       hsl(47deg 100% 50%) 20%,
@@ -919,50 +917,42 @@ dialog:where(#alert) { // <-- basic noscript alert
   }
 
   .popout {
+    --bg-gradient: var(--lush-sunset);
     overflow: hidden;
 
-    &:where(#intent, #partners) {
-      background-attachment: fixed;
-      background-image: var(--bg-image, var(--background));
-
-      [data-theme-style=light] & {
-        --bg-image: var(--drawing-light, var(--grad-1));
-      }
-
-      [data-theme-style=dark] & {
-        --bg-image: var(--drawing-dark, var(--grad-2));
-      }
-    }
-
-    &:where(#intent) {
-      --drawing-light: var(--lush-radiant-jazz);
-    }
-
-    &:where(#about) {
-      --drawing-dark: var(--lush-coral-purple);
-      --drawing-light: var(--lush-radiant-salmon-dust);
-    }
-
-    // :is([data-theme-style=light]) & {
-    //   background-color: hsl(var(--sw-abalone-shell) / .25);
-    // }
-    // :is([data-theme-style=dark]) & {
-    //   background-color: hsl(var(--sw-hushed-auburn) / .125);
-    // }
-
+    // &::after,
     &::before {
       position: absolute;
       inset: 0;
-      z-index: -1;
       content: '';
       pointer-events: none;
       block-size: 100%;
       inline-size: 100%;
-      background: var(--svg-noise) 0% 0%/512px repeat fixed;
-      opacity: .25;
-      background-blend-mode: overlay;
-      // filter: contrast(120);
+    }
+
+    // &::after { z-index: var(--zi); }
+
+    &::before {
+      z-index: -1;
+      opacity: var(--a, .25);
       display: none;
+      background-image: var(--bg-image, var(--background));
+
+      [data-theme-style=light] & {
+        --a: .95;
+        --bg-image: var(--drawing-light, var(--bg-gradient));
+        filter: url("#noise") saturate(50%) contrast(120%);
+        // —OR— url('#riso-noise');
+      }
+
+      [data-theme-style=dark] & {
+        --a: .25;
+        --bg-image: var(--drawing-dark, unset);
+        background: var(--svg-noise) 0% 0%/512px repeat;
+        background-blend-mode: overlay;
+        background-attachment: fixed;
+        // filter: contrast(120);
+      }
 
       @include config.respond('tablet') {
         display: block;
@@ -977,41 +967,8 @@ dialog:where(#alert) { // <-- basic noscript alert
     margin: -1px;
   }
 
-  .wrap {
-    position: relative;
-    overflow: hidden;
-
-    width: 300px;
-    height: 300px;
-
-    // border-radius: 50%;
-    background: var(--ac, #EDFF01); // Add an accent colour in the mix
-
-    filter: blur(0.33px);
-    clip-path: polygon(0 0, 50% 0, 100% 50%, 100% 100%, 50% 100%, 0 50%); // Diamond-ish shape
-  }
-
-  .shape {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-    // border-radius: 50%;
-
-    background: var(--fg, var(--background));
-  }
-
-  .gradient {
-    // Reinforce the "real" gradient ramp
-    background: radial-gradient(circle at 100% 100%, var(--background) 10%, 33%, var(--trn) 66.7%);
-    // opacity: 0.2;
-  }
-
-  .noisy {
-    // border-radius: 50%;
-    filter: url("#riso-noise");
+  :where(.noisy) {
+    filter: url(#riso-noise);
   }
 
   :where(.bg-shadow) {
@@ -1058,7 +1015,6 @@ dialog:where(#alert) { // <-- basic noscript alert
   .hero {
     min-block-size: 100svh;
     place-content: center;
-    // > :nth-child(1) {place-self: center;}
   }
 
   :where(#products) {
@@ -1066,10 +1022,58 @@ dialog:where(#alert) { // <-- basic noscript alert
   }
 
   :where(#intent) {
+    --bg: #1B1D2E;
+    --pad: clamp(1rem, 1vw, 3rem);
+    --diva-pink: #FF1658;
+    --clown-fish: #FF6F1E;
+    --pink: var(--diva-pink, deeppink);
+    --orange: var(--clown-fish, orange);
+
     background-color: hsl(var(--sw-in-the-navy));
 
-    & .content-center {
-      background-color: #FF1658;
+    & .reveal-wrapper { overflow: visible !important; }
+
+    & h2 {
+      --t: 0.21em;
+      // font-weight: 900;
+      font-style: italic;
+      // font-size: clamp(3rem, 10vw, 18rem);
+      letter-spacing: 0.04em;
+      margin: 0;
+      color: var(--pink);
+      text-transform: uppercase;
+      // -webkit-text-stroke-width: 0.045em;
+      // -webkit-text-stroke-color: #1B1D2E;
+      transform: translate3d(var(--t), var(--t), 0) skew(-10deg);
+    }
+
+    & h2 span {
+      --t: 0;
+      --delay: calc(var(--char-index) * 50ms);
+      display: inline-block;
+      text-shadow:
+        0.05em 0.05em var(--bg),
+        0 0 darkorchid,
+        0 0 var(--orange),
+        0 0 var(--pink),
+        0 0 darkorchid,
+        0 0 turquoise;
+      animation: animate 1400ms forwards var(--delay, 0ms) infinite alternate;
+      transform: translate3d(var(--t), var(--t), 0);
+    }
+
+    @keyframes animate {
+      to {
+        --t: -0.21em;
+        text-shadow:
+        0.05em 0.05em var(--bg),
+        0.08em 0.08em darkorchid,
+        0.11em 0.11em orange,
+        0.14em 0.14em deeppink,
+        0.17em 0.17em darkorchid,
+        0.21em 0.21em turquoise;
+        transform: translate3d(var(--t), var(--t), 0);
+      }
     }
   }
 
@@ -1119,6 +1123,171 @@ dialog:where(#alert) { // <-- basic noscript alert
     .waves {
       height:40px;
       min-height:40px;
+    }
+  }
+
+  .hero {
+    #canvas {
+      /* make the canvas wrapper fits the window */
+      // position: absolute;
+      // top: 0;
+      // left: 0;
+      inline-size: 100%;
+      block-size: 100vh;
+    }
+
+    .plane {
+      // grid-column: full;
+      max-inline-size: 100%;
+      grid-row: 1;
+
+      /* define the size of your plane */
+      inline-size: 100%;
+      // max-width: 1400px;
+      block-size: 100vh;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .plane img {
+      /* hide the img element */
+      display: none;
+    }
+  }
+
+  .halftone {
+    --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
+    --stop1: 0.06rem;
+    --stop2: 0.65rem;
+    --invert: 0;
+    --dotColor: var(--background);
+    --bgColor: var(--foreground);
+    --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
+
+    // aspect-ratio: 1;
+    position: relative;
+    background: var(--bgColor);
+    filter: contrast(50) invert(var(--invert, 0));
+    mix-blend-mode: multiply;
+    isolation: isolate;
+    border: 4px solid var(--borderColor, var(--dotColor));
+  }
+
+  .halftone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--dottedBackground);
+    background-size: var(--bgSize, 1rem) var(--bgSize, 1rem);
+    background-repeat: round;
+    background-position: 0 0, var(--bgPosition) var(--bgPosition);
+    mask-image: var(--mask);
+  }
+
+  .halftone:nth-child(even) {
+    --bgSize: 1.4rem;
+    --bgPosition: calc(var(--bgSize) / 2);
+    --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
+  }
+
+  .halftone:nth-child(1) {
+    --borderColor: white;
+    --invert: 1;
+    --mask: repeating-linear-gradient(45deg, rgb(0 0 0), rgb(0 0 0 / 0.55) 20%, rgb(0 0 0) 40%);
+  }
+
+  .distort { filter: url(#distortionFilter); }
+
+  :where(#about) {
+    & > div {
+      position: relative;
+      margin-inline: 3rem;
+    }
+
+    & svg:where(:not(:nth-child(1))) {
+      position: absolute;
+      // top: 50%;
+      // left: 50%;
+      width: 15%;
+      height: auto;
+      // fill: var(--fill, var(--foreground));
+      color: var(--fill, var(--foreground));
+      stroke: var(--foreground);
+      transform-origin: 50% 50%;
+    }
+
+    & :where([title=trips]) {
+      inset-block-start: 0%;
+      inset-inline-start: 50%;
+      transform: translateX(-50%) translateY(-50%);
+
+      filter: drop-shadow(var(--shadow, 0 0 0 var(--accent)));
+      transition:
+        color 350ms ease-out,
+        filter 350ms 50ms var(--ease-spring);
+
+      &:hover {
+        --safety: 64deg 100% 50%;
+        --fill: var(--accent);
+        --shadow-hue: var(--safety);
+        --shadow: .5em .5em 2.5em var(--accent-shade);
+          // drop-shadow(.5em .5em 1.5em hsl(var(--shadow-hue)));
+      }
+    }
+
+    & :where([title=boats]) {
+      inset-block-start: 50%;
+      inset-inline-start: 0%;
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+      animation: propeller 3s linear forwards infinite;
+      animation-play-state: paused;
+      will-change: transform;
+
+      &:hover {
+        animation-play-state: running;
+      }
+    }
+
+    & :where([title=vinyl]) {
+      --tx: 50%;
+      --ty: -50%;
+      --skew: 0rad;
+
+      inset-block-start: 50%;
+      inset-inline-end: 0%;
+      transform:
+        translateX(var(--tx)) translateY(var(--ty))
+        skew(var(--skew));
+      transition:
+        color 350ms 150ms ease-out,
+        transform 500ms var(--ease-in-out-quart);
+      will-change: transform;
+
+      // animation: spinner 60s linear forwards infinite;
+      // animation-play-state: paused;
+
+      &:hover {
+        --skew: 52deg, -32deg;
+        --fill: var(--accent-extra);
+        // animation-play-state: running;
+      }
+    }
+
+    @keyframes propeller {
+      to {
+        transform: translateX(-50%) translateY(-50%) rotate(0);
+      }
+    }
+
+    // LP Record Spin at 33 1/3 RPM
+    @keyframes spinner {
+      to {
+        fill: var(--accent-extra);
+        transform:
+          translateX(50%)
+          translateY(-50%)
+          rotatez(33turn);
+      }
     }
   }
 }

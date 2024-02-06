@@ -25,7 +25,7 @@ export default class DisclosureForNav {
 
     this._initializeDOM(el);
     this._initializeEvents();
-    this._handleAriaCurrent();
+    // this._handleAriaCurrent();
   }
 
   _initializeDOM(el) {
@@ -102,9 +102,9 @@ export default class DisclosureForNav {
   _handleAriaCurrent() {
     this.DOM.el.navLinks.forEach((link) => {
       // b/c vercel config is set to cleanUrls
-      // parsedUrl → 'https://hochutort.com/menu'
-      // parsedUrl.pathname → '/menu'
-      // link.pathname → '/menu.html'
+      // parsedUrl → 'https://site.com/page'
+      // parsedUrl.pathname → '/page'
+      // link.pathname → '/page.html'
       let anchor = link.pathname.slice(0, -5);
       let isCurrent = parsedUrl.pathname.includes(anchor);
       if (isCurrent) link.setAttribute('aria-current', 'page');

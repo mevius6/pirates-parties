@@ -125,7 +125,10 @@
 
   &:is(.--start)  { --place: start }
   &:is(.--center) { --place: center }
+  &:is(.--center) { --place: center }
   &:is(.--end)    { --place: end }
+
+  &:is(.--start.--center) { --place: start center }
 }
 
 // https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/
@@ -192,3 +195,11 @@
 
 // https://github.com/w3c/csswg-drafts/issues/4559
 // --delay: calc(var(--i, 1) * 400ms);
+
+:where(.text-white) {
+  color: var(--foreground);
+
+  :where([data-theme-style=light]) & {
+    color: var(--background);
+  }
+}

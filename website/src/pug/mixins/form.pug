@@ -112,14 +112,14 @@ mixin form(props)
         //- tickets
         optgroup(label="Билеты")
           //- Krähennest • «Воронье гнездо»
-          option(selected="true") Krähennest
+          option(selected="true") Krähennest!{spacedEmDash}1200&nbsp;₽
           option Анклав
         //- physical assets — prints
         optgroup(label="Публикации")
-          option(selected="true") Зин «МИР-2» — 100₽
+          option(selected="true") Зин «МИР-2»!{spacedEmDash}100&nbsp;₽
         optgroup(label="Плакаты")
-          option Плакат «Трагедия»
-          option Плакат «Гейрот»
+          option Плакат «Трагедия»!{spacedEmDash}800&nbsp;₽
+          option Плакат «Гейрот»!{spacedEmDash}600&nbsp;₽
 
     .form__group
       input.form__checkbox.has-tooltip#terms(

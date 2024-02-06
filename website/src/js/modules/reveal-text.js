@@ -2,8 +2,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Splitting from './splitting.min';
 
-// ? https://web.dev/building-split-text-animations/
-
 // eslint-disable-next-line no-unused-vars
 const splitText = Splitting({ whitespace: true });
 // Splitting({
