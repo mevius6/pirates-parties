@@ -31,15 +31,15 @@ const doc = document, { documentElement: root } = doc;
     });
   });
   const reveal = await import('./modules/reveal-effect');
-  const lazyimg = await import('./modules/reveal-image');
+  // const lazyimg = await import('./modules/reveal-image');
   const cursor = await import('./modules/cursor');
 
   if (
     parsedUrl.pathname === '/' ||
     parsedUrl.pathname === '/index.html'
   ) {
-    const player = await import('./modules/cloudinary-vp');
-    const carousel = await import('./modules/carousel');
+    // const player = await import('./modules/cloudinary-vp');
+    // const carousel = await import('./modules/carousel');
     const disclosure = await import('./modules/disclosure');
     // const map = await import('./modules/map');
 
@@ -92,17 +92,17 @@ async function createObserver(el, ops={}) {
   return isIntersecting;
 }
 
-async function loadCardFeed() {
-  const { default: CardFeed } = await import('./modules/card-feed');
+// async function loadCardFeed() {
+//   const { default: CardFeed } = await import('./modules/card-feed');
 
-  // eslint-disable-next-line no-undef
-  const firstPost = post1;
-  const loadTrigger = createObserver(firstPost);
+//   // eslint-disable-next-line no-undef
+//   const firstPost = post1;
+//   const loadTrigger = createObserver(firstPost);
 
-  loadTrigger.then(() => {
-    // eslint-disable-next-line no-unused-vars
-    const feed = new CardFeed(firstPost.parentNode);
-  });
-}
+//   loadTrigger.then(() => {
+//     // eslint-disable-next-line no-unused-vars
+//     const feed = new CardFeed(firstPost.parentNode);
+//   });
+// }
 
 /* eslint-enable no-unused-vars */
