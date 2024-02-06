@@ -49,7 +49,7 @@ const doc = document, { documentElement: root } = doc;
   const nav = await loadNav('.nav-button');
   // await loadNav('.nav-button');
 
-  loadCardFeed();
+  // loadCardFeed();
 })();
 
 async function loadNav(control) {
