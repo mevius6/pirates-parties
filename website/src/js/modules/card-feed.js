@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // https://www.w3.org/WAI/ARIA/apg/patterns/feed/
 
 // import { gsap } from 'gsap';
@@ -50,7 +51,7 @@ class Card {
     slug,
     ...responsiveImageArgs
   ) {
-    super();
+    // super();
     this._initializeDOM(el);
 
     this._createResponsiveImage(...responsiveImageArgs, {LQIP: false});

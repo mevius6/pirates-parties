@@ -41,7 +41,7 @@ const doc = document, { documentElement: root } = doc;
     // const player = await import('./modules/cloudinary-vp');
     // const carousel = await import('./modules/carousel');
     const disclosure = await import('./modules/disclosure');
-    // const map = await import('./modules/map');
+    const map = await import('./modules/map');
 
     const plane = await import('./modules/plane');
   }

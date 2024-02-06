@@ -898,7 +898,7 @@ dialog:where(#alert) { // <-- basic noscript alert
     margin-block: var(--spacer-2x);
   }
 
-  :where(#intent, #about) {
+  :where(#advert, #about) {
     & > article {
       grid-column: content;
       margin-inline: auto;
@@ -1021,7 +1021,7 @@ dialog:where(#alert) { // <-- basic noscript alert
     // background-color: #D4295E;
   }
 
-  :where(#intent) {
+  :where(#advert) {
     --bg: #1B1D2E;
     --pad: clamp(1rem, 1vw, 3rem);
     --diva-pink: #FF1658;
@@ -1045,6 +1045,7 @@ dialog:where(#alert) { // <-- basic noscript alert
       // -webkit-text-stroke-width: 0.045em;
       // -webkit-text-stroke-color: #1B1D2E;
       transform: translate3d(var(--t), var(--t), 0) skew(-10deg);
+      font-variation-settings: 'wdth' 75;
     }
 
     & h2 span {
@@ -1068,8 +1069,8 @@ dialog:where(#alert) { // <-- basic noscript alert
         text-shadow:
         0.05em 0.05em var(--bg),
         0.08em 0.08em darkorchid,
-        0.11em 0.11em orange,
-        0.14em 0.14em deeppink,
+        0.11em 0.11em var(--orange),
+        0.14em 0.14em var(--pink),
         0.17em 0.17em darkorchid,
         0.21em 0.21em turquoise;
         transform: translate3d(var(--t), var(--t), 0);
@@ -1210,10 +1211,27 @@ dialog:where(#alert) { // <-- basic noscript alert
       // left: 50%;
       width: 15%;
       height: auto;
-      // fill: var(--fill, var(--foreground));
       color: var(--fill, var(--foreground));
       stroke: var(--foreground);
       transform-origin: 50% 50%;
+      cursor: pointer;
+    }
+
+    & :where([title=logotype]) {
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      transform: translateX(-50%) translateY(-50%) scale(200%);
+      --safety: 64deg 100% 50%;
+
+      transition:
+      color 400ms var(--ease-spring),
+      transform 400ms var(--ease-spring);
+      will-change: transform;
+
+      &:hover {
+        --fill: hsl(var(--safety));
+        transform: translateX(-50%) translateY(-50%) scale(250%);
+      }
     }
 
     & :where([title=trips]) {
