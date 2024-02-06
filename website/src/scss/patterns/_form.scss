@@ -201,4 +201,39 @@
       grid-column: span 2;
     }
   }
+
+  // https://codepen.io/leaverou/pen/eYvqdYG?editors=0100
+  @property --em {
+    syntax: "<length>";
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --test {
+    syntax: "*";
+    inherits: false;
+  }
+
+  select {
+    --test: 1em;
+    --em: 1em;
+  }
+
+  optgroup:not([label]) {
+    font-size: var(--test, 0);
+  }
+
+  optgroup:not([label]) > * {
+    font-size: var(--em);
+  }
+
+  /* Remove Chrome gap */
+  :where(optgroup:not([label]) > option)::before {
+    content: "";
+  }
+
+  /* Remove Firefox gap */
+  :where(optgroup:not([label]) > option) {
+    padding-inline-start: 2px;
+  }
 }
