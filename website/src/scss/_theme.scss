@@ -222,8 +222,8 @@
     // --beige-1: ;
 
     // Defining the darkest and lightest hues
-    // --black: var(--black-1);
-    --black: 30deg 3% 13%; // #21201F
+    --black: var(--black-1);
+    // --black: 30deg 3% 13%; // #21201F
     --white: var(--warm-white-1);
 
     // Brand
@@ -1022,12 +1022,26 @@ dialog:where(#alert) { // <-- basic noscript alert
   }
 
   :where(#advert) {
-    --bg: #1B1D2E;
+    // https://apple.fandom.com/wiki/List_of_Apple_product_colors#Early_models_(1970s_to_1990s)
+    --beige: #BFBB98;
+    // --beige: #C4C0AA;
+    --cool-gray-2: #CACAC8;
+    // --bg: #2f6165;// Lagoon rgb(47, 97, 101)
+    // --bg: #435060;// Midnight rgb(67, 80, 96)
+    // --bg: #375e77;// Steel rgb(55, 94, 119)
+    --bg: #5ebd3e;
     --pad: clamp(1rem, 1vw, 3rem);
     --diva-pink: #FF1658;
-    --clown-fish: #FF6F1E;
-    --pink: var(--diva-pink, deeppink);
-    --orange: var(--clown-fish, orange);
+    --pink-glo: #FA008A;
+    --clown-fish: #FF6F1E; // #ff6c2f riso-orange
+    // --atomic-blue: #;
+    // --safety-yellow: #;
+    --pink: var(--diva-pink);
+    --orange: var(--clown-fish);
+    --mint: #82d8d5; // rgb(130, 216, 213)
+    --turquoise: #00aa93; // rgb(0, 170, 147)
+    --orhid: #aa60bf; // rgb(170, 96, 191)
+    --light-lime: #e3ed55; // rgb(227, 237, 85)
 
     background-color: hsl(var(--sw-in-the-navy));
 
@@ -1036,16 +1050,20 @@ dialog:where(#alert) { // <-- basic noscript alert
     & h2 {
       --t: 0.21em;
       // font-weight: 900;
-      font-style: italic;
+      // font-style: italic;
       // font-size: clamp(3rem, 10vw, 18rem);
       letter-spacing: 0.04em;
       margin: 0;
-      color: var(--pink);
+      color: var(--diva-pink);
+      // color: var(--pink-glo);
+      // color: var(--beige);
+      // color: var(--cool-gray-2);
+      // color: #0095B6; // https://apple.fandom.com/wiki/Bondi_Blue
       text-transform: uppercase;
       // -webkit-text-stroke-width: 0.045em;
       // -webkit-text-stroke-color: #1B1D2E;
+      font-variation-settings: 'wdth' 75, 'slnt' -15;
       transform: translate3d(var(--t), var(--t), 0) skew(-10deg);
-      font-variation-settings: 'wdth' 75;
     }
 
     & h2 span {
@@ -1053,12 +1071,12 @@ dialog:where(#alert) { // <-- basic noscript alert
       --delay: calc(var(--char-index) * 50ms);
       display: inline-block;
       text-shadow:
-        0.05em 0.05em var(--bg),
-        0 0 darkorchid,
-        0 0 var(--orange),
-        0 0 var(--pink),
-        0 0 darkorchid,
-        0 0 turquoise;
+        0 0 var(--bg),
+        0 0 #ffb900,
+        0 0 #f78200,
+        0 0 #e23838,
+        0 0 #973999,
+        0 0 #009cdf;
       animation: animate 1400ms forwards var(--delay, 0ms) infinite alternate;
       transform: translate3d(var(--t), var(--t), 0);
     }
@@ -1068,11 +1086,11 @@ dialog:where(#alert) { // <-- basic noscript alert
         --t: -0.21em;
         text-shadow:
         0.05em 0.05em var(--bg),
-        0.08em 0.08em darkorchid,
-        0.11em 0.11em var(--orange),
-        0.14em 0.14em var(--pink),
-        0.17em 0.17em darkorchid,
-        0.21em 0.21em turquoise;
+        0.08em 0.08em #ffb900,
+        0.11em 0.11em #f78200,
+        0.14em 0.14em #e23838,
+        0.17em 0.17em #973999,
+        0.21em 0.21em #009cdf;
         transform: translate3d(var(--t), var(--t), 0);
       }
     }
