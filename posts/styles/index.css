@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import url(./NeueHaasUnicaW1G.css);
-@import url(./GaramondITC.css);
+/* @import url(./GaramondITC.css); */
 /* @import url(./UniversLT.css); */
 
 @layer base {
@@ -19,22 +19,12 @@
   }
   h3 {
     @apply font-extrabold font-caps leading-tight tracking-tight uppercase;
-    /* text-center */
   }
   h4 {
-    @apply text-lg font-extrabold italic lowercase leading-tight;
-    /* text-center */
+    @apply text-lg font-extrabold lowercase leading-tight;
   }
 
   /* abbr {
     @apply not-italic uppercase;
   } */
 }
-
-/* @font-face {
-  font-family: 'BlockPro';
-  src: url('../fonts/BlockProBQ/BlockPro-Heavy.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-} */

@@ -231,17 +231,27 @@
     --brand-yellow: 64deg 100% 50%; // #EDFF01 13-0630 TN Safety Yellow
 
     // PANTONE® TN Nylon Lights
+    --safety-yellow: 64deg 100% 50%;
+    --shocking-orange: hsl(19deg 98% 58%); // #FD6E2A 15-1360 TN Shocking Orange
+    --orange-clown-fish: hsl(22deg 100% 56%); // #FF6F1E 15-1460 TN Orange Clown Fish
+    --diva-pink: hsl(343deg 100% 54%); // #FF1658 TN
+    --pink-glo: hsl(327deg 100% 49%); // #FA008A TN
+    // DayGlo
+    --aurora-pink: hsl(330deg 99% 52%); // #FE0A83
+    --blaze-orange: hsl(21deg 95% 56%); // #F96F27
+    --saturn-yellow: hsl(51deg 100% 59%); // #FFE02E
+    --signal-green: hsl(101deg 70% 56%); // #72DD42
 
     // Contrasting highlight
 
     --accent-a25: hsl(var(--sw-vintage-gold) / .25);
     --accent-a50: hsl(var(--sw-vintage-gold) / .50);
     --accent-a80: hsl(var(--sw-vintage-gold) / .80);
-    --accent: #FF6F1E; // 15-1460 TN Orange Clown Fish
+    --accent: var(--orange-clown-fish);
 
-    --accent-shade: #FD6E2A; // 15-1360 TN Shocking Orange
-    --accent-major: #FF1658; // primary
-    --accent-extra: #FA008A; // secondary
+    --accent-shade: var(--blaze-orange);
+    --accent-major: var(--diva-pink); // primary
+    --accent-extra: var(--pink-glo); // secondary
 
     // TODO: Pairing color swatches to specific ui-tokens.
 
@@ -249,8 +259,8 @@
     --active: var(--accent);
 
     // Alert system
-    --alert-ok: var(--accent-extra);
-    --alert-no: hsl(var(--sw-ede-wild-poppy));
+    --alert-ok: var(--signal-green);
+    --alert-no: var(--aurora-pink);
 
     // Fine-tune GUI patterns
     --avatar-bg-dark: var(--accent-shade);
@@ -790,11 +800,13 @@ img:is(.muted) { filter: grayscale(25%) saturate(75%); }
   border-block-end: 4px solid var(--trn); // hidden overflow safe-zone
 }
 
-dialog:where(#alert) { // <-- basic noscript alert
+dialog { // <-- basic noscript alert
   z-index: var(--big-int);
   position: fixed;
-  inset: 0;
+  // inset: 0;
   max-inline-size: 65ch;
+
+  // &[open] {…}
 
   &::backdrop {
     background: repeating-linear-gradient(
@@ -807,18 +819,20 @@ dialog:where(#alert) { // <-- basic noscript alert
     backdrop-filter: blur(3px);
   }
 
-  & > [method=dialog] > :is(h2,p,button) {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, monospace;
-    font-variation-settings: 'wght' var(--wght);
-  }
+  &:where(#alert) {
+    h2 { --wght: 525; }
+    p  { --wght: 400; }
 
-  h2 { --wght: 525; }
-  p  { --wght: 400; }
+    & > [method=dialog] > :is(h2,p,button) {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, monospace;
+      font-variation-settings: 'wght' var(--wght);
+    }
 
-  button {
-    --wght: 500;
-    background-color: var(--accent);
-    &:hover { background-color: var(--accent-shade); }
+    button {
+      --wght: 500;
+      background-color: var(--accent);
+      &:hover { background-color: var(--accent-shade); }
+    }
   }
 }
 
@@ -862,8 +876,7 @@ dialog:where(#alert) { // <-- basic noscript alert
   }
 
   :where(
-    [data-id=index],
-    [data-id=gallery]
+    [data-id=index]
   ) {
     // .headline { text-align: center; }
   }
@@ -905,8 +918,11 @@ dialog:where(#alert) { // <-- basic noscript alert
     }
   }
 
+  .line-up { font-weight: 500 }
+
   :where(#locate) {
-    block-size: 100svh;
+    block-size: 70lvh;
+    max-block-size: 100svh;
     grid-template-rows: auto 1fr;
 
     & > :where(:not(:first-child)) { grid-row: 2 }
@@ -936,7 +952,7 @@ dialog:where(#alert) { // <-- basic noscript alert
       z-index: -1;
       opacity: var(--a, .25);
       display: none;
-      background-image: var(--bg-image, var(--background));
+      // background-image: var(--bg-image, var(--background));
 
       [data-theme-style=light] & {
         --a: .95;
@@ -967,9 +983,7 @@ dialog:where(#alert) { // <-- basic noscript alert
     margin: -1px;
   }
 
-  :where(.noisy) {
-    filter: url(#riso-noise);
-  }
+  :where(.noisy) { filter: url(#riso-noise) }
 
   :where(.bg-shadow) {
     &::after {
@@ -1012,14 +1026,85 @@ dialog:where(#alert) { // <-- basic noscript alert
     outline-offset: 2px;
   }
 
-  .hero {
+  :where(.hero) {
     min-block-size: 100svh;
     place-content: center;
+
+    #canvas {
+      // position: absolute;
+      // inset: 0;
+      inline-size: 100%;
+      block-size: 100vh;
+    }
+
+    .plane {
+      max-inline-size: 100%;
+      grid-row: 1;
+
+      inline-size: 100%;
+      // max-inline-size: 1400px;
+      block-size: 100vh;
+      position: relative;
+      margin: auto;
+    }
+
+    .plane img {
+      /* hide the img element */
+      display: none;
+    }
   }
 
-  :where(#products) {
-    // background-color: #D4295E;
+  :where(#goods) {
+    // background-color: lemonchiffon;
+    // color: cornflowerblue;
   }
+
+  /*
+  .waves {
+    grid-column: full;
+    place-self: end;
+    position: absolute;
+
+    // position: relative;
+    inline-size: 100%;
+    block-size: 15vh;
+    margin-block-end: -7px; // Fix for safari gap
+    min-block-size: 100px;
+    max-block-size: 160px;
+  }
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+    &:nth-child(1) {
+      animation-delay: -2s;
+      animation-duration: 7s;
+    }
+    &:nth-child(2) {
+      animation-delay: -3s;
+      animation-duration: 10s;
+    }
+    &:nth-child(3) {
+      animation-delay: -4s;
+      animation-duration: 13s;
+    }
+    &:nth-child(4) {
+      animation-delay: -5s;
+      animation-duration: 20s;
+    }
+  }
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px,0,0);
+    }
+    100% {
+      transform: translate3d(85px,0,0);
+    }
+  }
+  @media (max-width: 768px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+  } */
 
   :where(#advert) {
     // https://apple.fandom.com/wiki/List_of_Apple_product_colors#Early_models_(1970s_to_1990s)
@@ -1045,7 +1130,15 @@ dialog:where(#alert) { // <-- basic noscript alert
 
     background-color: hsl(var(--sw-in-the-navy));
 
-    & .reveal-wrapper { overflow: visible !important; }
+    // & .reveal-wrapper { overflow: visible !important; }
+
+    dialog {
+      position: fixed;
+      inset-inline-start: 50%;
+      inset-block-start: 50%;
+      transform: translate(-50%,-50%);
+      border: 2px dashed var(--blaze-orange);
+    }
 
     & h2 {
       --t: 0.21em;
@@ -1096,159 +1189,125 @@ dialog:where(#alert) { // <-- basic noscript alert
     }
   }
 
-  .waves {
-    grid-column: full;
-    place-self: end;
-    position: absolute;
+  // .halftone {
+  //   --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
+  //   --stop1: 0.06rem;
+  //   --stop2: 0.65rem;
+  //   --invert: 0;
+  //   --dotColor: var(--background);
+  //   --bgColor: var(--foreground);
+  //   --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
 
-    // position: relative;
-    inline-size: 100%;
-    block-size: 15vh;
-    margin-block-end: -7px; // Fix for safari gap
-    min-block-size: 100px;
-    max-block-size: 160px;
-  }
+  //   // aspect-ratio: 1;
+  //   position: relative;
+  //   background: var(--bgColor);
+  //   filter: contrast(50) invert(var(--invert, 0));
+  //   mix-blend-mode: multiply;
+  //   isolation: isolate;
+  //   border: 4px solid var(--borderColor, var(--dotColor));
+  // }
 
-  .parallax > use {
-    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-  }
-  .parallax > use:nth-child(1) {
-    animation-delay: -2s;
-    animation-duration: 7s;
-  }
-  .parallax > use:nth-child(2) {
-    animation-delay: -3s;
-    animation-duration: 10s;
-  }
-  .parallax > use:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 13s;
-  }
-  .parallax > use:nth-child(4) {
-    animation-delay: -5s;
-    animation-duration: 20s;
-  }
+  // .halftone::after {
+  //   content: '';
+  //   position: absolute;
+  //   inset: 0;
+  //   background-image: var(--dottedBackground);
+  //   background-size: var(--bgSize, 1rem) var(--bgSize, 1rem);
+  //   background-repeat: round;
+  //   background-position: 0 0, var(--bgPosition) var(--bgPosition);
+  //   mask-image: var(--mask);
+  // }
 
-  @keyframes move-forever {
-    0% {
-      transform: translate3d(-90px,0,0);
-    }
-    100% {
-      transform: translate3d(85px,0,0);
-    }
-  }
+  // .halftone:nth-child(even) {
+  //   --bgSize: 1.4rem;
+  //   --bgPosition: calc(var(--bgSize) / 2);
+  //   --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
+  // }
 
-  @media (max-width: 768px) {
-    .waves {
-      height:40px;
-      min-height:40px;
-    }
-  }
+  // .halftone:nth-child(1) {
+  //   --borderColor: white;
+  //   --invert: 1;
+  //   --mask: repeating-linear-gradient(45deg, rgb(0 0 0), rgb(0 0 0 / 0.55) 20%, rgb(0 0 0) 40%);
+  // }
 
-  .hero {
-    #canvas {
-      /* make the canvas wrapper fits the window */
-      // position: absolute;
-      // top: 0;
-      // left: 0;
-      inline-size: 100%;
-      block-size: 100vh;
-    }
-
-    .plane {
-      // grid-column: full;
-      max-inline-size: 100%;
-      grid-row: 1;
-
-      /* define the size of your plane */
-      inline-size: 100%;
-      // max-width: 1400px;
-      block-size: 100vh;
-      position: relative;
-      margin: 0 auto;
-    }
-
-    .plane img {
-      /* hide the img element */
-      display: none;
-    }
-  }
-
-  .halftone {
-    --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
-    --stop1: 0.06rem;
-    --stop2: 0.65rem;
-    --invert: 0;
-    --dotColor: var(--background);
-    --bgColor: var(--foreground);
-    --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
-
-    // aspect-ratio: 1;
-    position: relative;
-    background: var(--bgColor);
-    filter: contrast(50) invert(var(--invert, 0));
-    mix-blend-mode: multiply;
-    isolation: isolate;
-    border: 4px solid var(--borderColor, var(--dotColor));
-  }
-
-  .halftone::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: var(--dottedBackground);
-    background-size: var(--bgSize, 1rem) var(--bgSize, 1rem);
-    background-repeat: round;
-    background-position: 0 0, var(--bgPosition) var(--bgPosition);
-    mask-image: var(--mask);
-  }
-
-  .halftone:nth-child(even) {
-    --bgSize: 1.4rem;
-    --bgPosition: calc(var(--bgSize) / 2);
-    --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
-  }
-
-  .halftone:nth-child(1) {
-    --borderColor: white;
-    --invert: 1;
-    --mask: repeating-linear-gradient(45deg, rgb(0 0 0), rgb(0 0 0 / 0.55) 20%, rgb(0 0 0) 40%);
-  }
-
-  .distort { filter: url(#distortionFilter); }
+  // .distort { filter: url(#distortionFilter); }
 
   :where(#about) {
     & > div {
       position: relative;
-      margin-inline: 3rem;
+      margin-inline: 2rem;
+
+      @include config.respond('tablet') {
+        margin-inline: 3rem;
+      }
+    }
+
+    & svg {
+      color: var(--fill, var(--foreground));
+      stroke: none;
+      shape-rendering: geometricPrecision;
+    }
+
+    & .tagline {
+      --flow-space: 1em;
+      padding-inline: 1rem;
+      @include config.respond('tablet') {
+        & {
+          margin-block: 1rem;
+        }
+      }
+
+      & > h5 {
+        --wght: 300;
+        text-align: center;
+        display: none;
+
+        @include config.respond('tablet') {
+          & {
+            display: inline-block;
+          }
+        }
+      }
+
+      & > svg {
+        width: 50%;
+        height: auto;
+        margin: auto;
+        @include config.respond('tablet') {
+          & {
+            width: 35%;
+          }
+        }
+      }
     }
 
     & svg:where(:not(:nth-child(1))) {
       position: absolute;
-      // top: 50%;
-      // left: 50%;
       width: 15%;
       height: auto;
-      color: var(--fill, var(--foreground));
-      stroke: var(--foreground);
       transform-origin: 50% 50%;
+      will-change: transform;
       cursor: pointer;
+      @include config.respond('tablet') {
+        & {
+          width: 18%;
+        }
+      }
     }
 
     & :where([title=logotype]) {
-      inset-block-start: 50%;
-      inset-inline-start: 50%;
-      transform: translateX(-50%) translateY(-50%) scale(200%);
-      --safety: 64deg 100% 50%;
+      // inset-block-start: 50%;
+      // inset-inline-start: 50%;
+      transform: scale(250%);
 
       transition:
-      color 400ms var(--ease-spring),
-      transform 400ms var(--ease-spring);
+        color 400ms var(--ease-spring),
+        transform 400ms var(--ease-spring);
       will-change: transform;
 
       &:hover {
-        --fill: hsl(var(--safety));
-        transform: translateX(-50%) translateY(-50%) scale(250%);
+        // --fill: hsl(var(--safety-yellow));
+        transform: scale(200%);
       }
     }
 

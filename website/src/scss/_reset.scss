@@ -132,7 +132,9 @@
   }
 
   svg {
-    shape-rendering: crispEdges;
+    // https://svgwg.org/svg2-draft/painting.html#RenderingHints
+    // shape-rendering: crispEdges;
+    shape-rendering: geometricPrecision;
 
     &:not(:root) {
       overflow: hidden;

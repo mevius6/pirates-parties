@@ -50,7 +50,8 @@
     input[type=tel],
     input[type=text],
     input[type=email],
-    textarea {
+    textarea,
+    select {
       min-block-size: var(--min-touch-target-size);
       padding: var(--spacer) 1ch;
       background-color: var(--trn);
@@ -83,6 +84,14 @@
       // background: hsl(var(--white));
       border-color: var(--accent);
       outline: 0;
+    }
+
+    select {
+      padding-block-start: 1ex;
+      border-color: var(--accent);
+    }
+    optgroup + optgroup {
+      margin-block-start: .5em;
     }
 
     textarea {

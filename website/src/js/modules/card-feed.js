@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // https://www.w3.org/WAI/ARIA/apg/patterns/feed/
 
-// import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 // import { EventEmitter } from 'events';
 import {
   createNode,
@@ -9,8 +9,11 @@ import {
   appendNode,
   selectAll,
   delay,
+  select,
 } from '../utils';
 import { getAllPostsForHome } from './fetch-posts';
+
+const DN = 'journal.piratykaspiyskogo.online';
 
 // eslint-disable-next-line no-unused-vars
 const responsiveImageArgs = [
@@ -66,7 +69,7 @@ class Card {
 
   _initializeDOM(el) {
     this.DOM = { card: el };
-    this.DOM.content = this.DOM.card.querySelector('.card__container');
+    this.DOM.content = this.DOM.card.querySelector('.card__slide');
     this.DOM.imageWrapper = this.DOM.card.querySelector('.card__image-wrapper');
     appendNode(
       this.DOM.imageWrapper,
@@ -84,7 +87,7 @@ class Card {
   async _displayContent(title, excerpt, date, slug) {
     this.DOM.title.textContent = title;
     this.DOM.body.textContent = excerpt;
-    this.DOM.cta.href = `https://blog.htort.ru/posts/${slug}`;
+    this.DOM.cta.href = `https://${DN}/posts/${slug}`;
     this.DOM.cta.target = '_blank';
     this.DOM.cta.rel = 'noopener';
 
@@ -144,19 +147,19 @@ class Card {
     appendNode(this.DOM.image, img);
   }
 
-  // _revealImage() {
-  //   let tl = gsap.timeline({ defaults: {ease: 'power2.out'} });
-  //   tl
-  //     .from(this.DOM.imageWrapper, {
-  //       xPercent: -100,
-  //       autoAlpha: 0,
-  //     })
-  //     .from(this.DOM.image, {
-  //       xPercent: 100,
-  //       scale: 1.3,
-  //     }, '<');
-  //   return tl;
-  // }
+  _revealImage() {
+    let tl = gsap.timeline({ defaults: {ease: 'power2.out'} });
+    tl
+      .from(this.DOM.imageWrapper, {
+        xPercent: -100,
+        autoAlpha: 0,
+      })
+      .from(this.DOM.image, {
+        xPercent: 100,
+        scale: 1.3,
+      }, '<');
+    return tl;
+  }
 }
 
 // ? https://w3c.github.io/aria-practices/#feed
@@ -164,7 +167,8 @@ export default class CardFeed {
   constructor(el) {
     this.DOM = { el: el };
     this.cards = [];
-    this.items = selectAll('.card--compact');
+    this.wrap = select('#posts');
+    this.items = selectAll('.card--compact', this.wrap);
 
     this._runAsyncFetch().then((v) => {
       v.map(async (post, i) => {

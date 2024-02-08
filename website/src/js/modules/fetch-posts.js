@@ -45,7 +45,7 @@ export const getAllPostsForHome = async () => {
         date
         slug
         coverImage {
-          responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 500, h: 500 }) {
+          responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1024, h: 576 }) {
             ...responsiveImageFragment
           }
         }
@@ -55,4 +55,33 @@ export const getAllPostsForHome = async () => {
   `);
 
   return data?.allPosts;
+};
+
+export const getAllGoodsForHome = async () => {
+  const data = await fetchAPI(`
+    {
+      allGoodsLists(first: 3) {
+        id
+        poster {
+          artEdition
+          artForm
+          artMedia
+          artistName
+          dateCreated
+          inStock
+          title
+          about
+          price
+          lotImages {
+            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1024, h: 576 }) {
+              ...responsiveImageFragment
+            }
+          }
+        }
+      }
+    }
+    ${responsiveImageFragment}
+  `);
+
+  return data?.allGoodsLists;
 };

@@ -49,7 +49,8 @@ const doc = document, { documentElement: root } = doc;
   const nav = await loadNav('.nav-button');
   // await loadNav('.nav-button');
 
-  // loadCardFeed();
+  loadCardFeed();
+  loadLotFeed();
 })();
 
 async function loadNav(control) {
@@ -92,17 +93,29 @@ async function createObserver(el, ops={}) {
   return isIntersecting;
 }
 
-// async function loadCardFeed() {
-//   const { default: CardFeed } = await import('./modules/card-feed');
+async function loadCardFeed() {
+  const { default: CardFeed } = await import('./modules/card-feed');
 
-//   // eslint-disable-next-line no-undef
-//   const firstPost = post1;
-//   const loadTrigger = createObserver(firstPost);
+  // eslint-disable-next-line no-undef
+  const firstPost = post1;
+  const loadTrigger = createObserver(firstPost);
 
-//   loadTrigger.then(() => {
-//     // eslint-disable-next-line no-unused-vars
-//     const feed = new CardFeed(firstPost.parentNode);
-//   });
-// }
+  loadTrigger.then(() => {
+    // eslint-disable-next-line no-unused-vars
+    const feed = new CardFeed(firstPost.parentNode);
+  });
+}
+async function loadLotFeed() {
+  const { default: LotFeed } = await import('./modules/lot-feed');
+
+  // eslint-disable-next-line no-undef
+  const firstPost = lot1;
+  const loadTrigger = createObserver(firstPost);
+
+  loadTrigger.then(() => {
+    // eslint-disable-next-line no-unused-vars
+    const goods = new LotFeed(firstPost.parentNode);
+  });
+}
 
 /* eslint-enable no-unused-vars */

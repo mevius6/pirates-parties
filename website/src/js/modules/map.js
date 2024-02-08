@@ -81,10 +81,10 @@ const addData = (name, desc, adds, metro=[], opens, telephone, direction) => `
     <span itemprop="description" data-hidden>${desc}</span-->
     <span>${adds}, Москва</span>
   </div>
-  <div class="flow">
+  <!--div class="flow">
     <strong>Ближайшие станции<br /></strong>
     <ul>${loopItems(metro)}</ul>
-  </div>
+  </div-->
   <a itemprop="hasMap" class="direction" href="${direction}" target="_blank" rel="noopener noreferrer"><span>Проложить маршрут</span></a>
 `;
 

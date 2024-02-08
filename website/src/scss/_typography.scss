@@ -51,6 +51,7 @@
     --text-neg-tracking-2: -.03em;
 
     // Interlineage
+    --lh-tight: 1cap;
     --lh-equals: 1; // condensed-ultra
     --lh-precise: 1.1;
     --lh-thinest: 1.15;
@@ -58,12 +59,11 @@
     --lh-default: 1.5; // default
 
     // Fonts
-    --font-primary: MaisonNeue; // body copy
     --font-sans: MaisonNeue, Helvetica, sans-serif;
     --font-serif: Roslindale, Times, serif;
-    // Headliners
-    // --font-display: 'Helvetica Inserat LT Std';
-    --font-display: NickelGothic;
+    --font-display: NickelGothic; // headliner
+    --font-primary: var(--font-sans); // body copy
+
     // System defaults
     --font-stack-sans:
       system-ui,
@@ -115,12 +115,8 @@
   }
 
   :is(ul, ol) > li,
-  :where(p, a, form, label, strong, time) {
+  :where(p, a, form, label, strong, time, button, small) {
     font-family: var(--font-primary);
-  }
-
-  span {
-    font-family: inherit;
   }
 
   p,
@@ -132,9 +128,12 @@
 
   p { hyphens: auto; }
 
+  span { font-family: inherit; }
+
   small { --px-size: 12; }
 }
 
+// Font utils
 .font-display {
   font-family: var(--font-display);
   line-height: var(--lh-precise);
@@ -147,26 +146,17 @@
   font-family: var(--font-sans);
   line-height: var(--lh-precise);
   font-weight: 400;
-  letter-spacing: var(--text-neg-tracking-1);
+  // letter-spacing: var(--text-neg-tracking-1);
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
 .font-serif {
   font-family: var(--font-serif);
-  line-height: var(--lh-equals); // var(--lh-precise)
+  line-height: 1.25cap; // var(--lh-equals);
   letter-spacing: var(--text-neg-tracking-1);
-  // 'ital' 0–1, 'opsz' 9–16–48, 'wght' 200–900
-  font-variation-settings: 'opsz' 48, 'wght' 200;
+  // Axes: 'ital' 0–1, 'opsz' 9–16–48, 'wght' 200–900
+  font-variation-settings: 'opsz' 48, 'wght' var(--wght, 210);
   font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
-}
-
-@keyframes hover-anim {
-  from {
-    font-variation-settings: "wght" 300, "ital" 0;
-  }
-  to {
-    font-variation-settings: "wght" 400, "ital" 1;
-  }
 }
 
 @layer type.heads {
@@ -317,21 +307,28 @@
     [class$='subhead']
   ) {
     // https://www.w3.org/TR/css-text-4/#text-wrap
-    text-wrap: balance;
+    // text-wrap: balance;
   }
 
   //= h1
   [class$='title'] {
     font-family: var(--font-display);
-    line-height: var(--lh-equals);
+    line-height: 1cap; // var(--lh-equals);
     text-transform: uppercase;
 
-    margin-block-start: 4rem; // ~ 64px; 6rem ~ 96px
-    margin-inline: 2rem;
+    margin-block-start: var(--my, 4rem);
+    margin-inline: var(--mx, 1rem);
 
     max-inline-size: 12ch;
     inline-size: fit-content;
-    letter-spacing: var(--text-neg-tracking-1); // -0.04em;
+    letter-spacing: -0.01em;
+    // letter-spacing: var(--text-neg-tracking-1); // -0.04em;
+    > *+* {margin-block-start: .125em}
+
+    @include config.respond('tablet') {
+      --mx: 0;
+      --my: 2rem;
+    }
   }
 
   // https://adrianroselli.com/2020/08/be-wary-of-doc-subtitle.html

@@ -45,20 +45,21 @@ mixin form(props)
       )
       small.form__caption#name-label Укажите полное имя
 
-    label.form__field(for="phone")
-      span.form__label-text
-        | Телефон
-      input.form__control#phone(
-        name="Phone"
-        type="tel"
-        inputmode="tel"
-        placeholder= phone || data.meta.phone
-        minlength="11"
-        maxlength="18"
-        autocomplete="tel"
-        aria-required="false"
-      )
-      small.form__caption Укажите номер телефона
+    if props.phone
+      label.form__field(for="phone")
+        span.form__label-text
+          | Телефон
+        input.form__control#phone(
+          name="Phone"
+          type="tel"
+          inputmode="tel"
+          placeholder= props.phone || data.meta.phone
+          minlength="11"
+          maxlength="18"
+          autocomplete="tel"
+          aria-required="false"
+        )
+        small.form__caption Укажите номер телефона
 
     label.form__field(for="email")
       span.form__label-text
@@ -86,40 +87,26 @@ mixin form(props)
         span.dropzone
           | Выберите файл для загрузки
 
-    label.form__field(for="message")
-      span.form__label-text
-        | Сообщение
-      textarea#message(
-        name="Message"
-        role="text-box"
-        form="contact-form"
-        placeholder= props.message
-        maxlength="140"
-        rows="2"
-        cols="20"
-        wrap="hard"
-        aria-required="false"
-      )
+    if props.message
+      label.form__field(for="message")
+        span.form__label-text
+          | Сообщение
+        textarea#message(
+          name="Message"
+          role="text-box"
+          form="contact-form"
+          placeholder= props.message
+          maxlength="140"
+          rows="2"
+          cols="20"
+          wrap="hard"
+          aria-required="false"
+        )
 
     //- add the ability to select multiple products from different categories
     //- i.e., two select box w/ bunch of options.
-    label.form__field(for="multi")
-      span.form__label-text
-        | Предмет интереса
-        //- | Укажите, (что из / какой вариант) нашей продукции выхотели бы приобрести
-      //- select#category(name="category")
-      select#multi(name="multi" multiple size="3")
-        //- tickets
-        optgroup(label="Билеты")
-          //- Krähennest • «Воронье гнездо»
-          option(selected="true") Krähennest!{spacedEmDash}1200&nbsp;₽
-          option Анклав
-        //- physical assets — prints
-        optgroup(label="Публикации")
-          option(selected="true") Зин «МИР-2»!{spacedEmDash}100&nbsp;₽
-        optgroup(label="Плакаты")
-          option Плакат «Трагедия»!{spacedEmDash}800&nbsp;₽
-          option Плакат «Гейрот»!{spacedEmDash}600&nbsp;₽
+    if props.multi
+      label.form__field(for="multi"): block
 
     .form__group
       input.form__checkbox.has-tooltip#terms(

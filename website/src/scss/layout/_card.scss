@@ -1,0 +1,149 @@
+@use '../config';
+
+// ? https://chjweb.hashnode.dev/skeleton-loader-in-pure-css
+
+.horizontal-scroller {
+  --_space: 1.25rem;
+
+  display: grid;
+  overflow-x: scroll;
+  overscroll-behavior-inline: contain;
+  grid-auto-flow: column;
+  grid-auto-columns: 45ch;
+  padding-block-end: 1.25rem;
+  gap: var(--_space);
+  margin-inline: calc(var(--_space) * -1);
+  padding-inline: var(--_space);
+  scroll-padding-inline: var(--_space);
+  scroll-snap-type: inline mandatory;
+}
+
+.card {
+  $card: &;
+  // Макет
+  $compact: #{&}--compact;
+  $article: #{&}--article;
+  // Стиль
+  $elevated: #{&}--elevated;
+  $outlined: #{&}--outlined;
+
+  scroll-snap-align: start;
+  // position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  // min-inline-size: 20ch;
+  // max-inline-size: 45ch;
+  border-radius: 5px;
+  contain: layout;
+  will-change: transform;
+
+  &--compact {
+    // inline-size: clamp(30ch, 50%, 45ch);
+    // inline-size: 100%;
+    overflow-y: hidden;
+    background: hsl(var(--sw-paperwhite));
+  }
+
+  &--elevated {
+    overflow: hidden;
+    background-color: var(--background);
+    // box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+  }
+
+  &--outlined {
+    padding: 0;
+    overflow: visible;
+
+    &::before {
+      position: absolute;
+      top: calc(0.5rem * -2);
+      left: calc(0.5rem * -2);
+      z-index: -1;
+      inline-size: 100%;
+      block-size: 100%;
+      content: '';
+      background-image:
+        repeating-linear-gradient(
+          -24deg,
+          transparent,
+          transparent 4px,
+          var(--accent) 0,
+          var(--accent) 5px
+        );
+      border-radius: 0.5rem;
+      box-shadow: var(--accent) 0 0 0 1px inset;
+    }
+  }
+
+  &__image-wrapper {
+    inline-size: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    // LQIP
+    background-size: cover;
+  }
+
+  &__image {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    will-change: transform;
+
+    picture {
+      aspect-ratio: 16/9;
+    }
+  }
+
+  &__headline {
+    #{$compact} & {
+      @include config.line-clamp(1);
+
+      display: block;
+      max-inline-size: 100%;
+      padding: .5em;
+      // text-wrap: balance;
+      color: var(--background);
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent) 0%,
+          hsl(var(--warm-gray-2) / 0.4) 100%
+        );
+      backdrop-filter: blur(23px); // 35px
+    }
+  }
+
+  &__body {
+    @include config.line-clamp(2);
+
+    max-inline-size: 40ch;
+    text-wrap: balance;
+
+    #{$compact} & {
+
+      hyphens: manual;
+      // opacity: 0;
+      flex-grow: 0;
+    }
+  }
+
+  &__date {
+    --weight-axis: 96;
+
+    display: block;
+    inline-size: 100%;
+    font-style: italic;
+    text-align: right;
+    // text-transform: capitalize;
+    opacity: 0.75;
+
+    // &::before { content: attr(datetime); }
+  }
+
+  &__footer {
+    @include config.flow-space(1rem);
+  }
+
+  // &__cta {}
+}

@@ -100,7 +100,7 @@ mixin carousel(props)
         caption: (textWrap === 'caption'),
       }
     ul.carousel__container.--side-fade(
-      style={ '--columns': count(fragments) }
+      style={ '--columns': count(fragments) || 3 }
       role="group"
     )&attributes({ 'aria-labelledby': id })
       each entry, i in fragments
@@ -123,7 +123,7 @@ mixin carousel(props)
             'aria-label': `${i+1} / ${total}`,
             'aria-roledescription': 'item',
           }
-        li.carousel__slide(style={ '--columns': num })&attributes(slideAttList)
+        li.carousel__slide(style={ '--columns': num } id=`post${i+1}`)&attributes(slideAttList)
           if media
             -
               let figureAttList = {},
@@ -140,7 +140,7 @@ mixin carousel(props)
                 figureAttList['class'] = ['clip-geometry', ...props.figClipping['class']]
             figure.carousel__image&attributes(figureAttList)
               +picture({
-                class: 'tucked-corners',
+                class: '',
                 path: media,
                 name: increment(i),
                 desc: '',
@@ -153,7 +153,10 @@ mixin carousel(props)
                   +dataFilter({ ...entry })
 
           if wrap.article
-            +textContent({ parentDOM: textWrap })
+            +textContent({
+              parentDOM: textWrap,
+              classes: ['carousel__body']
+            })
               +dataFilter({ ...entry })
 
           else if type === 'review'

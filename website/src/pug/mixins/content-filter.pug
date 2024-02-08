@@ -56,7 +56,7 @@ mixin dataFilter(entry)
     } = entry
 
   if title
-    +head({ text: title, level: 3, overline: desc })
+    +head({ class: 'carousel__headline', text: title, level: 3, overline: desc })
   if field
     +list({ items: field, icon: MARKER })
   if text
@@ -64,7 +64,7 @@ mixin dataFilter(entry)
       each line in text
         p= line
     else
-      p= text
+      p.carousel__body= text
   if link
     +link({ href: link, icon: 'ig' })
 
