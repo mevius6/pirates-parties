@@ -1312,7 +1312,7 @@ dialog { // <-- basic noscript alert
       // transition:
       //   color 400ms var(--ease-spring),
       //   transform 400ms var(--ease-spring);
-      will-change: transform;
+      // will-change: transform;
 
       &:hover {
         // --fill: hsl(var(--safety-yellow));
