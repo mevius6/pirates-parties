@@ -528,3 +528,50 @@
     --p: 20px;
   }
 }
+
+:where(.shadow-retro-fx) {
+  --t: 0.21em;
+  // font-weight: 900;
+  // font-style: italic;
+  // font-size: clamp(3rem, 10vw, 18rem);
+  letter-spacing: 0.04em;
+  margin: 0;
+  // color: var(--diva-pink);
+  color: var(--foreground);
+  // color: var(--beige);
+  // color: var(--cool-gray-2);
+  // color: #0095B6; // https://apple.fandom.com/wiki/Bondi_Blue
+  text-transform: uppercase;
+  // -webkit-text-stroke-width: 0.045em;
+  // -webkit-text-stroke-color: #1B1D2E;
+  transform: translate3d(var(--t), var(--t), 0) skew(-10deg);
+
+  & > span {
+    --t: 0;
+    --delay: calc(var(--char-index) * 50ms);
+    display: inline-block;
+    text-shadow:
+      0 0 var(--bg),
+      0 0 #ffb900,
+      0 0 #f78200,
+      0 0 #e23838,
+      0 0 #973999,
+      0 0 #009cdf;
+    animation: animate 1400ms forwards var(--delay, 0ms) infinite alternate;
+    transform: translate3d(var(--t), var(--t), 0);
+  }
+}
+
+@keyframes animate {
+  to {
+    --t: -0.21em;
+    text-shadow:
+    0.05em 0.05em var(--bg),
+    0.08em 0.08em #ffb900,
+    0.11em 0.11em #f78200,
+    0.14em 0.14em #e23838,
+    0.17em 0.17em #973999,
+    0.21em 0.21em #009cdf;
+    transform: translate3d(var(--t), var(--t), 0);
+  }
+}
