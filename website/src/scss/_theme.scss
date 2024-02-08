@@ -1026,6 +1026,16 @@ dialog { // <-- basic noscript alert
     outline-offset: 2px;
   }
 
+  #canvas {
+    z-index: -1;
+    // position: absolute;
+    // inset: 0;
+    top: 0;
+    left: 0;
+    inline-size: 100vw;
+    block-size: 100vh;
+  }
+
   :where(.hero) {
     min-block-size: 100svh;
     // place-content: center;
@@ -1036,13 +1046,6 @@ dialog { // <-- basic noscript alert
       background-position: 50% 50%;
       background-size: cover;
       // background-attachment: fixed;
-    }
-
-    #canvas {
-      // position: absolute;
-      // inset: 0;
-      inline-size: 100%;
-      block-size: 100vh;
     }
 
     .plane {
@@ -1137,6 +1140,7 @@ dialog { // <-- basic noscript alert
     --light-lime: #e3ed55; // rgb(227, 237, 85)
 
     background-color: hsl(var(--sw-in-the-navy));
+    position: relative;
 
     // & .reveal-wrapper { overflow: visible !important; }
 

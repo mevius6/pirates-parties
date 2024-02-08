@@ -58,11 +58,9 @@ block content
           sourceName: 'teaser',
           poster: '',
           dims: [1920, 1080] })
-
       hgroup(data-hidden)
         h1(itemprop="name")= brand.name
         p(itemprop="description" role="subtitle")= brand.desc
-
       //- .grid__center.logo: include ../images/logo.svg
 
     section.container.hero#hero
@@ -98,7 +96,6 @@ block content
           vdim: 720,
           transform: false,
         })
-      //- .overlay#canvas
       //- .plane.grid__full
         img(
           src="../images/duotone-hires.webp"
@@ -134,9 +131,11 @@ block content
           },
         ]
 
+      .fixed#canvas
+
       .grid__start-half.d-grid.items-start
         +head({
-          class: ['font-display'],
+          class: ['font-display', 'text-white'],
           level: 2,
           text: ['Krähennest', '17.02', '21:00'],
           split: 'chars' })
@@ -145,9 +144,9 @@ block content
         h4.subhead
           //- | 17.02 в 21:00
           | Презентация зина* по трипу Москва-Крым
-        p.ad-copy.text-white
+        p.ad-copy
           | Фотоархив, графика. Полное собрание лучшего, подведение итогов.
-        p.ad-copy.text-white
+        p.ad-copy
           | Новая глава ПКМ: делимся новостями, анонсируем СОБЫТИЕ.
           | #[br]
           | В программе: танцы, ром.
@@ -156,7 +155,7 @@ block content
           title: 'Помощь в навигации:',
           items: lineup
         })
-        .small-copy.text-white
+        .small-copy
           small
             | * первые печатные копии зина будут доступны для продажи на мероприятии
             | #[br]
@@ -217,8 +216,6 @@ block content
           level: 5,
           text: [`Это наш магазин и платформа для анонса мероприятий, релизов и${NBSP}архив полезных материалов.`],
           split: 'chars' })
-        //- p
-          | Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.
         //- +cta({
           type: 'anchor',
           link: '',

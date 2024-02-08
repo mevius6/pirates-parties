@@ -44,6 +44,7 @@ const doc = document, { documentElement: root } = doc;
     const map = await import('./modules/map');
 
     // const plane = await import('./modules/plane');
+    const fluid = await import('./modules/shimmering-fluid-effect');
   }
 
   const nav = await loadNav('.nav-button');

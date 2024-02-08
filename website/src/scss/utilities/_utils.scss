@@ -42,6 +42,16 @@
   align-self: start;
 }
 
+.fixed {
+  position: fixed;
+
+  &:where(.--center) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .scroller { overflow: auto; }
 
 .no-scroll { overflow: hidden; }

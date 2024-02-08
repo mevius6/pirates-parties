@@ -3,6 +3,9 @@
 // eslint-disable-next-line no-unused-vars
 import { getMouseRelativePos, select, selectAll, setCssProp } from '../utils';
 
+// https://github.com/marvinx-x/cursors-emitter
+// https://github.com/codrops/AnimatedCustomCursor/
+
 /*
 const elem = select('...');
 

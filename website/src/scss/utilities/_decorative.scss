@@ -136,35 +136,6 @@
   }
 }
 
-.draw-glory::before {
-  content: '';
-  mix-blend-mode:lighten;
-  z-index: 2;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  --x: 50%;
-  background:
-    /* sun rising */
-    radial-gradient(circle at 0% 100%,
-      hsl(var(--white)) 1vw,
-      #fccc,
-      #fc89,
-      #f855,
-      #f851,
-      #fff0 45vw) 50% 100%,
-    radial-gradient(circle at 0% 100%, #fff 0.5vw, #fff0 4%),
-    /* stars */
-    radial-gradient(circle, #fff5 0.125vmin, #fff0 0) 17% 17% / 31% 31%,
-    radial-gradient(circle, #fff8 0.15vmin, #fff0 0) 11% 21% / 21% 41%,
-    radial-gradient(circle, #fff4 0.125vmin, #fff0 0) 15% 11% / 41% 33%,
-    radial-gradient(circle, #fff3 0.2vmin, #fff0 0) 50% 50% / 37% 25%,
-    radial-gradient(circle, #fff7 0.125vmin, #fff0 0) 57% 13% / 34% 23%,
-    radial-gradient(circle, #ffc5 0.125vmin, #fff0 0) 77% -17% / 23% 27%;
-  background-attachment: fixed;
-}
-
 [data-backdrop='glassy'] {
   position: relative;
   border-radius: 2ch; // 3ch
@@ -298,7 +269,6 @@
     -webkit-background-clip: text;
   }
 }
-
 
 .text-gradient {
   // @include config.text-gradient(
