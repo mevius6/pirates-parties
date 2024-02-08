@@ -43,7 +43,7 @@ const doc = document, { documentElement: root } = doc;
     const disclosure = await import('./modules/disclosure');
     const map = await import('./modules/map');
 
-    const plane = await import('./modules/plane');
+    // const plane = await import('./modules/plane');
   }
 
   const nav = await loadNav('.nav-button');
