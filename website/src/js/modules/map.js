@@ -102,6 +102,20 @@ const addData = (name, desc, adds, metro=[], opens, telephone, direction) => `
 //   lat: 55.742651,
 //   lng: 37.612731,
 // };
+// const loc2 = {
+//   data: () => addData(
+//     NAMES[0],
+//     '',
+//     'Болотная набережная, 15, к1',
+//     ['Кропоткинская', 'Третьяковская'],
+//     '10&colon;00–22&colon;00',
+//     '',
+//     // `https://yandex.ru/maps/213/moscow/?ll=${loc1.lng}%2C${loc1.lat}&mode=routes&rtext=~${loc1.lat}%2C${loc1.lng}&rtt=auto&ruri=~&z=10`
+//     'https://yandex.ru/maps/-/'
+//   ),
+//   lat: 55.742651,
+//   lng: 37.612731,
+// };
 const loc1 = {
   data: () => addData(
     NAMES[0],

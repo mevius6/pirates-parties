@@ -1207,6 +1207,10 @@ dialog { // <-- basic noscript alert
   // .distort { filter: url(#distortionFilter); }
 
   :where(#about) {
+    & > .grid__center {
+      padding-block-end: 2.5ex;
+    }
+
     & > div {
       position: relative;
       margin-inline: 2rem;
@@ -1270,8 +1274,6 @@ dialog { // <-- basic noscript alert
     }
 
     & :where([title=logotype]) {
-      // inset-block-start: 50%;
-      // inset-inline-start: 50%;
       transform: scale(250%);
 
       // transition:

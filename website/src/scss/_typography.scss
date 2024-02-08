@@ -154,9 +154,18 @@
   font-family: var(--font-serif);
   line-height: 1.25cap; // var(--lh-equals);
   letter-spacing: var(--text-neg-tracking-1);
+
   // Axes: 'ital' 0–1, 'opsz' 9–16–48, 'wght' 200–900
-  font-variation-settings: 'opsz' 48, 'wght' var(--wght, 210);
+  font-variation-settings: 'opsz' var(--opsz, 48,), 'wght' var(--wght, 210);
   font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
+
+  &:where(.--deck-narrow) {
+    --opsz: 16;
+    --wght: 200;
+    // Deck Narrow Regular
+    // font-variation-settings: "opsz" 16, "wght" 400, "ital" 0;
+    font-variant-caps: petite-caps;
+  }
 }
 
 @layer type.heads {

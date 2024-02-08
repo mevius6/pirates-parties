@@ -213,9 +213,9 @@ block content
           text: about.head,
           split: 'chars' })
         +head({
-          class: 'font-serif',
-          level: 2,
-          text: 'Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.',
+          class: ['font-serif', '--deck-narrow'],
+          level: 5,
+          text: ['Это наш магазин и платформа для анонса мероприятий,', 'релизов и архив полезных материалов.'],
           split: 'chars' })
         //- p
           | Это наш магазин и платформа для анонса мероприятий, релизов и архив полезных материалов.
@@ -228,7 +228,11 @@ block content
     // Лента блога || Blog feed
     section.container.spaced.--ada-md#posts(data-id="posts")
       .grid__center
-        +head({ level: 2, text: 'Бортовой журнал', split: 'chars' })
+        +head({
+          class: ['font-display', 'uppercase'],
+          level: 2,
+          text: 'Бортовой журнал',
+          split: 'chars' })
       //- #FeedLabel
       ul.grid__full.horizontal-scroller.card-feed(
         style={ '--columns': 3 }
@@ -252,7 +256,11 @@ block content
 
     section.container.spaced.--ada-md#goods
       .grid__center
-        +head({ level: 2, text: 'Магазин', split: 'chars' })
+        +head({
+          class: ['font-display', 'uppercase'],
+          level: 2,
+          text: 'Магазин',
+          split: 'chars' })
       ul.grid__full.horizontal-scroller.card-feed(
         style={ '--columns': 3 }
         aria-labelledby="#FeedLabel"

@@ -8,7 +8,7 @@ export default function Header() {
       <Link href="/" className="hover:text-black transition-color duration-150 ease-out hover:ease-in">
         {/* <abbr className="font-displaycaps">{BRAND_NAME_ABBR}</abbr> */}
         {/* <abbr>{BRAND_NAME_ABBR}</abbr> */}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="128" viewBox="0 0 512 128">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="160" viewBox="0 0 512 128">
               <defs>
                 <filter id="colored-stripes-vertical" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
                   <feTurbulence type="turbulence" baseFrequency="0.03 0" numOctaves="10" seed="3" stitchTiles="stitch" result="turbulence"/>
