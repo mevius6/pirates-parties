@@ -6,22 +6,42 @@
 /* @import url(./GaramondITC.css); */
 /* @import url(./UniversLT.css); */
 
+/* ID: 3.000;djr ;NickelGothicV3Variable-Regular */
+@font-face {
+  font-family: 'Nickel Gothic';
+  src: url('../fonts/NickelGothicV3Variable.woff2') format('woff2'),
+      url('../fonts/NickelGothicV3Variable.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ID: 2.000;djr;RoslindaleCyrillicVariable-DisplayCondensedRegular */
+@font-face {
+  font-family: 'Roslindale';
+  src: url('../fonts/RoslindaleCyrillicVariable.woff2') format('woff2'),
+      url('../fonts/RoslindaleCyrillicVariable.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   /* html { font-family: system-ui, sans-serif; } */
 
   h1 {
     /* @apply text-2xl; */
-    @apply font-extrabold font-caps leading-none tracking-tighter uppercase;
+    @apply font-displayConde leading-none tracking-normal uppercase;
   }
   h2 {
     /* @apply text-xl; */
-    @apply font-sans font-bold leading-tight tracking-tighter;
+    @apply font-displayNarrow font-bold leading-tight tracking-normal;
   }
   h3 {
-    @apply font-extrabold font-caps leading-tight tracking-tight uppercase;
+    @apply font-serifDisplayConde leading-tight tracking-normal;
   }
   h4 {
-    @apply text-lg font-extrabold lowercase leading-tight;
+    @apply text-lg font-displayWide uppercase leading-tight;
   }
 
   /* abbr {

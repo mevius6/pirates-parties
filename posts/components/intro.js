@@ -13,7 +13,7 @@ export default function Intro() {
       </h1>
       <h4 className="mt-auto mb-0 text-center md:text-left md:pl-8">
         imagine your trip<br/>
-        бортовой журнал - архив материалов - анонс мероприятий
+        бортовой журнал &bull; архив материалов &bull; анонс мероприятий
       </h4>
     </section>
   );

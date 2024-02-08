@@ -63,17 +63,70 @@ module.exports = {
         "8xl": "6.25rem",
       },
       fontFamily: {
-        // display: ['BlockPro', 'sans-serif'],
+        displayWide: [
+          '"Nickel Gothic", "sans-serif"',
+          {
+            fontFeatureSettings: '"case" 1, "cpsp" 1',
+            // Axes: 25–150, -15–15
+            fontVariationSettings: '"wdth" 150, "slnt" -15', // Regular
+          },
+        ],
+        displayConde: [
+          '"Nickel Gothic", "sans-serif"',
+          {
+            fontFeatureSettings: '"case" 1, "cpsp" 1',
+            // Axes: 25–150, -15–15
+            fontVariationSettings: '"wdth" 50, "slnt" 0', // Condensed
+          },
+        ],
+        displayNarrow: [
+          '"Nickel Gothic", "sans-serif"',
+          {
+            fontFeatureSettings: '"case" 1, "cpsp" 1',
+            // Axes: 25–150, -15–15
+            fontVariationSettings: '"wdth" 75, "slnt" -15', // Narrow
+          },
+        ],
+        serif: [
+          '"Roslindale", "serif"',
+          {
+            fontFeatureSettings: '"case" 0, "cpsp" 0',
+            // Axes: 9–48, 200–900, 0–1
+            fontVariationSettings: '"opsz" 11, "wght" 400, "ital" 0', // Text Regular
+          },
+        ],
+        serifDeckNarrowSemi: [
+          '"Roslindale", "serif"',
+          {
+            fontFeatureSettings: '"case" 0, "cpsp" 0',
+            // Axes: 9–48, 200–900, 0–1
+            fontVariationSettings: '"opsz" 16, "wght" 600, "ital" 0', // Deck Narrow Regular
+          },
+        ],
+        serifDeckNarrow: [
+          '"Roslindale", "serif"',
+          {
+            fontFeatureSettings: '"case" 0, "cpsp" 0',
+            // Axes: 9–48, 200–900, 0–1
+            fontVariationSettings: '"opsz" 16, "wght" 400, "ital" 0', // Deck Narrow Regular
+          },
+        ],
+        serifDisplayConde: [
+          '"Roslindale", "serif"',
+          {
+            fontFeatureSettings: '"case" 0, "cpsp" 0',
+            // Axes: 9–48, 200–900, 0–1
+            fontVariationSettings: '"opsz" 48, "wght" 300, "ital" 0', // Display Condensed Light
+          },
+        ],
         caps: [
           '"Neue Haas Unica W1G", "sans"',
           {
             fontFeatureSettings: '"case" 1, "cpsp" 1',
-            // fontVariationSettings: '"opsz" 32'
           },
         ],
         sans: ['Neue Haas Unica W1G', 'sans-serif'],
         // sans: ['Univers LT CYR', 'sans-serif'],
-        serif: ['Garamond Narrow ITC', 'serif'],
       },
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",

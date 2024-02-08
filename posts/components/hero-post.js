@@ -22,7 +22,7 @@ export default function HeroPost({
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl text-left font-serif">
+          <h3 className="mb-4 text-4xl lg:text-6xl text-left">
             <Link href={`/posts/${slug}`} className="hover:text-brown transition-color duration-150 ease-out hover:ease-in">
               {title}
             </Link>
@@ -32,7 +32,7 @@ export default function HeroPost({
           </div>
         </div>
         <div>
-          <p className="text-xl leading-normal mb-4">{excerpt}</p>
+          <p className="text-xl leading-normal mb-4 font-serifDeckNarrow">{excerpt}</p>
           <Avatar name={author.name} picture={author.picture} />
         </div>
       </div>
