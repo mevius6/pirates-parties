@@ -137,7 +137,7 @@
 .font-display {
   font-family: var(--font-display);
   line-height: var(--lh-precise);
-  font-weight: 500;
+  font-weight: normal;
   // letter-spacing: var(--text-neg-tracking-1);
   font-feature-settings: 'kern' 1, 'liga' 1;
 }

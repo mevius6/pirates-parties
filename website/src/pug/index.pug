@@ -65,7 +65,7 @@ block content
 
       //- .grid__center.logo: include ../images/logo.svg
 
-    section.container.hero.popout#hero
+    section.container.hero#hero
       .grid__content.self.--start
         //- h1.title= brand.name
         h1.flex-centered.title
@@ -81,16 +81,26 @@ block content
             'font-variation-settings': `'wdth' 150`,
           })
             | моря
-
-      .overlay#canvas
-      .plane.grid__full
+      .overlay
+      //-
+        +picture({
+          class: ['abs-centered','grid__full'],
+          path: 'hero',
+          name: 'duotone-hires',
+          format: 'webp',
+          desc: '',
+          hdim: 1920,
+          vdim: 720,
+          transform: false,
+        })
+      //- .overlay#canvas
+      //- .plane.grid__full
         img(
           src="../images/duotone-hires.webp"
           crossorigin="anonymous"
           data-sampler="basicPlaneTexture")
       //- +waves()
-      //-
-        include ../images/anomalous-motion-illusion.svg
+      //- include ../images/anomalous-motion-illusion.svg
 
     section.container.spaced.--ada-lg#advert(data-sec="ad")
       -

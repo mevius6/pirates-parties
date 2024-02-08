@@ -1028,7 +1028,15 @@ dialog { // <-- basic noscript alert
 
   :where(.hero) {
     min-block-size: 100svh;
-    place-content: center;
+    // place-content: center;
+    place-content: start;
+
+    & > .overlay {
+      background-image: url('../images/hero/duotone-hires.webp');
+      background-position: 50% 50%;
+      background-size: cover;
+      // background-attachment: fixed;
+    }
 
     #canvas {
       // position: absolute;
