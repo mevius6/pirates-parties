@@ -164,7 +164,6 @@
     --wght: 200;
     // Deck Narrow Regular
     // font-variation-settings: "opsz" 16, "wght" 400, "ital" 0;
-    font-variant-caps: petite-caps;
   }
 }
 
@@ -316,7 +315,7 @@
     [class$='subhead']
   ) {
     // https://www.w3.org/TR/css-text-4/#text-wrap
-    // text-wrap: balance;
+    text-wrap: balance;
   }
 
   //= h1

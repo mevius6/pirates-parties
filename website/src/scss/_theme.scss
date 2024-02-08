@@ -1211,6 +1211,12 @@ dialog { // <-- basic noscript alert
       padding-block-end: 2.5ex;
     }
 
+    h5 {
+      line-height: 1.1;
+      text-wrap: balance;
+      // font-variant-caps: petite-caps;
+    }
+
     & > div {
       position: relative;
       margin-inline: 2rem;
