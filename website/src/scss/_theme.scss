@@ -1307,11 +1307,11 @@ dialog { // <-- basic noscript alert
     & :where([title=logotype]) {
       // inset-block-start: 50%;
       // inset-inline-start: 50%;
-      // transform: scale(250%);
+      transform: scale(250%);
 
-      transition:
-        color 400ms var(--ease-spring),
-        transform 400ms var(--ease-spring);
+      // transition:
+      //   color 400ms var(--ease-spring),
+      //   transform 400ms var(--ease-spring);
       will-change: transform;
 
       &:hover {
