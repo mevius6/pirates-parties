@@ -9,13 +9,20 @@
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
   grid-auto-flow: column;
-  grid-auto-columns: 45ch;
+  grid-auto-columns: 100%;
   padding-block-end: 1.25rem;
   gap: var(--_space);
   margin-inline: calc(var(--_space) * -1);
   padding-inline: var(--_space);
   scroll-padding-inline: var(--_space);
   scroll-snap-type: inline mandatory;
+  @include config.respond('tablet') {
+    grid-auto-columns: 45ch;
+  }
+}
+
+.card-feed__item {
+  max-inline-size: unset;
 }
 
 .card {
@@ -41,6 +48,7 @@
   &--compact {
     // inline-size: clamp(30ch, 50%, 45ch);
     // inline-size: 100%;
+    max-inline-size: 100%;
     overflow-y: hidden;
     background: hsl(var(--sw-paperwhite));
   }
