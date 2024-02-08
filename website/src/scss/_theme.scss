@@ -1307,7 +1307,7 @@ dialog { // <-- basic noscript alert
     & :where([title=logotype]) {
       // inset-block-start: 50%;
       // inset-inline-start: 50%;
-      transform: scale(250%);
+      // transform: scale(250%);
 
       transition:
         color 400ms var(--ease-spring),
@@ -1316,7 +1316,7 @@ dialog { // <-- basic noscript alert
 
       &:hover {
         // --fill: hsl(var(--safety-yellow));
-        transform: scale(200%);
+        // transform: scale(200%);
       }
     }
 
