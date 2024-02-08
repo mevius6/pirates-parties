@@ -31,7 +31,7 @@
 
   h1 {
     /* @apply text-2xl; */
-    @apply font-displayConde leading-none tracking-normal uppercase;
+    @apply font-displayConde leading-tight tracking-normal uppercase;
   }
   h2 {
     /* @apply text-xl; */

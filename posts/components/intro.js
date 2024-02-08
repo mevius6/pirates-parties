@@ -4,7 +4,7 @@ export default function Intro() {
   return (
     // <section className="mt-16 mb-16 md:mb-12">
     <section className="flex flex-col md:flex-row items-center md:justify-between mt-8">
-      <h1 className="text-6xl md:text-8xl md:pr-8">
+      <h1 className="text-6xl md:text-8xl md:pr-8 leading-cap">
         {/* <abbr className="font-displaycaps">{BRAND_NAME_ABBR}</abbr> */}
         <abbr>{BRAND_NAME_ABBR}</abbr>
         {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="256" viewBox="0 0 225 73">

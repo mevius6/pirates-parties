@@ -115,7 +115,7 @@ mixin form(props)
         aria-checked="false"
         aria-labelledby="label-terms"
         aria-describedby="Пожалуйста, перед тем, как нажать кнопку «Отправить», ознакомьтесь с политикой обработки персональных данных."
-        onclick="document.getElementById('cta').disabled = !document.getElementById('cta').disabled;"
+        onclick=`document.getElementById('cta-${props.id}').disabled = !document.getElementById('cta-${props.id}').disabled;`
       )
       label.form__checkbox-label#label-terms(for="terms")
         | Принять&nbsp;
@@ -133,7 +133,7 @@ mixin form(props)
       base: 'form',
       type: 'button',
       text: 'Отправить'
-    })(id="cta" data-js-anim='bg-gradient' disabled)
+    })(id=`cta-${props.id}` data-js-anim='bg-gradient' disabled)
 
     #submit-result
     //- .admission

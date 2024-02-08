@@ -48,6 +48,7 @@ module.exports = {
         widest: '.25em',
       },
       lineHeight: {
+        cap: '1cap',
         none: 1,
         // tight: 1.25,
         tight: 1.15,

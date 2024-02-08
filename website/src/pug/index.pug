@@ -158,6 +158,7 @@ block content
         dialog.flow
           p Мы вышлем координаты места и время проведения мероприятия ответным письмом.
           +form({
+            id: 'modal',
             class: '',
             endpoint: '9e8c2172',
             email: 'tickets@piratykaspiyskogo.online',
@@ -264,6 +265,7 @@ block content
           text: 'Пишите нам',
           split: 'chars' })
       .grid__content: +form({
+        id: 'main',
         class: '',
         endpoint: '4c269348',
         email: data.meta.email,

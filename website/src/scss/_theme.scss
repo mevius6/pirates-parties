@@ -1140,6 +1140,15 @@ dialog { // <-- basic noscript alert
       border: 2px dashed var(--blaze-orange);
     }
 
+    .line-up {
+      // --list-gap: .5em;
+      gap: 1cap !important;
+
+      li {
+        line-height: 1cap;
+      }
+    }
+
     & h2 {
       --t: 0.21em;
       // font-weight: 900;
