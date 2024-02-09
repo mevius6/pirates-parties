@@ -5,6 +5,7 @@ import { getMouseRelativePos, select, selectAll, setCssProp } from '../utils';
 
 // https://github.com/marvinx-x/cursors-emitter
 // https://github.com/codrops/AnimatedCustomCursor/
+// https://tympanus.net/Sketches/016-custom-cursor-filter-4/
 
 /*
 const elem = select('...');

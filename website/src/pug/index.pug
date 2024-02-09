@@ -63,6 +63,8 @@ block content
         p(itemprop="description" role="subtitle")= brand.desc
       //- .grid__center.logo: include ../images/logo.svg
 
+    .fixed#canvas
+
     section.container.hero#hero
       .grid__content.self.--start
         //- h1.title= brand.name
@@ -96,9 +98,9 @@ block content
           vdim: 720,
           transform: false,
         })
-      //- .plane.grid__full
+      .plane.grid__full
         img(
-          src="../images/duotone-hires.webp"
+          src="../images/hero/duotone-hires.webp"
           crossorigin="anonymous"
           data-sampler="basicPlaneTexture")
       //- +waves()
@@ -130,8 +132,6 @@ block content
             'text': 'Mr. Khorne'
           },
         ]
-
-      .fixed#canvas
 
       .grid__start-half.d-grid.items-start
         +head({
