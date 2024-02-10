@@ -78,7 +78,7 @@
   to { transform: scaleX(1.1) }
 }
 
-.dashed-border-anim {
+.anim-dashed-border {
   --dash-color-light: var(--blaze-orange);
   --dash-color-dark: hsl(var(--safety-yellow));
   --dash-color: var(--blaze-orange);
@@ -87,14 +87,14 @@
               linear-gradient(90deg, var(--dash-color) 50%, transparent 50%),
               linear-gradient(0deg, var(--dash-color) 50%, transparent 50%),
               linear-gradient(0deg, var(--dash-color) 50%, transparent 50%),
-              var(--bg-color, var(--background-a60));
+              var(--bg-color, var(--background-a25));
   background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
   background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
   background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
   animation: dashMove 5s linear infinite;
   // animation-play-state: running;
 
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(40px);
 
   :is([data-theme-style=light]) & {
     --dash-color: var(--dash-color-light);

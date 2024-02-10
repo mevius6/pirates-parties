@@ -167,7 +167,10 @@ block content
           form.d-flex(method="dialog")
             p Мы вышлем координаты места и время проведения мероприятия ответным письмом.
             button.font-display.space-unset.flex-centered.sqr.force-tap-size
-              span.icon(style=`--wdth: 150`) &times; <!-- × -->
+              //- span.icon(style=`--wdth: 150`) &times; <!-- × -->
+              svg.icon#cross(
+                viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg")
+                path(d="M0,0 16,16 M16,0 0,16")
           +form({
             id: 'modal',
             class: '',
@@ -229,7 +232,7 @@ block content
         each i in postCount
           li.item(id=`post${i+1}`)
             +card({
-              class: 'dashed-border-anim',
+              class: 'anim-dashed-border',
               view: 'compact',
               media: true,
               action: true
@@ -256,7 +259,7 @@ block content
         each i in lotCount
           li.item(id=`lot${i+1}`)
             +card({
-              class: 'dashed-border-anim',
+              class: 'anim-dashed-border',
               view: 'compact',
               media: true,
               action: true

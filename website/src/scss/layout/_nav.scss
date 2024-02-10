@@ -40,6 +40,7 @@
   &__items {
     --list-gap: 0;
 
+    min-inline-size: 20ch;
     max-inline-size: 70ch;
     margin: 1rem;
   }
@@ -75,7 +76,8 @@
 
       font-size: var(--px2rem);
       line-height: var(--lh-precise);
-      font-variant-caps: all-petite-caps;
+      // font-variant-caps: all-petite-caps;
+      font-variant-caps: petite-caps;
       font-variation-settings:
         'wght' var(--wght),
         'ital' var(--ital);
