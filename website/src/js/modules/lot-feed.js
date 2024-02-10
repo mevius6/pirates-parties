@@ -88,8 +88,8 @@ class LotCard {
   async _displayContent(title, about, artistName, dateCreated, price) {
     this.DOM.title.textContent = `${title} ${artistName}`;
     this.DOM.body.textContent = about;
-    this.DOM.cta.textContent = `Заказать`;
-    this.DOM.cta.href = `/#contact`;
+    this.DOM.cta.textContent = 'Заказать';
+    this.DOM.cta.href = '/#contact';
     // this.DOM.cta.target = '_blank';
     // this.DOM.cta.rel = 'noopener';
 
@@ -171,7 +171,7 @@ export default class LotFeed {
     this.DOM = { el: el };
     this.cards = [];
     this.wrap = select('#goods');
-    this.items = selectAll('.card--compact', this.wrap);
+    this.items = selectAll('.card', this.wrap);
 
     this._runAsyncFetch().then((v) => {
       v.map(async (lot, i) => {

@@ -16,6 +16,7 @@
   padding-inline: var(--_space);
   scroll-padding-inline: var(--_space);
   scroll-snap-type: inline mandatory;
+
   @include config.respond('tablet') {
     grid-auto-columns: 45ch;
   }
@@ -27,98 +28,76 @@
 
 .card {
   $card: &;
-  // Макет
   $compact: #{&}--compact;
   $article: #{&}--article;
-  // Стиль
-  $elevated: #{&}--elevated;
-  $outlined: #{&}--outlined;
+
+  // --bg-color: hsl(var(--sw-paperwhite));
 
   scroll-snap-align: start;
   // position: relative;
   display: grid;
   gap: 1.25rem;
   padding: 1.25rem;
-  // min-inline-size: 20ch;
+
+  max-inline-size: 100%;
+  // min-inline-size: 30ch;
   // max-inline-size: 45ch;
+  // inline-size: clamp(30ch, 50%, 45ch); // 20–45ch
+
   border-radius: 5px;
+  overflow-y: hidden;
   contain: layout;
-  will-change: transform;
 
-  &--compact {
-    // inline-size: clamp(30ch, 50%, 45ch);
-    // inline-size: 100%;
-    max-inline-size: 100%;
-    overflow-y: hidden;
-    background: hsl(var(--sw-paperwhite));
-  }
+  // TODO
+  // will-change: transform;
+  // from
+  // &--compact {…}
+  // to
+  // &--article {…}
 
-  &--elevated {
-    overflow: hidden;
-    background-color: var(--background);
-    // box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
-  }
+  &__image-wrapper,
+  &__image {
+    aspect-ratio: var(--ratio, 1);
 
-  &--outlined {
-    padding: 0;
-    overflow: visible;
-
-    &::before {
-      position: absolute;
-      top: calc(0.5rem * -2);
-      left: calc(0.5rem * -2);
-      z-index: -1;
-      inline-size: 100%;
-      block-size: 100%;
-      content: '';
-      background-image:
-        repeating-linear-gradient(
-          -24deg,
-          transparent,
-          transparent 4px,
-          var(--accent) 0,
-          var(--accent) 5px
-        );
-      border-radius: 0.5rem;
-      box-shadow: var(--accent) 0 0 0 1px inset;
+    @include config.respond('tablet') {
+      :where(:not(#goods)) & {--ratio: 16/9;}
     }
   }
 
   &__image-wrapper {
     inline-size: 100%;
-    aspect-ratio: 16/9;
     overflow: hidden;
     // LQIP
     background-size: cover;
   }
 
+  // picture,
   &__image {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
     will-change: transform;
 
-    picture {
-      aspect-ratio: 16/9;
-    }
+    img { block-size: 100%; }
   }
 
   &__headline {
     #{$compact} & {
       @include config.line-clamp(1);
 
-      display: block;
+      display: inline-block;
       max-inline-size: 100%;
-      padding: .5em;
-      // text-wrap: balance;
-      color: var(--background);
-      background:
-        linear-gradient(
-          90deg,
-          var(--accent) 0%,
-          hsl(var(--warm-gray-2) / 0.4) 100%
-        );
-      backdrop-filter: blur(23px); // 35px
+      // padding: .5em;
+      text-align: left;
+
+      // color: var(--background);
+      // background:
+      //   linear-gradient(
+      //     90deg,
+      //     var(--accent) 0%,
+      //     hsl(var(--warm-gray-2) / 0.4) 100%
+      //   );
+      // backdrop-filter: blur(23px); // 35px
     }
   }
 
@@ -129,17 +108,17 @@
     text-wrap: balance;
 
     #{$compact} & {
-
       hyphens: manual;
       // opacity: 0;
-      flex-grow: 0;
+      // flex-grow: 0;
     }
   }
 
   &__date {
-    --weight-axis: 96;
+    // --weight-axis: 100;
 
-    display: block;
+    font-family: var(--font-display);
+    display: inline-block;
     inline-size: 100%;
     font-style: italic;
     text-align: right;

@@ -19,6 +19,21 @@
   contain-intrinsic-size: auto var(--size-containment, 1000px);
 }
 
+.sqr,
+.square, {
+  aspect-ratio: var(--ratio-square);
+}
+
+.space-unset {
+  padding-inline: unset;
+  padding-block: unset;
+}
+
+.force-tap-size {
+  min-inline-size: var(--min-touch-target-size);
+  min-block-size: var(--min-touch-target-size);
+}
+
 //
 // Positioning
 //

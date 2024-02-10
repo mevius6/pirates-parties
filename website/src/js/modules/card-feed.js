@@ -168,7 +168,7 @@ export default class CardFeed {
     this.DOM = { el: el };
     this.cards = [];
     this.wrap = select('#posts');
-    this.items = selectAll('.card--compact', this.wrap);
+    this.items = selectAll('.card', this.wrap);
 
     this._runAsyncFetch().then((v) => {
       v.map(async (post, i) => {

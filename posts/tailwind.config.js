@@ -128,6 +128,7 @@ module.exports = {
         ],
         sans: ['Neue Haas Unica W1G', 'sans-serif'],
         // sans: ['Univers LT CYR', 'sans-serif'],
+        // sans: ['LL Unica77 Cyrillic', 'sans-serif'],
       },
       boxShadow: {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",

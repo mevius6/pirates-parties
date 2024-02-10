@@ -2,9 +2,13 @@
 
 :where(#hero) {
   align-items: center;
-  min-block-size: 100dvh;
+  min-block-size: 100svh; // or 100dvh
   position: relative;
-  place-items: center;
+
+  // will change via utility classes
+  // place-items: center;
+  // place-content: center;
+  place-content: start;
 
   & > * { grid-row: 1; }
 
@@ -23,16 +27,19 @@
   hgroup {
     --flow-space: var(--spacer-3x);
 
-    z-index: 1;
+    // z-index: 1;
     padding-inline: 3ex;
     padding-block: 2ch;
     margin-inline: var(--spacer-2x);
     text-align: left;
 
+    place-items: start;
+
     @include config.respond('tablet') {
+      padding: unset;
       margin-inline: unset;
-      grid-column: center;
-      place-self: center;
+      // grid-column: center;
+      // place-self: center;
     }
   }
 
@@ -51,5 +58,13 @@
     @include config.respond('tablet') {
       padding-inline: calc(2.5rem + 2vw);
     }
+  }
+
+  & > .overlay {
+    background-image: url('../images/hero/duotone-hires-sqr.webp');
+    background-position: center bottom;
+    background-size: contain;
+    // background-attachment: fixed;
+    pointer-events: none;
   }
 }

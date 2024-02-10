@@ -14,6 +14,104 @@
     0 180px 80px hsl(200 95% 3% / 0.13);
 }
 
+:where(.--elevated) {
+  box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+}
+
+:where(.--outlined) {
+  padding: 0;
+  overflow: visible;
+
+  &::before {
+    position: absolute;
+    top: calc(0.5rem * -2);
+    left: calc(0.5rem * -2);
+    z-index: -1;
+    inline-size: 100%;
+    block-size: 100%;
+    content: '';
+
+    background-image:
+      repeating-linear-gradient(
+        -24deg,
+        transparent,
+        transparent 4px,
+        var(--accent) 0,
+        var(--accent) 5px
+      );
+    border-radius: 0.5rem;
+    box-shadow: var(--accent) 0 0 0 1px inset;
+  }
+}
+
+:where(.noisy) { filter: url(#riso-noise) }
+
+:where(.bg-shadow) {
+  &::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    content: '';
+    pointer-events: none;
+    inline-size: 100%;
+    block-size: 100%;
+    transform-origin: 100% 0;
+    background: url(../images/shadow.png) 100% 0/cover no-repeat fixed;
+    // background-image: var(--bg-image, var(--background));
+    background-attachment: fixed;
+    animation: move 7s 2s infinite alternate;
+    mix-blend-mode: overlay;
+    opacity: .75s;
+
+    // mask: url(../images/shadow.png);
+
+    [data-theme-style=light] & {
+      --bg-image: var(--drawing-light, var(--grad-1));
+    }
+    [data-theme-style=dark] & {
+      --bg-image: var(--drawing-dark, var(--grad-2));
+    }
+  }
+}
+
+@keyframes move {
+  to { transform: scaleX(1.1) }
+}
+
+.dashed-border-anim {
+  --dash-color-light: var(--blaze-orange);
+  --dash-color-dark: hsl(var(--safety-yellow));
+  --dash-color: var(--blaze-orange);
+
+  background: linear-gradient(90deg, var(--dash-color) 50%, transparent 50%),
+              linear-gradient(90deg, var(--dash-color) 50%, transparent 50%),
+              linear-gradient(0deg, var(--dash-color) 50%, transparent 50%),
+              linear-gradient(0deg, var(--dash-color) 50%, transparent 50%),
+              var(--bg-color, var(--background));
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
+  background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+  animation: dashMove 5s linear infinite;
+  // animation-play-state: running;
+
+  :is([data-theme-style=light]) & {
+    --dash-color: var(--dash-color-light);
+  }
+  :is([data-theme-style=dark]) & {
+    --dash-color: var(--dash-color-dark);
+  }
+
+  &:where(:is(:not(:hover, :focus))) {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes dashMove {
+  to {
+    background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
+  }
+}
+
 // https://ishadeed.com/article/use-cases-css-comparison-functions/#dynamic-line-separator
 // :is(.separator, .sep) {…}
 .divider {

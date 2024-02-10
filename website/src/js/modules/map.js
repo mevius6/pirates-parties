@@ -11,13 +11,15 @@ const root = document.documentElement;
 
 /* eslint-disable no-unused-vars */
 
+const accent = '#f96f27';
+
 const ICON_GRADIENT = `<linearGradient id="Grad" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(45)">
-  <stop offset="0%" stop-color="#cba576" />
-  <stop offset="100%" stop-color="#cba576" />
+  <stop offset="0%" stop-color="${accent}" />
+  <stop offset="100%" stop-color="${accent}" />
 </linearGradient>`;
 
 const ICON = `<svg width="48" height="48" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <path fill="#D4295E" d="M29.973 4.478A14.244 14.244 0 0 0 16 13.842c-2.107-5.82-7.787-9.628-13.973-9.364a14.253 14.253 0 0 0 6.2 12.36a7.647 7.647 0 0 1 3.316 6.32v4.376h8.916V23.16a7.647 7.647 0 0 1 3.315-6.32a14.247 14.247 0 0 0 6.2-12.36z"/>
+  <path fill="${accent}" d="M29.973 4.478A14.244 14.244 0 0 0 16 13.842c-2.107-5.82-7.787-9.628-13.973-9.364a14.253 14.253 0 0 0 6.2 12.36a7.647 7.647 0 0 1 3.316 6.32v4.376h8.916V23.16a7.647 7.647 0 0 1 3.315-6.32a14.247 14.247 0 0 0 6.2-12.36z"/>
 </svg>`;
 
 const ICON_ZOOM_IN = `<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline"><defs>${ICON_GRADIENT}</defs>
@@ -34,8 +36,8 @@ const ICON_METRO = `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http:
 const ATTR = 'Данные карты &copy; <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer">Участники OpenStreetMap</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank" rel="noopener noreferrer">CC-BY-SA</a>, Векторные данные &copy; <a href="https://www.mapbox.com/" target="_blank" rel="noopener noreferrer">Mapbox</a>';
 
 const NAMES = [
-  'Локация в центре города',
   'Загородная локация',
+  'Локация в центре города',
 ];
 
 const DARK_STYLE_ID = 'cllsgvh80009g01r4781i6b1h';
@@ -81,14 +83,14 @@ const addData = (name, desc, adds, metro=[], opens, telephone, direction) => `
     <span itemprop="description" data-hidden>${desc}</span-->
     <span>${adds}, Москва</span>
   </div>
-  <!--div class="flow">
+  <div class="flow">
     <strong>Ближайшие станции<br /></strong>
     <ul>${loopItems(metro)}</ul>
-  </div-->
+  </div>
   <a itemprop="hasMap" class="direction" href="${direction}" target="_blank" rel="noopener noreferrer"><span>Проложить маршрут</span></a>
 `;
 
-// const loc1 = {
+// const dummylocation = {
 //   data: () => addData(
 //     NAMES[0],
 //     '',
@@ -102,37 +104,42 @@ const addData = (name, desc, adds, metro=[], opens, telephone, direction) => `
 //   lat: 55.742651,
 //   lng: 37.612731,
 // };
-// const loc2 = {
-//   data: () => addData(
-//     NAMES[0],
-//     '',
-//     'Болотная набережная, 15, к1',
-//     ['Кропоткинская', 'Третьяковская'],
-//     '10&colon;00–22&colon;00',
-//     '',
-//     // `https://yandex.ru/maps/213/moscow/?ll=${loc1.lng}%2C${loc1.lat}&mode=routes&rtext=~${loc1.lat}%2C${loc1.lng}&rtt=auto&ruri=~&z=10`
-//     'https://yandex.ru/maps/-/'
-//   ),
-//   lat: 55.742651,
-//   lng: 37.612731,
-// };
+
 const loc1 = {
   data: () => addData(
     NAMES[0],
     '',
-    'Клязьминское водохранилище',
+    'Клязьминское водохранилище, причал «Золотой Город»',
     [],
     '',
     '',
     // `https://yandex.ru/maps/213/moscow/?ll=${loc1.lng}%2C${loc1.lat}&mode=routes&rtext=~${loc1.lat}%2C${loc1.lng}&rtt=auto&ruri=~&z=10`
     'https://yandex.ru/maps/-/'
   ),
-  lat: 55.9912,
-  lng: 37.5667,
+  // lat: 55.9912,
+  // lng: 37.5667,
+  lat: 55.9857,
+  lng: 37.5886,
+};
+
+const loc2 = {
+  data: () => addData(
+    NAMES[1],
+    '',
+    'Большой Спасоглинищевский переулок, 9/1, с10',
+    ['Китай-город'],
+    '',
+    '',
+    // `https://yandex.ru/maps/213/moscow/?ll=${loc1.lng}%2C${loc1.lat}&mode=routes&rtext=~${loc1.lat}%2C${loc1.lng}&rtt=auto&ruri=~&z=10`
+    'https://yandex.ru/maps/-/'
+  ),
+  lat: 55.7549,
+  lng: 37.6374,
 };
 
 const locations = [
-  [loc1.data, loc1.lat, loc1.lng]
+  [loc1.data, loc1.lat, loc1.lng],
+  [loc2.data, loc2.lat, loc2.lng]
 ];
 
 // https://docs.mapbox.com/api/maps/#static-tiles
@@ -147,7 +154,7 @@ if (root.dataset.device === 'mobile') {
 
 // https://docs.mapbox.com/help/glossary/zoom-level/#tile-size
 const vectorLayerOptions = {
-  minZoom: 10,
+  minZoom: 8,
   maxZoom: 18,
   username: 'mevius6',
   tileSize: 512,
@@ -176,9 +183,9 @@ toggle.addEventListener('colorschemechange', () => {
   }
 });
 
-// const coords1 = L.latLng(loc1.lat, loc1.lng),
-//       coords2 = L.latLng(loc2.lat, loc2.lng),
-//       bounds = L.latLngBounds(coords1, coords2);
+const coords1 = L.latLng(loc1.lat, loc1.lng),
+      coords2 = L.latLng(loc2.lat, loc2.lng),
+      bounds = L.latLngBounds(coords1, coords2);
 
 const mapOptions = {
   attributionControl: false,
@@ -188,9 +195,10 @@ const mapOptions = {
   scrollWheelZoom: false,
 }
 
-const map = L.map('map', mapOptions).setView([loc1.lat, loc1.lng], 14);
-  // OR
-  // .fitBounds(bounds, {padding: [100, 100]});
+const map = L.map('map', mapOptions).setView([loc2.lat, loc2.lng], 10);
+// const map = L.map('map', mapOptions).fitBounds(bounds, {
+//   padding: [0, 0]
+// });
 
 (async () => {
   if (style === 'dark') {
@@ -234,7 +242,7 @@ locations.map((location, i) => {
 // https://leafletjs.com/reference-1.7.1.html#layergroup-togeojson
 L.layerGroup(markers).addTo(map);
 
-markers[0].openPopup();
+markers[1].openPopup();
 
 L.control.zoom({
   position: 'topright',

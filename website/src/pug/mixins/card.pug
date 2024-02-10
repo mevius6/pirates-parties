@@ -1,13 +1,37 @@
 mixin card(props)
-  - let className = 'card'
-  - let attrs = {}
-  - let style = ` ${className}--${props.style}` ?? props.style
-  - let view = ` ${className}--${props.view}` ?? props.view
-  - attrs.class = className + style + view
+  -
+    let {
+      class: className = '',
+      head,
+      body,
+      date,
+      view = 'compact',
+      media = true,
+      ratio = '16/9',
+      action = true,
+      ...rest
+    } = props
+  -
+    let attrs = {},
+        classes = [],
+        styles = {}
+  -
+    let classList = ['card', 'card--compact']
+    //- classList[className]
+    classList.push(className)
+  -
+    let attrsList = {
+      class: [...classList],
+      //- style: {'--ratio': ratio}
+    }
+  //-
+    let className = 'card'
+    let view = ` ${className}--${view}` ?? props.view
+    attrs.class = className + view
 
-  article(data-date= props.date || '')&attributes(attrs)
-    h4.card__headline= props.head
-    if props.media
+  article&attributes(attrsList)
+    h3.card__headline= head
+    if media
       .card__image-wrapper
         //-
           picture.card__image
@@ -15,15 +39,15 @@ mixin card(props)
             img(data-src="" alt="" title="" loading="lazy")
     //- header.card__header
       if props.view === 'compact'
-        | #[h4.card__headline= props.head]
+        | #[h4.card__headline= head]
       else
-        | #[h2.card__headline= props.head]
+        | #[h2.card__headline= head]
     p.card__body
       if !props.sink
-        | #{props.body}
+        | #{body}
       else
         block
-    if props.action
+    if action
       footer.card__footer
         time.card__date(datetime="")
         +cta({

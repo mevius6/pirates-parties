@@ -63,30 +63,22 @@ block content
         p(itemprop="description" role="subtitle")= brand.desc
       //- .grid__center.logo: include ../images/logo.svg
 
-    .fixed#canvas
-
     section.container.hero#hero
-      .grid__content.self.--start
-        //- h1.title= brand.name
-        h1.flex-centered.title
-          span(style={
-            'font-variation-settings': `'wdth' 96`,
-          })
+      hgroup.grid__start-half.self.--start
+        h1.flex-centered
+          span.title(style={ '--wdth': 96, '--slnt': 0 })
             | Пираты #[br]
-          span(style={
-            'font-variation-settings': `'wdth' 56`,
-          })
-            | Каспииского #[br]
-          span(style={
-            'font-variation-settings': `'wdth' 150`,
-          })
+          span.title(style={ '--wdth': 55, '--slnt': 0 })
+            | Каспийского #[br]
+          span.title(style={ '--wdth': 150, '--slnt': 0 })
             | моря
+          span.title(style={ '--wdth': 75, '--slnt': 0 })
+            | подполье #[br]
+          span.title(style={ '--wdth': 58, '--slnt': 0 })
+            | московских #[br]
+          span.title(style={ '--wdth': 67, '--slnt': 0 })
+            | акваторий
       .overlay
-      //- +head({
-        class: ['font-display', 'uppercase'],
-        level: 1,
-        text: 'подполье московских акваторий',
-        split: 'chars' })
       //-
         +picture({
           class: ['abs-centered','grid__full'],
@@ -98,12 +90,13 @@ block content
           vdim: 720,
           transform: false,
         })
-      .plane.grid__full
+      .fixed#canvas
+      //- .plane.grid__full
         img(
           src="../images/hero/duotone-hires.webp"
           crossorigin="anonymous"
           data-sampler="basicPlaneTexture")
-      //- +waves()
+
       //- include ../images/anomalous-motion-illusion.svg
 
     section.container.spaced.--ada-lg#advert(data-sec="ad")
@@ -139,22 +132,22 @@ block content
           level: 2,
           text: ['Krähennest', '17.02', '21:00'],
           split: 'chars' })
-
+        //- +list({
+          class: ['line-up', 'uppercase'],
+          title: 'Помощь в навигации:',
+          items: lineup })
+        +head({
+          class: ['font-display', 'text-white', 'subhead'],
+          level: 4,
+          text: ['Презентация зина*', 'по трипу Москва-Крым']
+        })
       article.flow.grid__end-half.--ada-lg.text-white
-        h4.subhead
-          //- | 17.02 в 21:00
-          | Презентация зина* по трипу Москва-Крым
         p.ad-copy
           | Фотоархив, графика. Полное собрание лучшего, подведение итогов.
         p.ad-copy
           | Новая глава ПКМ: делимся новостями, анонсируем СОБЫТИЕ.
           | #[br]
           | В программе: танцы, ром.
-        +list({
-          class: ['line-up', 'uppercase'],
-          title: 'Помощь в навигации:',
-          items: lineup
-        })
         .small-copy
           small
             | * первые печатные копии зина будут доступны для продажи на мероприятии
@@ -170,6 +163,9 @@ block content
             | *** название вечеринки#{spacedEmDash}отсылка к локации
 
         dialog.flow
+          form.d-flex(method="dialog")
+            button.font-display.space-unset.flex-centered.sqr.force-tap-size
+              h6(style=`--wdth: 150`) &times; <!-- × -->
           p Мы вышлем координаты места и время проведения мероприятия ответным письмом.
           +form({
             id: 'modal',
@@ -178,8 +174,7 @@ block content
             email: 'tickets@piratykaspiyskogo.online',
             multi: false,
             recaptcha: false })
-          form(method="dialog")
-            button: b ОК
+
         +cta({
           type: 'button',
           link: '',
@@ -216,11 +211,6 @@ block content
           level: 5,
           text: [`Это наш магазин и платформа для анонса мероприятий, релизов и${NBSP}архив полезных материалов.`],
           split: 'chars' })
-        //- +cta({
-          type: 'anchor',
-          link: '',
-          text: ''
-        //- })(data-js-anim='bg-gradient' target='_blank')
 
     // Лента блога || Blog feed
     section.container.spaced.--ada-md#posts(data-id="posts")
@@ -230,7 +220,6 @@ block content
           level: 2,
           text: 'Бортовой журнал',
           split: 'chars' })
-      //- #FeedLabel
       ul.grid__full.horizontal-scroller.card-feed(
         style={ '--columns': 3 }
         aria-labelledby="#FeedLabel"
@@ -239,7 +228,7 @@ block content
         each i in postCount
           li.item(id=`post${i+1}`)
             +card({
-              style: 'elevated',
+              class: 'dashed-border-anim',
               view: 'compact',
               media: true,
               action: true
@@ -260,13 +249,13 @@ block content
           split: 'chars' })
       ul.grid__full.horizontal-scroller.card-feed(
         style={ '--columns': 3 }
-        aria-labelledby="#FeedLabel"
+        aria-labelledby="#MerchLabel"
       )
         - let lotCount = [0,1,2]
         each i in lotCount
           li.item(id=`lot${i+1}`)
             +card({
-              style: 'elevated',
+              class: 'dashed-border-anim',
               view: 'compact',
               media: true,
               action: true
@@ -279,7 +268,7 @@ block content
         text: 'Дислокация',
         split: 'chars' })
       +map({
-        classes: 'grid__full',
+        classes: 'grid__content',
         addSidebar: false })
 
     section.container.spaced.--ada-md#contact
