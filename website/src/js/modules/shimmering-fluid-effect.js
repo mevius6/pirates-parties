@@ -553,8 +553,13 @@ window.addEventListener('load', async () => {
     // renderPass.uniforms.bgColor.value = [237, 236, 230];
 
     const themeSwitch = select('theme-switch');
+    const root = document.documentElement;
+
+    renderPass.uniforms.bgColor.value = (root.dataset.themeStyle === 'dark')
+      ? [46, 46, 48]
+      : [237, 236, 230];
+
     themeSwitch.addEventListener('colorschemechange', () => {
-      // root.dataset.themeStyle = themeSwitch.mode;
       if (themeSwitch.mode === 'dark') {
         renderPass.uniforms.bgColor.value = [46, 46, 48];
       } else {

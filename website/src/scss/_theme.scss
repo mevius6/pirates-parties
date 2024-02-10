@@ -1098,19 +1098,28 @@ dialog { // <-- basic noscript alert
       border: 2px dashed var(--blaze-orange);
 
       & > [method='dialog'] {
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--em-spacer-5);
+
         button {
           margin-inline: auto 0;
           // background-color: var(--background) !important;
           // color: var(--foreground) !important;
-        }
 
-        button:is(:hover, :focus) > h6 {
-          color: var(--diva-pink);
-        }
+          span.icon {
+            transition: color var(--ease-out-quart) 150ms;
+          }
 
-        button > h6 {
-          line-height: 1cap !important;
-          color: inherit;
+          &:is(:hover) > .icon {
+            color: var(--diva-pink);
+          }
+
+          button > .icon {
+            font-family: var(--font-stack-mono);
+            line-height: 1cap !important;
+            color: inherit;
+          }
         }
       }
     }

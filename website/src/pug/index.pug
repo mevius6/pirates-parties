@@ -49,6 +49,8 @@ block content
       attList: {...attList},
     })
 
+  .fixed#canvas
+
   section.grid
     //- section.container.bg-overlay#hero(data-sec="hero")
       //- video-player.grid__full(basename="footage-10s-prod")
@@ -90,7 +92,6 @@ block content
           vdim: 720,
           transform: false,
         })
-      .fixed#canvas
       //- .plane.grid__full
         img(
           src="../images/hero/duotone-hires.webp"
@@ -164,9 +165,9 @@ block content
 
         dialog.flow
           form.d-flex(method="dialog")
+            p Мы вышлем координаты места и время проведения мероприятия ответным письмом.
             button.font-display.space-unset.flex-centered.sqr.force-tap-size
-              h6(style=`--wdth: 150`) &times; <!-- × -->
-          p Мы вышлем координаты места и время проведения мероприятия ответным письмом.
+              span.icon(style=`--wdth: 150`) &times; <!-- × -->
           +form({
             id: 'modal',
             class: '',
