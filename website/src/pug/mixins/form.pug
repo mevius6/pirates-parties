@@ -105,8 +105,10 @@ mixin form(props)
 
     //- add the ability to select multiple products from different categories
     //- i.e., two select box w/ bunch of options.
+    //- https://open-ui.org/prototypes/selectmenu/
     if props.multi
       label.form__field(for="multi"): block
+        //- select#groups(name="groups" multiple size="2"): block
 
     .form__group
       input.form__checkbox.has-tooltip#terms(

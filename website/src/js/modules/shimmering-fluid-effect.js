@@ -500,57 +500,21 @@ window.addEventListener('load', async () => {
       fromTexture: ripples.getTexture(),
     });
 
-    // GUI
-    // const gui = new dat.GUI();
-
-    // const guiHue = gui.add(
-    //   { hue: renderPass.uniforms.hue.value },
-    //   'hue',
-    //   0,
-    //   Math.PI * 2,
-    //   0.01
-    // );
-    // guiHue.onChange((value) => {
-    //   renderPass.uniforms.hue.value = value;
-    // });
-
-    renderPass.uniforms.hue.value = 4.28;
-
-    // const guiSaturation = gui.add(
-    //   { saturation: renderPass.uniforms.saturation.value },
-    //   'saturation',
-    //   0,
-    //   3,
-    //   0.0625
-    // );
-    // guiSaturation.onChange((value) => {
-    //   renderPass.uniforms.saturation.value = value;
-    // });
-
+    renderPass.uniforms.hue.value = 4.28; // 0–6.28
     renderPass.uniforms.saturation.value = 1.5;
 
-    // const guiBgColor = gui.addColor(
-    //   {
-    //     bgColor: {
-    //       r: renderPass.uniforms.bgColor.value[0],
-    //       g: renderPass.uniforms.bgColor.value[1],
-    //       b: renderPass.uniforms.bgColor.value[2],
-    //     },
-    //   },
-    //   'bgColor'
-    // );
-    // guiBgColor.onChange((value) => {
+    // const bgColor = {
+    //   r: renderPass.uniforms.bgColor.value[0],
+    //   g: renderPass.uniforms.bgColor.value[1],
+    //   b: renderPass.uniforms.bgColor.value[2],
+    // }
+    // bgColor.onChange((value) => {
     //   renderPass.uniforms.bgColor.value = [value.r, value.g, value.b];
     // });
 
     // Seafoam rgb(98, 194, 177)
     // Sea blue rgb(0, 116, 162)
     // Turquoise rgb(0, 170, 147)
-    // renderPass.uniforms.bgColor.value = [0, 116, 162];
-    // SW Tricorn Black
-    // renderPass.uniforms.bgColor.value = [46, 46, 48];
-    // SW Pure White
-    // renderPass.uniforms.bgColor.value = [237, 236, 230];
 
     const themeSwitch = select('theme-switch');
     const root = document.documentElement;
@@ -561,8 +525,12 @@ window.addEventListener('load', async () => {
 
     themeSwitch.addEventListener('colorschemechange', () => {
       if (themeSwitch.mode === 'dark') {
+        renderPass.uniforms.hue.value = 2.28;
+        // SW Tricorn Black
         renderPass.uniforms.bgColor.value = [46, 46, 48];
       } else {
+        renderPass.uniforms.hue.value = 4.28;
+        // SW Pure White
         renderPass.uniforms.bgColor.value = [237, 236, 230];
       }
     });

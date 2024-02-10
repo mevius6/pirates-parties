@@ -1,29 +1,67 @@
 @use '../config';
 
+// https://open-ui.org/components/card.research/
+// https://snap-gallery.netlify.app/
 // ? https://chjweb.hashnode.dev/skeleton-loader-in-pure-css
 
 .horizontal-scroller {
+  --shadow-strength: 10%;
+  --shadow-color: 220 40% 2%;
+
+  --_size-content: 45ch;
+  --_bleed: 2rem;
   --_space: 1.25rem;
+  // --sidebar-size: 75px;
 
   display: grid;
-  overflow-x: scroll;
-  overscroll-behavior-inline: contain;
+  // display: flex;
+
+  // block-size: 100dvh;
+  // inline-size: 100vw;
+
+  overflow-x: auto; // scroll
+  overscroll-behavior-x: contain;
+
+  // scroll-snap-type: x mandatory;
+  scroll-snap-type: inline mandatory;
+
+  // scroll-padding-inline-start: var(--sidebar-size);
+  scroll-padding-inline: var(--_space);
+
   grid-auto-flow: column;
   grid-auto-columns: 100%;
-  padding-block-end: 1.25rem;
   gap: var(--_space);
-  margin-inline: calc(var(--_space) * -1);
+
+  padding-block-end: var(--_space);
   padding-inline: var(--_space);
-  scroll-padding-inline: var(--_space);
-  scroll-snap-type: inline mandatory;
+  margin-inline: calc(var(--_space) * -1);
+
+  & .card:where(:not(:first-child, :last-child)) {
+    scroll-snap-align: center;
+  }
+  & .card:is(:first-child, :first-of-type) {
+    scroll-snap-align: start;
+  }
+  & .card:is(:last-child, :last-of-type) {
+    scroll-snap-align: end;
+  }
 
   @include config.respond('tablet') {
     grid-auto-columns: 45ch;
   }
-}
 
-.card-feed__item {
-  max-inline-size: unset;
+  aside {
+    inline-size: var(--sidebar-size);
+
+    flex-shrink: 0;
+
+    position: sticky;
+    inset-inline-start: 0;
+  }
+
+  .card-feed__item {
+    max-inline-size: unset;
+  }
 }
 
 .card {
@@ -33,16 +71,16 @@
 
   // --bg-color: hsl(var(--sw-paperwhite));
 
-  scroll-snap-align: start;
-  // position: relative;
-  display: grid;
-  gap: 1.25rem;
-  padding: 1.25rem;
-
   max-inline-size: 100%;
   // min-inline-size: 30ch;
   // max-inline-size: 45ch;
   // inline-size: clamp(30ch, 50%, 45ch); // 20–45ch
+
+  // scroll-snap-align: start;
+
+  display: grid;
+  gap: var(--_space);
+  padding: var(--_space);
 
   border-radius: 5px;
   overflow-y: hidden;
@@ -60,7 +98,7 @@
     aspect-ratio: var(--ratio, 1);
 
     @include config.respond('tablet') {
-      :where(:not(#goods)) & {--ratio: 16/9;}
+      :where(:not(#goods)) & { --ratio: 16/9; }
     }
   }
 
@@ -78,7 +116,11 @@
     background-size: cover;
     will-change: transform;
 
-    img { block-size: 100%; }
+    img {
+      object-fit: cover;
+      object-position: 50% 50%;
+      block-size: 100%;
+    }
   }
 
   &__headline {
@@ -87,17 +129,7 @@
 
       display: inline-block;
       max-inline-size: 100%;
-      // padding: .5em;
       text-align: left;
-
-      // color: var(--background);
-      // background:
-      //   linear-gradient(
-      //     90deg,
-      //     var(--accent) 0%,
-      //     hsl(var(--warm-gray-2) / 0.4) 100%
-      //   );
-      // backdrop-filter: blur(23px); // 35px
     }
   }
 
@@ -110,20 +142,17 @@
     #{$compact} & {
       hyphens: manual;
       // opacity: 0;
-      // flex-grow: 0;
     }
   }
 
   &__date {
-    // --weight-axis: 100;
-
-    font-family: var(--font-display);
+    opacity: 0.75;
     display: inline-block;
     inline-size: 100%;
-    font-style: italic;
+
+    font-family: var(--font-display);
+    font-style: oblique 15deg;
     text-align: right;
-    // text-transform: capitalize;
-    opacity: 0.75;
 
     // &::before { content: attr(datetime); }
   }
