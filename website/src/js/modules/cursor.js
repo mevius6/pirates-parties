@@ -53,11 +53,11 @@ if (window.matchMedia && window.matchMedia("(pointer:coarse)").matches) {
   // move the background gradient by mouse coords
   // ? '[data-js-anim=bg-gradient]:not([disabled])'
   selectAll('[data-js-anim=bg-gradient]').forEach(elem => {
+    // elem.addEventListener('pointermove', (e) => {…})
     elem.addEventListener('mousemove', (e) => {
       let x = getMouseRelativePos(e, {math: 'px'}).x;
       let y = getMouseRelativePos(e, {math: 'px'}).y;
-
-      // set and update CSS variables (not work in Chrome)
+      // set and update CSS variables
       setCssProp('--x', `${x}px`, elem);
       setCssProp('--y', `${y}px`, elem);
     });

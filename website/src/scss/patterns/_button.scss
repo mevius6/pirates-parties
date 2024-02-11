@@ -104,8 +104,8 @@
 @layer instances {
   // CTA
   :is(button, a):where([data-js-anim='bg-gradient']) {
-    --rad-grad-color-1: var(--accent-extra);
-    --rad-grad-color-2: var(--accent-shade);
+    --rad-grad-color-1: var(--accent);
+    --rad-grad-color-2: var(--background);
     --btn-background:
       linear-gradient(var(--background-a80), var(--background)) padding-box,
       radial-gradient(
@@ -116,13 +116,13 @@
     --bloom-light:
       radial-gradient(
         farthest-corner at var(--x, 0) var(--y, 0),
-        var(--accent-extra),
-        var(--accent)
+        var(--accent),
+        var(--trn)
       ) border-box;
     --bloom-dark:
       radial-gradient(
         farthest-corner at var(--x, 0) var(--y, 0),
-        var(--accent-extra),
+        var(--accent),
         var(--trn)
       ) border-box;
     --link-background: var(--btn-background);
@@ -132,7 +132,9 @@
     overflow: visible;
 
     [data-theme-style='light'] & {
+      --rad-grad-color-1: var(--background);
       --rad-grad-color-2: var(--accent);
+
       &::after { --bg-image: var(--bloom-light); }
     }
 
@@ -148,8 +150,7 @@
       z-index: -1;
       border-radius: inherit;
       background: var(--bg-image, var(--bloom-dark));
-      background-blend-mode: color-burn;
-      mix-blend-mode: color-burn;
+      // background-blend-mode: color-burn;
       transform: translateY(15%) scale(.85);
       filter: blur(20px) brightness(.75) opacity(.25);
       content: '';
@@ -160,8 +161,8 @@
         linear-gradient(var(--background-a60), var(--background-a80)) padding-box,
         radial-gradient(
           farthest-corner at var(--x,50%) var(--y,50%),
-          var(--accent-extra),
-          var(--accent)
+          var(--accent),
+          var(--background)
         ) border-box;
 
       box-shadow: var(--turn-off-shadow);

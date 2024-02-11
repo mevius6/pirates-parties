@@ -396,6 +396,7 @@
     &:where([data-theme-style=light]) {
       color-scheme: light;
 
+      --accent: var(--orange-clown-fish);
       --bg-hsl: var(--white);
       --fg-hsl: var(--sw-carnelian);
       --shadow: hsl(var(--fg-hsl) / .15);
@@ -410,6 +411,7 @@
     ) {
       color-scheme: dark;
 
+      --accent: hsl(var(--safety-yellow));
       --bg-hsl: var(--black);
       --fg-hsl: var(--white);
       --shadow: hsl(var(--bg-hsl) / .25);
