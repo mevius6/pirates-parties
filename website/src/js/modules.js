@@ -30,7 +30,7 @@ const doc = document, { documentElement: root } = doc;
       root.dataset.themeStyle = themeSwitch.mode;
     });
   });
-  const reveal = await import('./modules/reveal-effect');
+  // const reveal = await import('./modules/reveal-effect');
   // const lazyimg = await import('./modules/reveal-image');
   const cursor = await import('./modules/cursor');
 

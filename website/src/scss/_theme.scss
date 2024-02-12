@@ -836,6 +836,11 @@ dialog { // <-- basic noscript alert
     }
   }
 
+  .splitting .whitespace {
+    display: inline-block;
+    white-space: pre;
+  }
+
   @media (max-width: 48em) {
     article { padding-inline: var(--spacer-2x); }
   }
