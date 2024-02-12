@@ -9,11 +9,13 @@
 append vars
   -
     let familyName1 = 'MaisonNeue'
-    let familyName2 = 'Roslindale'
+  -
     // TODO: add loop for each font name in arr and push result in new arr
     // i.e. mapping
     // arr.map((name)=>{…})
     let fontFullNames = []
+  -
+    const NICKEL_GOTHIC = 'NickelGothic'
     let NickelGothic = [
       {
         'familyName': `NickelGothic`,
@@ -23,6 +25,7 @@ append vars
         'weight': 'normal',
       }
     ]
+  -
     let Roslindale = [
       {
         'familyName': `Roslindale`,
@@ -32,6 +35,48 @@ append vars
         'weight': `200 900`,
       }
     ]
+  -
+    const UNICA = 'Unica77LLCyr'
+    let Unica77 = [
+      {
+        'familyName': UNICA,
+        'fullName': `subset-${UNICA}-Regular`,
+        'varAxes': false,
+        'style': 'normal',
+        'weight': 400
+      }, {
+        'familyName': UNICA,
+        'fullName': `subset-${UNICA}-Italic`,
+        'varAxes': false,
+        'style': 'italic',
+        'weight': 400
+      }, {
+        'familyName': UNICA,
+        'fullName': `subset-${UNICA}-Medium`,
+        'varAxes': false,
+        'style': 'normal',
+        'weight': 500
+      }, {
+        'familyName': UNICA,
+        'fullName': `subset-${UNICA}-MediumItalic`,
+        'varAxes': false,
+        'style': 'italic',
+        'weight': 500
+      }, {
+        'familyName': UNICA,
+        'fullName': `subset-${UNICA}-Bold`,
+        'varAxes': false,
+        'style': 'normal',
+        'weight': 700
+      }, {
+        'familyName': UNICA,
+        'fullName': `subset-${UNICA}-BoldItalic`,
+        'varAxes': false,
+        'style': 'italic',
+        'weight': 700
+      }
+    ]
+  -
     let MaisonNeue = [
       {
         'familyName': `${familyName1}`,
@@ -83,7 +128,8 @@ append vars
     let fontsPath = `${DD}${SOL}fonts${SOL}`
     let typeName = 'font'
     let fontFaces = [
-      ...MaisonNeue,
+      //- ...MaisonNeue,
+      ...Unica77,
       ...Roslindale,
       ...NickelGothic,
       //- ...HelveticaInserat,

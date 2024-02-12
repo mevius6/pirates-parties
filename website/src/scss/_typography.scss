@@ -59,9 +59,15 @@
     --lh-default: 1.5; // default
 
     // Fonts
-    --font-sans: MaisonNeue, Helvetica, sans-serif;
+    // --font-sans: MaisonNeue, Helvetica, sans-serif;
+    --font-sans: Unica77LLCyr, sans-serif;
     --font-serif: Roslindale, Times, serif;
-    --font-display: NickelGothic; // headliner
+    --font-display:
+      NickelGothic,
+      Impact,
+      Haettenschweiler,
+      'Arial Narrow Bold',
+      sans-serif; // headliner
     --font-primary: var(--font-sans); // body copy
 
     // System defaults
