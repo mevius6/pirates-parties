@@ -7,6 +7,8 @@ import {
 } from 'curtainsjs/src/index.mjs';
 import { select } from '../utils';
 
+// TODO: https://www.npmjs.com/package/glsl-noise
+
 const ripplesVs = `
   #ifdef GL_FRAGMENT_PRECISION_HIGH
   precision highp float;
@@ -194,14 +196,14 @@ const renderFs = `
     float attenuation = 3.0 / (1.0 + lightDist * lightDist * falloff);
 
     float diffuse = max(dot(normal, lightV), 0.0);
-    float specular = pow(max(dot( reflect(-lightV, normal), -ray), 0.0), 64.0) * shininess;
+    float specular = pow(max(dot(reflect(-lightV, normal), -ray), 0.0), 64.0) * shininess;
 
     vec3 texCol = (vec3(0.5) * brightness) * 0.5;
 
     float metalness = (1.0 - colormap.x);
     metalness *= metalness;
 
-    vec3 color = (texCol * (diffuse * vec3(0.9) * 2.0 + 0.5) + lightColor * specular * f * 2.0 * metalness) * attenuation ;
+    vec3 color = (texCol * (diffuse * vec3(0.9) * 2.0 + 0.5) + lightColor * specular * f * 2.0 * metalness) * attenuation;
 
     return vec4(color, 1.0);
   }
@@ -493,9 +495,6 @@ window.addEventListener('load', async () => {
       sampler: 'uRipplesTexture',
       fromTexture: ripples.getTexture(),
     });
-
-    // renderPass.uniforms.hue.value = 4.28; // 0–6.28
-    // renderPass.uniforms.saturation.value = 1.5;
 
     // Seafoam rgb(98, 194, 177)
     // Sea blue rgb(0, 116, 162)

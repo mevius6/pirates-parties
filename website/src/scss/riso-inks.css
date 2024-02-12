@@ -1,0 +1,49 @@
+/* RISO */
+
+:root {
+  /* Inks */
+  --black: #21201f;
+  --clear-medium: #f2f2f2;
+  --bright-gold: #ba8032;
+  --flat-gold: #bb8b41;
+  --metallic-gold: #ac936e;
+  --fluorescent-pink: #f48;
+  --fluorescent-red: #ff4c65;
+  --scarlet: #f65058;
+  --bright-red: #f15060;
+  --red: #ff665e;
+  --fluorescent-orange: #ff7477;
+  --orange: #ff6c2f;
+  --fluorescent-yellow: #ffe916;
+  --yellow: #ffe800;
+  --light-lime: #e3ed55;
+  --fluorescent-green: #44d62c;
+  --green: #00a95c;
+  --mint: #82d8d5;
+  --seafoam: #62c2b1;
+  --turquoise: #00aa93;
+  --light-teal: #009da5;
+  --teal: #00838a;
+  --lagoon: #2f6165;
+  --smoky-teal: #5f8289;
+  --steel: #375e77;
+  --midnight: #435060;
+  --medium-blue: #3255a4;
+  --blue: #0078bf;
+  --sea-blue: #0074a2;
+  --aqua: #5ec8e5;
+  --purple: #765ba7;
+  --orchid: #aa60bf;
+  --violet: #aa60bf;
+  --burgundy: #914e72;
+
+  /* Paper */
+  --paper-1: #fcfafb; /* French Recycled White */
+  --paper-2: #eae2d3; /* French Newsprint White */
+  --paper-3: #ded3bd; /* French Newsprint Aged */
+  --paper-4: #fefefe; /* French Standard White Kraft */
+  --paper-5: #e9e7df; /* French Index Off-White Kraft */
+  --paper-6: #d7e8e3; /* French Ledger Green Kraft */
+  --paper-7: #c4c6c5; /* French Chipboard Kraft */
+  --paper-8: #72767a; /* French Carbon Copy Kraft */
+}

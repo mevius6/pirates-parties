@@ -72,9 +72,7 @@
     --sw-hushed-auburn: 14deg 21% 57%;    // A8857A SW9080 Hushed Auburn
     --sw-redend-point: 20deg 23% 59%;     // AE8E7E SW9081 Redend Point
                                           // Soft Shades + Statement Hues
-    --sw-ede-rose-pink: 355deg 51% 86%;   // EECACD SW9693 Rose Pink
     --sw-ede-wild-poppy: 3deg 41% 53%;    // B85B57 SW9694 Wild Poppy
-    --sw-ede-pale-pink: 30deg 32% 90%;    // EEE6DE SW9696 Pale Pink
     // Orange
     --sw-malted-milk: 24deg 33% 81%;      // DECABD SW6057 Malted Milk
     --sw-cool-beige: 27deg 21% 72%;       // C6B5A7 SW9086 Cool Beige
@@ -124,8 +122,6 @@
     // No. 2 Reds & Purples 2024
     --sw-ravishing-coral: 12deg 68% 70%; // E79580 SW6612 Ravishing Coral
     --sw-veri-berri: 295deg 14% 52%; // 937496 SW9069 Veri Berri
-
-    // https://gradient.style
     --lin-coral-purple:
       linear-gradient(
         to right,
@@ -135,24 +131,14 @@
 
     // TODO: define gradient guides
     // https://www.joshwcomeau.com/gradient-generator
+    // https://gradient.style
 
     --grad-1: linear-gradient(
       to bottom right,
       hsl(var(--sw-quaint-peche)) 0%,
       hsl(var(--sw-redend-point)) 100%
     );
-    --grad-2: linear-gradient(
-      to bottom right,
-      hsl(var(--sw-ravishing-coral)) 0%,
-      hsl(var(--sw-carnelian)) 100%
-    );
-
-    // TODO: Coordinated color palettes
-    // Refs:
-    // → https://images.sherwin-williams.com/content_images/sw-pdf-sherwin-williams-colorc.pdf
-    // → https://www.sherwin-williams.com/en-us/color/color-collections/
-    // → https://blog.sherwin-williams.com/color/color-guidance/your-go-to-guide-on-color-theory/
-    // $palettes: (…);
+    --grad-2: var(--lin-coral-purple);
 
     // TODO: Distributing primary, neutral and accent roles among hues.
 
@@ -187,7 +173,6 @@
 
     // Defining the darkest and lightest hues
     --black: var(--black-1);
-    // --black: 30deg 3% 13%; // #21201F
     --white: var(--warm-white-1);
     --gray: var(--cool-gray-3);
 
@@ -195,28 +180,52 @@
     --brand-blue: 205deg 100% 16%;  // #003153 Prussian Blue
     --brand-yellow: 64deg 100% 50%; // #EDFF01 13-0630 TN Safety Yellow
 
-    // PANTONE® TN Nylon Lights
-    --safety-yellow: 64deg 100% 50%;
-    --shocking-orange: hsl(19deg 98% 58%); // #FD6E2A 15-1360 TN Shocking Orange
-    --orange-clown-fish: hsl(22deg 100% 56%); // #FF6F1E 15-1460 TN Orange Clown Fish
-    --diva-pink: hsl(343deg 100% 54%); // #FF1658 TN
-    --pink-glo: hsl(327deg 100% 49%); // #FA008A TN
-    // DayGlo
-    --aurora-pink: hsl(330deg 99% 52%); // #FE0A83
-    --blaze-orange: hsl(21deg 95% 56%); // #F96F27
-    --saturn-yellow: hsl(51deg 100% 59%); // #FFE02E
-    --signal-green: hsl(101deg 70% 56%); // #72DD42
+    // PANTONE® Neon Colors
+    --c-blue: #009BCD;    // 801 C
+    --c-green: #44D62C;   // 802 C
+    --c-yellow: #FFE900;  // 803 C
+    --c-orange: #FFAA4E;  // 804 C
+    --c-red: #FF7277;     // 805 C
+    --c-pink: #FF3FB6;    // 806 C
+    --c-magenta: #EB27C2; // 807 C
+    --c-teal: #00B797;    // 808 C
+
+    // PANTONE® Nylon Lights
+    --tn-atomic-blue: 195deg 100% 36%;  // 0089B8 17-4436 TN Atomic Blue
+    --tn-lemon-tonic: 59deg 97% 65%;    // FCFA50 12-0645 TN Lemon Tonic
+    --tn-safety-yellow: 64deg 100% 50%; // EDFF01 13-0630 TN Safety Yellow
+    --tn-shock-orange: 19deg 98% 58%;   // FD6E2A 15-1360 TN Shocking Orange
+    --tn-clown-fish: 22deg 100% 56%;    // FF6F1E 15-1460 TN Orange Clown Fish
+    --tn-diva-pink: 343deg 100% 54%;    // FF1658 16-1650 TN Diva Pink
+    --tn-pink: 343deg 100% 54%;         // FE3EA5 16-2130 TN Knockout Pink
+    --tn-pink-glo: 327deg 100% 49%;     // FA008A TN Pink Glo
+
+    // DayGlo® Safety colors
+    --aurora-pink: 330deg 99% 52%;   // #FE0A83
+    --blaze-orange: 21deg 95% 56%;   // #F96F27
+    --saturn-yellow: 51deg 100% 59%; // #FFE02E
+    --signal-green: 101deg 70% 56%;  // #72DD42
+
+    // Swathes from Andy Worhol's pop-art works
+    --pop-g: #aff96e;
+    --pop-b: #6dbacf;
+    --pop-p: #fc55a6;
+    --pop-r: #fc4058;
+
+    --riso-black: hsl(30deg 3% 13%); // #21201F
 
     // Contrasting highlight
+    --orange: var(--tn-clown-fish);
+    --lime: var(--tn-safety-yellow);
 
-    --accent-a25: hsl(var(--sw-vintage-gold) / .25);
-    --accent-a50: hsl(var(--sw-vintage-gold) / .50);
-    --accent-a80: hsl(var(--sw-vintage-gold) / .80);
-    --accent: var(--orange-clown-fish);
+    --accent-a25: hsl(var(--orange) / .25);
+    --accent-a50: hsl(var(--orange) / .50);
+    --accent-a80: hsl(var(--orange) / .80);
+    --accent: hsl(var(--orange));
 
-    --accent-shade: var(--blaze-orange);
-    --accent-major: var(--diva-pink); // primary
-    --accent-extra: var(--pink-glo); // secondary
+    --accent-shade: hsl(var(--blaze-orange));
+    --accent-major: var(--tn-diva-pink); // primary
+    --accent-extra: var(--tn-pink-glo); // secondary
 
     // TODO: Pairing color swatches to specific ui-tokens.
 
@@ -224,12 +233,13 @@
     --active: var(--accent);
 
     // Alert system
-    --alert-ok: var(--signal-green);
-    --alert-no: var(--aurora-pink);
+    --alert-ok: hsl(var(--signal-green));
+    --alert-no: hsl(var(--aurora-pink));
 
     // Fine-tune GUI patterns
     --avatar-bg-dark: var(--accent-shade);
     --avatar-bg-light: var(--accent-shade);
+    --star-bg: var(--c-yellow);
 
     // ----------------------------------
     // Gradients ∇
@@ -291,42 +301,6 @@
         var(--accent) 5px
       );
 
-    // Yellow / Gold
-    // https://www.sherwin-williams.com/en-us/color/color-family/yellow-paint-colors
-    --yellow-0: 39deg 61% 88%; // F3E6CE SW6672 Morning Sun
-    --yellow-1: 39deg 79% 83%; // F6DEB3 SW9663 Honeypot
-    --yellow-2: 37deg 83% 77%; // F5CF92 SW9664 Sun Salutation
-    --yellow-3: 37deg 70% 78%; // EECF9E SW2857 Peace Yellow (H)
-    --yellow-4: 43deg 90% 68%; // F7CE65 SW9665 Sunny Side Up (EDE)
-    --yellow-5: 39deg 88% 77%; // F8D492 SW2865 Classical Yellow (H)
-    --yellow-6: 35deg 76% 74%; // EFC488 SW0030 Colonial Yellow (H)
-    --gold-1: 34deg 46% 67%; // D2B084 SW6129 Restrained Gold
-    --gold-2: 33deg 45% 63%; // CBA576 SW9024 Vintage Gold
-    --gold-3: 33deg 43% 57%; // C19763 SW6130 Mannered Gold
-    --gold-4: 34deg 75% 69%; // EBB875 SW2831 Classical Gold (H)
-    --gold-5: 31deg 54% 67%; // D9AD7F SW7679 Golden Gate
-    --radial-gold:
-      radial-gradient(
-        hsl(var(--gold-1)),
-        hsl(var(--gold-2) / 0) 50%
-      );
-    --star-bg: var(--accent) var(--radial-gold);
-
-    // ----------------------------------
-    // Data URLs
-    // ----------------------------------
-
-    // Inlining a bundle as a data URL w/ “data-url:” scheme
-    // → https://parceljs.org/features/bundle-inlining/
-    // --brand-logo: url(data-url:../images/logo.svg);
-
-    // Icons
-    // https://icones.js.org/
-    --icon-tel: url(data-url:../images/tel.svg);
-
-    // Noise variations
-    --svg-noise: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 1920 1920' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
-
     color-scheme: dark light;
     // https://drafts.csswg.org/css-ui/#widget-accent
     accent-color: var(--accent);
@@ -361,7 +335,7 @@
     &:where([data-theme-style=light]) {
       color-scheme: light;
 
-      --accent: var(--orange-clown-fish);
+      // --accent: hsl(var(--tn-clown-fish));
       --bg-hsl: var(--white);
       --fg-hsl: var(--sw-carnelian);
       --shadow: hsl(var(--fg-hsl) / .15);
@@ -376,7 +350,7 @@
     ) {
       color-scheme: dark;
 
-      --accent: hsl(var(--safety-yellow));
+      --accent: hsl(var(--lime));
       --bg-hsl: var(--black);
       --fg-hsl: var(--white);
       --shadow: hsl(var(--bg-hsl) / .25);
@@ -890,56 +864,7 @@ dialog { // <-- basic noscript alert
     }
   }
 
-  .popout {
-    --bg-gradient: var(--lush-sunset);
-    overflow: hidden;
-
-    // &::after,
-    &::before {
-      position: absolute;
-      inset: 0;
-      content: '';
-      pointer-events: none;
-      block-size: 100%;
-      inline-size: 100%;
-    }
-
-    // &::after { z-index: var(--zi); }
-
-    &::before {
-      z-index: -1;
-      opacity: var(--a, .25);
-      display: none;
-      // background-image: var(--bg-image, var(--background));
-
-      [data-theme-style=light] & {
-        --a: .95;
-        --bg-image: var(--drawing-light, var(--bg-gradient));
-        filter: url("#noise") saturate(50%) contrast(120%);
-        // —OR— url('#riso-noise');
-      }
-
-      [data-theme-style=dark] & {
-        --a: .25;
-        --bg-image: var(--drawing-dark, unset);
-        background: var(--svg-noise) 0% 0%/512px repeat;
-        background-blend-mode: overlay;
-        background-attachment: fixed;
-        // filter: contrast(120);
-      }
-
-      @include config.respond('tablet') {
-        display: block;
-      }
-    }
-  }
-
-  .svg-filter {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-  }
+  // .popout {…}
 
   .is-anchor-link {
     // …
@@ -973,37 +898,17 @@ dialog { // <-- basic noscript alert
     }
   }
 
-
   :where(#goods) {
     // background-color: hsl(var(--sw-in-the-navy));
   }
 
   :where(#advert) {
-    // https://apple.fandom.com/wiki/List_of_Apple_product_colors#Early_models_(1970s_to_1990s)
-    --beige: #BFBB98;
-    // --beige: #C4C0AA;
-    --cool-gray-2: #CACAC8;
-    // --bg: #2f6165;// Lagoon rgb(47, 97, 101)
-    // --bg: #435060;// Midnight rgb(67, 80, 96)
-    // --bg: #375e77;// Steel rgb(55, 94, 119)
-    --bg: #5ebd3e;
-    --pad: clamp(1rem, 1vw, 3rem);
-    --diva-pink: #FF1658;
-    --pink-glo: #FA008A;
-    --clown-fish: #FF6F1E; // #ff6c2f riso-orange
-    // --atomic-blue: #;
-    // --safety-yellow: #;
-    --pink: var(--diva-pink);
-    --orange: var(--clown-fish);
-    --mint: #82d8d5; // rgb(130, 216, 213)
-    --turquoise: #00aa93; // rgb(0, 170, 147)
-    --orhid: #aa60bf; // rgb(170, 96, 191)
-    --light-lime: #e3ed55; // rgb(227, 237, 85)
-
-    background-color: hsl(var(--sw-in-the-navy));
     position: relative;
+    background-color: hsl(var(--sec-bg, var(--sw-in-the-navy)));
 
-    // & .reveal-wrapper { overflow: visible !important; }
+    [data-theme-style=dark] & {
+      --sec-bg: var(--sw-naval);
+    }
 
     .headline {
       font-variation-settings: 'wdth' 75, 'slnt' 0;
@@ -1015,7 +920,8 @@ dialog { // <-- basic noscript alert
       inset-inline-start: 50%;
       inset-block-start: 50%;
       transform: translate(-50%,-50%);
-      border: 2px dashed var(--blaze-orange);
+      // border: 4px dashed hsl(var(--blaze-orange));
+      border: 2px dashed var(--accent);
 
       & > [method='dialog'] {
         justify-content: space-between;
@@ -1027,9 +933,8 @@ dialog { // <-- basic noscript alert
           // background-color: var(--background) !important;
           // color: var(--foreground) !important;
 
-
           &:is(:hover) > .icon {
-            color: var(--diva-pink);
+            color: var(--accent);
           }
 
           .icon {
@@ -1059,49 +964,6 @@ dialog { // <-- basic noscript alert
       }
     }
   }
-
-  // .halftone {
-  //   --mask: linear-gradient(rgb(0 0 0), rgb(0 0 0 / 0.5));
-  //   --stop1: 0.06rem;
-  //   --stop2: 0.65rem;
-  //   --invert: 0;
-  //   --dotColor: var(--background);
-  //   --bgColor: var(--foreground);
-  //   --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
-
-  //   // aspect-ratio: 1;
-  //   position: relative;
-  //   background: var(--bgColor);
-  //   filter: contrast(50) invert(var(--invert, 0));
-  //   mix-blend-mode: multiply;
-  //   isolation: isolate;
-  //   border: 4px solid var(--borderColor, var(--dotColor));
-  // }
-
-  // .halftone::after {
-  //   content: '';
-  //   position: absolute;
-  //   inset: 0;
-  //   background-image: var(--dottedBackground);
-  //   background-size: var(--bgSize, 1rem) var(--bgSize, 1rem);
-  //   background-repeat: round;
-  //   background-position: 0 0, var(--bgPosition) var(--bgPosition);
-  //   mask-image: var(--mask);
-  // }
-
-  // .halftone:nth-child(even) {
-  //   --bgSize: 1.4rem;
-  //   --bgPosition: calc(var(--bgSize) / 2);
-  //   --dottedBackground: radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, var(--dotColor) var(--stop1), transparent var(--stop2));
-  // }
-
-  // .halftone:nth-child(1) {
-  //   --borderColor: white;
-  //   --invert: 1;
-  //   --mask: repeating-linear-gradient(45deg, rgb(0 0 0), rgb(0 0 0 / 0.55) 20%, rgb(0 0 0) 40%);
-  // }
-
-  // .distort { filter: url(#distortionFilter); }
 
   :where(#about) {
     & > .grid__center {
@@ -1178,16 +1040,6 @@ dialog { // <-- basic noscript alert
 
     & :where([title=logotype]) {
       transform: scale(250%);
-
-      // transition:
-      //   color 400ms var(--ease-spring),
-      //   transform 400ms var(--ease-spring);
-      // will-change: transform;
-
-      &:hover {
-        // --fill: hsl(var(--safety-yellow));
-        // transform: scale(200%);
-      }
     }
 
     & :where([title=trips]) {
@@ -1201,11 +1053,8 @@ dialog { // <-- basic noscript alert
         filter 350ms 50ms var(--ease-spring);
 
       &:hover {
-        --safety: 64deg 100% 50%;
         --fill: var(--accent);
-        --shadow-hue: var(--safety);
-        --shadow: .5em .5em 2.5em var(--accent-shade);
-          // drop-shadow(.5em .5em 1.5em hsl(var(--shadow-hue)));
+        --shadow: .5em .5em 2.5em var(--accent);
       }
     }
 
@@ -1218,6 +1067,7 @@ dialog { // <-- basic noscript alert
       will-change: transform;
 
       &:hover {
+        // --fill: hsl(var(--tn-atomic-blue));
         animation-play-state: running;
       }
     }
@@ -1242,7 +1092,7 @@ dialog { // <-- basic noscript alert
 
       &:hover {
         --skew: 52deg, -32deg;
-        --fill: var(--accent-extra);
+        --fill: hsl(var(--tn-pink-glo));
         // animation-play-state: running;
       }
     }

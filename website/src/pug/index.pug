@@ -26,6 +26,7 @@ append head-start
 
 block content
   .fixed#canvas
+  //- .background
 
   section.grid
     //- section.container.bg-overlay#hero(data-sec="hero")
@@ -56,24 +57,21 @@ block content
             | московских #[br]
           span.title(style={ '--wdth': 67, '--slnt': 0 })
             | акваторий
-      //- .overlay
-      +picture({
-        class: ['abs-centered','grid__full'],
+      .overlay
+      //- +picture({
+        class: ['grid__full'],
         path: 'hero',
         name: 'duotone-hires-sqr',
         format: 'webp',
         desc: '',
         hdim: 1920,
         vdim: 720,
-        transform: false,
-      })
+        transform: false })
       //- .plane.grid__full
         img(
           src="../images/hero/duotone-hires.webp"
           crossorigin="anonymous"
           data-sampler="basicPlaneTexture")
-
-      //- include ../images/anomalous-motion-illusion.svg
 
     section.container.spaced.--ada-lg#advert(data-sec="ad")
       -
@@ -102,9 +100,9 @@ block content
           },
         ]
 
-      .grid__start-half.d-grid.items-start
+      article.grid__start-half.d-grid.items-start
         +head({
-          class: ['font-display', 'text-white'],
+          class: ['font-display', 'text-white', 'reveal'],
           level: 2,
           text: ['Krähennest', '17.02', '21:00'],
           split: 'chars' })
@@ -115,8 +113,8 @@ block content
         +head({
           class: ['font-display', 'text-white', 'subhead'],
           level: 4,
-          text: ['Презентация зина*', 'по трипу Москва-Крым']
-        })
+          text: ['Презентация зина*', 'по трипу Москва-Крым'],
+          split: 'chars' })
       article.flow.grid__end-half.--ada-lg.text-white
         p.ad-copy
           | Фотоархив, графика. Полное собрание лучшего, подведение итогов.
@@ -165,7 +163,7 @@ block content
     section.container.spaced.--ada-lg#about
       .grid__center
         +head({
-          class: ['font-display', 'uppercase'],
+          class: ['font-display', 'uppercase', 'reveal'],
           level: 2,
           text: 'О нас',
           split: 'chars' })
@@ -181,7 +179,7 @@ block content
           //- +textLoop()
       article.flow.grid__content
         +head({
-          class: 'font-serif',
+          class: ['font-serif', 'reveal'],
           level: 2,
           text: about.head,
           split: 'chars' })
@@ -195,7 +193,7 @@ block content
     section.container.spaced.--ada-md#posts(data-id="posts")
       .grid__center
         +head({
-          class: ['font-display', 'uppercase'],
+          class: ['font-display', 'uppercase', 'reveal'],
           level: 2,
           text: 'Бортовой журнал',
           split: 'chars' })
@@ -222,7 +220,7 @@ block content
     section.container.spaced.--ada-md#goods
       .grid__center
         +head({
-          class: ['font-display', 'uppercase'],
+          class: ['font-display', 'uppercase', 'reveal'],
           level: 2,
           text: 'Магазин',
           split: 'chars' })
@@ -242,7 +240,7 @@ block content
 
     section.container.spaced.--ada-md#locate
       .grid__center: +head({
-        class: ['uppercase'],
+        class: ['uppercase', 'reveal'],
         level: 2,
         text: 'Дислокация',
         split: 'chars' })
@@ -253,7 +251,7 @@ block content
     section.container.spaced.--ada-md#contact
       .grid__center.d-flex.flex-centered
         +head({
-          class: ['uppercase'],
+          class: ['uppercase', 'reveal'],
           level: 2,
           text: 'Пишите нам',
           split: 'chars' })

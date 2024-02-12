@@ -1,6 +1,10 @@
-/* ---------------------------------- */
-/* SW Color Swatches                  */
-/* ---------------------------------- */
+/* SW Color Swatches */
+
+/* TODO: Coordinated color palettes */
+/* Refs:
+  → https://images.sherwin-williams.com/content_images/sw-pdf-sherwin-williams-colorc.pdf
+  → https://www.sherwin-williams.com/en-us/color/color-collections/
+  → https://blog.sherwin-williams.com/color/color-guidance/your-go-to-guide-on-color-theory/ */
 
 :root {
   /*
@@ -80,4 +84,24 @@
   --sw-greek-villa: 43deg 32% 91%;      /* F0ECE2 SW7551 Greek Villa */
   --sw-westhighland: 41deg 40% 92%;     /* F3EEE3 SW7566 Westhighland White */
   --sw-fleur-de-sel: 72deg 7% 86%;      /* DCDDD8 SW7666 Fleur de Sel */
+
+  /* Yellow / Gold */
+  /* https://www.sherwin-williams.com/en-us/color/color-family/yellow-paint-colors */
+  --yellow-0: 39deg 61% 88%; /* F3E6CE SW6672 Morning Sun */
+  --yellow-1: 39deg 79% 83%; /* F6DEB3 SW9663 Honeypot */
+  --yellow-2: 37deg 83% 77%; /* F5CF92 SW9664 Sun Salutation */
+  --yellow-3: 37deg 70% 78%; /* EECF9E SW2857 Peace Yellow (H) */
+  --yellow-4: 43deg 90% 68%; /* F7CE65 SW9665 Sunny Side Up (EDE) */
+  --yellow-5: 39deg 88% 77%; /* F8D492 SW2865 Classical Yellow (H) */
+  --yellow-6: 35deg 76% 74%; /* EFC488 SW0030 Colonial Yellow (H) */
+  --gold-1: 34deg 46% 67%; /* D2B084 SW6129 Restrained Gold */
+  --gold-2: 33deg 45% 63%; /* CBA576 SW9024 Vintage Gold */
+  --gold-3: 33deg 43% 57%; /* C19763 SW6130 Mannered Gold */
+  --gold-4: 34deg 75% 69%; /* EBB875 SW2831 Classical Gold (H) */
+  --gold-5: 31deg 54% 67%; /* D9AD7F SW7679 Golden Gate */
+  --radial-gold:
+    radial-gradient(
+      hsl(var(--gold-1)),
+      hsl(var(--gold-2) / 0) 50%
+    );
 }

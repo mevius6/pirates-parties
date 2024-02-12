@@ -13,7 +13,7 @@ import {
 } from '../utils';
 import { getAllPostsForHome } from './fetch-posts';
 
-const DN = 'journal.piratykaspiyskogo.online';
+const BLOG_HOST = 'journal.piratykaspiyskogo.online';
 
 // eslint-disable-next-line no-unused-vars
 const responsiveImageArgs = [
@@ -87,7 +87,7 @@ class Card {
   async _displayContent(title, excerpt, date, slug) {
     this.DOM.title.textContent = title;
     this.DOM.body.textContent = excerpt;
-    this.DOM.cta.href = `https://${DN}/posts/${slug}`;
+    this.DOM.cta.href = `https://${BLOG_HOST}/posts/${slug}`;
     this.DOM.cta.target = '_blank';
     this.DOM.cta.rel = 'noopener';
 

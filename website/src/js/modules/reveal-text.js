@@ -76,7 +76,6 @@ export const revealText = (elems, vars={}) => {
         stagger: delay,
         duration: speed
       }, '<');
-      // .from(words, {y: 20, autoAlpha: 0, stagger: 0.05, duration: 0.8}, '<');
       // .reveal(elem, {y: 100})
   });
 }

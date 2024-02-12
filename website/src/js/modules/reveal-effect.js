@@ -1,6 +1,6 @@
 import { revealText } from './reveal-text';
 // import { revealList } from './reveal-list';
-// import { revealCard } from './reveal-card';
+import { revealCard } from './reveal-card';
 import { selectAll } from '../utils';
 
 /* eslint-disable no-unused-vars */
@@ -11,7 +11,7 @@ revealText(heads, {
   speed: 0.95,
 });
 
-// const revealCards = revealCard(selectAll('.card'));
+const revealCards = revealCard(selectAll('.card'));
 
 // const lists = selectAll(':is(div,ul,li) > ul.list');
 // revealList(lists);

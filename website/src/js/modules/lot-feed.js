@@ -1,19 +1,12 @@
-/* eslint-disable no-unused-vars */
-// https://www.w3.org/WAI/ARIA/apg/patterns/feed/
-
 import { gsap } from 'gsap';
-// import { EventEmitter } from 'events';
 import {
   createNode,
   createNodeWithClass,
   appendNode,
   selectAll,
-  delay,
   select,
 } from '../utils';
 import { getAllGoodsForHome } from './fetch-posts';
-
-const DN = 'journal.piratykaspiyskogo.online';
 
 // eslint-disable-next-line no-unused-vars
 const responsiveImageArgs = [
@@ -26,24 +19,6 @@ const responsiveImageArgs = [
   'base64'
 ];
 
-const dateOptions = {
-  // weekday: 'long',
-  month: 'long',
-  day: 'numeric',
-  year: 'numeric',
-};
-
-const timeOptions = {
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-};
-
-const formatter = new Intl.DateTimeFormat('ru', {
-  ...dateOptions,
-  ...timeOptions,
-});
-
 // class Card extends EventEmitter {
 class LotCard {
   constructor(
@@ -55,17 +30,12 @@ class LotCard {
     price,
     ...responsiveImageArgs
   ) {
-    // super();
     this._initializeDOM(el);
 
     this._createResponsiveImage(...responsiveImageArgs, {LQIP: false});
     this._displayContent(title, about, artistName, dateCreated, price);
 
     this.config = { isCompactView: true };
-
-    // this._createTimeline();
-    // this._initializeEvents();
-    // this._listen();
   }
 
   _initializeDOM(el) {
@@ -90,14 +60,7 @@ class LotCard {
     this.DOM.body.textContent = about;
     this.DOM.cta.textContent = 'Заказать';
     this.DOM.cta.href = '/#contact';
-    // this.DOM.cta.target = '_blank';
-    // this.DOM.cta.rel = 'noopener';
 
-    // let dateObj = new Date(dateCreated);
-    // let dateStr = dateObj.toLocaleDateString('ru', dateOptions);
-
-    // this.DOM.date.dateTime = formatter.format(dateObj);
-    // this.DOM.date.textContent = dateStr;
     this.DOM.date.textContent = price;
   }
 
@@ -165,7 +128,6 @@ class LotCard {
   }
 }
 
-// ? https://w3c.github.io/aria-practices/#feed
 export default class LotFeed {
   constructor(el) {
     this.DOM = { el: el };
