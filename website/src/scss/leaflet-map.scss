@@ -663,14 +663,14 @@ aside:where(.addon-sidebar) {
   --_map-sidebar-light-bg:
     linear-gradient(
       134deg,
-      hsl(var(--sw-quaint-peche) / .50) 0%,
-      hsl(var(--sw-redend-point) / .25) 100%
+      hsl(var(--hsl) / .50) 0%,
+      hsl(var(--hsl) / .25) 100%
     );
   --_map-sidebar-dark-bg:
     linear-gradient(
       134deg,
-      hsl(var(--sw-quaint-peche) / .50) 0%,
-      hsl(var(--sw-redend-point) / .125) 100%
+      hsl(var(--hsl) / .50) 0%,
+      hsl(var(--hsl) / .125) 100%
     );
 
   position: absolute;
@@ -717,8 +717,8 @@ aside:where(.addon-sidebar) {
       --sp: 1ex;
 
       --shadow-size: 0;
-      --shadow-hint-light: hsl(var(--sw-redend-point) / .7);
-      --shadow-hint-dark: hsl(var(--sw-quaint-peche) / .5);
+      --shadow-hint-light: hsl(var(--hsl) / .7);
+      --shadow-hint-dark: hsl(var(--hsl) / .5);
       --shadow-hint: var(--shadow-hint-light);
 
       position: absolute;
@@ -765,7 +765,7 @@ aside:where(.addon-sidebar) {
       --a: 1;
       --s: 1;
       // --shadow-size: 1px;
-      --shadow-hint: hsl(var(--sw-redend-point) / .5);
+      --shadow-hint: hsl(var(--hsl) / .5);
     }
     &:has([type=radio]:checked)::before {
       --a: 1;

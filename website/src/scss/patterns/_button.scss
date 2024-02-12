@@ -132,7 +132,7 @@
     overflow: visible;
 
     [data-theme-style='light'] & {
-      --rad-grad-color-1: var(--background);
+      --rad-grad-color-1: hsl(var(--hsl));
       --rad-grad-color-2: var(--accent);
 
       &::after { --bg-image: var(--bloom-light); }

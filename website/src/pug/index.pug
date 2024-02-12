@@ -24,31 +24,7 @@ append head-start
       });
     }
 
-mixin sec(props)
-  - let { id, classes={}, attrs={}, ...rest } = props
-  section(id= id class= classes)&attributes(attrs)
-    block
-
 block content
-  //- TODO
-    const sections = [{
-      id: 'hero',
-      attList: {
-        'aria-label': 'hero banner',
-        'data-sec': 'hero' }
-    },{
-      id: 'feed',
-      attList: {
-        'aria-label': 'all blog posts',
-        'data-sec': 'news' }
-    }]
-  //- each item in sections
-    +sec({
-      id: item.id,
-      classes: ['container', 'spaced', '--ada-md'],
-      attList: {...attList},
-    })
-
   .fixed#canvas
 
   section.grid
@@ -80,18 +56,17 @@ block content
             | московских #[br]
           span.title(style={ '--wdth': 67, '--slnt': 0 })
             | акваторий
-      .overlay
-      //-
-        +picture({
-          class: ['abs-centered','grid__full'],
-          path: 'hero',
-          name: 'duotone-hires',
-          format: 'webp',
-          desc: '',
-          hdim: 1920,
-          vdim: 720,
-          transform: false,
-        })
+      //- .overlay
+      +picture({
+        class: ['abs-centered','grid__full'],
+        path: 'hero',
+        name: 'duotone-hires-sqr',
+        format: 'webp',
+        desc: '',
+        hdim: 1920,
+        vdim: 720,
+        transform: false,
+      })
       //- .plane.grid__full
         img(
           src="../images/hero/duotone-hires.webp"

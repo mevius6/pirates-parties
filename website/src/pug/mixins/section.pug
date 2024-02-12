@@ -1,0 +1,24 @@
+// TODO
+mixin sec(props)
+  - let { id, classes={}, attrs={}, ...rest } = props
+  section(id= id class= classes)&attributes(attrs)
+    block
+
+//- usage example
+  const sections = [{
+    id: 'hero',
+    attList: {
+      'aria-label': 'hero banner',
+      'data-sec': 'hero' }
+  },{
+    id: 'feed',
+    attList: {
+      'aria-label': 'all blog posts',
+      'data-sec': 'news' }
+  }]
+//- each item in sections
+  +sec({
+    id: item.id,
+    classes: ['container', 'spaced', '--ada-md'],
+    attList: {...attList},
+  })

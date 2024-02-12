@@ -51,6 +51,7 @@
     --sat: 0%;
     --lum: 98%; // #fafafa
     --lum: 96%; // #f4f4f4
+    --lum: 95%; // #f2f2f2 — clear medium
     --hsl: var(--hue) var(--sat) var(--lum);
     // --white: var(--hsl);
 
@@ -63,25 +64,11 @@
     --display-p3: color(display-p3 1 1 1);
     // @supports (background: var(--display-p3)) {…}
 
-    // ----------------------------------
-    // SW Color Swatches
-    // ----------------------------------
-
-    // coty: https://www.sherwin-williams.com/en-us/color-of-the-year-2023
-    // desc: beige-mauve monochromatic color scheme w/ pastel accents
-    // data: <Hex Value | Color ID | Color Name>
-
     // Set of swatches ordered by color families.
 
     // Red
-    --sw-toile-red: 5deg 28% 43%;         // 8B534E SW0006 Toile Red (H)
-    --sw-pink-shadow: 16deg 36% 80%;      // DEC3B9 SW0070 Pink Shadow (H)
     --sw-abalone-shell: 20deg 29% 80%;    // DBC7BD SW6050 Abalone Shell
-    --sw-romance: 18deg 50% 84%;          // EBCFC3 SW6323 Romance
-    --sw-quaint-peche: 18deg 49% 84%;     // EACDC1 SW6330 Quaint Peche
-    --sw-red-theatre: 359deg 34% 32%;     // 6E3637 SW7584 Red Theatre
     --sw-coral-clay: 8deg 39% 59%;        // BF796E SW9005 Coral Clay
-    --sw-rojo-dust: 11deg 35% 55%;        // B57466 SW9006 Rojo Dust
     --sw-hushed-auburn: 14deg 21% 57%;    // A8857A SW9080 Hushed Auburn
     --sw-redend-point: 20deg 23% 59%;     // AE8E7E SW9081 Redend Point
                                           // Soft Shades + Statement Hues
@@ -109,7 +96,6 @@
     // Purple
     --sw-fashionable-gray: 0deg 4% 73%;   // BDB8B8 SW6275 Fashionable Gray
     --sw-mystical-shade: 348deg 3% 67%;   // AEA9AA SW6276 Mystical Shade
-    --sw-rhapsody-lilac: 269deg 24% 83%;  // D2C8DD SW6828 Rhapsody Lilac
     --sw-carnelian: 0deg 17% 29%;         // 573E3E SW7580 Carnelian
     --sw-perle-noir: 270deg 3% 31%;       // 4F4D51 SW9154 Perle Noir
     // Neutral
@@ -140,30 +126,16 @@
     --sw-veri-berri: 295deg 14% 52%; // 937496 SW9069 Veri Berri
 
     // https://gradient.style
-    --lush-coral-purple:
+    --lin-coral-purple:
       linear-gradient(
         to right,
         hsl(var(--sw-ravishing-coral)),
         hsl(var(--sw-veri-berri))
       );
 
-    // https://www.joshwcomeau.com/gradient-generator?colors=edff01|ff6f1e|0089b8&angle=45&colorMode=hcl&precision=8&easingCurve=0.25|0.75|0.75|0.25
-    --lush-sunset: linear-gradient(
-      180deg,
-      hsl(64deg 100% 50%) 0%,
-      hsl(54deg 100% 49%) 10%,
-      hsl(47deg 100% 50%) 20%,
-      hsl(40deg 100% 50%) 30%,
-      hsl(33deg 100% 50%) 40%,
-      hsl(22deg 100% 56%) 50%,
-      hsl(350deg 100% 66%) 60%,
-      hsl(326deg 76% 64%) 70%,
-      hsl(274deg 50% 64%) 80%,
-      hsl(218deg 58% 59%) 90%,
-      hsl(195deg 100% 36%) 100%
-    );
-
     // TODO: define gradient guides
+    // https://www.joshwcomeau.com/gradient-generator
+
     --grad-1: linear-gradient(
       to bottom right,
       hsl(var(--sw-quaint-peche)) 0%,
@@ -174,12 +146,6 @@
       hsl(var(--sw-ravishing-coral)) 0%,
       hsl(var(--sw-carnelian)) 100%
     );
-    --grad-3: linear-gradient(
-      to bottom right,
-      hsl(var(--sw-romance)) 0%,
-      hsl(var(--sw-rojo-dust)) 100%
-    );
-    --grad-4: var(--lin-coral-purple);
 
     // TODO: Coordinated color palettes
     // Refs:
@@ -193,11 +159,9 @@
     // Primary (or lead)
 
     // Warm shades of red, orange and yellow are associated with the literal warmth that the sun and fire radiate.
-    --redend: hsl(var(--sw-redend-point));
     --red-1: hsl(var(--sw-abalone-shell));
-    --red-2: hsl(var(--sw-quaint-peche));
     --red-9: hsl(var(--sw-redend-point));
-    --lead-1: var(--redend);
+    --lead-1: var(--red-1);
 
     // Neutral (black, white, gray and beige)
 
@@ -225,6 +189,7 @@
     --black: var(--black-1);
     // --black: 30deg 3% 13%; // #21201F
     --white: var(--warm-white-1);
+    --gray: var(--cool-gray-3);
 
     // Brand
     --brand-blue: 205deg 100% 16%;  // #003153 Prussian Blue

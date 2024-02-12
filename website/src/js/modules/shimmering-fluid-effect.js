@@ -124,7 +124,6 @@ const renderFs = `
   const float scale = 10.0;
   const float power = 10.1;
 
-
   vec3 hueRotate(vec3 col, float hue) {
     vec3 k = vec3(0.57735, 0.57735, 0.57735);
     float cosAngle = cos(hue);
@@ -179,7 +178,6 @@ const renderFs = `
     fy = (fy - f) / sampleDistance.x;
     normal = normalize(normal + vec3(fx, fy, 0.0) * 0.2);
 
-
     vec3 lightV = lightPos - surfacePos;
     float lightDist = max(length(lightV), 0.001);
     lightV /= lightDist;
@@ -217,7 +215,6 @@ const renderFs = `
     ripples += distortion * 0.1 - 0.1;
     ripples += reflections * 0.5;
 
-
     //vec4 color = vec4(1.0);
     vec4 color = vec4(rgb2glsl(vec3(uBgColor)), 1.0);
 
@@ -243,8 +240,6 @@ const renderFs = `
     gold6 = saturate(hueRotate(gold6, uHue), uSaturation);
     gold7 = saturate(hueRotate(gold7, uHue), uSaturation);
 
-
-
     // get values to mix white and the colors for lights
     // decrease lights area by multiplicating it with a float < 1
     // then apply a pow() operation to sharpen the area
@@ -266,10 +261,8 @@ const renderFs = `
     lightColor = mix(lightColor, gold6, lightMixValue6);
     lightColor = mix(lightColor, gold7, lightMixValue7);
 
-
     // add light colors to background
     color.rgb = mix(color.rgb, lightColor, lightColorEffect);
-
 
     // get values to mix black and the colors for shadowss
     float shadowMixValue = clamp(pow(shadow, 3.0) * 5.0, 0.0, 1.0);
@@ -462,7 +455,7 @@ window.addEventListener('load', async () => {
       hue: {
         name: 'uHue',
         type: '1f',
-        value: 4.28,
+        value: 4.28, // 0–6.28
       },
       saturation: {
         name: 'uSaturation',
@@ -472,7 +465,8 @@ window.addEventListener('load', async () => {
       bgColor: {
         name: 'uBgColor',
         type: '3f',
-        value: [255, 255, 255],
+        // value: [255, 255, 255],
+        value: [237, 236, 230],
       },
     };
 
@@ -500,17 +494,8 @@ window.addEventListener('load', async () => {
       fromTexture: ripples.getTexture(),
     });
 
-    renderPass.uniforms.hue.value = 4.28; // 0–6.28
-    renderPass.uniforms.saturation.value = 1.5;
-
-    // const bgColor = {
-    //   r: renderPass.uniforms.bgColor.value[0],
-    //   g: renderPass.uniforms.bgColor.value[1],
-    //   b: renderPass.uniforms.bgColor.value[2],
-    // }
-    // bgColor.onChange((value) => {
-    //   renderPass.uniforms.bgColor.value = [value.r, value.g, value.b];
-    // });
+    // renderPass.uniforms.hue.value = 4.28; // 0–6.28
+    // renderPass.uniforms.saturation.value = 1.5;
 
     // Seafoam rgb(98, 194, 177)
     // Sea blue rgb(0, 116, 162)

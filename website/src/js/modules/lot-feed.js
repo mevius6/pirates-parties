@@ -63,9 +63,9 @@ class LotCard {
 
     this.config = { isCompactView: true };
 
-    this._createTimeline();
-    this._initializeEvents();
-    this._listen();
+    // this._createTimeline();
+    // this._initializeEvents();
+    // this._listen();
   }
 
   _initializeDOM(el) {
