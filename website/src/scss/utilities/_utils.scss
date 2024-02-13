@@ -19,6 +19,15 @@
   contain-intrinsic-size: auto var(--size-containment, 1000px);
 }
 
+.is-anchor-link {
+  // …
+}
+
+.has-outline {
+  outline: var(--accent) hidden 4px;
+  outline-offset: 2px;
+}
+
 .sqr,
 .square, {
   aspect-ratio: var(--ratio-square);
@@ -32,6 +41,24 @@
 .force-tap-size {
   min-inline-size: var(--min-touch-target-size);
   min-block-size: var(--min-touch-target-size);
+}
+
+.text {
+  &-center {
+    text-align: center !important;
+  }
+  &-right {
+    text-align: right !important;
+  }
+  &-end {
+    text-align: end !important;
+  }
+  &-left {
+    text-align: left !important;
+  }
+  &-start {
+    text-align: start !important;
+  }
 }
 
 //
@@ -179,7 +206,7 @@
   // display: block !important;
   max-inline-size: 100%;
   // margin: 0 auto;
-  columns: var(--x, 2) calc(var(--col-w, 20) * 1em); // or 29ch
+  columns: var(--x, 2) calc(var(--col-w, 20) * 1ch); // or 29ch
   gap:
     var(--row-gap, var(--gutter))
     var(--col-gap, var(--gutter));

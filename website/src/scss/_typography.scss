@@ -144,7 +144,27 @@
   font-family: var(--font-display);
   line-height: var(--lh-precise);
   font-weight: normal;
-  // letter-spacing: var(--text-neg-tracking-1);
+  letter-spacing: var(--tracking, 0);
+
+  // Layout features
+  font-feature-settings:
+    'aalt' var(--aalt, 0),
+    'case' var(--case, 0),
+    'ccmp' var(--ccmp, 0),
+    'liga' var(--liga, 0),
+    'locl' var(--locl, 0),
+    'ordn' var(--ordn, 0),
+    'salt' var(--salt, 0),
+    'ss01' var(--ss01, 0),
+    'ss02' var(--ss02, 0),
+    'ss03' var(--ss03, 0),
+    'ss04' var(--ss04, 0),
+    'ss05' var(--ss05, 0),
+    'ss06' var(--ss06, 0),
+    'ss07' var(--ss07, 0),
+    'kern' var(--kern, 1),
+    'mark' var(--mark, 0),
+    'mkmk' var(--mkmk, 0);
 }
 
 .font-sans {
@@ -155,19 +175,58 @@
 }
 
 .font-serif {
+  // Variable axes
+  --weight-axis: 200; // 'wght' 200–900
+  --italic-axis: 0; // 'ital' 0–1
+  --opsize-axis: 48; // 'opsz' 9–16–48
+  // Feature tags
+  --features: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
+
   font-family: var(--font-serif);
-  line-height: 1.25cap; // var(--lh-equals);
+  line-height: var(--lh-equals);
   letter-spacing: var(--text-neg-tracking-1);
 
-  // Axes: 'ital' 0–1, 'opsz' 9–16–48, 'wght' 200–900
   font-variation-settings: 'opsz' var(--opsz, 48,), 'wght' var(--wght, 210);
-  font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
+  // font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1;
+  // Layout features
+  font-feature-settings:
+    'aalt' var(--aalt, 0),
+    'c2sc' var(--c2sc, 0),
+    'calt' var(--calt, 0),
+    'case' var(--case, 0),
+    'ccmp' var(--ccmp, 0),
+    'dlig' var(--dlig, 1),
+    'liga' var(--liga, 1),
+    'lnum' var(--lnum, 0),
+    'locl' var(--locl, 0),
+    'onum' var(--onum, 0),
+    'ordn' var(--ordn, 0),
+    'rvrn' var(--rvrn, 0),
+    'salt' var(--salt, 0),
+    'smcp' var(--smcp, 0),
+    'ss01' var(--ss01, 0),
+    'ss02' var(--ss02, 0),
+    'ss03' var(--ss03, 0),
+    'ss05' var(--ss05, 0),
+    'ss06' var(--ss06, 0),
+    'ss07' var(--ss07, 0),
+    'ss08' var(--ss08, 0),
+    'ss09' var(--ss09, 0),
+    'ss10' var(--ss10, 0),
+    'ss11' var(--ss11, 0),
+    'kern' var(--kern, 1),
+    'mark' var(--mark, 0),
+    'mkmk' var(--mkmk, 0);
 
   &:where(.--deck-narrow) {
     --opsz: 16;
     --wght: 200;
     // Deck Narrow Regular preset
     // font-variation-settings: "opsz" 16, "wght" 400, "ital" 0;
+  }
+
+  @supports ( line-height: 1cap ) {
+    line-height: 1.25cap;
   }
 }
 
@@ -333,23 +392,17 @@
       'wdth' var(--wdth, 75),
       'slnt' var(--slnt, 0);
 
-    line-height: 1cap; // var(--lh-equals);
+    line-height: 1.25ex; // var(--lh-equals);
     text-transform: uppercase;
+
     max-inline-size: 12ch;
     inline-size: fit-content;
+
     // letter-spacing: -0.01em; // -0.04em;
     // letter-spacing: var(--text-neg-tracking-1);
-  }
 
-  hgroup {
-    margin-block-start: var(--my, 4rem);
-    margin-inline: var(--mx, 1rem);
-
-    & h1 > * + * { margin-block-start: .25em; }
-
-    @include config.respond('tablet') {
-      --mx: 0;
-      --my: 2rem;
+    @supports ( height: 1cap ) {
+      line-height: 1cap;
     }
   }
 
@@ -386,7 +439,6 @@
     font-variation-settings:
       'wdth' var(--wdth, 75),
       'slnt' var(--slnt, 0);
-    line-height: var(--lh-precise);
 
     &:where(:not([class^='review'])) {
       // letter-spacing: -0.16px;
@@ -408,7 +460,7 @@
   }
 
   [class*='overline'] {
-    color: var(--accent-shade);
+    color: var(--accent);
     font-size: .75em;
     font-weight: 500;
     letter-spacing: var(--letter-spacing-5);

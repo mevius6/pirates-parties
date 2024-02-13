@@ -31,6 +31,8 @@
     padding-inline: 3ex;
     padding-block: 2ch;
     margin-inline: var(--spacer-2x);
+    margin-block-start: var(--my, 4rem);
+    margin-inline: var(--mx, auto);
     text-align: left;
 
     place-items: start;
@@ -38,8 +40,13 @@
     @include config.respond('tablet') {
       padding: unset;
       margin-inline: unset;
-      // grid-column: center;
-      // place-self: center;
+    }
+
+    & h1 > * + * { margin-block-start: .25em; }
+
+    @include config.respond('tablet') {
+      --mx: 0;
+      --my: 2rem;
     }
   }
 

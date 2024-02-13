@@ -37,17 +37,19 @@ $list-selector: '.list';
     display: grid;
     align-items: var(--align-x, baseline);
     column-gap: calc(var(--icon-size, 1em) + var(--spacer));
-    row-gap: var(--spacer-2x);
+    row-gap: var(--spacer);
 
     // https://web.dev/css-marker-pseudo-element/
     &::marker { color: currentcolor; } // <-- best way?
     &::before {
       display: inline-block;
+      // display: contents;
       font-size: var(--icon-size, 1em);
       line-height: calc(var(--icon-ratio, 1)); // 0
       font-family: inherit;
-      font-feature-settings: 'case' 1;
       content: var(--content);
+
+      // https://blog.kizu.dev/cap-height-align/
     }
 
     /* NOTE:

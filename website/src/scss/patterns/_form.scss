@@ -234,4 +234,24 @@
   :where(optgroup:not([label]) > option) {
     padding-inline-start: 2px;
   }
+
+  option:is([selected=true]) {
+    background: none;
+    color: var(--accent);
+  }
+
+  optgroup::before {
+    font-family: var(--font-display);
+    font-size: smaller;
+    font-size-adjust: 0.5;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: 'wdth' 120, 'slnt' -15;
+    font-synthesis: none;
+
+    text-transform: uppercase;
+    letter-spacing: 0.0125em;
+    text-align: end;
+    color: var(--foreground-a80);
+  }
 }

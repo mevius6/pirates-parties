@@ -579,8 +579,12 @@ $lib: 'leaflet';
     border: solid 2px var(--trn);
     border-radius: 1ch;
   }
+
   &, &::after {
-    background: linear-gradient(var(--background), var(--background)) padding-box, var(--grad-1) border-box;
+    background:
+      linear-gradient(var(--background),
+      var(--background)) padding-box,
+      var(--accent) border-box;
   }
 
   // https://github.com/argyleink/gui-challenges/tree/main/tooltips

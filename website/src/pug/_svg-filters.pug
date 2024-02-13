@@ -190,3 +190,28 @@ svg(
       feTurbulence#turbolence(type="fractalNoise" baseFrequency="5" numOctaves="10" seed="10" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise")
       feDisplacementMap(in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse")
       animate(xlink:href="#turbolence" attributeName="baseFrequency" dur="20s" keyTimes="0;0.5;1" values="5;5.1;5;" repeatCount="indefinite")
+
+    filter#filter-1
+      feTurbulence(type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp")
+      feOffset(dx="-90" result="warpOffset")
+      feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warpOffset")
+    filter#filter-2
+      feTurbulence(type="fractalNoise" baseFrequency="0" numOctaves="20" result="warp")
+      feOffset(dx="-90" result="warpOffset")
+      feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="40" in="SourceGraphic" in2="warpOffset")
+    filter#filter-3
+      feTurbulence(type="fractalNoise" baseFrequency="0.15 0.02" numOctaves="3" result="warp")
+      feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="0" in="SourceGraphic" in2="warp")
+    filter#filter-4
+      feTurbulence(type="fractalNoise" baseFrequency="0" numOctaves="5" result="warp")
+      feOffset(dx="-90" result="warpOffset")
+      feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="35" in="SourceGraphic" in2="warpOffset")
+    filter#filter-5
+      feTurbulence(type="fractalNoise" baseFrequency="0.01 0.7" numOctaves="5" result="warp")
+      feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="0" in="SourceGraphic" in2="warp")
+    filter#filter-6
+      feTurbulence(type="fractalNoise" baseFrequency="0.01 0.07" numOctaves="5" seed="2" result="noise")
+      feDisplacementMap(in="SourceGraphic" in2="warp" scale="0" xChannelSelector="R" yChannelSelector="B")
+    filter#filter-7
+      feTurbulence(type="fractalNoise" baseFrequency="0" numOctaves="5" result="warp")
+      feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="90" in="SourceGraphic" in2="warp")

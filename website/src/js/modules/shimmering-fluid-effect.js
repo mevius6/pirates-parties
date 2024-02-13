@@ -501,13 +501,14 @@ window.addEventListener('load', async () => {
     // Turquoise rgb(0, 170, 147)
 
     const themeSwitch = select('theme-switch');
-    const root = document.documentElement;
+    const root = document.documentElement,
+          mode = root.dataset.themeStyle;
 
-    renderPass.uniforms.bgColor.value = (root.dataset.themeStyle === 'dark')
+    renderPass.uniforms.bgColor.value = (mode === 'dark')
       ? [46, 46, 48]
       : [237, 236, 230];
 
-    themeSwitch.addEventListener('colorschemechange', () => {
+    themeSwitch.addEventListener('colorschemechange', async () => {
       if (themeSwitch.mode === 'dark') {
         renderPass.uniforms.hue.value = 2.28;
         // SW Tricorn Black
