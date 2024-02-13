@@ -296,6 +296,7 @@ $lib: 'leaflet';
           align-items: center;
           justify-content: space-around;
           padding: var(--denser);
+          color: var(--accent);
         }
 
         a {
@@ -411,7 +412,7 @@ $lib: 'leaflet';
             color: var(--accent);
             // background-color: var(--accent);
 
-            & > span { --rot: 0; }
+            & > span { --rot: 0deg; }
           }
         }
 
@@ -552,6 +553,7 @@ $lib: 'leaflet';
 
 // Location marker
 .marker-icon {
+  color: var(--accent);
   filter: drop-shadow(-2px 3px 2px hsl(0 0% 0% / 0.4));
   transition: filter 600ms var(--easing);
 
@@ -631,7 +633,7 @@ $lib: 'leaflet';
 
     b, strong {
       // padding-block-end: var(--denser);
-      color: var(--accent-shade);
+      color: hsl(var(--cool-gray-1));
       text-transform: uppercase;
       font-size: .75em;
       letter-spacing: var(--letter-spacing-4);

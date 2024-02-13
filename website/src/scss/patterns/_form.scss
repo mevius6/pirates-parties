@@ -235,6 +235,8 @@
     padding-inline-start: 2px;
   }
 
+  // option {…}
+
   option:is([selected=true]) {
     background: none;
     color: var(--accent);

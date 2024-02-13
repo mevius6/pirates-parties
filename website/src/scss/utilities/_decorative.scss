@@ -130,9 +130,9 @@
     inline-size: 100%;
     block-size: 100%;
     transform-origin: 100% 0;
-    background: url(../images/shadow.png) 100% 0/cover no-repeat fixed;
-    // background-image: var(--bg-image, var(--background));
-    background-attachment: fixed;
+    // background:
+    //   var(--bg-image, url(../images/shadow.png))
+    //   100% 0/cover no-repeat fixed;
     animation: move 7s 2s infinite alternate;
     mix-blend-mode: overlay;
     opacity: .75s;
@@ -393,8 +393,7 @@
 
     opacity: 0.125;
     filter: brightness(1.25);
-    // background-color: var(--background-a25);
-    background-image: var(--lin-grad-4-hues);
+    background-color: hsl(var(--cool-gray-1) / .8);
     background-blend-mode: color-burn;
   }
 

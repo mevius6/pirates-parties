@@ -850,13 +850,6 @@ dialog { // <-- basic noscript alert
     margin-block: var(--spacer-2x);
   }
 
-  :where(#advert, #about) {
-    & > article {
-      grid-column: content;
-      margin-inline: auto;
-    }
-  }
-
   :where(#locate) {
     block-size: 80lvh;
     // max-block-size: 100svh;
@@ -868,8 +861,6 @@ dialog { // <-- basic noscript alert
       --map-sidebar-spacer: 2ch;
     }
   }
-
-  // .popout {…}
 
   :where(#canvas) {
     z-index: -1;
@@ -894,8 +885,11 @@ dialog { // <-- basic noscript alert
     }
   }
 
-  :where(#goods) {
-    // background-color: hsl(var(--sw-in-the-navy));
+  :where(#advert, #about) {
+    & > article {
+      grid-column: content;
+      margin-inline: auto;
+    }
   }
 
   :where(#advert) {
@@ -1047,6 +1041,7 @@ dialog { // <-- basic noscript alert
 
           &:is(:hover) > .icon {
             color: var(--accent);
+            transform: rotatez(0deg);
           }
 
           .icon {
@@ -1059,8 +1054,12 @@ dialog { // <-- basic noscript alert
             stroke-linecap: round;
             stroke-linejoin: round;
             overflow: visible;
+            transform: rotatez(90deg);
+            will-change: color, transform;
 
-            transition: color var(--ease-out-quart) 200ms;
+            transition:
+              transform var(--ease-out-quart) 200ms,
+              color var(--ease-out-quart) 200ms;
           }
         }
       }
@@ -1089,6 +1088,7 @@ dialog { // <-- basic noscript alert
 
     & svg {
       color: var(--fill, var(--foreground));
+      // color: var(--fill, hsl(var(--cool-gray-1)));
       stroke: none;
       shape-rendering: geometricPrecision;
     }
@@ -1140,11 +1140,11 @@ dialog { // <-- basic noscript alert
       }
     }
 
-    & :where([title=logotype]) {
+    & :where(#logotype) {
       transform: scale(250%);
     }
 
-    & :where([title=trips]) {
+    & :where(#trips) {
       inset-block-start: 0%;
       inset-inline-start: 50%;
       transform: translateX(-50%) translateY(-50%);
@@ -1160,7 +1160,7 @@ dialog { // <-- basic noscript alert
       }
     }
 
-    & :where([title=boats]) {
+    & :where(#boats) {
       inset-block-start: 50%;
       inset-inline-start: 0%;
       transform: translateX(-50%) translateY(-50%) rotate(360deg);
@@ -1174,7 +1174,7 @@ dialog { // <-- basic noscript alert
       }
     }
 
-    & :where([title=vinyl]) {
+    & :where(#vinyl) {
       --tx: 50%;
       --ty: -50%;
       --skew: 0rad;

@@ -44,21 +44,11 @@
 }
 
 .text {
-  &-center {
-    text-align: center !important;
-  }
-  &-right {
-    text-align: right !important;
-  }
-  &-end {
-    text-align: end !important;
-  }
-  &-left {
-    text-align: left !important;
-  }
-  &-start {
-    text-align: start !important;
-  }
+  &-center { text-align: center !important; }
+  &-right  { text-align: right !important; }
+  &-end    { text-align: end !important; }
+  &-left   { text-align: left !important; }
+  &-start  { text-align: start !important; }
 }
 
 //
