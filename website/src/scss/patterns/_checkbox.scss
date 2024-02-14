@@ -10,8 +10,7 @@
   --cb-mark-color: var(--background);
   --cb-mark-font: var(--font-icons, var(--font-stack-mono));
   // Data URL
-  // https://api.iconify.design/line-md:confirm.svg
-  // --cb-confirm-icon: url('data:image/svg+xml;base64, … ');
+  // --cb-confirm-icon: url('https://api.iconify.design/line-md:confirm.svg');
   --cb-confirm-icon: url(data-url:../images/cb-mark.svg);
   // Animations
   --cb-onhover-dur: 300ms;
@@ -46,6 +45,9 @@
     inset-block-start: 50%;
     inset-inline-start: 50%;
     display: inline-block;
+
+    inline-size: 26px;
+    block-size: 26px;
 
     // font-family: inherit;
     // font-size: .75em;
@@ -86,7 +88,7 @@
       transition-timing-function: var(--easing);
       transition-duration: 150ms;
       transition-property: opacity, transform;
-      transform: var(--half-shift) scale(.90);
+      transform: var(--half-shift) scale(.75);
     }
   }
 

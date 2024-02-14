@@ -175,19 +175,20 @@
 }
 
 .font-serif {
-  // Variable axes
   --weight-axis: 200; // 'wght' 200–900
   --italic-axis: 0; // 'ital' 0–1
   --opsize-axis: 48; // 'opsz' 9–16–48
-  // Feature tags
-  --features: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1; // 'mkmk' 1
 
   font-family: var(--font-serif);
   line-height: var(--lh-equals);
   letter-spacing: var(--text-neg-tracking-1);
 
-  font-variation-settings: 'opsz' var(--opsz, 48,), 'wght' var(--wght, 210);
-  // font-feature-settings: 'ccmp' 1, 'kern' 1, 'liga' 1, 'ss08' 1, 'mark' 1;
+  // Variable axes
+  font-variation-settings:
+    'opsz' var(--opsz, 48),
+    'wght' var(--wght, 210),
+    'ital' var(--ital, 0);
+
   // Layout features
   font-feature-settings:
     'aalt' var(--aalt, 0),
@@ -210,7 +211,7 @@
     'ss05' var(--ss05, 0),
     'ss06' var(--ss06, 0),
     'ss07' var(--ss07, 0),
-    'ss08' var(--ss08, 0),
+    'ss08' var(--ss08, 1),
     'ss09' var(--ss09, 0),
     'ss10' var(--ss10, 0),
     'ss11' var(--ss11, 0),

@@ -120,7 +120,7 @@
       }
 
       [data-theme-style='light'] & { --bg: var(--accent); }
-      [data-theme-style='dark'] & { --bg: var(--accent-shade); }
+      [data-theme-style='dark'] & { --bg: var(--accent); }
     }
   }
 }

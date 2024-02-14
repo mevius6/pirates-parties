@@ -1,0 +1,409 @@
+@use 'config';
+
+:where(
+  [data-id=index]
+) {
+  // .headline { text-align: center; }
+}
+
+:is(.carousel) {
+  // &:where(.carousel--1, .carousel--3),
+  &:where(
+    [class*=--1],
+    [class*=--3]
+  ) {
+    .headline {
+      --flow-space: var(--denser);
+      letter-spacing: normal;
+    }
+  }
+  &:where(
+    [class$=--4]
+  ) {
+    li {
+      margin-block: 0 auto;
+      padding-block: var(--spacer-3x); // safe-zone for shadows
+    }
+  }
+}
+
+.splitting .whitespace {
+  display: inline-block;
+  white-space: pre;
+}
+
+@media (max-width: 48em) {
+  article { padding-inline: var(--spacer-2x); }
+}
+
+header .tels,
+footer .copr {
+  margin-block: var(--spacer-2x);
+}
+
+:where(#locate) {
+  block-size: 80lvh;
+  // max-block-size: 100svh;
+  grid-template-rows: auto 1fr;
+
+  & > :where(:not(:first-child)) { grid-row: 2 }
+
+  .addon-sidebar {
+    --map-sidebar-spacer: 2ch;
+  }
+}
+
+:where(#canvas) {
+  z-index: -1;
+  // position: absolute;
+  // inset: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100vw;
+  block-size: 100vh;
+
+  & + .plane {
+    max-inline-size: 100%;
+    grid-row: 1;
+
+    inline-size: 100%;
+    // max-inline-size: 1400px;
+    block-size: 100vh;
+    position: relative;
+    margin: auto;
+
+    & > img { display: none; }
+  }
+}
+
+:where(#advert, #about) {
+  & > article {
+    grid-column: content;
+    margin-inline: auto;
+  }
+}
+
+:where(#advert) {
+  position: relative;
+  background-color: hsl(var(--sec-bg, var(--sw-in-the-navy)));
+
+  [data-theme-style=light] & { --sec-bg: var(--sw-in-the-navy); }
+  [data-theme-style=dark] & { --sec-bg: var(--sw-naval); }
+
+  & hr { background: var(--accent); }
+
+  & > section {
+    grid-auto-columns: 100%;
+    grid-auto-flow: column;
+
+    overflow: auto hidden;
+    // scroll-snap-type: inline mandatory;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    grid-template-rows: 1fr min-content;
+    place-items: start;
+    column-gap: var(--gutter);
+    row-gap: var(--spacer-2x);
+
+
+    & > article {
+      scroll-snap-align: start;
+      grid-row: 1;
+      inline-size: 100%;
+      padding-inline: var(--gutter);
+      row-gap: inherit;
+
+      &:is(:nth-of-type(1)) {
+        block-size: 100%;
+        place-content: space-between;
+      }
+    }
+
+    @include config.respond('tablet') {
+      overflow: hidden;
+      grid-template-columns: 1fr auto;
+
+      & > article {
+        padding-inline-start: unset;
+      }
+    }
+  }
+
+  & header {
+    display: contents;
+    padding-block: 2ex;
+    background-color: var(--accent);
+    color: hsl(var(--sec-bg));
+
+    h2.headline { --wdth: 100; --slnt: -15; }
+  }
+
+  & h3.subhead {
+    --wdth: 125;
+    --slnt: 0;
+
+    line-height: var(--lh-equals) !important;
+    text-transform: uppercase;
+  }
+
+  & date {
+    display: inline-flex;
+    margin-inline: auto 0;
+    line-height: 1 !important;
+
+    h2 { --wdth: 70; --slnt: 0; }
+
+    @include config.respond('tablet') {
+      margin-inline: 0 auto;
+    }
+  }
+
+  & .h3.font-serif {
+    --wght: 300;
+    --opsz: 48;
+    --smcp: 1;
+  }
+
+  & .cta { place-self: end; }
+
+  & h4 {
+    --wdth: 62.5;
+    text-transform: uppercase;
+    letter-spacing: 0.0125em; // ~.16px
+  }
+
+  & .copy {
+    --opsz: 14;
+    line-height: 1.15 !important;
+    block-size: 100%;
+
+    @include config.respond('tablet') {
+      max-block-size: 3lh;
+    }
+  }
+
+  & ul {
+    text-transform: uppercase;
+
+    &:where(.small-copy) {
+      --list-gap: .25em;
+
+      grid-area: 2/1;
+
+      font-size: .5rem;
+      letter-spacing: 0.06em;
+
+      & > li {
+        // --px-size: 12;
+        column-gap: .75em !important;
+      }
+    }
+
+    &:where(.line-up) {
+      --flow-space: .5em;
+      --list-gap: .75ex;
+
+      & > li {
+        line-height: (--lh-equal);
+        font-weight: 500;
+      }
+    }
+  }
+
+  & dialog {
+    position: fixed;
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    transform: translate(-50%,-50%);
+    // border: 4px dashed hsl(var(--blaze-orange));
+    border: 2px dashed var(--accent);
+
+    & > [method='dialog'] {
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--em-spacer-5);
+
+      button {
+        margin-inline: auto 0;
+        // background-color: var(--background) !important;
+        // color: var(--foreground) !important;
+
+        &:is(:hover) > .icon {
+          color: var(--accent);
+          transform: rotatez(0deg);
+        }
+
+        .icon {
+          // margin: 2rem;
+          width: .5em;
+          aspect-ratio: 1;
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 2.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          overflow: visible;
+          transform: rotatez(90deg);
+          will-change: color, transform;
+
+          transition:
+            transform var(--ease-out-quart) 200ms,
+            color var(--ease-out-quart) 200ms;
+        }
+      }
+    }
+  }
+}
+
+:where(#about) {
+  & > .grid__center {
+    padding-block-end: 2.5ex;
+  }
+
+  h5 {
+    line-height: 1.1;
+    text-wrap: balance;
+    // font-variant-caps: petite-caps;
+  }
+
+  & > div {
+    position: relative;
+    margin-inline: 2rem;
+
+    @include config.respond('tablet') {
+      margin-inline: 3rem;
+    }
+  }
+
+  & svg {
+    color: var(--fill, var(--foreground));
+    // color: var(--fill, hsl(var(--cool-gray-1)));
+    stroke: none;
+    shape-rendering: geometricPrecision;
+  }
+
+  & .tagline {
+    --flow-space: 1em;
+    padding-inline: 1rem;
+    @include config.respond('tablet') {
+      & {
+        margin-block: 1rem;
+      }
+    }
+
+    & > h5 {
+      --wght: 300;
+      text-align: center;
+      display: none;
+
+      @include config.respond('tablet') {
+        & {
+          display: inline-block;
+        }
+      }
+    }
+
+    & > svg {
+      width: 50%;
+      height: auto;
+      margin: auto;
+      @include config.respond('tablet') {
+        & {
+          width: 35%;
+        }
+      }
+    }
+  }
+
+  & svg:where(:not(:nth-child(1))) {
+    position: absolute;
+    width: 15%;
+    height: auto;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    cursor: pointer;
+    @include config.respond('tablet') {
+      & {
+        width: 18%;
+      }
+    }
+  }
+
+  & :where(#logotype) {
+    transform: scale(250%);
+  }
+
+  & :where(#trips) {
+    inset-block-start: 0%;
+    inset-inline-start: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    filter: drop-shadow(var(--shadow, 0 0 0 var(--accent)));
+    transition:
+      color 350ms ease-out,
+      filter 350ms 50ms var(--ease-spring);
+
+    &:hover {
+      --fill: var(--accent);
+      --shadow: .5em .5em 2.5em var(--accent);
+    }
+  }
+
+  & :where(#boats) {
+    inset-block-start: 50%;
+    inset-inline-start: 0%;
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    animation: propeller 3s linear forwards infinite;
+    animation-play-state: paused;
+    will-change: transform;
+
+    &:hover {
+      // --fill: hsl(var(--tn-atomic-blue));
+      animation-play-state: running;
+    }
+  }
+
+  & :where(#vinyl) {
+    --tx: 50%;
+    --ty: -50%;
+    --skew: 0rad;
+
+    inset-block-start: 50%;
+    inset-inline-end: 0%;
+    transform:
+      translateX(var(--tx)) translateY(var(--ty))
+      skew(var(--skew));
+    transition:
+      color 350ms 150ms ease-out,
+      transform 500ms var(--ease-in-out-quart);
+    will-change: transform;
+
+    // animation: spinner 60s linear forwards infinite;
+    // animation-play-state: paused;
+
+    &:hover {
+      --skew: 52deg, -32deg;
+      --fill: hsl(var(--tn-pink-glo));
+      // animation-play-state: running;
+    }
+  }
+
+  @keyframes propeller {
+    to {
+      transform: translateX(-50%) translateY(-50%) rotate(0);
+    }
+  }
+
+  // LP Record Spin at 33 1/3 RPM
+  @keyframes spinner {
+    to {
+      fill: var(--accent-extra);
+      transform:
+        translateX(50%)
+        translateY(-50%)
+        rotatez(33turn);
+    }
+  }
+}

@@ -235,16 +235,18 @@
     padding-inline-start: 2px;
   }
 
-  // option {…}
+  option {
+    font-weight: 500;
+    color: var(--foreground);
+  }
 
   option:is([selected=true]) {
-    background: none;
-    color: var(--accent);
+    // color: var(--accent);
   }
 
   optgroup::before {
     font-family: var(--font-display);
-    font-size: smaller;
+    font-size: .75rem;
     font-size-adjust: 0.5;
     font-weight: 400;
     font-style: normal;
