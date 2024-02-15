@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 @import url(./NeueHaasUnicaW1G.css);
-/* @import url(./GaramondITC.css); */
-/* @import url(./UniversLT.css); */
 
 /* ID: 3.000;djr ;NickelGothicV3Variable-Regular */
 @font-face {
@@ -35,7 +33,7 @@
   }
   h2 {
     /* @apply text-xl; */
-    @apply font-displayNarrow font-bold leading-tight tracking-normal;
+    @apply font-displayNarrow leading-tight tracking-normal;
   }
   h3 {
     @apply font-serifDisplayConde leading-tight tracking-normal;
