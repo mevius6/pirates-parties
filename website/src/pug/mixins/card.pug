@@ -29,6 +29,7 @@ mixin card(props)
     let view = ` ${className}--${view}` ?? props.view
     attrs.class = className + view
 
+  // TODO: https://schema.org/VisualArtwork
   article&attributes(attrsList)
     h3.card__headline= head
     if media
@@ -46,6 +47,7 @@ mixin card(props)
       if !props.sink
         | #{body}
       else
+        | #{body}
         block
     if action
       footer.card__footer

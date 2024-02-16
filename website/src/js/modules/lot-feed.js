@@ -29,12 +29,15 @@ class LotCard {
     dateCreated,
     price,
     scale,
+    artWidth,
+    artHeight,
     ...responsiveImageArgs
   ) {
     this._initializeDOM(el);
 
     this._createResponsiveImage(...responsiveImageArgs, {LQIP: false});
-    this._displayContent(title, about, artistName, dateCreated, price, scale);
+    this._displayContent(
+      title, about, artistName, dateCreated, price, scale, artWidth, artHeight);
 
     this.config = { isCompactView: true };
   }
@@ -51,17 +54,29 @@ class LotCard {
     this.DOM.textWrapper = this.DOM.card.querySelector('.card__text-wrapper');
     this.DOM.title = this.DOM.card.querySelector('.card__headline');
     this.DOM.body = this.DOM.card.querySelector('.card__body');
+
+    this.DOM.artist = this.DOM.card.querySelector(
+      '[itemprop=artist] > [itemprop=name]');
+    this.DOM.w = this.DOM.card.querySelector('[itemprop=width]');
+    this.DOM.h = this.DOM.card.querySelector('[itemprop=height]');
+    this.DOM.f = this.DOM.card.querySelector('.format');
+
     this.DOM.date = this.DOM.card.querySelector('.card__date');
     this.DOM.cta = this.DOM.card.querySelector('.card__cta');
     this.DOM.id = this.DOM.card.parentNode.getAttribute('id') || undefined;
   }
 
-  async _displayContent(title, about, artistName, dateCreated, price, scale) {
+  async _displayContent(
+    title, about, artistName, dateCreated, price, scale, artWidth, artHeight) {
     this.DOM.title.textContent = `${title}`;
-    this.DOM.body.textContent = `
-      ${about}
-      Автор: ${artistName}.
-      Формат: ${scale}.`;
+    this.DOM.body.textContent = `${about}`;
+
+    // this.DOM.artist.textContent = `Автор: ${artistName}`;
+    this.DOM.artist.textContent = `${artistName}`;
+    this.DOM.w.textContent = artWidth;
+    this.DOM.h.textContent = artHeight;
+    this.DOM.f.textContent = scale;
+
     this.DOM.cta.textContent = 'Заказать';
     this.DOM.cta.href = '/#contact';
 
@@ -149,6 +164,8 @@ export default class LotFeed {
             dateCreated,
             price,
             scale,
+            width: artWidth,
+            height: artHeight,
             lotImages: [{
               responsiveImage: {
                 srcSet,
@@ -170,6 +187,8 @@ export default class LotFeed {
           dateCreated,
           price,
           scale,
+          artWidth,
+          artHeight,
           srcSet,
           webpSrcSet,
           src,

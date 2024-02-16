@@ -78,6 +78,8 @@ export const getAllGoodsForHome = async () => {
           title
           about
           price
+          width
+          height
           scale
           lotImages {
             responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1024, h: 576 }) {

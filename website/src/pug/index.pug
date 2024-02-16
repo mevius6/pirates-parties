@@ -228,11 +228,8 @@ block content
 
     section.container.spaced.--ada-md#goods
       .grid__center
-        +head({
-          class: [],
-          level: 2,
-          text: 'Магазин',
-          split: 'chars' })
+        +head({ class: [], level: 2, split: 'chars',
+                text: 'Магазин' })
       ul.grid__full.horizontal-scroller.card-feed(
         style={ '--columns': 3 }
         aria-labelledby="#MerchLabel"
@@ -244,8 +241,32 @@ block content
               class: 'anim-dashed-border',
               view: 'compact',
               media: true,
-              action: true
-            })
+              action: true,
+              sink: true })
+              //-
+                TODO: about, abstract, author, offers, size
+                div(itemscope itemtype="https://schema.org/VisualArtwork")
+                  h1(itemprop="name") «МИР-2»
+                  p: span(itemprop="artform") Плакат • Print
+              //- ul
+                li(itemprop="artist" itemscope itemtype="https://schema.org/Person")
+                  | Автор:
+                  | #[span(itemprop="name") ПКМ]
+                li
+                  | Размер:
+                  span(itemprop="width" itemscope itemtype="https://schema.org/Distance") 25 3/16 inches
+                  | ×
+                  span(itemprop="height" itemscope itemtype="https://schema.org/Distance") 20 3/4 inches
+              div(itemprop="artist" itemscope itemtype="https://schema.org/Person")
+                | Автор:
+                | #[span(itemprop="name") ПКМ]
+              div
+                | Размер:
+                | #[span.format A3]
+                | #[span(itemprop="width" itemscope itemtype="https://schema.org/Distance")]
+                | ×
+                | #[span(itemprop="height" itemscope itemtype="https://schema.org/Distance")]
+                | мм
 
     section.container.spaced.--ada-md#locate
       .grid__center: +head({
