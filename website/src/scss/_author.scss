@@ -27,7 +27,7 @@
   }
 }
 
-.splitting .whitespace {
+:is(.splitting .whitespace) {
   display: inline-block;
   white-space: pre;
 }
@@ -90,8 +90,6 @@ footer .copr {
   [data-theme-style=light] & { --sec-bg: var(--sw-in-the-navy); }
   [data-theme-style=dark] & { --sec-bg: var(--sw-naval); }
 
-  & hr { background: var(--accent); }
-
   & > section {
     grid-auto-columns: 100%;
     grid-auto-flow: column;
@@ -107,7 +105,6 @@ footer .copr {
     column-gap: var(--gutter);
     row-gap: var(--spacer-2x);
 
-
     & > article {
       scroll-snap-align: start;
       grid-row: 1;
@@ -118,6 +115,21 @@ footer .copr {
       &:is(:nth-of-type(1)) {
         block-size: 100%;
         place-content: space-between;
+      }
+
+      & hr {
+        margin-inline: 0;
+        block-size: 2px;
+        inline-size: 10ch;
+        border: none;
+        background: var(--accent);
+        // https://oklch.com/
+        // background:
+        //   linear-gradient(
+        //     to bottom right in oklab,
+        //     oklch(95.4% 0.216 114.862),
+        //     oklch(95.4% 0.216 114.862)
+        //   ) fixed;
       }
     }
 
@@ -144,16 +156,15 @@ footer .copr {
     --wdth: 125;
     --slnt: 0;
 
-    line-height: var(--lh-equals) !important;
     text-transform: uppercase;
   }
 
-  & date {
+  & time {
     display: inline-flex;
     margin-inline: auto 0;
     line-height: 1 !important;
 
-    h2 { --wdth: 70; --slnt: 0; }
+    .h2 { --wdth: 70; --slnt: 0; }
 
     @include config.respond('tablet') {
       margin-inline: 0 auto;

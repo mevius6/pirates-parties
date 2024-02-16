@@ -56,8 +56,8 @@ class LotCard {
   }
 
   async _displayContent(title, about, artistName, dateCreated, price) {
-    this.DOM.title.textContent = `${title} ${artistName}`;
-    this.DOM.body.textContent = about;
+    this.DOM.title.textContent = `${title}`;
+    this.DOM.body.textContent = `${about} Автор: ${artistName}`;
     this.DOM.cta.textContent = 'Заказать';
     this.DOM.cta.href = '/#contact';
 

@@ -238,6 +238,7 @@
   option {
     font-weight: 500;
     color: var(--foreground);
+    max-block-size: 2ex;
   }
 
   option:is([selected=true]) {

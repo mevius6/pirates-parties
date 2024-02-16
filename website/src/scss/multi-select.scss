@@ -1,0 +1,210 @@
+@custom-media --motionOK (prefers-reduced-motion: no-preference);
+@custom-media --dark (prefers-color-scheme: dark);
+@custom-media --light (prefers-color-scheme: light);
+@custom-media --useSelect (pointer: coarse);
+
+:root {
+  --border-color: hsl(221 30% 90%);
+  --surface-color-1: hsl(221 90% 98%);
+  --surface-color-2: hsl(221 40% 100%);
+  --text-color-1: hsl(221 50% 15%);
+  --text-color-2: hsl(221 20% 40%);
+  --shadow-highlight-color: hsl(219 62% 42% / 25%);
+  --isLTR: 1;
+  --isRTL: -1;
+
+  &:dir(rtl) {
+    --isLTR: -1;
+    --isRTL: 1;
+  }
+
+  @media (--dark) {
+    --border-color: hsl(221 10% 20%);
+    --surface-color-1: hsl(221 20% 5%);
+    --surface-color-2: hsl(221 5% 10%);
+    --text-color-1: hsl(221 90% 98%);
+    --text-color-2: hsl(221 20% 80%);
+    --shadow-highlight-color: hsl(219 50% 82% / 25%);
+  }
+}
+
+main[data-id=catalogue] {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 5vmin;
+  align-items: flex-start;
+
+  select {
+    display: none;
+    padding-block: 0.5ch;
+    padding-inline: 1ch;
+    font-size: max(100%, 1rem);
+
+    @media (--useSelect) {
+      &[multiple] {
+        display: block;
+      }
+    }
+  }
+
+  form {
+    display: grid;
+    gap: 2ch;
+    max-inline-size: 30ch;
+  }
+
+  fieldset {
+    padding: 2ch;
+    background-color: var(--surface-color-2);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    @media (--useSelect) {
+      display: none;
+    }
+
+    &:focus-within {
+      border-color: var(--text-color-2);
+
+      & > legend {
+        color: var(--text-color-1);
+      }
+    }
+
+    & > legend {
+      font-size: 0.9em;
+      color: var(--text-color-2);
+    }
+
+    & > div + div {
+      margin-block-start: 2ch;
+    }
+
+    & > div {
+      display: flex;
+      gap: 2ch;
+      align-items: baseline;
+      color: var(--text-color-1);
+
+      & > label {
+        line-height: 1.5;
+      }
+    }
+  }
+
+  /* https://web.dev/building-a-settings-component/#custom-checkbox */
+  input[type='checkbox'] {
+    margin: 0;
+    cursor: pointer;
+    outline-offset: 5px;
+    accent-color: var(--text-color-2);
+    transform-style: preserve-3d;
+
+    &:hover::before {
+      --thumb-scale: 1;
+    }
+
+    @media (hover: none) {
+      & {
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+      }
+    }
+
+    &::before {
+      --thumb-scale: 0.01;
+      --thumb-highlight-size: 3rem;
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      inline-size: var(--thumb-highlight-size);
+      block-size: var(--thumb-highlight-size);
+
+      content: '';
+      background: hsl(0 0% 50% / 20%);
+      will-change: transform;
+      transform:
+        translateX(calc(var(--isRTL) * 50%))
+        translateY(-50%)
+        translateZ(-1px)
+        scale(var(--thumb-scale));
+      transform-origin: center center;
+      clip-path: circle(50%);
+
+      @media (--motionOK) {
+        & {
+          transition: transform 0.2s ease;
+        }
+      }
+    }
+  }
+
+  & > header {
+    grid-column: 1 / -1;
+
+    display: grid;
+    gap: 1ch;
+  }
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (--useSelect) {
+    & > article {
+      grid-row: 3;
+      grid-column: 1 / -1;
+    }
+  }
+
+  & article {
+    --size: min(300px, calc(25% - 2ch));
+    margin: -1ch;
+
+    & > span {
+      inline-size: var(--size);
+      block-size: 15ch;
+      margin: 1ch;
+      background: hsl(0 0% 50% / 25%);
+      border-radius: 10px;
+      will-change: transform;
+
+      @media (orientation: portrait) {
+        --size: calc(50% - 2ch);
+      }
+
+      @supports (aspect-ratio: 1) {
+        block-size: auto;
+        aspect-ratio: 1;
+      }
+    }
+  }
+
+  & aside {
+    counter-reset: filters;
+
+    & :checked {
+      counter-increment: filters;
+    }
+
+    & #applied-filters::before {
+      content: counter(filters) ' filters ';
+    }
+  }
+
+  & fieldset:first-of-type {
+    margin-block-start: -5px;
+  }
+}
+
+[role='status'] {
+  @media (--useSelect) {
+    display: none;
+  }
+}
+
+.sr-only {
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
+}

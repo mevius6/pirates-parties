@@ -57,7 +57,7 @@ block content
             | московских #[br]
           span.title(style={ '--wdth': 67.5, '--slnt': 0 })
             | акваторий
-      .overlay
+      .grid__third-rhs.overlay
       //- +picture({
         class: ['grid__full'],
         path: 'hero',
@@ -123,31 +123,30 @@ block content
       section.grid__third-rhs.d-grid.spaced.--ada-md
         article.d-grid
           +head({
-            class: ['font-display', 'text-white', 'text-left', 'subhead'],
+            class: [
+              'font-display', 'text-white', 'text-left', 'subhead'],
             level: 3,
             text: ['Презентация зина*', 'по трипу Москва-Крым'] })
+          | #[hr]
           p.copy.xcol.font-serif.text-white
             | Фотоархив, графика. Полное собрание лучшего, подведение итогов.
             | #[br]
             | Новая глава ПКМ: делимся новостями, анонсируем событие.
           .h3.font-serif.text-white
-            | #[hr]
             |  В программе: танцы, ром.
           +cta({
             type: 'button',
-            text:'Узнать локацию'
-          })(
+            text:'Узнать локацию' })(
             data-js-anim='bg-gradient'
             onclick="document.querySelector('dialog').showModal()")
         article.d-grid
-          date(datetime="17.02.2024")
-            +head({
-              class: ['text-white', 'text-end'],
-              level: 2,
-              text: ['17.02', '21:00'] })
+          time.h2.text-white.text-end(datetime="2024–02–17")
+            | 17.02
+            | #[br]
+            | 21:00
           .flow.text-white
             +list({
-              class: ['line-up'],
+              class: ['line-up', 'tracking-equals'],
               title: 'Line-up',
               items: lineup })
         +list({

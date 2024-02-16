@@ -4,6 +4,7 @@
 import { gsap } from 'gsap';
 // import { EventEmitter } from 'events';
 import {
+  animationObserver,
   createNode,
   createNodeWithClass,
   appendNode,
@@ -124,7 +125,9 @@ class Card {
     img.loading = 'lazy';
     img.decoding = 'async';
 
-    if ('loading' in HTMLImageElement.prototype) {
+    let inViewport = this.DOM.card.parentNode.classList.contains('--in-view');
+
+    if ('loading' in HTMLImageElement.prototype && inViewport) {
       img.onload = () => this._revealImage();
     } else {
       // https://caniuse.com/loading-lazy-attr
@@ -162,6 +165,24 @@ class Card {
   }
 }
 
+// TODO
+class ProductCard extends Card {
+  constructor(
+    el,
+    title,
+    about,
+    artistName,
+    dateCreated,
+    price,
+    ...responsiveImageArgs
+  ) {
+    super(el);
+    // this._initializeDOM(el);
+    // this._createResponsiveImage(...responsiveImageArgs, {LQIP: false});
+    this._displayContent(title, about, artistName, dateCreated, price);
+  }
+}
+
 // ? https://w3c.github.io/aria-practices/#feed
 export default class CardFeed {
   constructor(el) {
@@ -169,6 +190,11 @@ export default class CardFeed {
     this.cards = [];
     this.wrap = select('#posts');
     this.items = selectAll('.card', this.wrap);
+
+    // this._observe(this.items);
+    // let inViewport = this.items[0].classList.contains('js-anim--running');
+
+    this.hasIntersected = new Set();
 
     this._runAsyncFetch().then((v) => {
       v.map(async (post, i) => {
@@ -205,7 +231,49 @@ export default class CardFeed {
         ));
       });
     }).catch(error => error.message);
+
+    this._createObservers();
+    this._listen();
   }
+
+  async _createObservers() {
+    this.feed_observer = new IntersectionObserver(
+      (observations) => {
+        for (let observation of observations) {
+          this.hasIntersected.add(observation);
+
+          // toggle --in-view class if intersecting or not
+          observation.target.parentNode.classList.toggle(
+            '--in-view',
+            observation.isIntersecting
+          );
+        }
+      },
+      {
+        root: this.DOM.el,
+        threshold: 0.6,
+      }
+    );
+  }
+
+  async _listen() {
+    // observe children intersection
+    for (let item of this.items) {
+      this.feed_observer.observe(item);
+    }
+  }
+
+  // async _observe(items) {
+  //   for (const element of items) {
+  //     animationObserver.observe(element, {
+  //       root: this.DOM,
+  //       rootMargin: '0px',
+  //       threshold: [1.0],
+  //       trackVisibility: true,
+  //       delay: 100
+  //     });
+  //   }
+  // }
 
   async _runAsyncFetch() {
     // const allPosts = await Promise.map(getAllPostsForHome(), async (v));

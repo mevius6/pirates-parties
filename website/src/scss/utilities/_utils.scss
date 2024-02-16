@@ -51,6 +51,24 @@
   &-start  { text-align: start !important; }
 }
 
+// .tracking {…}
+
+.leading {
+  &-default { line-height: var(--lh-default) !important }
+  &-eighty  { line-height: var(--lh-eighty) !important }
+  &-thinest { line-height: var(--lh-thinest) !important }
+  &-precise { line-height: var(--lh-precise) !important }
+  &-equals  { line-height: var(--lh-equals) !important }
+  &-tight   {
+    line-height: var(--lh-equals) !important;
+    line-height: 1.25ex !important;
+
+    @supports ( height: 1cap ) {
+      line-height: 1cap !important;
+    }
+  }
+}
+
 //
 // Positioning
 //

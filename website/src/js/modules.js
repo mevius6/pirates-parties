@@ -46,13 +46,18 @@ const doc = document, { documentElement: root } = doc;
     // const plane = await import('./modules/plane');
 
     const map = await import('./modules/map');
+
+    loadCardFeed();
+    loadLotFeed();
+  } if (
+    parsedUrl.pathname === '/catalogue' ||
+    parsedUrl.pathname === '/catalogue.html'
+  ) {
+    const multi = await import('./modules/multi-select');
   }
 
   const nav = await loadNav('.nav-button');
   // await loadNav('.nav-button');
-
-  loadCardFeed();
-  loadLotFeed();
 })();
 
 async function loadNav(control) {
@@ -111,12 +116,12 @@ async function loadLotFeed() {
   const { default: LotFeed } = await import('./modules/lot-feed');
 
   // eslint-disable-next-line no-undef
-  const firstPost = lot1;
-  const loadTrigger = createObserver(firstPost);
+  const firstItem = lot1;
+  const loadTrigger = createObserver(firstItem);
 
   loadTrigger.then(() => {
     // eslint-disable-next-line no-unused-vars
-    const goods = new LotFeed(firstPost.parentNode);
+    const goods = new LotFeed(firstItem.parentNode);
   });
 }
 

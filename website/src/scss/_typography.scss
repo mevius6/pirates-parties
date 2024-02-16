@@ -139,7 +139,7 @@
   small { --px-size: 12; }
 }
 
-// Font utils
+// Font set utils
 .font-display {
   font-family: var(--font-display);
   line-height: var(--lh-precise);
@@ -369,6 +369,8 @@
 
   // i,
   em { font-style: italic; }    // <-- emphasized text
+  s { opacity: .75; }           // <-- the strikethrough element
+  u { text-decoration: underline; }
   b,
   strong { font-weight: 500; }  // <-- important text
   mark { font-weight: 500; }    // <-- marked/highlighted text
@@ -393,7 +395,7 @@
       'wdth' var(--wdth, 75),
       'slnt' var(--slnt, 0);
 
-    line-height: 1.25ex; // var(--lh-equals);
+    line-height: 1.25ex;
     text-transform: uppercase;
 
     max-inline-size: 12ch;

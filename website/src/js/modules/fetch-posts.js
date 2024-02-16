@@ -36,6 +36,12 @@ const fetchAPI = async (query) => {
   return json.data;
 };
 
+// eslint-disable-next-line no-unused-vars
+const imageDims = {
+  '1/1': [1024, 1024],
+  '16/9': [1024, 576],
+}
+
 export const getAllPostsForHome = async () => {
   const data = await fetchAPI(`
     {

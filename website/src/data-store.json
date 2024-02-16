@@ -16,6 +16,13 @@
       "path": "/",
       "title": ["", ""]
     },
+    "catalogue": {
+      "description": "",
+      "id": "catalogue",
+      "keywords": "",
+      "path": ["./catalogue.pug", "/catalogue"],
+      "title": ["Каталог товаров", ""]
+    },
     "feed": {
       "description": "",
       "id": "blog",
