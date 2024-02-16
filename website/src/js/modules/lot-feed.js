@@ -28,12 +28,13 @@ class LotCard {
     artistName,
     dateCreated,
     price,
+    scale,
     ...responsiveImageArgs
   ) {
     this._initializeDOM(el);
 
     this._createResponsiveImage(...responsiveImageArgs, {LQIP: false});
-    this._displayContent(title, about, artistName, dateCreated, price);
+    this._displayContent(title, about, artistName, dateCreated, price, scale);
 
     this.config = { isCompactView: true };
   }
@@ -55,9 +56,12 @@ class LotCard {
     this.DOM.id = this.DOM.card.parentNode.getAttribute('id') || undefined;
   }
 
-  async _displayContent(title, about, artistName, dateCreated, price) {
+  async _displayContent(title, about, artistName, dateCreated, price, scale) {
     this.DOM.title.textContent = `${title}`;
-    this.DOM.body.textContent = `${about} Автор: ${artistName}`;
+    this.DOM.body.textContent = `
+      ${about}
+      Автор: ${artistName}.
+      Формат: ${scale}.`;
     this.DOM.cta.textContent = 'Заказать';
     this.DOM.cta.href = '/#contact';
 
@@ -144,6 +148,7 @@ export default class LotFeed {
             artistName,
             dateCreated,
             price,
+            scale,
             lotImages: [{
               responsiveImage: {
                 srcSet,
@@ -164,6 +169,7 @@ export default class LotFeed {
           artistName,
           dateCreated,
           price,
+          scale,
           srcSet,
           webpSrcSet,
           src,

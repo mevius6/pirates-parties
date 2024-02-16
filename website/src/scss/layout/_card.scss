@@ -79,6 +79,7 @@
   display: grid;
   gap: var(--_space);
   padding: var(--_space);
+  place-self: stretch;
 
   border-radius: 5px;
   overflow-y: hidden;
@@ -132,7 +133,7 @@
   }
 
   &__body {
-    @include config.line-clamp(2);
+    @include config.line-clamp(3);
 
     max-inline-size: 40ch;
     text-wrap: balance;
