@@ -51,7 +51,10 @@ mixin card(props)
         block
     if action
       footer.card__footer
-        time.card__date(datetime="")
+        if props.time
+          time.card__date(datetime="")
+        if props.price
+          span.card__price
         +cta({
           base: 'card',
           type: 'anchor',

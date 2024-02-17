@@ -217,8 +217,8 @@ block content
               class: 'anim-dashed-border',
               view: 'compact',
               media: true,
-              action: true
-            })
+              time: true,
+              action: true })
       //- .grid__center
         +cta({
           type: 'anchor',
@@ -234,6 +234,10 @@ block content
         style={ '--columns': 3 }
         aria-labelledby="#MerchLabel"
       )
+        //-
+          TODO: about, abstract, artform, offers, etc.
+          div(itemscope itemtype="https://schema.org/VisualArtwork")
+            h1(itemprop="name") «МИР-2»
         - let lotCount = [0,1,2]
         each i in lotCount
           li.item(id=`lot${i+1}`)
@@ -242,31 +246,17 @@ block content
               view: 'compact',
               media: true,
               action: true,
+              price: true,
               sink: true })
-              //-
-                TODO: about, abstract, author, offers, size
-                div(itemscope itemtype="https://schema.org/VisualArtwork")
-                  h1(itemprop="name") «МИР-2»
-                  p: span(itemprop="artform") Плакат • Print
-              //- ul
+              ul.artwork-details
                 li(itemprop="artist" itemscope itemtype="https://schema.org/Person")
-                  | Автор:
-                  | #[span(itemprop="name") ПКМ]
+                  | Автор: #[span(itemprop="name") ПКМ]
                 li
-                  | Размер:
-                  span(itemprop="width" itemscope itemtype="https://schema.org/Distance") 25 3/16 inches
-                  | ×
-                  span(itemprop="height" itemscope itemtype="https://schema.org/Distance") 20 3/4 inches
-              div(itemprop="artist" itemscope itemtype="https://schema.org/Person")
-                | Автор:
-                | #[span(itemprop="name") ПКМ]
-              div
-                | Размер:
-                | #[span.format A3]
-                | #[span(itemprop="width" itemscope itemtype="https://schema.org/Distance")]
-                | ×
-                | #[span(itemprop="height" itemscope itemtype="https://schema.org/Distance")]
-                | мм
+                  | Размер: #[span.format A3]
+                  | &lpar;#[span(itemprop="width" itemscope itemtype="https://schema.org/Distance") …]
+                  | &times;
+                  | #[span(itemprop="height" itemscope itemtype="https://schema.org/Distance") …]
+                  | мм&rpar;
 
     section.container.spaced.--ada-md#locate
       .grid__center: +head({

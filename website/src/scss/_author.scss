@@ -418,3 +418,10 @@ footer .copr {
     }
   }
 }
+
+.artwork-details {
+  --list-gap: var(--denser);
+  & > li {
+    display: inline list-item;
+  }
+}

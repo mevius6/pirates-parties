@@ -34,15 +34,15 @@
   padding-inline: var(--_space);
   margin-inline: calc(var(--_space) * -1);
 
-  & .card:where(:not(:first-child, :last-child)) {
-    scroll-snap-align: center;
-  }
-  & .card:is(:first-child, :first-of-type) {
-    scroll-snap-align: start;
-  }
-  & .card:is(:last-child, :last-of-type) {
-    scroll-snap-align: end;
-  }
+  // & .card:where(:not(:first-child, :last-child)) {
+  //   scroll-snap-align: center;
+  // }
+  // & .card:is(:first-child, :first-of-type) {
+  //   scroll-snap-align: start;
+  // }
+  // & .card:is(:last-child, :last-of-type) {
+  //   scroll-snap-align: end;
+  // }
 
   @include config.respond('tablet') {
     grid-auto-columns: 45ch;
@@ -74,12 +74,12 @@
   // max-inline-size: 45ch;
   // inline-size: clamp(30ch, 50%, 45ch); // 20–45ch
 
-  // scroll-snap-align: start;
+  scroll-snap-align: start;
 
   display: grid;
   gap: var(--_space);
   padding: var(--_space);
-  place-self: stretch;
+  align-self: stretch;
 
   border-radius: 5px;
   overflow-y: hidden;
@@ -144,6 +144,7 @@
     }
   }
 
+  &__price,
   &__date {
     opacity: 0.75;
     display: inline-block;

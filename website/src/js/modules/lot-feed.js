@@ -60,6 +60,7 @@ class LotCard {
     this.DOM.w = this.DOM.card.querySelector('[itemprop=width]');
     this.DOM.h = this.DOM.card.querySelector('[itemprop=height]');
     this.DOM.f = this.DOM.card.querySelector('.format');
+    this.DOM.price = this.DOM.card.querySelector('.card__price');
 
     this.DOM.date = this.DOM.card.querySelector('.card__date');
     this.DOM.cta = this.DOM.card.querySelector('.card__cta');
@@ -80,7 +81,9 @@ class LotCard {
     this.DOM.cta.textContent = 'Заказать';
     this.DOM.cta.href = '/#contact';
 
-    this.DOM.date.textContent = price;
+    // this.DOM.price.textContent = `${price} ₽`;
+    this.DOM.price.textContent = price;
+    // this.DOM.date.textContent = dateCreated;
   }
 
   async _createResponsiveImage(
