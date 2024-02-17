@@ -80,6 +80,8 @@
   gap: var(--_space);
   padding: var(--_space);
   align-self: stretch;
+  align-content: start;
+  grid-template-rows: min-content auto 1fr auto;
 
   border-radius: 5px;
   overflow-y: hidden;
