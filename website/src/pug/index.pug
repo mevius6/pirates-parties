@@ -169,6 +169,34 @@ block content
             multi: false,
             recaptcha: false })
 
+    // Лента блога || Blog feed
+    section.container.spaced.--ada-md#posts(data-id="posts")
+      .grid__center
+        +head({
+          class: [],
+          level: 2,
+          text: 'Бортовой журнал',
+          split: 'chars' })
+      ul.grid__full.horizontal-scroller.card-feed(
+        style={ '--columns': 3 }
+        aria-labelledby="#FeedLabel"
+      )
+        - let postCount = [0,1,2]
+        each i in postCount
+          li.item(id=`post${i+1}`)
+            +card({
+              class: 'anim-dashed-border',
+              view: 'compact',
+              media: true,
+              time: true,
+              action: true })
+      //- .grid__center
+        +cta({
+          type: 'anchor',
+          link: '',
+          text: 'Больше новостей!'
+        })(data-js-anim='bg-gradient' target='_blank')
+
     section.container.spaced.--ada-lg#about
       .grid__center
         +head({
@@ -198,33 +226,6 @@ block content
           text: [`Это наш магазин и${NBSP}платформа для${NBSP}анонса мероприятий, релизов и${NBSP}архив полезных материалов.`],
           split: 'chars' })
 
-    // Лента блога || Blog feed
-    section.container.spaced.--ada-md#posts(data-id="posts")
-      .grid__center
-        +head({
-          class: [],
-          level: 2,
-          text: 'Бортовой журнал',
-          split: 'chars' })
-      ul.grid__full.horizontal-scroller.card-feed(
-        style={ '--columns': 3 }
-        aria-labelledby="#FeedLabel"
-      )
-        - let postCount = [0,1,2]
-        each i in postCount
-          li.item(id=`post${i+1}`)
-            +card({
-              class: 'anim-dashed-border',
-              view: 'compact',
-              media: true,
-              time: true,
-              action: true })
-      //- .grid__center
-        +cta({
-          type: 'anchor',
-          link: '',
-          text: 'Больше новостей!'
-        })(data-js-anim='bg-gradient' target='_blank')
 
     section.container.spaced.--ada-md#goods
       .grid__center
