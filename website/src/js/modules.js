@@ -49,6 +49,8 @@ const doc = document, { documentElement: root } = doc;
 
     loadCardFeed();
     loadLotFeed();
+
+    console.clear();
   } if (
     parsedUrl.pathname === '/catalogue' ||
     parsedUrl.pathname === '/catalogue.html'
@@ -112,6 +114,7 @@ async function loadCardFeed() {
     const feed = new CardFeed(firstPost.parentNode);
   });
 }
+
 async function loadLotFeed() {
   const { default: LotFeed } = await import('./modules/lot-feed');
 

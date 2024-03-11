@@ -1,7 +1,7 @@
-@custom-media --motionOK (prefers-reduced-motion: no-preference);
-@custom-media --dark (prefers-color-scheme: dark);
-@custom-media --light (prefers-color-scheme: light);
-@custom-media --useSelect (pointer: coarse);
+// @custom-media --motionOK (prefers-reduced-motion: no-preference);
+// @custom-media --dark (prefers-color-scheme: dark);
+// @custom-media --light (prefers-color-scheme: light);
+// @custom-media --useSelect (pointer: coarse);
 
 :root {
   --border-color: hsl(221 30% 90%);
@@ -18,7 +18,8 @@
     --isRTL: 1;
   }
 
-  @media (--dark) {
+  // @media (--dark) {
+  [data-theme-style=dark] & {
     --border-color: hsl(221 10% 20%);
     --surface-color-1: hsl(221 20% 5%);
     --surface-color-2: hsl(221 5% 10%);

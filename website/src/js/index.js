@@ -37,4 +37,6 @@ window.addEventListener('load', () => {
   body.classList.replace('page--loading', 'page--loaded');
   // root.dataset.browser = browser;
   // root.dataset.os = os;
+
+  // console.clear();
 });
