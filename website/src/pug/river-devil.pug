@@ -1,0 +1,24 @@
+extends page
+
+block vars
+  - let page = data.pages.trips;
+
+block content
+  section.grid
+    section.container#advert
+      .grid__full
+      .grid__start-half.logo: include ../images/river-devil-logo.svg
+      .grid__end-half.self.--start
+        p(itemprop="description" role="subtitle")= cruisesAd
+      //- .grid__third-rhs.overlay
+        +picture({
+          class: ['grid__full'],
+          path: 'hero',
+          name: 'river-devil-gamma',
+          format: 'webp',
+          desc: '',
+          hdim: 1920,
+          vdim: 720,
+          transform: false })
+      .grid__full.bg-image
+    //- section.container

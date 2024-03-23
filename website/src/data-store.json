@@ -30,6 +30,13 @@
       "path": ["./feed.pug", "/feed"],
       "title": ["Лента новостей", ""]
     },
+    "trips": {
+      "description": "",
+      "id": "river-devil",
+      "keywords": "",
+      "path": ["./river-devil.pug", "/river-devil"],
+      "title": ["Речной дьявол", ""]
+    },
     "gallery": {
       "description": "",
       "id": "gallery",
