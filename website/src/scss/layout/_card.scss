@@ -34,18 +34,24 @@
   padding-inline: var(--_space);
   margin-inline: calc(var(--_space) * -1);
 
-  // & .card:where(:not(:first-child, :last-child)) {
-  //   scroll-snap-align: center;
-  // }
-  // & .card:is(:first-child, :first-of-type) {
-  //   scroll-snap-align: start;
-  // }
-  // & .card:is(:last-child, :last-of-type) {
-  //   scroll-snap-align: end;
-  // }
+  & > .item {
+    &:where(:not(:first-child, :last-child)) {
+      scroll-snap-align: center;
+    }
+    &:where(:first-child, :first-of-type) {
+      scroll-snap-align: start;
+    }
+    &:where(:last-child, :last-of-type) {
+      scroll-snap-align: end;
+    }
+  }
 
   @include config.respond('tablet') {
     grid-auto-columns: 45ch;
+
+    :where(#goods) & {
+      grid-auto-columns: minmax(24em, 1fr);
+    }
   }
 
   aside {
@@ -100,6 +106,7 @@
 
     @include config.respond('tablet') {
       :where(:not(#goods)) & { --ratio: 16/9; }
+      :where(#goods) & { --ratio: 4/5; }
     }
   }
 
