@@ -456,6 +456,8 @@ footer .copr {
       aspect-ratio: var(--ar, 16/9);
       background-image: url(https://www.datocms-assets.com/119177/1711212024-river-devil-gamma.jpg);
 
+      // background-image: url(../images/trips/120_ForrestGreen.webp);
+
       @include config.respond('tablet') {
         --ar: 21/9;
       }
@@ -464,6 +466,10 @@ footer .copr {
     & .offers {
       padding-inline-end: var(--gutter);
       // gap: var(--gutter);
+
+      // & > * + * {
+      //   margin-block-start: var(--gutter-spacious-md);
+      // }
 
       & h4 {
         --wdth: 100;

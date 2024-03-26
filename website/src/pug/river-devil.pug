@@ -2,11 +2,14 @@ extends page
 
 block vars
   - let page = data.pages.trips;
+  -
+    const TG_CH = 'https://t.me/riverdevil666'
 
 block content
   section.grid
     article.container#advert
-      .grid__start-half.logo.flex-centered: include ../images/trips/river-devil-logo.svg
+      .grid__start-half.logo.flex-centered
+        include ../images/trips/river-devil-logo.svg
       .grid__end-half.self.--start
         //- p(itemprop="description" role="subtitle")= cruisesAd
         p.copy.font-serif= cruisesAd
@@ -18,21 +21,21 @@ block content
       //- ul.grid__center.offers
         each item of offers
           li: p.font-serif= item
-      .grid__third-rhs.offers
-        +list({
-          title: 'Исследование',
-          items: offer1 })
+      .grid__third-rhs.offers.flow
         +list({
           title: 'Приключение',
-          items: offer2 })
+          items: offer1 })
         +list({
           title: 'Изучение',
-          items: offer3 })
+          items: offer2 })
+        +cta({
+          type: 'anchor',
+          text: 'Перейти в Телеграм-канал',
+          link: TG_CH, })(data-js-anim='bg-gradient')
 
       //- Карта
       .grid__center.map
         +head({ text: 'Маршруты' })
-        //- hr
         //- p.copy.font-serif
           | Мы предлагаем несколько форматов прогулок по следующим маршрутам:
         include ../images/trips/map.svg
@@ -48,13 +51,12 @@ block content
 
       footer.grid__center
         p.copy.font-serif.text-center
-          //- | За подробностями переходите в наш телеграм канал
           //- | ${NBSP}
           | Подробности
           = spacedEmDash
-          | в нашем телеграм-канале
+          | в нашем Телеграм-канале
           | #[br]
           +link({
             classes: ['font-serif'],
             text: '@riverdevil666',
-            href: 'https://t.me/riverdevil666' })
+            href: TG_CH })
