@@ -74,7 +74,7 @@ mixin items(arr, marker)
           else
             if item.date
               time.date.keyline(datetime= item.date)= item.date
-            if item.title
+            //- if item.title
               h4.subhead= item.title
 
 mixin list(props)
@@ -82,6 +82,8 @@ mixin list(props)
     time.date.keyline(datetime= props.date)= props.date
   if props.title
     h4.subhead= props.title
+  if props.lead
+    p= props.lead
   if props.ordered
     ol.list(
       role="list"

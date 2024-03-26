@@ -6,15 +6,37 @@ block vars
 block content
   section.grid
     article.container#advert
-      .grid__start-half.logo.flex-centered: include ../images/river-devil-logo.svg
+      .grid__start-half.logo.flex-centered: include ../images/trips/river-devil-logo.svg
       .grid__end-half.self.--start
         //- p(itemprop="description" role="subtitle")= cruisesAd
         p.copy.font-serif= cruisesAd
       .grid__full.bg-image
-      .grid__start-half
-        p.copy.font-serif
+
+      //- УТП
+      .grid__third-lhs.sideways
+        +head({ text: 'Мы предлагаем' })
+      //- ul.grid__center.offers
+        each item of offers
+          li: p.font-serif= item
+      .grid__third-rhs.offers
+        +list({
+          title: 'Исследование',
+          items: offer1 })
+        +list({
+          title: 'Приключение',
+          items: offer2 })
+        +list({
+          title: 'Изучение',
+          items: offer3 })
+
+      //- Карта
+      .grid__center.map
+        +head({ text: 'Маршруты' })
+        //- hr
+        //- p.copy.font-serif
           | Мы предлагаем несколько форматов прогулок по следующим маршрутам:
-      +picture({
+        include ../images/trips/map.svg
+      //- +picture({
         class: ['grid__full', 'map'],
         path: 'trips',
         name: 'map',
@@ -23,6 +45,7 @@ block content
         hdim: 1920,
         vdim: 720,
         transform: false })
+
       footer.grid__center
         p.copy.font-serif.text-center
           //- | За подробностями переходите в наш телеграм канал
@@ -34,5 +57,4 @@ block content
           +link({
             classes: ['font-serif'],
             text: '@riverdevil666',
-            href: 'https://t.me/riverdevil666'
-          })
+            href: 'https://t.me/riverdevil666' })
