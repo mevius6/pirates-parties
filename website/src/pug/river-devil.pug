@@ -3,7 +3,7 @@ extends page
 block vars
   - let page = data.pages.trips;
   -
-    const TG_CH = 'https://t.me/riverdevil666'
+    const RIVER_DEVIL = 'https://t.me/riverdevil666'
 
 block content
   section.grid
@@ -13,7 +13,16 @@ block content
       .grid__end-half.self.--start
         //- p(itemprop="description" role="subtitle")= cruisesAd
         p.copy.font-serif= cruisesAd
-      .grid__full.bg-image
+      //- .grid__full.bg-image
+      +picture({
+        class: ['grid__full'],
+        path: 'trips',
+        name: 'river-devil',
+        format: 'webp',
+        desc: '',
+        hdim: 1920,
+        vdim: 823,
+        transform: false })
 
       //- УТП
       .grid__third-lhs.sideways
@@ -28,12 +37,14 @@ block content
         +list({
           title: 'Изучение',
           items: offer2 })
+        //- 'Подробнее', 'Узнать больше', 'Перейти в Телеграм'
         +cta({
           type: 'anchor',
-          text: 'Перейти в Телеграм-канал',
-          link: TG_CH, })(data-js-anim='bg-gradient')
+          text: 'Узнать больше',
+          link: RIVER_DEVIL })(data-js-anim='bg-gradient')
 
       //- Карта
+        - https://html.spec.whatwg.org/multipage/image-maps.html
       .grid__center.map
         +head({ text: 'Маршруты' })
         //- p.copy.font-serif
@@ -59,4 +70,4 @@ block content
           +link({
             classes: ['font-serif'],
             text: '@riverdevil666',
-            href: TG_CH })
+            href: RIVER_DEVIL })

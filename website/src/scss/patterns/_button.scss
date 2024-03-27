@@ -158,7 +158,10 @@
 
     &:active:not([disabled]) {
       --btn-background:
-        linear-gradient(var(--background-a60), var(--background-a80)) padding-box,
+        linear-gradient(
+          var(--background-a60),
+          var(--background-a80)
+        ) padding-box,
         radial-gradient(
           farthest-corner at var(--x,50%) var(--y,50%),
           var(--accent),
@@ -167,6 +170,19 @@
 
       box-shadow: var(--turn-off-shadow);
       transform: translateY(1px) scale3d(.95, .95, 1);
+
+      [data-theme-style=light] & {
+        --btn-background:
+        linear-gradient(
+          var(--background-a50),
+          var(--background-a80)
+        ) padding-box,
+        radial-gradient(
+          farthest-corner at var(--x,50%) var(--y,50%),
+          var(--background),
+          var(--accent)
+        ) border-box;
+      }
     }
   }
 

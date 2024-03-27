@@ -58,10 +58,17 @@ mixin items(arr, marker)
               +link({
                 base: 'list',
                 href: link,
-                text: text
-              })
+                text: text })
       else
-        li= text
+        li
+          if Array.isArray(text)
+            each part of text
+              = part
+              |
+              |
+              //- | #[br]
+          else
+            = text
           //--> set default options for nested list (recursively)
           if item.listItems
             +list({

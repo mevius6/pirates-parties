@@ -250,9 +250,11 @@ block content
               sink: true })
               ul.artwork-details
                 li(itemprop="artist" itemscope itemtype="https://schema.org/Person")
-                  | Автор: #[span(itemprop="name") ПКМ]
+                  | Автор:#[br]
+                  | #[span(itemprop="name") ПКМ]
                 li
-                  | Размер: #[span.format A3]
+                  | Размер:#[br]
+                  | #[span.format A3]
                   | &lpar;#[span(itemprop="width" itemscope itemtype="https://schema.org/Distance") …]
                   | &times;
                   | #[span(itemprop="height" itemscope itemtype="https://schema.org/Distance") …]

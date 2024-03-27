@@ -235,6 +235,10 @@
   background-size: cover;
 }
 
+.bg-paper--120-green {
+  background: url(../images/trips/120_ForrestGreen.webp) center/cover no-repeat;
+}
+
 .truncate-overflow {
   @include config.line-clamp(3);
   hyphens: manual;
