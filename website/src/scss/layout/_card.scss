@@ -102,12 +102,13 @@
 
   &__image-wrapper,
   &__image {
-    aspect-ratio: var(--ratio, 1);
+    aspect-ratio: var(--img-ar, var(--ratio-3)); // 16/9
+    // OR
+    // --img-ar: var(--ratio-square);
 
-    @include config.respond('tablet') {
-      :where(:not(#goods)) & { --ratio: 16/9; }
-      :where(#goods) & { --ratio: 4/5; }
-    }
+    // @include config.respond('tablet') {
+      :where(#goods) & { --img-ar: 4/5; }
+    // }
   }
 
   &__image-wrapper {
