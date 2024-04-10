@@ -1,0 +1,96 @@
+section.container#advert(data-id="advert")
+  -
+    const lineup = [
+      {
+        //- 'icon': MARKER,
+        'text': 'kikin'
+      },{
+        //- 'icon': MARKER,
+        'text': 'Maran'
+      },{
+        //- 'icon': MARKER,
+        'text': 'Balu'
+      },{
+        //- 'icon': MARKER,
+        'text': 'myhttp (Киров)'
+      },{
+        //- 'icon': MARKER,
+        'text': 'Kraken'
+      },{
+        //- 'icon': MARKER,
+        'text': 'Masha Psurtseva'
+      },{
+        //- 'icon': MARKER,
+        'text': 'Mr. Khorne'
+      }
+    ]
+  -
+    const small = [
+      {
+        'icon': '*',
+        'text': 'Первые печатные копии зина будут доступны для продажи на мероприятии'
+      },{
+        'icon': '*',
+        'text': 'Предзаказать зин можно в разделе товаров'
+      },{
+        //- 'icon': '⁂',
+        'icon': '*',
+        'text': `Название вечеринки${spacedEmDash}отсылка к локации`
+      }
+    ]
+
+  header.grid__third-lhs.sideways
+    +head({
+      class: [],
+      level: 2,
+      text: 'Krähennest' })
+      //- split: 'chars' })
+
+  section.grid__third-rhs.d-grid.spaced.--ada-md
+    article.d-grid
+      +head({
+        class: [
+          'font-display', 'text-white', 'text-left', 'subhead'],
+        level: 3,
+        text: ['Презентация зина*', 'по трипу Москва-Крым'] })
+      | #[hr]
+      p.copy.xcol.font-serif.text-white
+        | Фотоархив, графика. Полное собрание лучшего, подведение итогов.
+        | #[br]
+        | Новая глава ПКМ: делимся новостями, анонсируем событие.
+      .h3.font-serif.text-white
+        |  В программе: танцы, ром.
+      +cta({
+        type: 'button',
+        text: 'Узнать локацию' })(
+        data-js-anim='bg-gradient'
+        onclick="document.querySelector('dialog').showModal()")
+    article.d-grid
+      time.h2.text-white.text-end(datetime="2024–02–17")
+        | 17.02
+        | #[br]
+        | 21:00
+      .flow.text-white
+        +list({
+          class: ['line-up', 'tracking-equals'],
+          title: 'Line-up',
+          items: lineup })
+    +list({
+      class: ['small-copy', 'text-white'],
+      items: small })
+
+    dialog.flow
+      form.d-flex(method="dialog")
+        p Мы вышлем координаты места и время проведения мероприятия ответным письмом.
+        button.font-display.space-unset.flex-centered.sqr.force-tap-size
+          //- span.icon(style=`--wdth: 150`) &times; <!-- × -->
+          svg.icon#cross(
+            viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" version="1.1")
+            path(d="M0,0 16,16 M16,0 0,16")
+      +form({
+        id: 'modal',
+        class: '',
+        endpoint: '9e8c2172',
+        email: 'tickets@piratykaspiyskogo.online',
+        multi: false,
+        recaptcha: false })

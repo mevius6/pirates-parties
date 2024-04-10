@@ -1,0 +1,36 @@
+section.container.spaced.--ada-md#contact
+  .grid__center.d-flex.flex-centered
+    +head({
+      class: [],
+      level: 2,
+      text: 'Пишите нам',
+      split: 'chars' })
+  .grid__content: +form({
+    id: 'main',
+    class: '',
+    endpoint: '4c269348',
+    email: data.meta.email,
+    phone: data.meta.phone,
+    message: 'Вы можете оставить тут несколько комментариев к заявке…',
+    multi: true,
+    recaptcha: true })
+    span.form__label-text
+      | Предмет интереса
+    select#multi(name="multi" multiple size="2")
+      //- tickets
+      //- optgroup(label="Билеты")
+        //- Krähennest • «Воронье гнездо»
+        option(selected="true") Krähennest
+        //- !{spacedEmDash}1200&nbsp;₽
+        option Анклав
+      //- physical assets — prints
+      optgroup(label="Публикации")
+        option(selected="true") Зин «МИР-2»
+        //- !{spacedEmDash}100&nbsp;₽
+      optgroup(label="Плакаты")
+        option Плакат «Трагедия»
+        //- !{spacedEmDash}800&nbsp;₽
+        option Плакат «Гейрот»
+        //- !{spacedEmDash}600&nbsp;₽
+
+  //- offer: data.pages.offer.path[0]

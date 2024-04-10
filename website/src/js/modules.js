@@ -40,15 +40,15 @@ const doc = document, { documentElement: root } = doc;
   ) {
     // const player = await import('./modules/cloudinary-vp');
     // const carousel = await import('./modules/carousel');
-    const disclosure = await import('./modules/disclosure');
+    const disclosure = await import('./modules/disclosure').then(()=>{
+      loadCardFeed();
+      loadLotFeed();
+    })
 
     const fluid = await import('./modules/shimmering-fluid-effect');
     // const plane = await import('./modules/plane');
 
     const map = await import('./modules/map');
-
-    loadCardFeed();
-    loadLotFeed();
 
     console.clear();
   } if (

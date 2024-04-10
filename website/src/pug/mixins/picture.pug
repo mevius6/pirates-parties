@@ -68,6 +68,8 @@ mixin picture(props)
           type=`image/${subtype}`
           srcset= srcAsPerFormat(subtype))
     else
+      //- Image processing w/ DatoCMS:
+        - https://www.datocms.com/docs/cdn-settings/advanced-asset-setting
       //- Image processing w/ Sharp:
         - https://parceljs.org/recipes/image/
         - https://sharp.pixelplumbing.com/api-output

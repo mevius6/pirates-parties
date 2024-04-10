@@ -215,3 +215,27 @@ svg(
     filter#filter-7
       feTurbulence(type="fractalNoise" baseFrequency="0" numOctaves="5" result="warp")
       feDisplacementMap(xChannelSelector="R" yChannelSelector="G" scale="90" in="SourceGraphic" in2="warp")
+
+    filter#grainy
+    feTurbulence(type='fractalNoise' baseFrequency='9.7531')
+    feDisplacementMap(in='SourceGraphic' scale='999'
+                      yChannelSelector='R')
+
+    filter#retros(color-interpolation-filters='sRGB')
+      feColorMatrix(values=`0 0 0 0 0
+                            0 0 0 0 0
+                            0 0 0 0 0
+                            0 1 0 0 0` result='line')
+      feColorMatrix(in='SourceGraphic'
+                    values=`0 0 0 0  .9
+                            0 0 0 0  .13
+                            0 0 0 0  .86
+                            0 0 1 0 0` result='text')
+      feColorMatrix(in='SourceGraphic'
+                    values=`0 0 0 0  .14
+                            0 0 0 0  .96
+                            0 0 0 0  .99
+                            1 0 0 0 0`)
+      feBlend(in2='text')
+      feComposite(in2='line' operator='in')
+      feDropShadow(dx='4' dy='4')

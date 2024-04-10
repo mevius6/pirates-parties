@@ -1,0 +1,45 @@
+//- section.container.bg-overlay#hero(data-sec="hero")
+  //- video-player.grid__full(basename="footage-10s-prod")
+  //- noscript.grid__full
+    +video({
+      sourcePath: 'static',
+      sourceName: 'teaser',
+      poster: '',
+      dims: [1920, 1080] })
+  hgroup(data-hidden)
+    h1(itemprop="name")= brand.name
+    p(itemprop="description" role="subtitle")= brand.desc
+  //- .grid__center.logo: include ../images/logo.svg
+
+section.container.hero#hero
+  //- .grid__content
+    include ../../images/tagline.svg
+  hgroup.grid__start-half.self.--start
+    h1.flex-centered
+      span.title(style={ '--wdth': 95.6, '--slnt': 0 })
+        | Пираты #[br]
+      span.title(style={ '--wdth': 54.6, '--slnt': 0 })
+        | Каспийского #[br]
+      span.title(style={ '--wdth': 150, '--slnt': 0 })
+        | моря
+      span.title(style={ '--wdth': 73.8, '--slnt': 0 })
+        | подполье #[br]
+      span.title(style={ '--wdth': 57.5, '--slnt': 0 })
+        | московских #[br]
+      span.title(style={ '--wdth': 67.5, '--slnt': 0 })
+        | акваторий
+  .grid__third-rhs.overlay
+  //- +picture({
+    class: ['grid__full'],
+    path: 'hero',
+    name: 'duotone-hires-sqr',
+    format: 'webp',
+    desc: '',
+    hdim: 1920,
+    vdim: 720,
+    transform: false })
+  //- .plane.grid__full
+    img(
+      src="../images/hero/duotone-hires.webp"
+      crossorigin="anonymous"
+      data-sampler="basicPlaneTexture")

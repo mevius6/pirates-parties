@@ -1,0 +1,33 @@
+section.container.spaced.--ada-md#goods
+  .grid__center
+    +head({ class: [], level: 2, split: 'chars',
+            text: 'Магазин' })
+  ul.grid__full.horizontal-scroller.card-feed(
+    style={ '--columns': 3 }
+    aria-labelledby="#MerchLabel"
+  )
+    //-
+      TODO: about, abstract, artform, offers, etc.
+      div(itemscope itemtype="https://schema.org/VisualArtwork")
+        h1(itemprop="name") «МИР-2»
+    - let lotCount = [0,1,2]
+    each i in lotCount
+      li.item(id=`lot${i+1}`)
+        +card({
+          class: 'anim-dashed-border',
+          view: 'compact',
+          media: true,
+          action: true,
+          price: true,
+          sink: true })
+          ul.artwork-details
+            li(itemprop="artist" itemscope itemtype="https://schema.org/Person")
+              | Автор:#[br]
+              | #[span(itemprop="name") ПКМ]
+            li
+              | Размер:#[br]
+              | #[span.format A3]
+              | &lpar;#[span(itemprop="width" itemscope itemtype="https://schema.org/Distance") …]
+              | &times;
+              | #[span(itemprop="height" itemscope itemtype="https://schema.org/Distance") …]
+              | мм&rpar;

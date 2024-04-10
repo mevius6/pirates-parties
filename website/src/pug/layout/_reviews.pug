@@ -1,0 +1,16 @@
+section.container.spaced.--ada-md#reviews
+  .grid__center.d-grid.grid-items-center
+    +head({ level: 2, text: 'Отзывы', split: 'chars' })
+  .grid__content
+    p.overline(
+      itemprop="aggregateRating"
+      itemscope itemtype="https://schema.org/AggregateRating"
+      data-hidden)
+      | #[span(itemprop="ratingValue")= 5] из 5 звёзд —
+      | #[span(itemprop="reviewCount")= count(reviews)] отзывов на
+      | #[+link({href: 'https://', text: ''})]
+    +carousel({
+      class: [],
+      data: reviews,
+      type: 'review',
+      instance: 4 })

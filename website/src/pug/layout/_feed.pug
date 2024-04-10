@@ -1,0 +1,27 @@
+//- Лента блога || Blog feed
+section.container.spaced.--ada-md#posts(data-id="posts")
+  .grid__center
+    +head({
+      class: [],
+      level: 2,
+      text: 'Бортовой журнал',
+      split: 'chars' })
+  ul.grid__full.horizontal-scroller.card-feed(
+    style={ '--columns': 3 }
+    aria-labelledby="#FeedLabel"
+  )
+    - let postCount = [0,1,2]
+    each i in postCount
+      li.item(id=`post${i+1}`)
+        +card({
+          class: 'anim-dashed-border',
+          view: 'compact',
+          media: true,
+          time: true,
+          action: true })
+  //- .grid__center
+    +cta({
+      type: 'anchor',
+      link: '',
+      text: 'Больше новостей!'
+    })(data-js-anim='bg-gradient' target='_blank')
