@@ -11,7 +11,7 @@
     }
   },
   "scripts": {
-    "parcel:start": "parcel src/pug/index.pug --dist-dir ./public --no-cache --cert $(grep '^CERT_PATH' .env | cut -d '=' -f2) --key $(grep '^KEY_PATH' .env | cut -d '=' -f2) -p $npm_package_config_port_https --open",
+    "parcel:start": "parcel src/pug/pages/index.pug --dist-dir ./public --no-cache --cert $(grep '^CERT_PATH' .env | cut -d '=' -f2) --key $(grep '^KEY_PATH' .env | cut -d '=' -f2) -p $npm_package_config_port_https --open",
     "parcel:build": "npm run clear && parcel build src/pug/index.pug --dist-dir ./public --no-source-maps --no-cache && npm run copy",
     "clear": "rm -rf public && rm -rf .parcel-cache",
     "copy": "cp -r src/static/* ./public",

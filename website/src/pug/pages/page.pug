@@ -1,13 +1,13 @@
-include ./mixins
-include ./global-vars
-include ./static-data
+include ../mixins
+include ../global-vars
+include ../static-data
 
 block vars
 
 doctype html
 html(class="no-js" dir="ltr" lang="ru")
   head
-    include ./_meta
+    include ../_meta
 
     block head-start
 
@@ -18,13 +18,13 @@ html(class="no-js" dir="ltr" lang="ru")
         onload="this.onload=null;this.rel='stylesheet'")
     //- noscript: link(rel="stylesheet" href="../scss/leaflet-map.scss")
 
-    include ./_fonts
+    include ../_fonts
 
-    link(rel="stylesheet" type="text/css" href="../scss/main.scss")
+    link(rel="stylesheet" type="text/css" href="../../scss/main.scss")
 
     block head-end
     append head-end
-      script(defer type="module" src="../js/modules.js")
+      script(defer type="module" src="../../js/modules.js")
 
   body.page.page--loading(itemscope itemtype="https://schema.org/WebPage")
     noscript
@@ -34,22 +34,22 @@ html(class="no-js" dir="ltr" lang="ru")
           p= alertDesc
           button(onclick="window.dialog.close();")= alertAction
 
-    include ./_header
+    include ../layout/_header
 
     //- https://schema.org/mainEntity
     main.grainy(
       data-id= page.id
       itemprop="mainEntity"
       itemid= data.meta.domain
-    ): include ./_microdata
+    ): include ../_microdata
 
       block content
 
-    //- include ./_footer
+    //- include ../layout/_footer
 
-    include ./_svg-filters
+    include ../_svg-filters
 
     block scripts
     append scripts
-      script(type="module" src="../js/index.js")
+      script(type="module" src="../../js/index.js")
       //- script(src="./a2hs.js")

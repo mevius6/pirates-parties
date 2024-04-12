@@ -9,13 +9,14 @@ block content
   section.grid
     article.container#advert
       .grid__start-half.logo.flex-centered
-        include ../images/trips/river-devil-logo.svg
+        include ../../images/trips/river-devil-logo.svg
       .grid__end-half.self.--start
         //- p(itemprop="description" role="subtitle")= cruisesAd
         p.copy.font-serif= cruisesAd
       //- .grid__full.bg-image
       +picture({
         class: ['grid__full'],
+        sourcePath: '../images',
         path: 'trips',
         name: 'river-devil',
         format: 'webp',
@@ -49,7 +50,7 @@ block content
         +head({ text: 'Маршруты' })
         //- p.copy.font-serif
           | Мы предлагаем несколько форматов прогулок по следующим маршрутам:
-        include ../images/trips/map.svg
+        include ../../images/trips/map.svg
       //- +picture({
         class: ['grid__full', 'map'],
         path: 'trips',

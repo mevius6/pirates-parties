@@ -24,6 +24,8 @@
     'dark': '#15141b',
     'light': '#edecee'
   }
+-
+  let iconsPath = '../../icons'
 
 meta(charset="utf-8")
 meta(name="viewport"
@@ -71,13 +73,13 @@ meta(name="twitter:title" content= titleMerge)
 meta(name="twitter:description" content= page.description)
 meta(name="twitter:image" content= promoImage)
 
-link(rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png")
-link(rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32x32.png")
-link(rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16x16.png")
-link(rel="icon" type="image/svg+xml" href="../icons/favicon.svg")
-link(rel="mask-icon" href="../icons/favicon.svg" color= themeColor.light)
-link(rel="alternate icon" href="../icons/favicon.ico")
-link(rel="manifest" href="../site.webmanifest")
+link(rel="apple-touch-icon" sizes="180x180" href=`${iconsPath}/apple-touch-icon.png`)
+link(rel="icon" type="image/png" sizes="32x32" href=`${iconsPath}/favicon-32x32.png`)
+link(rel="icon" type="image/png" sizes="16x16" href=`${iconsPath}/favicon-16x16.png`)
+link(rel="icon" type="image/svg+xml" href=`${iconsPath}/favicon.svg`)
+link(rel="mask-icon" href=`${iconsPath}/favicon.svg` color= themeColor.light)
+link(rel="alternate icon" href=`${iconsPath}/favicon.ico`)
+link(rel="manifest" href="../../site.webmanifest")
 meta(name="msapplication-TileColor" content= themeColor.dark)
 
 meta(
