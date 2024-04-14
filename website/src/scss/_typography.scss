@@ -18,7 +18,11 @@
 :root {
   min-height: 0; // Safari fix
   // RFS → https://css-tricks.com/accessible-font-sizing-explained/
-  font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.8772)), 1.5rem);
+  font-size: clamp(
+    1rem,
+    calc(1rem + ((1vw - 0.48rem) * 0.8772)),
+    1.5rem
+  );
 }
 
 @layer type.copy {
