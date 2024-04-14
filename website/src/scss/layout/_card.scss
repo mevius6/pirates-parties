@@ -30,9 +30,9 @@
   grid-auto-columns: 100%;
   gap: var(--_space);
 
-  padding-block-end: var(--_space);
-  padding-inline: var(--_space);
-  margin-inline: calc(var(--_space) * -1);
+  // padding-block-end: var(--_space);
+  // padding-inline: var(--_space);
+  // margin-inline: calc(var(--_space) * -1);
 
   & > .item {
     &:where(:not(:first-child, :last-child)) {

@@ -1,12 +1,13 @@
 //- Лента блога || Blog feed
 section.container.spaced.--ada-md#posts(data-id="posts")
-  .grid__center
+  //- .grid__center
+  .grid__third-lhs.sideways
     +head({
       class: [],
       level: 2,
       text: 'Бортовой журнал',
       split: 'chars' })
-  ul.grid__full.horizontal-scroller.card-feed(
+  ul.grid__third-rhs.horizontal-scroller.card-feed(
     style={ '--columns': 3 }
     aria-labelledby="#FeedLabel"
   )

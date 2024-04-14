@@ -322,13 +322,20 @@
       --foreground-a80: hsl(var(--fg-hsl) / .80);
       --foreground-a95: hsl(var(--fg-hsl) / .95);
       --foreground: hsl(var(--fg-hsl));
+
+      --accent-a25: hsl(var(--accent-hsl) / .25);
+      --accent-a50: hsl(var(--accent-hsl) / .50);
+      --accent-a50: hsl(var(--accent-hsl) / .75);
+      --accent-a80: hsl(var(--accent-hsl) / .80);
+      // --accent: hsl(var(--accent-hsl));
     }
 
     // @scope ([data-theme-style=light]) {…}
     &:where([data-theme-style=light]) {
       color-scheme: light;
 
-      // --accent: hsl(var(--tn-clown-fish));
+      --accent-hsl: var(--tn-clown-fish);
+
       --bg-hsl: var(--white);
       --fg-hsl: var(--sw-carnelian);
       --shadow: hsl(var(--fg-hsl) / .15);
@@ -342,6 +349,8 @@
       [data-theme-style=dark]
     ) {
       color-scheme: dark;
+
+      --accent-hsl: var(--lime);
 
       --accent: hsl(var(--lime));
       --bg-hsl: var(--black);

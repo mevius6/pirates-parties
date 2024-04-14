@@ -70,7 +70,11 @@
   & > .overlay {
     background-image: url('../images/hero/duotone-hires-sqr.webp');
     background-position: center bottom;
-    background-size: contain;
+    background-size: cover;
     pointer-events: none;
+
+    @include config.respond('tablet') {
+      background-size: contain;
+    }
   }
 }

@@ -45,7 +45,7 @@ const doc = document, { documentElement: root } = doc;
       loadLotFeed();
     })
 
-    const fluid = await import('./modules/shimmering-fluid-effect');
+    // const fluid = await import('./modules/shimmering-fluid-effect');
     // const plane = await import('./modules/plane');
 
     const map = await import('./modules/map');
