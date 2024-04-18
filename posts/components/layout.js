@@ -7,21 +7,27 @@ import { loadNav } from "@/lib/nav";
 export default function Layout({ preview, children }) {
   const links = [
     {
+    //   'id': 0,
+    //   'title': 'Все статьи',
+    //   'path': '/',
+    // }, {
+      'id': 1,
       'title': 'Главная',
       'path': '/'
     }, {
+      'id': 2,
       'title': 'О нас',
       'path': '/#about'
     }, {
+      'id': 3,
       'title': 'Магазин',
       'path': '/#goods'
     }, {
-      'title': 'Журнал',
-      'path': 'https://journal.piratykaspiyskogo.online/',
-    }, {
+      'id': 4,
       'title': 'Прогулки',
       'path': '/river-devil'
     }, {
+      'id': 5,
       'title': 'Контакты',
       'path': '/#contact'
     }

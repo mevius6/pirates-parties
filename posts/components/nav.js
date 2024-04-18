@@ -20,18 +20,23 @@ export default function Nav({ navItems }) {
 
       <nav className="nav" id="Nav">
         <ul className="nav__items"
-          itemscope itemtype="https://schema.org/SiteNavigationElement"
+          itemScope itemType="https://schema.org/SiteNavigationElement"
           aria-label="Main Menu"
         >
+          {/* <li className="nav__item" key={1}>
+            <Link href="/" className="nav__link font-serifDisplayConde leading-tight" itemProp="url">
+              <span className="nav__link-text">Все статьи</span>
+            </Link>
+          </li> */}
           {navItems.map((navItem) => (
-            <li className="nav__item">
-              <Link href={`https://piratykaspiyskogo.online${navItem.path}`} className="nav__link font-serifDisplayConde leading-tight" itemprop="url">
+            <li className="nav__item" key={navItem.id}>
+              <Link href={`https://piratykaspiyskogo.online${navItem.path}`} className="nav__link font-serifDisplayConde leading-tight" itemProp="url">
                 <span className="nav__link-text">{navItem.title}</span>
               </Link>
             </li>
           ))}
         </ul>
-        <footer className="page__footer sideways" itemscope="" itemtype="https://schema.org/WPFooter"><p className="copr"><span itemprop="name">Pirates of Caspian sea</span> © <time datetime="2024" itemprop="copyrightYear">2024</time></p></footer>
+        <footer className="page__footer sideways" itemScope="" itemType="https://schema.org/WPFooter"><p className="copr"><span itemProp="name">Pirates of Caspian sea</span> © <time dateTime="2024" itemProp="copyrightYear">2024</time></p></footer>
       </nav>
     </>
   );
