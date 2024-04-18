@@ -45,4 +45,470 @@
   /* abbr {
     @apply not-italic uppercase;
   } */
+
+  body {
+    --px2rem: calc((var(--px-size) / 16) * 1rem);
+    font-size: var(--px2rem);
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+  }
+
+  :root {
+    min-height: 0;
+    /* RFS → https://css-tricks.com/accessible-font-sizing-explained/ */
+    font-size: clamp(
+      1rem,
+      calc(1rem + ((1vw - 0.48rem) * 0.8772)),
+      1.125rem
+    );
+
+    /* Blue */
+    --sw-drizzle: 175deg 17% 62%;        /* 8CAEAB SW6479 Drizzle */
+    --sw-in-the-navy: 211deg 29% 22%;    /* 283849 SW9178 In the Navy */
+    --sw-naval: 211deg 24% 24%;          /* 2F3D4C SW6244 Naval */
+    /* Purple */
+    --sw-fashionable-gray: 0deg 4% 73%;  /* BDB8B8 SW6275 Fashionable Gray */
+    --sw-mystical-shade: 348deg 3% 67%;  /* AEA9AA SW6276 Mystical Shade */
+    --sw-carnelian: 0deg 17% 29%;        /* 573E3E SW7580 Carnelian */
+    --sw-perle-noir: 270deg 3% 31%;      /* 4F4D51 SW9154 Perle Noir */
+    /* Neutral */
+    --sw-westchester-gray: 60deg 0% 47%; /* 797978 SW2849 Westchester Gray */
+    --sw-chelsea-gray: 69deg 5% 70%;     /* B6B7B0 SW2850 Chelsea Gray */
+    --sw-tricorn-black: 240deg 1% 19%;   /* 2F2F30 SW6258 Tricorn Black */
+    --sw-black-magic: 300deg 1% 19%;     /* 323132 SW6991 Black Magic */
+    /* White & Pastel */
+    --sw-pure-white: 51deg 16% 92%;      /* EDECE6 SW7005 Pure White */
+    --sw-extra-white: 72deg 14% 93%;     /* EEEFEA SW7006 Extra White */
+    --sw-alabaster: 46deg 27% 90%;       /* EDEAE0 SW7008 Alabaster */
+    --sw-shoji-white: 38deg 28% 86%;     /* E6DFD3 SW7042 Shoji White */
+    --sw-worldly-gray: 35deg 16% 77%;    /* CEC6BB SW7043 Worldly Gray */
+    --sw-paperwhite: 41deg 61% 92%;      /* F7EFDE SW7105 Paperwhite */
+    --sw-greek-villa: 43deg 32% 91%;     /* F0ECE2 SW7551 Greek Villa */
+    --sw-westhighland: 41deg 40% 92%;    /* F3EEE3 SW7566 Westhighland White */
+    --sw-fleur-de-sel: 72deg 7% 86%;     /* DCDDD8 SW7666 Fleur de Sel */
+
+    /* Cool Whites (undertones of blue, green or violet) */
+    --cool-white-1: var(--sw-extra-white);
+    --cool-white-2: var(--sw-fleur-de-sel);
+    /* Warm Whites (undertones of yellow and red) */
+    --warm-white-1: var(--sw-pure-white);
+    --warm-white-2: var(--sw-shoji-white);
+    --warm-white-3: var(--sw-paperwhite);
+    /* Cool (lush) Neutrals (undertones of blue, violet or silver) */
+    --cool-gray-1: var(--sw-fashionable-gray);
+    --cool-gray-2: var(--sw-mystical-shade);
+    --cool-gray-3: var(--sw-perle-noir);
+    /* Warm Neutrals */
+    --warm-gray-1: var(--sw-westchester-gray);
+    --warm-gray-2: var(--sw-chelsea-gray);
+    /* Black (dark shades) */
+    --black-1: var(--sw-tricorn-black);
+    --black-2: var(--sw-black-magic);
+
+    /* Defining the darkest and lightest hues */
+    --black: var(--black-1);
+    --white: var(--warm-white-1);
+    --gray: var(--cool-gray-3);
+
+    /* Brand */
+    --brand-blue: 205deg 100% 16%;  /* #003153 Prussian Blue */
+    --brand-yellow: 64deg 100% 50%; /* #EDFF01 13-0630 TN Safety Yellow */
+
+    /* PANTONE® Neon Colors */
+    --c-blue: #009BCD;     /* 801 C */
+    --c-green: #44D62C;    /* 802 C */
+    --c-yellow: #FFE900;   /* 803 C */
+    --c-orange: #FFAA4E;   /* 804 C */
+    --c-red: #FF7277;      /* 805 C */
+    --c-pink: #FF3FB6;     /* 806 C */
+    --c-magenta: #EB27C2;  /* 807 C */
+    --c-teal: #00B797;     /* 808 C */
+
+    /* PANTONE® Nylon Lights */
+    --tn-atomic-blue: 195deg 100% 36%;  /* 0089B8 17-4436 TN Atomic Blue */
+    --tn-lemon-tonic: 59deg 97% 65%;    /* FCFA50 12-0645 TN Lemon Tonic */
+    --tn-safety-yellow: 64deg 100% 50%; /* EDFF01 13-0630 TN Safety Yellow */
+    --tn-shock-orange: 19deg 98% 58%;   /* FD6E2A 15-1360 TN Shocking Orange */
+    --tn-clown-fish: 22deg 100% 56%;    /* FF6F1E 15-1460 TN Orange Clown Fish */
+    --tn-diva-pink: 343deg 100% 54%;    /* FF1658 16-1650 TN Diva Pink */
+    --tn-pink: 343deg 100% 54%;         /* FE3EA5 16-2130 TN Knockout Pink */
+    --tn-pink-glo: 327deg 100% 49%;     /* FA008A TN Pink Glo */
+
+    /* DayGlo® Safety colors */
+    --aurora-pink: 330deg 99% 52%;   /* #FE0A83 */
+    --blaze-orange: 21deg 95% 56%;   /* #F96F27 */
+    --saturn-yellow: 51deg 100% 59%; /* #FFE02E */
+    --signal-green: 101deg 70% 56%;  /* #72DD42 */
+
+    --orange: var(--tn-clown-fish);
+    --lime: var(--tn-safety-yellow);
+
+    --accent-a25: hsl(var(--orange) / .25);
+    --accent-a50: hsl(var(--orange) / .50);
+    --accent-a80: hsl(var(--orange) / .80);
+    --accent: hsl(var(--orange));
+
+    --shadow-color: 42deg 13% 54%;
+    --shadow-elevation-low:
+      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+      0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
+      1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
+    --shadow-elevation-medium:
+      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+      0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+      2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+      5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+    --shadow-elevation-high:
+      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+      1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+      2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+      4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+      7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+      11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
+      17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
+      25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
+
+    color-scheme: dark light;
+    /* https://drafts.csswg.org/css-ui/#widget-accent */
+    accent-color: var(--accent);
+  }
+
+  :root:where(:not(
+    [data-theme-style]),
+    [data-theme-style]
+  ) {
+    --background-a15: hsl(var(--bg-hsl) / .15);
+    --background-a25: hsl(var(--bg-hsl) / .25);
+    --background-a50: hsl(var(--bg-hsl) / .50);
+    --background-a60: hsl(var(--bg-hsl) / .60);
+    --background-a75: hsl(var(--bg-hsl) / .75);
+    --background-a80: hsl(var(--bg-hsl) / .80);
+    --background-a95: hsl(var(--bg-hsl) / .95);
+    --background: hsl(var(--bg-hsl));
+    --foreground-a15: hsl(var(--fg-hsl) / .15);
+    --foreground-a25: hsl(var(--fg-hsl) / .25);
+    --foreground-a50: hsl(var(--fg-hsl) / .50);
+    --foreground-a60: hsl(var(--fg-hsl) / .60);
+    --foreground-a75: hsl(var(--fg-hsl) / .75);
+    --foreground-a80: hsl(var(--fg-hsl) / .80);
+    --foreground-a95: hsl(var(--fg-hsl) / .95);
+    --foreground: hsl(var(--fg-hsl));
+    --accent-a25: hsl(var(--accent-hsl) / .25);
+    --accent-a50: hsl(var(--accent-hsl) / .50);
+    --accent-a50: hsl(var(--accent-hsl) / .75);
+    --accent-a80: hsl(var(--accent-hsl) / .80);
+    /* --accent: hsl(var(--accent-hsl)); */
+
+    color-scheme: light;
+
+    --accent-hsl: var(--tn-clown-fish);
+
+    --bg-hsl: var(--white);
+    --fg-hsl: var(--sw-carnelian);
+    --shadow: hsl(var(--fg-hsl) / .15);
+    /*
+    --selection-foreground: var(--bg-hsl);
+    --selection-background: var(--accent-hsl); */
+  }
+
+  button {
+    --tap-size: var(--min-touch-target-size, 44px); /* 44px ~ 2.75rem */
+    --turn-off-shadow: 0 0 0 var(--shadow);
+    --icon-size: 2ch;
+
+    /* padding-block: .75ch; */
+    /* padding-inline: 1.75ch; */
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    min-block-size: var(--btn-min-size, var(--tap-size));
+
+    padding-block: .25ch;
+    padding-inline: 1.25ch;
+    border-radius: 0.5ch;
+    overflow: hidden;
+
+    /* font-family: ui-monospace, monospace; */
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--btn-text-color, var(--foreground)) !important;
+    background: var(--btn-background, var(--background)) !important;
+    text-align: center;
+    text-shadow: 1px 1px #000a;
+    text-shadow: var(--shadow-elevation-low);
+
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  @media (hover: hover) {
+    button {
+      min-inline-size: var(--tap-size);
+      min-block-size: var(--tap-size);
+      padding-inline: 1.75ch;
+      padding-block: 0.75ch;
+    }
+  }
+
+  button:where(:not([disabled], [class*='control'])) {
+    box-shadow: 0 8px 24px var(--shadow);
+    /* box-shadow: var(--shadow-elevation-high); */
+  }
+
+  button:where(:not([class*='control'])) {
+    transition-property:
+      filter,
+      transform,
+      box-shadow,
+      background-color;
+    transition-duration: 150ms;
+    transition-timing-function: var(--ease-in-out-cubic);
+  }
+
+  button:is(:hover, :focus) {
+    text-decoration: none;
+    outline: none;
+  }
+
+  button:active:not([disabled], [role='tab'], [class*='control']) {
+    box-shadow: var(--turn-off-shadow);
+    /* box-shadow: var(--shadow-elevation-medium); */
+    transform: translateY(1px) scale3d(.95, .95, 1);
+  }
+
+  button[disabled] {
+    box-shadow: var(--turn-off-shadow);
+    transform: translateY(0) scale3d(.95, .95, 1);
+  }
+
+  .nav {
+    --duration: 150ms;
+    --easing: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+    display: grid;
+    inline-size: 100%;
+    block-size: 100%;
+    transform: translateX(-100%);
+    place-content: center;
+    will-change: transform;
+  }
+
+  .nav::before {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    content: '';
+    background-color: var(--background-a60);
+    transform-origin: 0 50%;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav__items {
+    --list-gap: 0;
+
+    min-inline-size: 20ch;
+    inline-size: 20ch;
+    /* max-inline-size: 70ch; */
+    margin: 1rem;
+  }
+
+  .nav__item {
+    display: block;
+    opacity: var(--item-a, 0);
+    transition: opacity 150ms ease-in-out;
+    will-change: transform, opacity;
+  }
+
+  @media(hover: hover) and (pointer: fine) {
+    :is(:hover, :focus-within) > .nav__item:where(:not(:hover)) { --a: .5; }
+    :is(:hover, :focus-within) { --a: 1; }
+  }
+
+  .nav__link {
+    --wght: 300;
+    --ital: 0;
+
+    display: inline-flex;
+    overflow: visible;
+    position: relative;
+    inline-size: 100%;
+    opacity: var(--a, 1);
+    transition: opacity var(--duration) var(--easing);
+  }
+
+  .nav__link-text {
+    --px-size: 48;
+    --px2rem: calc((var(--px-size) / 16) * 1rem);
+
+    font-size: var(--px2rem);
+    line-height: var(--lh-precise);
+    font-variant-caps: all-petite-caps;
+    font-variation-settings:
+      'wght' var(--wght),
+      'ital' var(--ital);
+    transition:
+      font-variation-settings var(--duration) var(--easing);
+  }
+
+  @media (min-width: 48em) {
+    .nav__link-text { --px-size: 52 }
+  }
+
+  .nav__link-text::before {
+    --full: 3vw;
+    --half: calc(var(--full) * 0.5);
+    --offset: calc(-1 * var(--full) * 2);
+
+    position: absolute;
+    top: 50%;
+    left: var(--offset);
+    display: inline-block;
+    inline-size: var(--full);
+    block-size: 1px;
+    content: '';
+    background-color: var(--bg);
+    transition:
+      transform var(--duration) var(--easing),
+      background-color calc(var(--duration) * 2);
+    transform: translateX(var(--tx, 0)) scale3d(var(--sx, 0), 1, 1);
+    transform-origin: 0 100%;
+
+    /* @include config.respond('retina') {
+        & { block-size: 0.5px; }
+    } */
+  }
+
+  .nav__link-text:is(:hover, [aria-current='page']) {
+    --wght: 500;
+    --ital: 1;
+  }
+
+  .nav__link-text:is(:hover, [aria-current='page'])::before {
+    --tx: var(--half);
+    --sx: 1;
+    --bg: var(--accent);
+  }
+
+  .nav-button {
+    --full: 44px;
+    --half: 0.625rem;
+
+    position: fixed;
+    inset-inline-end: 1rem;
+    inset-block-start: 1rem;
+    z-index: 1020;
+    display: flex;
+    inline-size: var(--full);
+    block-size: var(--full);
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 48em) {
+    .nav { inline-size: 50% }
+    .nav-button { --half: calc(var(--full) * 0.5) }
+  }
+
+  @media (min-width: 80em) {
+    .nav { inline-size: calc(100% / 3) }
+  }
+
+  .nav-button > svg {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: contain;
+  }
+
+  .line {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 6;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: var(--duration, 250ms);
+    transition-property: stroke-dasharray, stroke-dashoffset;
+    stroke-dasharray: var(--pattern);
+    stroke-dashoffset: var(--distance);
+  }
+
+  .line:nth-of-type(1) { --pattern: 60 207; }
+
+  [aria-pressed='true'] .line:nth-of-type(1) {
+    --pattern: 90 207;
+    --distance: -134;
+  }
+
+  .line:nth-of-type(2) { --pattern: 60 60; }
+
+  [aria-pressed='true'] .line:nth-of-type(2) {
+    --pattern: 1 60;
+    --distance: -30;
+  }
+
+  .line:nth-of-type(3) { --pattern: 60 207; }
+
+  [aria-pressed='true'] .line:nth-of-type(3) {
+    --pattern: 90 207;
+    --distance: -134;
+  }
+
+  .page__footer {
+    --flow-space: var(--spacer-3x);
+
+    pointer-events: none;
+    position: fixed;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    z-index: 1000;
+
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-around;
+    justify-content: space-between;
+    inline-size: 100%;
+
+    /* padding-inline: 0; */
+
+    font-family: var(--font-primary);
+    color: var(--neutral);
+    font-weight: 500;
+    font-feature-settings: "tnum" 1;
+  }
+
+  .copr {
+    margin-block: 1rem;
+    margin-inline: auto;
+    opacity: 0.75;
+    color: var(--accent);
+    font-size: .75em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .075em;
+  }
+
+  .sideways {
+    --inverse: -1;
+    transform: scale(var(--inverse));
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+  }
+
+  @supports (writing-mode: sideways-lr) {
+    .sideways {
+      --inverse: 1;
+      writing-mode: sideways-lr;
+    }
+  }
 }

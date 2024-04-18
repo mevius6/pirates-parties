@@ -1,6 +1,8 @@
-import { selectAll } from '../utils';
+const selectAll = (expr, con) => {
+  return Array.prototype.slice.call((con || document).querySelectorAll(expr));
+};
 
-const parsedUrl = new URL(window.location.href);
+// const parsedUrl = new URL(window.location.href);
 
 const discloseItem = (item, speed, index, vars = {}) => {
   let anim = item.animate(
@@ -98,17 +100,10 @@ export default class DisclosureForNav {
 
     this.DOM.el.nav.dataset.open = !this.config.isExpanded;
   }
+}
 
-  _handleAriaCurrent() {
-    this.DOM.el.navLinks.forEach((link) => {
-      // b/c vercel config is set to cleanUrls
-      // parsedUrl → 'https://site.com/page'
-      // parsedUrl.pathname → '/page'
-      // link.pathname → '/page.html'
-      let anchor = link.pathname.slice(0, -5);
-      let isCurrent = parsedUrl.pathname.includes(anchor);
-      if (isCurrent) link.setAttribute('aria-current', 'page');
-      // if (parsedUrl.hash) { return; }
-    });
-  }
+export async function loadNav(control) {
+  // const { default: DisclosureForNav } = await import('../lib/nav');
+  // eslint-disable-next-line no-unused-vars
+  const disclosure = new DisclosureForNav(document.querySelector(control));
 }
