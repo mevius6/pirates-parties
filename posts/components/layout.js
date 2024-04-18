@@ -17,7 +17,7 @@ export default function Layout({ preview, children }) {
       'path': '/#goods'
     }, {
       'title': 'Журнал',
-      'path': '/',
+      'path': 'https://journal.piratykaspiyskogo.online/',
     }, {
       'title': 'Прогулки',
       'path': '/river-devil'
