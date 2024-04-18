@@ -12,7 +12,7 @@ export default function Footer() {
             {/* <small className="block font-serif pt-5">© 2024</small> */}
             <Logo width={"100%"} />
           </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
+          {/* <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
             <a
               href="/"
               className="mx-3 bg-black text-lime hover:bg-red hover:border-lime hover:text-lime-300 border border-black text-black font-bold uppercase tracking-wide py-3 px-12 lg:px-8 duration-150 transition-colors ease-out hover:ease-in mb-6 lg:mb-0"
@@ -25,7 +25,7 @@ export default function Footer() {
             >
               Перейти на основной сайт
             </a>
-          </div>
+          </div> */}
         </div>
       </Container>
     </footer>
