@@ -102,8 +102,8 @@ export default class DisclosureForNav {
   }
 }
 
-export async function loadNav(control) {
-  // const { default: DisclosureForNav } = await import('../lib/nav');
-  // eslint-disable-next-line no-unused-vars
-  const disclosure = new DisclosureForNav(document.querySelector(control));
-}
+// export async function loadNav(control) {
+//   const disclosure = new DisclosureForNav(
+//     document.querySelector(control)
+//   );
+// }

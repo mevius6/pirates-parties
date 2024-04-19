@@ -1,6 +1,16 @@
 import Link from "next/link";
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { MAIN_SITE_URL, BRAND_NAME_RU } from "@/lib/constants";
+import DisclosureForNav from "@/lib/disclosureForNav";
 
 export default function Nav({ navItems }) {
+  const router = useRouter()
+  useEffect(() => {
+    router.beforePopState(new DisclosureForNav(
+      document.querySelector('.nav-button')
+    ), { shallow: false })
+  }, [])
   return (
     <>
       <button className="nav-button"
@@ -23,20 +33,15 @@ export default function Nav({ navItems }) {
           itemScope itemType="https://schema.org/SiteNavigationElement"
           aria-label="Main Menu"
         >
-          {/* <li className="nav__item" key={1}>
-            <Link href="/" className="nav__link font-serifDisplayConde leading-tight" itemProp="url">
-              <span className="nav__link-text">Все статьи</span>
-            </Link>
-          </li> */}
           {navItems.map((navItem) => (
             <li className="nav__item" key={navItem.id}>
-              <Link href={`https://piratykaspiyskogo.online${navItem.path}`} className="nav__link font-serifDisplayConde leading-tight" itemProp="url">
+              <Link href={`${MAIN_SITE_URL}${navItem.path}`} className="nav__link font-serifDisplayConde leading-tight" itemProp="url">
                 <span className="nav__link-text">{navItem.title}</span>
               </Link>
             </li>
           ))}
         </ul>
-        <footer className="page__footer sideways" itemScope="" itemType="https://schema.org/WPFooter"><p className="copr"><span itemProp="name">Pirates of Caspian sea</span> © <time dateTime="2024" itemProp="copyrightYear">2024</time></p></footer>
+        <footer className="page__footer sideways" itemScope="" itemType="https://schema.org/WPFooter"><p className="copr uppercase"><span itemProp="name">{BRAND_NAME_RU}</span> © <time dateTime="2024" itemProp="copyrightYear">2024</time></p></footer>
       </nav>
     </>
   );
