@@ -12,8 +12,8 @@
   },
   "scripts": {
     "parcel:start": "parcel src/pug/pages/index.pug --dist-dir ./public --no-cache --cert $(grep '^CERT_PATH' .env | cut -d '=' -f2) --key $(grep '^KEY_PATH' .env | cut -d '=' -f2) -p $npm_package_config_port_https --open",
-    "parcel:build": "npm run clear && parcel build src/pug/pages/index.pug --dist-dir ./public --no-source-maps --no-cache && npm run copy",
-    "clear": "rm -rf public && rm -rf .parcel-cache",
+    "parcel:build": "npm run clean && parcel build src/pug/pages/index.pug --dist-dir ./public --no-source-maps --no-cache && npm run copy",
+    "clean": "rm -rf public && rm -rf .parcel-cache",
     "copy": "cp -r src/static/* ./public",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "npx eslint \"./src/js/*.js\" --fix",
@@ -56,7 +56,8 @@
   "dependencies": {
     "@vercel/speed-insights": "^1.0.10",
     "curtainsjs": "^8.1.5",
-    "gsap": "^3.12.2"
+    "gsap": "^3.12.2",
+    "isotope-layout": "^3.0.6"
   },
   "@parcel/transformer-css-experimental": {
     "cssModules": {

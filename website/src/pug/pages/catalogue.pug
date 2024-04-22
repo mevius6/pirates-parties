@@ -2,175 +2,102 @@ extends page
 
 block vars
   - let page = data.pages.catalogue
+  -
+    // https://titlecapitalize.com/replace-space-with-hyphen/
+    // https://stackoverflow.com/questions/1983648/replace-spaces-with-dashes-and-make-all-letters-lower-case
+    const toKebabCase = (str) => str.replace(/\s+/g, '-').toLowerCase();
 
 block content
+  //-
+    let categories = [
+      {
+        label: 'Новые',
+        values: [
+          //- 'За полгода',
+          'За последние 30 дней',
+          'За неделю',
+        ]
+      }, {
+        label: 'По дате выпуска',
+        values: [
+          '2024',
+          '2023',
+        ]
+      }, {
+        label: 'Печатная продукция',
+        values: [
+          'Плакаты',
+          'Выпуски зина',
+        ]
+      },
+    ]
   -
+    // https://seller-edu.ozon.ru/work-with-goods/trebovaniya-k-kartochkam-tovarov/product-information
     let categories = [
       {
         label: 'New',
         values: [
-          'last 30 days',
-          'last 6 months',
+          'Last 30 days',
+          'Last week',
         ]
+      //- }, {
+      //-   label: 'By Year',
+      //-   values: [
+      //-     '2024',
+      //-     '2023',
+      //-   ]
       }, {
-        label: 'Lamps',
+        label: 'Print',
         values: [
-          'table lamps',
-          'desk lamps',
-          'floor lamps',
-        ]
-      }, {
-        label: 'Ceiling',
-        values: [
-          'chandeliers',
-          'pendant',
-          'flush',
-          'fans',
-        ]
-      }, {
-        label: 'By Room',
-        values: [
-          'bedroom',
-          'dining room',
-          'kitchen',
-          'living room',
-          'bathroom',
-          'entryway',
-          'outdoor',
-        ]
-      }, {
-        label: 'Kids',
-        values: [
-          'lamps',
-          'night lights',
-          'ceiling',
+          'Posters',
+          'Zine issues',
         ]
       },
     ]
 
-  // TODO: output
   header
-    h1 Lighting
-    small Find your perfect light
+    h1 Магазин
+    small [Выберите подходящие категории товаров]
+    p.warning
+      | This browser does not support the CSS #[code :has()] function.
+      a(href="https://caniuse.com/css-has")
+        | Review current support
+    p.warning
+      | This browser does not support CSS container queries.
+      a(href="https://caniuse.com/css-container-queries")
+        | Review current support
 
+  //- REFS
+    - https://github.com/argyleink/gui-challenges/tree/main/multi-select
+    - https://web.dev/articles/building/a-multi-select-component?hl=ru
   aside
     form
       select(multiple="true" title="Filter results by category")
-        optgroup(label="New")
-          option(value="last 30 days") Last 30 Days
-          option(value="last 6 months") Last 6 Months
-        optgroup(label="Lamps")
-          option(value="table lamps") Table Lamps
-          option(value="desk lamps") Desk Lamps
-          option(value="floor lamps") Floor Lamps
-        optgroup(label="Ceiling")
-          option(value="chandeliers") Chandeliers
-          option(value="pendant") Pendant
-          option(value="flush") Flush
-          option(value="fans") Fans
-        optgroup(label="By Room")
-          option(value="bedroom") Bedroom
-          option(value="dining room") Dining Room
-          option(value="kitchen") Kitchen
-          option(value="living room") Living Room
-          option(value="bathroom") Bathroom
-          option(value="entryway") Entryway
-          option(value="outdoor") Outdoor
-        optgroup(label="Kids")
-          option(value="lamps") Lamps
-          option(value="night lights") Night Lights
-          option(value="ceiling") Ceiling
+        each group of categories
+          optgroup(label= group.label)
+            each val of group.values
+              option(value= val.toLowerCase())= val
 
-      fieldset
-        legend New
-        div
-          input(type="checkbox" id="last-30-days" name="new" value="last 30 days")
-          label(for="last-30-days") Last 30 Days
-        div
-          input(type="checkbox" id="last-6-months" name="new" value="last 6 months")
-          label(for="last-6-months") Last 6 Months
-      fieldset
-        legend Lamps
-        div
-          input(type="checkbox" id="table-lamps" name="lamps" value="table lamps")
-          label(for="table-lamps") Table Lamps
-        div
-          input(type="checkbox" id="desk-lamps" name="lamps" value="desk lamps")
-          label(for="desk-lamps") Desk Lamps
-        div
-          input(type="checkbox" id="floor-lamps" name="lamps" value="floor lamps")
-          label(for="floor-lamps") Floor Lamps
-      fieldset
-        legend Ceiling
-        div
-          input(type="checkbox" id="chandeliers" name="ceiling" value="chandeliers")
-          label(for="chandeliers") Chandeliers
-        div
-          input(type="checkbox" id="pendant" name="ceiling" value="pendant")
-          label(for="pendant") Pendant
-        div
-          input(type="checkbox" id="flush" name="ceiling" value="flush")
-          label(for="flush") Flush
-        div
-          input(type="checkbox" id="fans" name="ceiling" value="fans")
-          label(for="fans") Fans
-      fieldset
-        legend By Room
-        div
-          input(type="checkbox" id="bedroom" name="by room" value="bedroom")
-          label(for="bedroom") Bedroom
-        div
-          input(type="checkbox" id="dining-room" name="by room" value="dining room")
-          label(for="dining-room") Dining Room
-        div
-          input(type="checkbox" id="kitchen" name="by room" value="kitchen")
-          label(for="kitchen") Kitchen
-        div
-          input(type="checkbox" id="living-room" name="by room" value="living room")
-          label(for="living-room") Living Room
-        div
-          input(type="checkbox" id="bathroom" name="by room" value="bathroom")
-          label(for="bathroom") Bathroom
-        div
-          input(type="checkbox" id="entryway" name="by room" value="entryway")
-          label(for="entryway") Entryway
-        div
-          input(type="checkbox" id="outdoor" name="by room" value="outdoor")
-          label(for="outdoor") Outdoor
-      fieldset
-        legend Kids
-        div
-          input(type="checkbox" id="lamps" name="kids" value="lamps")
-          label(for="lamps") Lamps
-        div
-          input(type="checkbox" id="night-lights" name="kids" value="night lights")
-          label(for="night-lights") Night Lights
-        div
-          input(type="checkbox" id="ceiling" name="kids" value="ceiling")
-          label(for="ceiling") Ceiling
+      each category of categories
+        fieldset
+          legend
+            = category.label
+          each val of category.values
+            div
+              input(
+                type="checkbox"
+                id= toKebabCase(val)
+                name= category.label.toLowerCase()
+                value= val.toLowerCase())
+              label(for= val.toLowerCase())= val
+    output#applied-filters
 
   article
-    span.last-30-days.table-lamps
-    span.last-6-months.desk-lamps
-    span.floor-lamps
-    span.last-6-months.chandeliers
-    span.pendant.last-6-months
-    span.flush.fans
-    span.fans.pendant.table-lamps
-    span.bedroom
-    span.dining-room.last-30-days.chandeliers
-    span.kitchen.lamps
-    span.living-room
-    span.bathroom.living-room.chandeliers.desk-lamps
-    span.bathroom.table-lamps.desk-lamps
-    span.entryway.last-30-days
-    span.outdoor.desk-lamps
-    span.lamps.last-30-days
-    span.night-lights.table-lamps
-    span.ceiling.last-30-days
-    span.floor-lamps.table-lamps
-    span.floor-lamps.last-6-months
-    span.dining-room.last-30-days.chandeliers
-    span.kitchen.lamps
-    span.living-room
-    span.bathroom.living-room.chandeliers.desk-lamps
+    span.last-30-days.posters
+    span.last-week.posters
+    span.posters
+    span.posters(data-year="2023")
+    span.last-6-months.zine-issues
+    span.last-week.zine-issues
+    span.zine-issues
+    span.zine-issues(data-year="2024")
