@@ -430,7 +430,8 @@ footer .copr {
 
   & svg:where(:not(:nth-child(1))) {
     position: absolute;
-    width: 15%;
+    // width: 15%;
+    width: clamp(52px, 15%, 128px);
     height: auto;
     transform-origin: 50% 50%;
     will-change: transform;
