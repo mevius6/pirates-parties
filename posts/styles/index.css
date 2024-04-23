@@ -42,6 +42,19 @@
     @apply text-lg font-displayWide uppercase leading-tight;
   }
 
+  h1, h2, h3, h4 {
+    hyphens: auto;
+    text-align: left;
+    text-size-adjust: .5;
+    text-wrap: balance;
+  }
+
+  p {
+    hyphens: auto;
+    letter-spacing: normal;
+    font-feature-settings: "kern" 1;
+  }
+
   /* abbr {
     @apply not-italic uppercase;
   } */
