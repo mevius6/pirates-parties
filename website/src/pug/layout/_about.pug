@@ -1,3 +1,12 @@
+-
+  const pathsDrawsArrow = {},
+    {
+      lineOffset: offset = 48,
+      lineStart: S = 256, // drawing center
+      lineEnd: E = 192, // 256 - 48 - 8 * 2
+      pointerSize: PT = 8,
+    } = pathsDrawsArrow
+
 section.container.spaced.--ada-lg#about
   .grid__center
     +head({
@@ -6,7 +15,84 @@ section.container.spaced.--ada-lg#about
       text: 'О нас',
       split: 'chars' })
   .grid__content
-    include ../../images/arrows.svg
+    //- include ../../images/arrows.svg
+    svg#arrows(
+      viewBox="0 0 512 512" fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      style="aspect-ratio: 1;width: 100%;height: auto;")
+      title
+        | ПКМ
+      defs
+        //- REFS
+          - https://svgwg.org/svg2-draft/paths.html
+          - https://editor.method.ac/
+          - https://www.sarasoueidan.com/blog/css-svg-clipping
+          - https://oreillymedia.github.io/Using_SVG/extras/ch07-textpaths.html
+          - https://drafts.fxtf.org/css-masking/#the-mask-image
+
+        linearGradient#fadeGrad(y2="1" x2="0")
+          stop(offset="0.5" stop-color="white" stop-opacity="0")
+          stop(offset="1" stop-color="white" stop-opacity=".5")
+        mask#fade(maskContentUnits="objectBoundingBox")
+          rect(width="1" height="1" fill="url(#fadeGrad)")
+        //- radialGradient#radiGrad(cx="0.25" cy="0.25" r="0.25")
+        radialGradient#radiGrad
+          stop(offset="0" stop-color="#fff" stop-opacity="1")
+          stop(offset="1" stop-color="#fff" stop-opacity="0")
+        filter#blur: feGaussianBlur(stdDeviation="5")
+        //- multi-shape masks
+        -
+          // helpers for calc absolute or relative coords
+          let r, w, c
+        mask#fade-abs
+          - w = 512
+          - r = 80
+          - c = w - r
+          g(filter="url(#blur)")
+            ellipse(ry= r rx= r cy= r cx= r fill="url(#radiGrad)")
+            ellipse(ry= r rx= r cy= r cx= c fill="url(#radiGrad)")
+            ellipse(ry= r rx= r cy= c cx= c fill="url(#radiGrad)")
+            ellipse(ry= r rx= r cy= c cx= r fill="url(#radiGrad)")
+        mask#fade-rel(maskContentUnits="objectBoundingBox")
+          - w = 1
+          - r = .25
+          - c = w - r
+          g(filter="url(#blur)")
+            ellipse(ry= r rx= r cy= r cx= r fill="url(#radiGrad)")
+            ellipse(ry= r rx= r cy= r cx= c fill="url(#radiGrad)")
+            ellipse(ry= r rx= r cy= c cx= c fill="url(#radiGrad)")
+            ellipse(ry= r rx= r cy= c cx= r fill="url(#radiGrad)")
+
+      //- g#arr-0(fill="none" stroke="currentcolor" stroke-miterlimit="0" stroke-linecap="square" stroke-width="1")
+        line(y2="256" x2="256" y1="0" x1="256")
+        path(d="M 256,0L 256,256")
+        path(d=`M 256,512V256`)
+        path(d=`M 256,512v-256`)
+        path(d="M 112,240l 16,16l -16,16 z" fill="currentcolor")
+        path(d="M646.3 1190.34L625.459 1211.18L604.617 1190.34")
+      g#arr-1(fill="none" stroke="currentcolor" stroke-miterlimit="0" stroke-linecap="square" stroke-width="1")
+        path(d=`M ${S},${offset}L ${S},${E}`)
+        path(d=`M ${S - PT},${E - PT}l ${PT},${PT}l ${PT},-${PT}`)
+      g#arr-2(fill="none" stroke="currentcolor" stroke-miterlimit="0" stroke-linecap="square" stroke-width="1")
+        path(d=`M ${offset},${S}L ${S/2},${S}`)
+        path(d=`M ${S/2 - PT},${S - PT}l ${PT},${PT}l -${PT},${PT}`)
+      g#arr-3(fill="none" stroke="currentcolor" stroke-miterlimit="0" stroke-linecap="square" stroke-width="1")
+        //- path(d=`M ${S},${S + offset*2}L ${S},${S*2}`)
+        path(d=`M ${S},${S + offset*2}v ${E - offset + PT*2}`)
+        path(d=`M ${S - PT},${S*2 - PT}l ${PT},${PT}l ${PT},-${PT}`)
+      g#arr-4(fill="none" stroke="currentcolor" stroke-miterlimit="0" stroke-linecap="square" stroke-width="1")
+        path(d=`M ${S*2 - offset},${S}h -${S/2 - offset}`)
+        path(d=`M ${S*2 - S/2 + PT},${S - PT}l -${PT},${PT}l ${PT},${PT}`)
+
+      //- ellipse(ry="80" rx="80" cy="80" cx="80"
+              fill="url(#radiGrad)" filter="url(#blur)")
+      ellipse(opacity="1"
+              ry="256" rx="256" cy="256" cx="256"
+              stroke="currentcolor" fill="none"
+              mask="url(#fade-abs)")
+              //- clip-path="url(#clippingPath)")
+
     include ../../images/trip-tent.svg
     include ../../images/vinyl-record.svg
     include ../../images/boat-propeller.svg
