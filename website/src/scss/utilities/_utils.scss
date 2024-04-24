@@ -28,6 +28,15 @@
   outline-offset: 2px;
 }
 
+// https://www.w3.org/TR/css-values-4/#example-baa620d3
+.aspect-ratio-box {
+  --ar: calc(16 / 9);
+  --w: calc(100% / 3);
+  --h: calc(var(--w) / var(--ar));
+  width: var(--w);
+  height: var(--h);
+}
+
 .sqr,
 .square, {
   aspect-ratio: var(--ratio-square);

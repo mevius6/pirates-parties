@@ -1,12 +1,3 @@
--
-  const pathsDrawsArrow = {},
-    {
-      lineOffset: offset = 48,
-      lineStart: S = 256, // drawing center
-      lineEnd: E = 192, // 256 - 48 - 8 * 2
-      pointerSize: PT = 8,
-    } = pathsDrawsArrow
-
 section.container.spaced.--ada-lg#about
   .grid__center
     +head({
@@ -16,6 +7,15 @@ section.container.spaced.--ada-lg#about
       split: 'chars' })
   .grid__content
     //- include ../../images/arrows.svg
+    -
+      const pathsDrawsArrow = {},
+        {
+          lineOffset: offset = 48,
+          lineStart: S = 256, // drawing center
+          lineEnd: E = 192, // 256 - 48 - 8 * 2
+          pointerSize: PT = 8,
+        } = pathsDrawsArrow
+
     svg#arrows(
       viewBox="0 0 512 512" fill="none"
       xmlns="http://www.w3.org/2000/svg"
