@@ -48,7 +48,8 @@ const {
   animationObserver,
   cookiesObj,
   clearCookies,
-  inViewport
+  inViewport,
+  discloseItem,
 } = API; // Web APIs
 
 // Exports
@@ -91,4 +92,5 @@ export {
   cookiesObj,
   clearCookies,
   inViewport,
+  discloseItem,
 }

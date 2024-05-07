@@ -400,19 +400,35 @@ $lib: 'leaflet';
           // text-indent: -999em;
           pointer-events: all;
           // border-radius: 0 1ch 0;
-          transition: color 175ms var(--ease-in-out-quart);
+          // transition: color 175ms var(--ease-in-out-quart);
+          image-rendering: crisp-edges;
 
-          & > span {
-            display: inline-block;
-            transform: rotate(var(--rot, 90deg));
-            transition: transform 175ms var(--ease-in-out-quart);
+          & > span { display: none !important }
+          &::after {
+            position: absolute;
+            inset: 0;
+
+            // display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-around;
+
+            aspect-ratio: 1;
+            inline-size: 100%;
+            block-size: 100%;
+            // padding: 2px;
+
+            transform-origin: 50%;
+            transform: translate3d(0,0,0) rotate(var(--rot, -90deg));
+            transition: transform 250ms var(--ease-in-out-quart);
+            will-change: transform;
           }
 
           &:is(:hover, :focus) {
-            color: var(--accent);
-            // background-color: var(--accent);
+            // color: var(--accent);
 
-            & > span { --rot: 0deg; }
+            // & > span,
+            &::after { --rot: 0deg; }
           }
         }
 
@@ -603,6 +619,16 @@ $lib: 'leaflet';
     border-block-end: var(--_triangle-size) solid transparent;
     // background: var(--background);
     mask: var(--_tip);
+  }
+
+  .leaflet-popup-close-button {
+    // https://api.iconify.design/bi:x-lg.svg
+    --ico-x: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTIuMTQ2IDIuODU0YS41LjUgMCAxIDEgLjcwOC0uNzA4TDggNy4yOTNsNS4xNDYtNS4xNDdhLjUuNSAwIDAgMSAuNzA4LjcwOEw4LjcwNyA4bDUuMTQ3IDUuMTQ2YS41LjUgMCAwIDEtLjcwOC43MDhMOCA4LjcwN2wtNS4xNDYgNS4xNDdhLjUuNSAwIDAgMS0uNzA4LS43MDhMNy4yOTMgOHoiLz48L3N2Zz4=');
+
+    border-radius: 0 .5rem;
+    background-color: var(--accent);
+
+    &::after { content: var(--ico-x) }
   }
 
   .leaflet-popup-content {

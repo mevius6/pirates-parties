@@ -2,6 +2,7 @@ import { handleAriaExpanded, select, selectAll } from '../utils';
 
 // https://w3c.github.io/aria-practices/#disclosure
 // https://gomakethings.com/building-an-accessible-show/hide-disclosure-component-with-vanilla-js/
+// https://css-tricks.com/how-to-animate-the-details-element-using-waapi/
 
 const disclosures = selectAll('[data-disclosure]');
 

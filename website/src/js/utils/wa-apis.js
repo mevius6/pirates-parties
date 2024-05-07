@@ -118,6 +118,24 @@ const po = new PerformanceObserver(list => {
   // Send the LCP information for processing.
 });
 
+// WAAPI
+// https://drafts.csswg.org/web-animations/
+
+const discloseItem = (item, speed, index, vars = {}) => {
+  let anim = item.animate(
+    {
+      transform: ['translateY(20px)', 'translateY(0)'],
+      opacity: [0, 1],
+    }, {
+      delay: speed * (index + 1),
+      fill: 'forwards',
+      duration: speed * 5,
+    }
+  );
+  // https://drafts.csswg.org/web-animations-1/#dom-animationeffect-updatetiming
+  if (vars.reverse) anim.effect.updateTiming({ direction: 'reverse' });
+}
+
 /* eslint-enable no-unused-vars */
 
 export {
@@ -126,4 +144,5 @@ export {
   clearCookies,
   inViewport,
   // scrollTo
+  discloseItem,
 }
